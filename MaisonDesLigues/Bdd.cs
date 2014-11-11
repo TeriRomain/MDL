@@ -11,7 +11,7 @@ using System.Text.RegularExpressions;  // bibliothèque pour les expressions ré
 using MaisonDesLigues;
 
 
-
+//j'ai ecrit un truc ici
 namespace BaseDeDonnees
 {
     class Bdd
