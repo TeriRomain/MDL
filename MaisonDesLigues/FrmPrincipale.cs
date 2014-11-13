@@ -10,7 +10,7 @@ namespace MaisonDesLigues
 {
     public partial class FrmPrincipale : Form
     {
-
+        
         /// <summary>
         /// constructeur du formulaire
         /// </summary>
@@ -274,6 +274,19 @@ namespace MaisonDesLigues
         {
             BtnEnregistrerIntervenant.Enabled = VerifBtnEnregistreIntervenant();
         }
+
+        private void rdrbtnAtelier_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.rdrbtnAtelier.Checked == true)
+            {
+                this.grpBoxAtelier.Visible = true;
+            }
+            else
+            {
+                this.grpBoxAtelier.Visible = false;
+            }
+        }
+
         ///// <summary>
         ///// 
         ///// </summary>
