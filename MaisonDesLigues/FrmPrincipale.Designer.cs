@@ -70,17 +70,27 @@
             this.label17 = new System.Windows.Forms.Label();
             this.TabPrincipal = new System.Windows.Forms.TabControl();
             this.tabAjout = new System.Windows.Forms.TabPage();
+            this.grpBoxAjoutVacation = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.grpBoxAjoutTheme = new System.Windows.Forms.GroupBox();
+            this.btnEnregistreTheme = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtBoxLibelleTheme = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.cmbBoxAtelierTheme = new System.Windows.Forms.ComboBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.grpBoxAtelier = new System.Windows.Forms.GroupBox();
+            this.btnSaveAtelier = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.NumUpDwNbPart = new System.Windows.Forms.NumericUpDown();
+            this.txtBoxLibelleAtelier = new System.Windows.Forms.TextBox();
             this.grpBoxChoixAdd = new System.Windows.Forms.GroupBox();
             this.rdrBtnVacation = new System.Windows.Forms.RadioButton();
             this.rdrBtnTheme = new System.Windows.Forms.RadioButton();
             this.rdrbtnAtelier = new System.Windows.Forms.RadioButton();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnSaveAtelier = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.TabInscription.SuspendLayout();
             this.GrpBenevole.SuspendLayout();
             this.GrpTypeParticipant.SuspendLayout();
@@ -90,10 +100,12 @@
             this.GrpNuiteIntervenant.SuspendLayout();
             this.TabPrincipal.SuspendLayout();
             this.tabAjout.SuspendLayout();
-            this.grpBoxAtelier.SuspendLayout();
-            this.grpBoxChoixAdd.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.grpBoxAjoutVacation.SuspendLayout();
+            this.grpBoxAjoutTheme.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.grpBoxAtelier.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumUpDwNbPart)).BeginInit();
+            this.grpBoxChoixAdd.SuspendLayout();
             this.SuspendLayout();
             // 
             // TabInscription
@@ -510,6 +522,7 @@
             // 
             // tabAjout
             // 
+            this.tabAjout.Controls.Add(this.grpBoxAjoutVacation);
             this.tabAjout.Controls.Add(this.pictureBox1);
             this.tabAjout.Controls.Add(this.grpBoxAtelier);
             this.tabAjout.Controls.Add(this.grpBoxChoixAdd);
@@ -521,13 +534,111 @@
             this.tabAjout.Text = "Ajouter";
             this.tabAjout.UseVisualStyleBackColor = true;
             // 
+            // grpBoxAjoutVacation
+            // 
+            this.grpBoxAjoutVacation.Controls.Add(this.dateTimePicker1);
+            this.grpBoxAjoutVacation.Controls.Add(this.label14);
+            this.grpBoxAjoutVacation.Controls.Add(this.comboBox1);
+            this.grpBoxAjoutVacation.Location = new System.Drawing.Point(23, 75);
+            this.grpBoxAjoutVacation.Name = "grpBoxAjoutVacation";
+            this.grpBoxAjoutVacation.Size = new System.Drawing.Size(453, 100);
+            this.grpBoxAjoutVacation.TabIndex = 8;
+            this.grpBoxAjoutVacation.TabStop = false;
+            this.grpBoxAjoutVacation.Text = "Vacation";
+            this.grpBoxAjoutVacation.Visible = false;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(36, 22);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(45, 13);
+            this.label14.TabIndex = 1;
+            this.label14.Text = "Atelier : ";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(87, 19);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 0;
+            // 
+            // grpBoxAjoutTheme
+            // 
+            this.grpBoxAjoutTheme.Controls.Add(this.btnEnregistreTheme);
+            this.grpBoxAjoutTheme.Controls.Add(this.label13);
+            this.grpBoxAjoutTheme.Controls.Add(this.txtBoxLibelleTheme);
+            this.grpBoxAjoutTheme.Controls.Add(this.label12);
+            this.grpBoxAjoutTheme.Controls.Add(this.cmbBoxAtelierTheme);
+            this.grpBoxAjoutTheme.Location = new System.Drawing.Point(0, 0);
+            this.grpBoxAjoutTheme.Name = "grpBoxAjoutTheme";
+            this.grpBoxAjoutTheme.Size = new System.Drawing.Size(453, 110);
+            this.grpBoxAjoutTheme.TabIndex = 7;
+            this.grpBoxAjoutTheme.TabStop = false;
+            this.grpBoxAjoutTheme.Text = "Théme";
+            this.grpBoxAjoutTheme.Visible = false;
+            // 
+            // btnEnregistreTheme
+            // 
+            this.btnEnregistreTheme.Location = new System.Drawing.Point(333, 64);
+            this.btnEnregistreTheme.Name = "btnEnregistreTheme";
+            this.btnEnregistreTheme.Size = new System.Drawing.Size(75, 23);
+            this.btnEnregistreTheme.TabIndex = 4;
+            this.btnEnregistreTheme.Text = "Enregistre";
+            this.btnEnregistreTheme.UseVisualStyleBackColor = true;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(261, 23);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(46, 13);
+            this.label13.TabIndex = 3;
+            this.label13.Text = "Libelle : ";
+            // 
+            // txtBoxLibelleTheme
+            // 
+            this.txtBoxLibelleTheme.Location = new System.Drawing.Point(313, 20);
+            this.txtBoxLibelleTheme.Name = "txtBoxLibelleTheme";
+            this.txtBoxLibelleTheme.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxLibelleTheme.TabIndex = 2;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(36, 23);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(45, 13);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Atelier : ";
+            // 
+            // cmbBoxAtelierTheme
+            // 
+            this.cmbBoxAtelierTheme.FormattingEnabled = true;
+            this.cmbBoxAtelierTheme.Location = new System.Drawing.Point(87, 20);
+            this.cmbBoxAtelierTheme.Name = "cmbBoxAtelierTheme";
+            this.cmbBoxAtelierTheme.Size = new System.Drawing.Size(121, 21);
+            this.cmbBoxAtelierTheme.TabIndex = 0;
+            this.cmbBoxAtelierTheme.Text = "Choisir";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::MaisonDesLigues.Properties.Resources.affiche;
+            this.pictureBox1.Location = new System.Drawing.Point(482, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(108, 164);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // grpBoxAtelier
             // 
             this.grpBoxAtelier.Controls.Add(this.btnSaveAtelier);
+            this.grpBoxAtelier.Controls.Add(this.grpBoxAjoutTheme);
             this.grpBoxAtelier.Controls.Add(this.label11);
             this.grpBoxAtelier.Controls.Add(this.label10);
-            this.grpBoxAtelier.Controls.Add(this.numericUpDown1);
-            this.grpBoxAtelier.Controls.Add(this.textBox2);
+            this.grpBoxAtelier.Controls.Add(this.NumUpDwNbPart);
+            this.grpBoxAtelier.Controls.Add(this.txtBoxLibelleAtelier);
             this.grpBoxAtelier.Location = new System.Drawing.Point(23, 71);
             this.grpBoxAtelier.Name = "grpBoxAtelier";
             this.grpBoxAtelier.Size = new System.Drawing.Size(453, 110);
@@ -535,6 +646,52 @@
             this.grpBoxAtelier.TabStop = false;
             this.grpBoxAtelier.Text = "Atelier";
             this.grpBoxAtelier.Visible = false;
+            // 
+            // btnSaveAtelier
+            // 
+            this.btnSaveAtelier.Location = new System.Drawing.Point(333, 76);
+            this.btnSaveAtelier.Name = "btnSaveAtelier";
+            this.btnSaveAtelier.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveAtelier.TabIndex = 5;
+            this.btnSaveAtelier.Text = "Enregistrer";
+            this.btnSaveAtelier.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(202, 37);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(144, 13);
+            this.label11.TabIndex = 4;
+            this.label11.Text = "Nombre maxi de participant : ";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(35, 37);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(46, 13);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "Libelle : ";
+            // 
+            // NumUpDwNbPart
+            // 
+            this.NumUpDwNbPart.Location = new System.Drawing.Point(352, 35);
+            this.NumUpDwNbPart.Name = "NumUpDwNbPart";
+            this.NumUpDwNbPart.Size = new System.Drawing.Size(48, 20);
+            this.NumUpDwNbPart.TabIndex = 2;
+            this.NumUpDwNbPart.Value = new decimal(new int[] {
+            40,
+            0,
+            0,
+            0});
+            // 
+            // txtBoxLibelleAtelier
+            // 
+            this.txtBoxLibelleAtelier.Location = new System.Drawing.Point(87, 34);
+            this.txtBoxLibelleAtelier.Name = "txtBoxLibelleAtelier";
+            this.txtBoxLibelleAtelier.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxLibelleAtelier.TabIndex = 1;
             // 
             // grpBoxChoixAdd
             // 
@@ -569,6 +726,7 @@
             this.rdrBtnTheme.TabStop = true;
             this.rdrBtnTheme.Text = "Théme";
             this.rdrBtnTheme.UseVisualStyleBackColor = true;
+            this.rdrBtnTheme.CheckedChanged += new System.EventHandler(this.rdrBtnTheme_CheckedChanged);
             // 
             // rdrbtnAtelier
             // 
@@ -582,60 +740,13 @@
             this.rdrbtnAtelier.UseVisualStyleBackColor = true;
             this.rdrbtnAtelier.CheckedChanged += new System.EventHandler(this.rdrbtnAtelier_CheckedChanged);
             // 
-            // textBox2
+            // dateTimePicker1
             // 
-            this.textBox2.Location = new System.Drawing.Point(87, 34);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 1;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(352, 35);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(48, 20);
-            this.numericUpDown1.TabIndex = 2;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            40,
-            0,
-            0,
-            0});
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(35, 37);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(46, 13);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "Libelle : ";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(202, 37);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(144, 13);
-            this.label11.TabIndex = 4;
-            this.label11.Text = "Nombre maxi de participant : ";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::MaisonDesLigues.Properties.Resources.affiche;
-            this.pictureBox1.Location = new System.Drawing.Point(482, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(108, 164);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnSaveAtelier
-            // 
-            this.btnSaveAtelier.Location = new System.Drawing.Point(333, 76);
-            this.btnSaveAtelier.Name = "btnSaveAtelier";
-            this.btnSaveAtelier.Size = new System.Drawing.Size(75, 23);
-            this.btnSaveAtelier.TabIndex = 5;
-            this.btnSaveAtelier.Text = "Enregistrer";
-            this.btnSaveAtelier.UseVisualStyleBackColor = true;
+            this.dateTimePicker1.CustomFormat = "hh:mm";
+            this.dateTimePicker1.Location = new System.Drawing.Point(247, 22);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 3;
             // 
             // FrmPrincipale
             // 
@@ -660,12 +771,16 @@
             this.GrpNuiteIntervenant.PerformLayout();
             this.TabPrincipal.ResumeLayout(false);
             this.tabAjout.ResumeLayout(false);
+            this.grpBoxAjoutVacation.ResumeLayout(false);
+            this.grpBoxAjoutVacation.PerformLayout();
+            this.grpBoxAjoutTheme.ResumeLayout(false);
+            this.grpBoxAjoutTheme.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grpBoxAtelier.ResumeLayout(false);
             this.grpBoxAtelier.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumUpDwNbPart)).EndInit();
             this.grpBoxChoixAdd.ResumeLayout(false);
             this.grpBoxChoixAdd.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -720,10 +835,20 @@
         private System.Windows.Forms.GroupBox grpBoxAtelier;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.NumericUpDown NumUpDwNbPart;
+        private System.Windows.Forms.TextBox txtBoxLibelleAtelier;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnSaveAtelier;
+        private System.Windows.Forms.GroupBox grpBoxAjoutTheme;
+        private System.Windows.Forms.Button btnEnregistreTheme;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtBoxLibelleTheme;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox cmbBoxAtelierTheme;
+        private System.Windows.Forms.GroupBox grpBoxAjoutVacation;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
 
 
     }

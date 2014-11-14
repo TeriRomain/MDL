@@ -287,6 +287,14 @@ namespace MaisonDesLigues
             }
         }
 
+        private void rdrBtnTheme_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.rdrBtnTheme.Checked == true)
+            {
+                this.grpBoxAjoutTheme.Visible = true;
+            }
+        }
+
         ///// <summary>
         ///// 
         ///// </summary>
