@@ -277,7 +277,7 @@ namespace MaisonDesLigues
 
         private void rdrbtnAtelier_CheckedChanged(object sender, EventArgs e)
         {
-            if (this.rdrbtnAtelier.Checked == true)
+            if (this.rdrbtnAtelier.Checked)
             {
                 this.grpBoxAtelier.Visible = true;
             }
@@ -289,14 +289,35 @@ namespace MaisonDesLigues
 
         private void rdrBtnTheme_CheckedChanged(object sender, EventArgs e)
         {
-            if (this.rdrBtnTheme.Checked == true)
+            if (this.rdrBtnTheme.Checked)
             {
                 this.grpBoxAddTheme.Visible = true;
+                this.grpBoxAddTheme.Top = 71;
             }
             else
             {
                 this.grpBoxAddTheme.Visible = false;
+                this.grpBoxAddTheme.Top = 187;
             }
+        }
+
+        private void rdrBtnVacation_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.rdrBtnVacation.Checked)
+            {
+                this.GrpBoxVacation.Visible = true;
+                this.GrpBoxVacation.Top = 71;
+            }
+            else
+            {
+                this.GrpBoxVacation.Visible = false;
+                this.GrpBoxVacation.Top = 187;
+            }
+        }
+
+        private void DateTimeDbtVacation_ValueChanged(object sender, EventArgs e)
+        {
+            this.DateTimeFinVacation.MinDate = this.DateTimeDbtVacation.Value;
         }
 
         ///// <summary>
