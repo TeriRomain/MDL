@@ -88,7 +88,6 @@ namespace MaisonDesLigues
         /// </summary>
         private void GererInscriptionBenevole()
         {
-
             GrpBenevole.Visible = true;
             GrpBenevole.Left = 23;
             GrpBenevole.Top = 264;
@@ -108,6 +107,10 @@ namespace MaisonDesLigues
 
 
         }
+
+        
+
+
         /// <summary>
         /// permet d'appeler la méthode VerifBtnEnregistreIntervenant qui déterminera le statu du bouton BtnEnregistrerIntervenant
         /// </summary>
@@ -152,10 +155,48 @@ namespace MaisonDesLigues
                 }
             }
             UneConnexion.InscrireBenevole(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToDateTime(TxtDateNaissance.Text), NumeroLicence, IdDatesSelectionnees);
-
+            Vider_Champs();
         }
+
+        private void Vider_Champs()
+        {
+            if (TabPrincipal.SelectedIndex == 0)
+            {
+                if (RadBenevole.Checked == true)
+                {
+                    Collection<Control> MesControls = new Collection<Control>();
+                    foreach (Control Ctrl in PanelDispoBenevole.Controls)
+                    {
+                        if (Ctrl is CheckBox)
+                        {
+                            MesControls.Add(Ctrl);
+                        }
+                    }
+                    foreach (Control Ctrl in GrpIdentite.Controls)
+                    {
+                        MesControls.Add(Ctrl);
+                    }
+                    foreach (Control Ctrl in GrpBenevole.Controls)
+                    {
+                        MesControls.Add(Ctrl);
+                    }
+
+                    foreach (Control Ctrl in MesControls)
+                    {
+                        if (Ctrl is TextBox || Ctrl is MaskedTextBox)
+                            Ctrl.Text = string.Empty;
+                        else if (Ctrl is CheckBox)
+                        {
+                            ((CheckBox)Ctrl).Checked = false;
+                        }
+                    }
+                }
+            }
+        }
+
+
         /// <summary>
-        /// Cetet méthode teste les données saisies afin d'activer ou désactiver le bouton d'enregistrement d'un bénévole
+        /// Cette méthode teste les données saisies afin d'activer ou désactiver le bouton d'enregistrement d'un bénévole
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -362,6 +403,7 @@ namespace MaisonDesLigues
             }
         }
 
+
         private void rdrBtnTheme_CheckedChanged(object sender, EventArgs e)
         {
 <<<<<<< HEAD
@@ -406,6 +448,12 @@ namespace MaisonDesLigues
         {
             this.DateTimeFinVacation.MinDate = this.DateTimeDbtVacation.Value;
 >>>>>>> origin/Romain
+        }
+
+        private void TabInscription_Click(object sender, EventArgs e)
+        {
+
+
         }
 
         ///// <summary>
