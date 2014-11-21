@@ -65,6 +65,43 @@ namespace MaisonDesLigues
             }
         }
 
+
+        private void GererInscriptionLicencie()
+        {
+            GrpBenevole.Visible = false;
+            GrpIntervenant.Visible = false;
+            GrpLicencie.Visible = true;
+            GrpLicencie.Left = 23;
+            GrpLicencie.Top = 264;
+            //Utilitaire.CreerDesControles(this,UneConnexion,"VRESTAURATION01","Rad_",PanNuiteLicencie,"RadioButton",
+            Utilitaire.RemplirComboBox(UneConnexion, CmbAtelierLicencie, "VATELIER02");
+            CmbAtelierLicencie.Text="Choisir";
+        }
+
+        //private void RdbNuiteLicencie_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    if (((RadioButton)sender).Name == "RdbNuiteLicencieOui")
+        //    {
+        //        PanNuiteLicencie.Visible = true;
+        //        if (PanNuiteIntervenant.Controls.Count == 0) // on charge les nuites possibles possibles et on les affiche
+        //        {
+        //            //DataTable LesDateNuites = UneConnexion.ObtenirDonnesOracle("VDATENUITE01");
+        //            //foreach(Dat
+        //            Dictionary<Int16, String> LesNuites = UneConnexion.ObtenirDatesNuites();
+        //            int i = 0;
+        //            foreach (KeyValuePair<Int16, String> UneNuite in LesNuites)
+        //            {
+        //                ComposantNuite.ResaNuite unResaNuit = new ResaNuite(UneConnexion.ObtenirDonnesOracle("VHOTEL01"), (UneConnexion.ObtenirDonnesOracle("VCATEGORIECHAMBRE01")), UneNuite.Value, UneNuite.Key);
+        //                unResaNuit.Left = 5;
+        //                unResaNuit.Top = 5 + (24 * i++);
+        //                unResaNuit.Visible = true;
+        //                //unResaNuit.click += new System.EventHandler(ComposantNuite_StateChanged);
+        //                PanNuiteIntervenant.Controls.Add(unResaNuit);
+        //            }
+
+        //        }
+
+        //    }
         /// <summary>     
         /// procédure permettant d'afficher l'interface de saisie du complément d'inscription d'un intervenant.
         /// </summary>
@@ -362,6 +399,7 @@ namespace MaisonDesLigues
             }
         }
 
+<<<<<<< HEAD
         private void rdrBtnTheme_CheckedChanged(object sender, EventArgs e)
         {
             if (this.rdrBtnTheme.Checked)
@@ -399,6 +437,21 @@ namespace MaisonDesLigues
         private void DateTimeDbtVacation_ValueChanged(object sender, EventArgs e)
         {
             this.DateTimeFinVacation.MinDate = this.DateTimeDbtVacation.Value;
+=======
+        private void TabInscription_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void Rad_NuiteOui_CheckedChanged(object sender, EventArgs e)
+        {
+
+>>>>>>> origin/Clément
         }
 
         ///// <summary>
