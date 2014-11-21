@@ -70,17 +70,17 @@
             this.label17 = new System.Windows.Forms.Label();
             this.TabPrincipal = new System.Windows.Forms.TabControl();
             this.tabAjout = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.grpBoxAtelier = new System.Windows.Forms.GroupBox();
+            this.btnSaveAtelier = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.grpBoxChoixAdd = new System.Windows.Forms.GroupBox();
             this.rdrBtnVacation = new System.Windows.Forms.RadioButton();
             this.rdrBtnTheme = new System.Windows.Forms.RadioButton();
             this.rdrbtnAtelier = new System.Windows.Forms.RadioButton();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnSaveAtelier = new System.Windows.Forms.Button();
             this.TabInscription.SuspendLayout();
             this.GrpBenevole.SuspendLayout();
             this.GrpTypeParticipant.SuspendLayout();
@@ -90,10 +90,10 @@
             this.GrpNuiteIntervenant.SuspendLayout();
             this.TabPrincipal.SuspendLayout();
             this.tabAjout.SuspendLayout();
-            this.grpBoxAtelier.SuspendLayout();
-            this.grpBoxChoixAdd.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.grpBoxAtelier.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.grpBoxChoixAdd.SuspendLayout();
             this.SuspendLayout();
             // 
             // TabInscription
@@ -111,6 +111,7 @@
             this.TabInscription.TabIndex = 0;
             this.TabInscription.Text = "Inscription";
             this.TabInscription.UseVisualStyleBackColor = true;
+            this.TabInscription.Click += new System.EventHandler(this.TabInscription_Click);
             // 
             // GrpBenevole
             // 
@@ -521,6 +522,15 @@
             this.tabAjout.Text = "Ajouter";
             this.tabAjout.UseVisualStyleBackColor = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::MaisonDesLigues.Properties.Resources.affiche;
+            this.pictureBox1.Location = new System.Drawing.Point(482, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(108, 164);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // grpBoxAtelier
             // 
             this.grpBoxAtelier.Controls.Add(this.btnSaveAtelier);
@@ -535,6 +545,52 @@
             this.grpBoxAtelier.TabStop = false;
             this.grpBoxAtelier.Text = "Atelier";
             this.grpBoxAtelier.Visible = false;
+            // 
+            // btnSaveAtelier
+            // 
+            this.btnSaveAtelier.Location = new System.Drawing.Point(333, 76);
+            this.btnSaveAtelier.Name = "btnSaveAtelier";
+            this.btnSaveAtelier.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveAtelier.TabIndex = 5;
+            this.btnSaveAtelier.Text = "Enregistrer";
+            this.btnSaveAtelier.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(202, 37);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(144, 13);
+            this.label11.TabIndex = 4;
+            this.label11.Text = "Nombre maxi de participant : ";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(35, 37);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(46, 13);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "Libelle : ";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(352, 35);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(48, 20);
+            this.numericUpDown1.TabIndex = 2;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            40,
+            0,
+            0,
+            0});
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(87, 34);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 1;
             // 
             // grpBoxChoixAdd
             // 
@@ -582,61 +638,6 @@
             this.rdrbtnAtelier.UseVisualStyleBackColor = true;
             this.rdrbtnAtelier.CheckedChanged += new System.EventHandler(this.rdrbtnAtelier_CheckedChanged);
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(87, 34);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 1;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(352, 35);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(48, 20);
-            this.numericUpDown1.TabIndex = 2;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            40,
-            0,
-            0,
-            0});
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(35, 37);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(46, 13);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "Libelle : ";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(202, 37);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(144, 13);
-            this.label11.TabIndex = 4;
-            this.label11.Text = "Nombre maxi de participant : ";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::MaisonDesLigues.Properties.Resources.affiche;
-            this.pictureBox1.Location = new System.Drawing.Point(482, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(108, 164);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnSaveAtelier
-            // 
-            this.btnSaveAtelier.Location = new System.Drawing.Point(333, 76);
-            this.btnSaveAtelier.Name = "btnSaveAtelier";
-            this.btnSaveAtelier.Size = new System.Drawing.Size(75, 23);
-            this.btnSaveAtelier.TabIndex = 5;
-            this.btnSaveAtelier.Text = "Enregistrer";
-            this.btnSaveAtelier.UseVisualStyleBackColor = true;
-            // 
             // FrmPrincipale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -660,12 +661,12 @@
             this.GrpNuiteIntervenant.PerformLayout();
             this.TabPrincipal.ResumeLayout(false);
             this.tabAjout.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grpBoxAtelier.ResumeLayout(false);
             this.grpBoxAtelier.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.grpBoxChoixAdd.ResumeLayout(false);
             this.grpBoxChoixAdd.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
