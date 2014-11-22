@@ -330,6 +330,8 @@ namespace MaisonDesLigues
                 this.DateTimeDbtVacation.Top = 61;
                 this.lblDateFinVacation.Left = 20;
                 this.lblDateFinVacation.Top = 93;
+                this.DateTimeFinVacation.Left = 75;
+                this.DateTimeFinVacation.Top = 87;
             }
         }
 
