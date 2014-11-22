@@ -10,7 +10,7 @@ namespace MaisonDesLigues
 {
     public partial class FrmPrincipale : Form
     {
-
+        
         /// <summary>
         /// constructeur du formulaire
         /// </summary>
@@ -88,7 +88,6 @@ namespace MaisonDesLigues
         /// </summary>
         private void GererInscriptionBenevole()
         {
-
             GrpBenevole.Visible = true;
             GrpBenevole.Left = 23;
             GrpBenevole.Top = 264;
@@ -108,6 +107,10 @@ namespace MaisonDesLigues
 
 
         }
+
+        
+
+
         /// <summary>
         /// permet d'appeler la méthode VerifBtnEnregistreIntervenant qui déterminera le statu du bouton BtnEnregistrerIntervenant
         /// </summary>
@@ -152,10 +155,48 @@ namespace MaisonDesLigues
                 }
             }
             UneConnexion.InscrireBenevole(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToDateTime(TxtDateNaissance.Text), NumeroLicence, IdDatesSelectionnees);
-
+            Vider_Champs();
         }
+
+        private void Vider_Champs()
+        {
+            if (TabPrincipal.SelectedIndex == 0)
+            {
+                if (RadBenevole.Checked == true)
+                {
+                    Collection<Control> MesControls = new Collection<Control>();
+                    foreach (Control Ctrl in PanelDispoBenevole.Controls)
+                    {
+                        if (Ctrl is CheckBox)
+                        {
+                            MesControls.Add(Ctrl);
+                        }
+                    }
+                    foreach (Control Ctrl in GrpIdentite.Controls)
+                    {
+                        MesControls.Add(Ctrl);
+                    }
+                    foreach (Control Ctrl in GrpBenevole.Controls)
+                    {
+                        MesControls.Add(Ctrl);
+                    }
+
+                    foreach (Control Ctrl in MesControls)
+                    {
+                        if (Ctrl is TextBox || Ctrl is MaskedTextBox)
+                            Ctrl.Text = string.Empty;
+                        else if (Ctrl is CheckBox)
+                        {
+                            ((CheckBox)Ctrl).Checked = false;
+                        }
+                    }
+                }
+            }
+        }
+
+
         /// <summary>
-        /// Cetet méthode teste les données saisies afin d'activer ou désactiver le bouton d'enregistrement d'un bénévole
+        /// Cette méthode teste les données saisies afin d'activer ou désactiver le bouton d'enregistrement d'un bénévole
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -274,6 +315,147 @@ namespace MaisonDesLigues
         {
             BtnEnregistrerIntervenant.Enabled = VerifBtnEnregistreIntervenant();
         }
+
+        private void gererVacation(Boolean grand)
+        {
+            if (grand)
+            {
+                this.lblAtelierVacation.Left = 28;
+                this.lblAtelierVacation.Top = 37;
+                this.CmbBoxVacationAtelier.Left = 75;
+                this.CmbBoxVacationAtelier.Top = 34;
+                this.lblDateDbtVacation.Left = 4;
+                this.lblDateDbtVacation.Top = 64;
+                this.DateTimeDbtVacation.Left = 75;
+                this.DateTimeDbtVacation.Top = 61;
+                this.lblDateFinVacation.Left = 20;
+                this.lblDateFinVacation.Top = 93;
+            }
+        }
+
+        /// <summary>
+        /// fonction qui modifie dynamiquement la taille de grpBoxAddTheme
+        /// </summary>
+        /// <param name="grand"></param>
+
+        private void gererTheme(Boolean grand)
+        {
+            if (grand)
+            {
+                this.LblThemeAtelier.Left = 6;
+                this.LblThemeAtelier.Top = 37;
+                this.LblThemeLibelle.Left = 5;
+                this.LblThemeLibelle.Top = 64;
+                this.cmbBoxThemeAtelier.Top = 34;
+                this.cmbBoxThemeAtelier.Left = 57;
+                this.txtBoxAddThemeLibelle.Top = 61;
+                this.txtBoxAddThemeLibelle.Left = 57;
+                this.grpBoxAddTheme.Width = 190;
+                this.grpBoxAddTheme.Height = 110;
+                this.btnAddThemeEnregistre.Visible = false;
+            }
+            else
+            {
+                this.LblThemeAtelier.Left = 34;
+                this.LblThemeAtelier.Top = 37;
+                this.LblThemeLibelle.Left = 242;
+                this.LblThemeLibelle.Top = 37;
+                this.cmbBoxThemeAtelier.Top = 34;
+                this.cmbBoxThemeAtelier.Left = 85;
+                this.txtBoxAddThemeLibelle.Top = 34;
+                this.txtBoxAddThemeLibelle.Left = 308;
+                this.grpBoxAddTheme.Width = 453;
+                this.grpBoxAddTheme.Height = 110;
+                this.btnAddThemeEnregistre.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Methode qui crée dynamiquement l'interface d'ajout d'un atelier
+        /// </summary>
+        private void GererInterfaceAtelier()
+        {
+            this.grpBoxAtelier.Controls.Add(this.grpBoxAddTheme);
+            this.gererTheme(true);
+            this.grpBoxAtelier.Controls["grpBoxAddTheme"].Left = 6;
+            this.grpBoxAtelier.Controls["grpBoxAddTheme"].Top = 69;
+            this.grpBoxAddTheme.Visible = true;
+
+              
+            this.grpBoxAtelier.Controls.Add(this.GrpBoxVacation);
+            //this.grpBoxAtelier.Controls["GrpBoxVacation"].Visible = true;
+            //this.grpBoxAtelier.Controls["GrpBoxVacation"].Left = 6;
+            //this.grpBoxAtelier.Controls["GrpBoxVacation"].Top = 253;
+            //this.grpBoxAtelier.Controls["GrpBoxVacation"].Width = 441;
+        }
+
+        private void rdrbtnAtelier_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.rdrbtnAtelier.Checked)
+            {
+                this.grpBoxAtelier.Visible = true;
+                this.GererInterfaceAtelier();
+            }
+            else
+            {
+                this.tabAjout.Controls.Add(this.grpBoxAtelier.Controls["grpBoxAddTheme"]);
+                this.grpBoxAtelier.Visible = false;
+            }
+        }
+
+
+        private void rdrBtnTheme_CheckedChanged(object sender, EventArgs e)
+        {
+<<<<<<< HEAD
+            if (this.rdrBtnTheme.Checked == true)
+            {
+                this.grpBoxAjoutTheme.Visible = true;
+            }
+=======
+            if (this.rdrBtnTheme.Checked)
+            {
+                this.gererTheme(false);
+                this.grpBoxAddTheme.Top = 71;
+                this.grpBoxAddTheme.Left = 23;
+                this.grpBoxAddTheme.Visible = true;
+            }
+            else
+            {
+                this.grpBoxAddTheme.Visible = false;
+                this.grpBoxAddTheme.Top = 187;
+                this.grpBoxAddTheme.Left = 453;
+            }
+        }
+
+        private void rdrBtnVacation_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.rdrBtnVacation.Checked)
+            {
+                this.gererTheme(false);
+                this.GrpBoxVacation.Visible = true;
+                this.GrpBoxVacation.Top = 71;
+                this.GrpBoxVacation.Left = 23;
+            }
+            else
+            {
+                this.GrpBoxVacation.Visible = false;
+                this.GrpBoxVacation.Top = 187;
+                this.GrpBoxVacation.Left = 453;
+            }
+        }
+
+        private void DateTimeDbtVacation_ValueChanged(object sender, EventArgs e)
+        {
+            this.DateTimeFinVacation.MinDate = this.DateTimeDbtVacation.Value;
+>>>>>>> origin/Romain
+        }
+
+        private void TabInscription_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
         ///// <summary>
         ///// 
         ///// </summary>

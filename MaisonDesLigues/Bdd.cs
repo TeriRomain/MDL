@@ -96,6 +96,20 @@ namespace BaseDeDonnees
             String[] message = Regex.Split(unMessage, "ORA-");
             return (Regex.Split(message[1], ":"))[1];
         }
+
+        /// <summary>
+        /// fonction qui execute une requéte 
+        /// </summary>
+        /// <param name="UnObjetCommande">commande passé en paramétre</param>
+        /// <returns></returns>
+        private DataTable ExecuteRequete(OracleCommand UnObjetCommande)
+        {
+            OracleDataReader UnReader = UnObjetCommande.ExecuteReader();
+            UneDataTable = new DataTable();
+            UneDataTable.Load(UnReader);
+            UnReader.Close();
+            return UneDataTable;
+        }
         /// <summary>
         /// permet de récupérer le contenu d'une table ou d'une vue. 
         /// </summary>
