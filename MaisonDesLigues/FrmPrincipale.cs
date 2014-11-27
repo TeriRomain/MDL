@@ -65,6 +65,43 @@ namespace MaisonDesLigues
             }
         }
 
+
+        private void GererInscriptionLicencie()
+        {
+            GrpBenevole.Visible = false;
+            GrpIntervenant.Visible = false;
+            GrpLicencie.Visible = true;
+            GrpLicencie.Left = 23;
+            GrpLicencie.Top = 264;
+            //Utilitaire.CreerDesControles(this,UneConnexion,"VRESTAURATION01","Rad_",PanNuiteLicencie,"RadioButton",
+            Utilitaire.RemplirComboBox(UneConnexion, CmbAtelierLicencie, "VATELIER02");
+            CmbAtelierLicencie.Text="Choisir";
+        }
+
+        //private void RdbNuiteLicencie_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    if (((RadioButton)sender).Name == "RdbNuiteLicencieOui")
+        //    {
+        //        PanNuiteLicencie.Visible = true;
+        //        if (PanNuiteIntervenant.Controls.Count == 0) // on charge les nuites possibles possibles et on les affiche
+        //        {
+        //            //DataTable LesDateNuites = UneConnexion.ObtenirDonnesOracle("VDATENUITE01");
+        //            //foreach(Dat
+        //            Dictionary<Int16, String> LesNuites = UneConnexion.ObtenirDatesNuites();
+        //            int i = 0;
+        //            foreach (KeyValuePair<Int16, String> UneNuite in LesNuites)
+        //            {
+        //                ComposantNuite.ResaNuite unResaNuit = new ResaNuite(UneConnexion.ObtenirDonnesOracle("VHOTEL01"), (UneConnexion.ObtenirDonnesOracle("VCATEGORIECHAMBRE01")), UneNuite.Value, UneNuite.Key);
+        //                unResaNuit.Left = 5;
+        //                unResaNuit.Top = 5 + (24 * i++);
+        //                unResaNuit.Visible = true;
+        //                //unResaNuit.click += new System.EventHandler(ComposantNuite_StateChanged);
+        //                PanNuiteIntervenant.Controls.Add(unResaNuit);
+        //            }
+
+        //        }
+
+        //    }
         /// <summary>     
         /// procédure permettant d'afficher l'interface de saisie du complément d'inscription d'un intervenant.
         /// </summary>
@@ -88,6 +125,7 @@ namespace MaisonDesLigues
         /// </summary>
         private void GererInscriptionBenevole()
         {
+
             GrpBenevole.Visible = true;
             GrpBenevole.Left = 23;
             GrpBenevole.Top = 264;
@@ -107,10 +145,6 @@ namespace MaisonDesLigues
 
 
         }
-
-        
-
-
         /// <summary>
         /// permet d'appeler la méthode VerifBtnEnregistreIntervenant qui déterminera le statu du bouton BtnEnregistrerIntervenant
         /// </summary>
@@ -155,48 +189,10 @@ namespace MaisonDesLigues
                 }
             }
             UneConnexion.InscrireBenevole(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToDateTime(TxtDateNaissance.Text), NumeroLicence, IdDatesSelectionnees);
-            Vider_Champs();
+
         }
-
-        private void Vider_Champs()
-        {
-            if (TabPrincipal.SelectedIndex == 0)
-            {
-                if (RadBenevole.Checked == true)
-                {
-                    Collection<Control> MesControls = new Collection<Control>();
-                    foreach (Control Ctrl in PanelDispoBenevole.Controls)
-                    {
-                        if (Ctrl is CheckBox)
-                        {
-                            MesControls.Add(Ctrl);
-                        }
-                    }
-                    foreach (Control Ctrl in GrpIdentite.Controls)
-                    {
-                        MesControls.Add(Ctrl);
-                    }
-                    foreach (Control Ctrl in GrpBenevole.Controls)
-                    {
-                        MesControls.Add(Ctrl);
-                    }
-
-                    foreach (Control Ctrl in MesControls)
-                    {
-                        if (Ctrl is TextBox || Ctrl is MaskedTextBox)
-                            Ctrl.Text = string.Empty;
-                        else if (Ctrl is CheckBox)
-                        {
-                            ((CheckBox)Ctrl).Checked = false;
-                        }
-                    }
-                }
-            }
-        }
-
-
         /// <summary>
-        /// Cette méthode teste les données saisies afin d'activer ou désactiver le bouton d'enregistrement d'un bénévole
+        /// Cetet méthode teste les données saisies afin d'activer ou désactiver le bouton d'enregistrement d'un bénévole
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -444,6 +440,16 @@ namespace MaisonDesLigues
         }
 
         private void TabInscription_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void Rad_NuiteOui_CheckedChanged(object sender, EventArgs e)
         {
 
 
