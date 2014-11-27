@@ -399,7 +399,7 @@ namespace MaisonDesLigues
             }
         }
 
-<<<<<<< HEAD
+
         private void rdrBtnTheme_CheckedChanged(object sender, EventArgs e)
         {
             if (this.rdrBtnTheme.Checked)
@@ -437,7 +437,8 @@ namespace MaisonDesLigues
         private void DateTimeDbtVacation_ValueChanged(object sender, EventArgs e)
         {
             this.DateTimeFinVacation.MinDate = this.DateTimeDbtVacation.Value;
-=======
+        }
+
         private void TabInscription_Click(object sender, EventArgs e)
         {
 
@@ -451,7 +452,7 @@ namespace MaisonDesLigues
         private void Rad_NuiteOui_CheckedChanged(object sender, EventArgs e)
         {
 
->>>>>>> origin/Clément
+
         }
 
         ///// <summary>
