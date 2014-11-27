@@ -43,7 +43,6 @@ namespace MaisonDesLigues
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                new FrmPrincipale().Show(this);
             }
 
 
