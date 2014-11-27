@@ -72,6 +72,7 @@
             this.tabAjout = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.grpBoxAtelier = new System.Windows.Forms.GroupBox();
+
             this.GrpBoxVacation = new System.Windows.Forms.GroupBox();
             this.BtnEnregistreVacation = new System.Windows.Forms.Button();
             this.lblDateFinVacation = new System.Windows.Forms.Label();
@@ -80,17 +81,20 @@
             this.lblAtelierVacation = new System.Windows.Forms.Label();
             this.DateTimeDbtVacation = new System.Windows.Forms.DateTimePicker();
             this.CmbBoxVacationAtelier = new System.Windows.Forms.ComboBox();
+
             this.btnSaveAtelier = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.textBox2 = new System.Windows.Forms.TextBox();
+
             this.grpBoxAddTheme = new System.Windows.Forms.GroupBox();
             this.btnAddThemeEnregistre = new System.Windows.Forms.Button();
             this.LblThemeLibelle = new System.Windows.Forms.Label();
             this.txtBoxAddThemeLibelle = new System.Windows.Forms.TextBox();
             this.LblThemeAtelier = new System.Windows.Forms.Label();
             this.cmbBoxThemeAtelier = new System.Windows.Forms.ComboBox();
+
             this.grpBoxChoixAdd = new System.Windows.Forms.GroupBox();
             this.rdrBtnVacation = new System.Windows.Forms.RadioButton();
             this.rdrBtnTheme = new System.Windows.Forms.RadioButton();
@@ -106,9 +110,13 @@
             this.tabAjout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grpBoxAtelier.SuspendLayout();
+
             this.GrpBoxVacation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.grpBoxAddTheme.SuspendLayout();
+
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+
             this.grpBoxChoixAdd.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -127,7 +135,7 @@
             this.TabInscription.TabIndex = 0;
             this.TabInscription.Text = "Inscription";
             this.TabInscription.UseVisualStyleBackColor = true;
-            
+            this.TabInscription.Click += new System.EventHandler(this.TabInscription_Click);
             // 
             // GrpBenevole
             // 
@@ -564,6 +572,7 @@
             this.grpBoxAtelier.Text = "Atelier";
             this.grpBoxAtelier.Visible = false;
             // 
+
             // GrpBoxVacation
             // 
             this.GrpBoxVacation.Controls.Add(this.BtnEnregistreVacation);
@@ -646,7 +655,12 @@
             // 
             // btnSaveAtelier
             // 
+            this.btnSaveAtelier.Location = new System.Drawing.Point(325, 209);
+
+            // btnSaveAtelier
+            // 
             this.btnSaveAtelier.Location = new System.Drawing.Point(333, 76);
+
             this.btnSaveAtelier.Name = "btnSaveAtelier";
             this.btnSaveAtelier.Size = new System.Drawing.Size(75, 23);
             this.btnSaveAtelier.TabIndex = 5;
@@ -690,6 +704,7 @@
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 1;
             // 
+
             // grpBoxAddTheme
             // 
             this.grpBoxAddTheme.Controls.Add(this.btnAddThemeEnregistre);
@@ -747,6 +762,7 @@
             this.cmbBoxThemeAtelier.Size = new System.Drawing.Size(121, 21);
             this.cmbBoxThemeAtelier.TabIndex = 0;
             // 
+
             // grpBoxChoixAdd
             // 
             this.grpBoxChoixAdd.Controls.Add(this.rdrBtnVacation);
@@ -821,11 +837,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grpBoxAtelier.ResumeLayout(false);
             this.grpBoxAtelier.PerformLayout();
+
             this.GrpBoxVacation.ResumeLayout(false);
             this.GrpBoxVacation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.grpBoxAddTheme.ResumeLayout(false);
             this.grpBoxAddTheme.PerformLayout();
+
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+
             this.grpBoxChoixAdd.ResumeLayout(false);
             this.grpBoxChoixAdd.PerformLayout();
             this.ResumeLayout(false);
