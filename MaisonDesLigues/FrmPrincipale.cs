@@ -316,27 +316,29 @@ namespace MaisonDesLigues
         {
             if (grand)
             {
-                this.lblAtelierVacation.Left = 28;
-                this.lblAtelierVacation.Top = 37;
-                this.CmbBoxVacationAtelier.Left = 75;
-                this.CmbBoxVacationAtelier.Top = 34;
-                this.lblDateDbtVacation.Left = 4;
-                this.lblDateDbtVacation.Top = 64;
+                this.lblAtelierVacation.Visible = false;
+                this.CmbBoxVacationAtelier.Visible = false;
+                this.lblDateDbtVacation.Left = 0;
+                this.lblDateDbtVacation.Top = 24;
                 this.DateTimeDbtVacation.Left = 75;
-                this.DateTimeDbtVacation.Top = 61;
-                this.lblDateFinVacation.Left = 20;
-                this.lblDateFinVacation.Top = 93;
+                this.DateTimeDbtVacation.Top = 19;
+                this.lblDateFinVacation.Left = 16;
+                this.lblDateFinVacation.Top = 48;
                 this.DateTimeFinVacation.Left = 75;
-                this.DateTimeFinVacation.Top = 87;
-                this.GrpBoxVacation.Width = 242;
-                this.GrpBoxVacation.Height = 110;
+                this.DateTimeFinVacation.Top = 45;
+                this.GrpBoxVacation.Width = 441;
+                this.GrpBoxVacation.Height = 75;
+                this.btnAjouterVacationAtelier.Visible = true;
             }
             else
             {
+                this.btnAjouterVacationAtelier.Visible = false;
                 this.lblAtelierVacation.Left = 28;
                 this.lblAtelierVacation.Top = 37;
+                this.lblAtelierVacation.Visible = true;
                 this.CmbBoxVacationAtelier.Left = 75;
                 this.CmbBoxVacationAtelier.Top = 34;
+                this.CmbBoxVacationAtelier.Visible = true;
                 this.lblDateDbtVacation.Left = 211;
                 this.lblDateDbtVacation.Top = 37;
                 this.DateTimeDbtVacation.Left = 286;
@@ -359,26 +361,28 @@ namespace MaisonDesLigues
         {
             if (grand)
             {
-                this.LblThemeAtelier.Left = 6;
-                this.LblThemeAtelier.Top = 37;
-                this.LblThemeLibelle.Left = 5;
-                this.LblThemeLibelle.Top = 64;
-                this.cmbBoxThemeAtelier.Top = 34;
-                this.cmbBoxThemeAtelier.Left = 57;
-                this.txtBoxAddThemeLibelle.Top = 61;
-                this.txtBoxAddThemeLibelle.Left = 57;
-                this.grpBoxAddTheme.Width = 190;
-                this.grpBoxAddTheme.Height = 110;
+                this.LblThemeAtelier.Visible = false;
+                this.LblThemeLibelle.Left = 25;
+                this.LblThemeLibelle.Top = 25;
+                this.cmbBoxThemeAtelier.Visible = false;
+                this.txtBoxAddThemeLibelle.Top = 22;
+                this.txtBoxAddThemeLibelle.Left = 77;
+                this.grpBoxAddTheme.Width = 441;
+                this.grpBoxAddTheme.Height = 64;
                 this.btnAddThemeEnregistre.Visible = false;
+                this.btnAjouterThemeAtelier.Visible = true;
             }
             else
             {
+                this.btnAjouterThemeAtelier.Visible = false;
                 this.LblThemeAtelier.Left = 34;
                 this.LblThemeAtelier.Top = 37;
+                this.LblThemeAtelier.Visible = true;
                 this.LblThemeLibelle.Left = 242;
                 this.LblThemeLibelle.Top = 37;
                 this.cmbBoxThemeAtelier.Top = 34;
                 this.cmbBoxThemeAtelier.Left = 85;
+                this.cmbBoxThemeAtelier.Visible = true;
                 this.txtBoxAddThemeLibelle.Top = 34;
                 this.txtBoxAddThemeLibelle.Left = 308;
                 this.grpBoxAddTheme.Width = 453;
@@ -395,14 +399,14 @@ namespace MaisonDesLigues
             this.grpBoxAtelier.Controls.Add(this.grpBoxAddTheme);
             this.gererTheme(true);
             this.grpBoxAtelier.Controls["grpBoxAddTheme"].Left = 6;
-            this.grpBoxAtelier.Controls["grpBoxAddTheme"].Top = 69;
+            this.grpBoxAtelier.Controls["grpBoxAddTheme"].Top = 88;
             this.grpBoxAddTheme.Visible = true;
 
               
             this.grpBoxAtelier.Controls.Add(this.GrpBoxVacation);
             this.grpBoxAtelier.Controls["GrpBoxVacation"].Visible = true;
-            this.grpBoxAtelier.Controls["GrpBoxVacation"].Left = 205;
-            this.grpBoxAtelier.Controls["GrpBoxVacation"].Top = 69;
+            this.grpBoxAtelier.Controls["GrpBoxVacation"].Left = 6;
+            this.grpBoxAtelier.Controls["GrpBoxVacation"].Top = 158;
             this.gererVacation(true);
         }
 
@@ -418,6 +422,7 @@ namespace MaisonDesLigues
                 this.tabAjout.Controls.Add(this.grpBoxAtelier.Controls["grpBoxAddTheme"]);
                 this.tabAjout.Controls.Add(this.grpBoxAtelier.Controls["grpBoxVacation"]);
                 this.grpBoxAtelier.Visible = false;
+                this.GrpBoxVacation.Visible = false;
                 this.grpBoxAddTheme.Top = 596;
                 this.grpBoxAddTheme.Left = 6;
             }
