@@ -70,8 +70,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.TabPrincipal = new System.Windows.Forms.TabControl();
             this.tabAjout = new System.Windows.Forms.TabPage();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.grpBoxAtelier = new System.Windows.Forms.GroupBox();
             this.GrpBoxVacation = new System.Windows.Forms.GroupBox();
             this.BtnEnregistreVacation = new System.Windows.Forms.Button();
             this.lblDateFinVacation = new System.Windows.Forms.Label();
@@ -80,6 +78,8 @@
             this.lblAtelierVacation = new System.Windows.Forms.Label();
             this.DateTimeDbtVacation = new System.Windows.Forms.DateTimePicker();
             this.CmbBoxVacationAtelier = new System.Windows.Forms.ComboBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.grpBoxAtelier = new System.Windows.Forms.GroupBox();
             this.btnSaveAtelier = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -104,9 +104,9 @@
             this.GrpNuiteIntervenant.SuspendLayout();
             this.TabPrincipal.SuspendLayout();
             this.tabAjout.SuspendLayout();
+            this.GrpBoxVacation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grpBoxAtelier.SuspendLayout();
-            this.GrpBoxVacation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.grpBoxAddTheme.SuspendLayout();
             this.grpBoxChoixAdd.SuspendLayout();
@@ -127,7 +127,6 @@
             this.TabInscription.TabIndex = 0;
             this.TabInscription.Text = "Inscription";
             this.TabInscription.UseVisualStyleBackColor = true;
-            
             // 
             // GrpBenevole
             // 
@@ -527,6 +526,7 @@
             // 
             // tabAjout
             // 
+            this.tabAjout.Controls.Add(this.GrpBoxVacation);
             this.tabAjout.Controls.Add(this.pictureBox1);
             this.tabAjout.Controls.Add(this.grpBoxAtelier);
             this.tabAjout.Controls.Add(this.grpBoxAddTheme);
@@ -539,31 +539,6 @@
             this.tabAjout.Text = "Ajouter";
             this.tabAjout.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::MaisonDesLigues.Properties.Resources.affiche;
-            this.pictureBox1.Location = new System.Drawing.Point(482, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(108, 164);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
-            // grpBoxAtelier
-            // 
-            this.grpBoxAtelier.Controls.Add(this.GrpBoxVacation);
-            this.grpBoxAtelier.Controls.Add(this.btnSaveAtelier);
-            this.grpBoxAtelier.Controls.Add(this.label11);
-            this.grpBoxAtelier.Controls.Add(this.label10);
-            this.grpBoxAtelier.Controls.Add(this.numericUpDown1);
-            this.grpBoxAtelier.Controls.Add(this.textBox2);
-            this.grpBoxAtelier.Location = new System.Drawing.Point(23, 71);
-            this.grpBoxAtelier.Name = "grpBoxAtelier";
-            this.grpBoxAtelier.Size = new System.Drawing.Size(453, 260);
-            this.grpBoxAtelier.TabIndex = 1;
-            this.grpBoxAtelier.TabStop = false;
-            this.grpBoxAtelier.Text = "Atelier";
-            this.grpBoxAtelier.Visible = false;
-            // 
             // GrpBoxVacation
             // 
             this.GrpBoxVacation.Controls.Add(this.BtnEnregistreVacation);
@@ -573,13 +548,12 @@
             this.GrpBoxVacation.Controls.Add(this.lblAtelierVacation);
             this.GrpBoxVacation.Controls.Add(this.DateTimeDbtVacation);
             this.GrpBoxVacation.Controls.Add(this.CmbBoxVacationAtelier);
-            this.GrpBoxVacation.Location = new System.Drawing.Point(202, 69);
+            this.GrpBoxVacation.Location = new System.Drawing.Point(596, 122);
             this.GrpBoxVacation.Name = "GrpBoxVacation";
-            this.GrpBoxVacation.Size = new System.Drawing.Size(242, 110);
+            this.GrpBoxVacation.Size = new System.Drawing.Size(453, 142);
             this.GrpBoxVacation.TabIndex = 8;
             this.GrpBoxVacation.TabStop = false;
             this.GrpBoxVacation.Text = "Vacation";
-            this.GrpBoxVacation.Visible = false;
             // 
             // BtnEnregistreVacation
             // 
@@ -593,7 +567,7 @@
             // lblDateFinVacation
             // 
             this.lblDateFinVacation.AutoSize = true;
-            this.lblDateFinVacation.Location = new System.Drawing.Point(20, 93);
+            this.lblDateFinVacation.Location = new System.Drawing.Point(227, 66);
             this.lblDateFinVacation.Name = "lblDateFinVacation";
             this.lblDateFinVacation.Size = new System.Drawing.Size(53, 13);
             this.lblDateFinVacation.TabIndex = 5;
@@ -603,7 +577,7 @@
             // 
             this.DateTimeFinVacation.CustomFormat = "dd/MM/yyyy    HH : mm";
             this.DateTimeFinVacation.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateTimeFinVacation.Location = new System.Drawing.Point(75, 87);
+            this.DateTimeFinVacation.Location = new System.Drawing.Point(286, 60);
             this.DateTimeFinVacation.Name = "DateTimeFinVacation";
             this.DateTimeFinVacation.Size = new System.Drawing.Size(161, 20);
             this.DateTimeFinVacation.TabIndex = 4;
@@ -611,7 +585,7 @@
             // lblDateDbtVacation
             // 
             this.lblDateDbtVacation.AutoSize = true;
-            this.lblDateDbtVacation.Location = new System.Drawing.Point(4, 64);
+            this.lblDateDbtVacation.Location = new System.Drawing.Point(211, 37);
             this.lblDateDbtVacation.Name = "lblDateDbtVacation";
             this.lblDateDbtVacation.Size = new System.Drawing.Size(69, 13);
             this.lblDateDbtVacation.TabIndex = 3;
@@ -630,7 +604,7 @@
             // 
             this.DateTimeDbtVacation.CustomFormat = "dd/MM/yyyy    HH : mm";
             this.DateTimeDbtVacation.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateTimeDbtVacation.Location = new System.Drawing.Point(75, 61);
+            this.DateTimeDbtVacation.Location = new System.Drawing.Point(286, 34);
             this.DateTimeDbtVacation.Name = "DateTimeDbtVacation";
             this.DateTimeDbtVacation.Size = new System.Drawing.Size(161, 20);
             this.DateTimeDbtVacation.TabIndex = 1;
@@ -644,9 +618,33 @@
             this.CmbBoxVacationAtelier.Size = new System.Drawing.Size(121, 21);
             this.CmbBoxVacationAtelier.TabIndex = 0;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::MaisonDesLigues.Properties.Resources.affiche;
+            this.pictureBox1.Location = new System.Drawing.Point(482, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(108, 164);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
+            // grpBoxAtelier
+            // 
+            this.grpBoxAtelier.Controls.Add(this.btnSaveAtelier);
+            this.grpBoxAtelier.Controls.Add(this.label11);
+            this.grpBoxAtelier.Controls.Add(this.label10);
+            this.grpBoxAtelier.Controls.Add(this.numericUpDown1);
+            this.grpBoxAtelier.Controls.Add(this.textBox2);
+            this.grpBoxAtelier.Location = new System.Drawing.Point(23, 71);
+            this.grpBoxAtelier.Name = "grpBoxAtelier";
+            this.grpBoxAtelier.Size = new System.Drawing.Size(453, 227);
+            this.grpBoxAtelier.TabIndex = 1;
+            this.grpBoxAtelier.TabStop = false;
+            this.grpBoxAtelier.Text = "Atelier";
+            this.grpBoxAtelier.Visible = false;
+            // 
             // btnSaveAtelier
             // 
-            this.btnSaveAtelier.Location = new System.Drawing.Point(333, 76);
+            this.btnSaveAtelier.Location = new System.Drawing.Point(333, 199);
             this.btnSaveAtelier.Name = "btnSaveAtelier";
             this.btnSaveAtelier.Size = new System.Drawing.Size(75, 23);
             this.btnSaveAtelier.TabIndex = 5;
@@ -818,11 +816,11 @@
             this.GrpNuiteIntervenant.PerformLayout();
             this.TabPrincipal.ResumeLayout(false);
             this.tabAjout.ResumeLayout(false);
+            this.GrpBoxVacation.ResumeLayout(false);
+            this.GrpBoxVacation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grpBoxAtelier.ResumeLayout(false);
             this.grpBoxAtelier.PerformLayout();
-            this.GrpBoxVacation.ResumeLayout(false);
-            this.GrpBoxVacation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.grpBoxAddTheme.ResumeLayout(false);
             this.grpBoxAddTheme.PerformLayout();

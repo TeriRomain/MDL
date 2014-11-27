@@ -66,17 +66,17 @@ namespace MaisonDesLigues
         }
 
 
-        private void GererInscriptionLicencie()
-        {
-            GrpBenevole.Visible = false;
-            GrpIntervenant.Visible = false;
-            GrpLicencie.Visible = true;
-            GrpLicencie.Left = 23;
-            GrpLicencie.Top = 264;
-            //Utilitaire.CreerDesControles(this,UneConnexion,"VRESTAURATION01","Rad_",PanNuiteLicencie,"RadioButton",
-            Utilitaire.RemplirComboBox(UneConnexion, CmbAtelierLicencie, "VATELIER02");
-            CmbAtelierLicencie.Text="Choisir";
-        }
+        //private void GererInscriptionLicencie()
+        //{
+        //    GrpBenevole.Visible = false;
+        //    GrpIntervenant.Visible = false;
+        //    GrpLicencie.Visible = true;
+        //    GrpLicencie.Left = 23;
+        //    GrpLicencie.Top = 264;
+        //    //Utilitaire.CreerDesControles(this,UneConnexion,"VRESTAURATION01","Rad_",PanNuiteLicencie,"RadioButton",
+        //    Utilitaire.RemplirComboBox(UneConnexion, CmbAtelierLicencie, "VATELIER02");
+        //    CmbAtelierLicencie.Text="Choisir";
+        //}
 
         //private void RdbNuiteLicencie_CheckedChanged(object sender, EventArgs e)
         //{
@@ -326,6 +326,27 @@ namespace MaisonDesLigues
                 this.DateTimeDbtVacation.Top = 61;
                 this.lblDateFinVacation.Left = 20;
                 this.lblDateFinVacation.Top = 93;
+                this.DateTimeFinVacation.Left = 75;
+                this.DateTimeFinVacation.Top = 87;
+                this.GrpBoxVacation.Width = 242;
+                this.GrpBoxVacation.Height = 110;
+            }
+            else
+            {
+                this.lblAtelierVacation.Left = 28;
+                this.lblAtelierVacation.Top = 37;
+                this.CmbBoxVacationAtelier.Left = 75;
+                this.CmbBoxVacationAtelier.Top = 34;
+                this.lblDateDbtVacation.Left = 211;
+                this.lblDateDbtVacation.Top = 37;
+                this.DateTimeDbtVacation.Left = 286;
+                this.DateTimeDbtVacation.Top = 34;
+                this.lblDateFinVacation.Left = 227;
+                this.lblDateFinVacation.Top = 66;
+                this.DateTimeFinVacation.Left = 286;
+                this.DateTimeFinVacation.Top = 60;
+                this.GrpBoxVacation.Width = 453;
+                this.GrpBoxVacation.Height = 142;
             }
         }
 
@@ -379,10 +400,10 @@ namespace MaisonDesLigues
 
               
             this.grpBoxAtelier.Controls.Add(this.GrpBoxVacation);
-            //this.grpBoxAtelier.Controls["GrpBoxVacation"].Visible = true;
-            //this.grpBoxAtelier.Controls["GrpBoxVacation"].Left = 6;
-            //this.grpBoxAtelier.Controls["GrpBoxVacation"].Top = 253;
-            //this.grpBoxAtelier.Controls["GrpBoxVacation"].Width = 441;
+            this.grpBoxAtelier.Controls["GrpBoxVacation"].Visible = true;
+            this.grpBoxAtelier.Controls["GrpBoxVacation"].Left = 205;
+            this.grpBoxAtelier.Controls["GrpBoxVacation"].Top = 69;
+            this.gererVacation(true);
         }
 
         private void rdrbtnAtelier_CheckedChanged(object sender, EventArgs e)
@@ -395,7 +416,10 @@ namespace MaisonDesLigues
             else
             {
                 this.tabAjout.Controls.Add(this.grpBoxAtelier.Controls["grpBoxAddTheme"]);
+                this.tabAjout.Controls.Add(this.grpBoxAtelier.Controls["grpBoxVacation"]);
                 this.grpBoxAtelier.Visible = false;
+                this.grpBoxAddTheme.Top = 596;
+                this.grpBoxAddTheme.Left = 6;
             }
         }
 
@@ -421,7 +445,7 @@ namespace MaisonDesLigues
         {
             if (this.rdrBtnVacation.Checked)
             {
-                this.gererTheme(false);
+                this.gererVacation(false);
                 this.GrpBoxVacation.Visible = true;
                 this.GrpBoxVacation.Top = 71;
                 this.GrpBoxVacation.Left = 23;
@@ -454,6 +478,7 @@ namespace MaisonDesLigues
 
 
         }
+
 
         
 
