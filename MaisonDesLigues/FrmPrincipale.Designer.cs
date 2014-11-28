@@ -70,8 +70,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.TabPrincipal = new System.Windows.Forms.TabControl();
             this.tabAjout = new System.Windows.Forms.TabPage();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.grpBoxAtelier = new System.Windows.Forms.GroupBox();
             this.GrpBoxVacation = new System.Windows.Forms.GroupBox();
             this.btnAjouterVacationAtelier = new System.Windows.Forms.Button();
             this.BtnEnregistreVacation = new System.Windows.Forms.Button();
@@ -81,9 +79,19 @@
             this.lblAtelierVacation = new System.Windows.Forms.Label();
             this.DateTimeDbtVacation = new System.Windows.Forms.DateTimePicker();
             this.CmbBoxVacationAtelier = new System.Windows.Forms.ComboBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.grpBoxAtelier = new System.Windows.Forms.GroupBox();
+            this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.btnSaveAtelier = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.grpBoxChoixAdd = new System.Windows.Forms.GroupBox();
+            this.rdrBtnVacation = new System.Windows.Forms.RadioButton();
+            this.rdrBtnTheme = new System.Windows.Forms.RadioButton();
+            this.rdrbtnAtelier = new System.Windows.Forms.RadioButton();
             this.grpBoxAddTheme = new System.Windows.Forms.GroupBox();
             this.btnAjouterThemeAtelier = new System.Windows.Forms.Button();
             this.btnAddThemeEnregistre = new System.Windows.Forms.Button();
@@ -91,14 +99,9 @@
             this.txtBoxAddThemeLibelle = new System.Windows.Forms.TextBox();
             this.LblThemeAtelier = new System.Windows.Forms.Label();
             this.cmbBoxThemeAtelier = new System.Windows.Forms.ComboBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.grpBoxChoixAdd = new System.Windows.Forms.GroupBox();
-            this.rdrBtnVacation = new System.Windows.Forms.RadioButton();
-            this.rdrBtnTheme = new System.Windows.Forms.RadioButton();
-            this.rdrbtnAtelier = new System.Windows.Forms.RadioButton();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.btnSuprThemeAtelier = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.btnSuprThemeVacation = new System.Windows.Forms.Button();
             this.TabInscription.SuspendLayout();
             this.GrpBenevole.SuspendLayout();
             this.GrpTypeParticipant.SuspendLayout();
@@ -108,12 +111,12 @@
             this.GrpNuiteIntervenant.SuspendLayout();
             this.TabPrincipal.SuspendLayout();
             this.tabAjout.SuspendLayout();
+            this.GrpBoxVacation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grpBoxAtelier.SuspendLayout();
-            this.GrpBoxVacation.SuspendLayout();
-            this.grpBoxAddTheme.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.grpBoxChoixAdd.SuspendLayout();
+            this.grpBoxAddTheme.SuspendLayout();
             this.SuspendLayout();
             // 
             // TabInscription
@@ -530,9 +533,11 @@
             // 
             // tabAjout
             // 
+            this.tabAjout.Controls.Add(this.GrpBoxVacation);
             this.tabAjout.Controls.Add(this.pictureBox1);
             this.tabAjout.Controls.Add(this.grpBoxAtelier);
             this.tabAjout.Controls.Add(this.grpBoxChoixAdd);
+            this.tabAjout.Controls.Add(this.grpBoxAddTheme);
             this.tabAjout.Location = new System.Drawing.Point(4, 22);
             this.tabAjout.Name = "tabAjout";
             this.tabAjout.Padding = new System.Windows.Forms.Padding(3);
@@ -540,32 +545,6 @@
             this.tabAjout.TabIndex = 1;
             this.tabAjout.Text = "Ajouter";
             this.tabAjout.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::MaisonDesLigues.Properties.Resources.affiche;
-            this.pictureBox1.Location = new System.Drawing.Point(482, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(108, 164);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
-            // grpBoxAtelier
-            // 
-            this.grpBoxAtelier.Controls.Add(this.GrpBoxVacation);
-            this.grpBoxAtelier.Controls.Add(this.btnSaveAtelier);
-            this.grpBoxAtelier.Controls.Add(this.label11);
-            this.grpBoxAtelier.Controls.Add(this.label10);
-            this.grpBoxAtelier.Controls.Add(this.grpBoxAddTheme);
-            this.grpBoxAtelier.Controls.Add(this.numericUpDown1);
-            this.grpBoxAtelier.Controls.Add(this.textBox2);
-            this.grpBoxAtelier.Location = new System.Drawing.Point(23, 71);
-            this.grpBoxAtelier.Name = "grpBoxAtelier";
-            this.grpBoxAtelier.Size = new System.Drawing.Size(453, 448);
-            this.grpBoxAtelier.TabIndex = 1;
-            this.grpBoxAtelier.TabStop = false;
-            this.grpBoxAtelier.Text = "Atelier";
-            this.grpBoxAtelier.Visible = false;
             // 
             // GrpBoxVacation
             // 
@@ -577,7 +556,7 @@
             this.GrpBoxVacation.Controls.Add(this.lblAtelierVacation);
             this.GrpBoxVacation.Controls.Add(this.DateTimeDbtVacation);
             this.GrpBoxVacation.Controls.Add(this.CmbBoxVacationAtelier);
-            this.GrpBoxVacation.Location = new System.Drawing.Point(6, 324);
+            this.GrpBoxVacation.Location = new System.Drawing.Point(482, 287);
             this.GrpBoxVacation.Name = "GrpBoxVacation";
             this.GrpBoxVacation.Size = new System.Drawing.Size(441, 75);
             this.GrpBoxVacation.TabIndex = 8;
@@ -658,9 +637,54 @@
             this.CmbBoxVacationAtelier.Size = new System.Drawing.Size(121, 21);
             this.CmbBoxVacationAtelier.TabIndex = 0;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::MaisonDesLigues.Properties.Resources.affiche;
+            this.pictureBox1.Location = new System.Drawing.Point(482, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(108, 164);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
+            // grpBoxAtelier
+            // 
+            this.grpBoxAtelier.Controls.Add(this.btnSuprThemeVacation);
+            this.grpBoxAtelier.Controls.Add(this.label13);
+            this.grpBoxAtelier.Controls.Add(this.label12);
+            this.grpBoxAtelier.Controls.Add(this.checkedListBox2);
+            this.grpBoxAtelier.Controls.Add(this.checkedListBox1);
+            this.grpBoxAtelier.Controls.Add(this.btnSaveAtelier);
+            this.grpBoxAtelier.Controls.Add(this.label11);
+            this.grpBoxAtelier.Controls.Add(this.label10);
+            this.grpBoxAtelier.Controls.Add(this.numericUpDown1);
+            this.grpBoxAtelier.Controls.Add(this.textBox2);
+            this.grpBoxAtelier.Location = new System.Drawing.Point(23, 71);
+            this.grpBoxAtelier.Name = "grpBoxAtelier";
+            this.grpBoxAtelier.Size = new System.Drawing.Size(453, 500);
+            this.grpBoxAtelier.TabIndex = 1;
+            this.grpBoxAtelier.TabStop = false;
+            this.grpBoxAtelier.Text = "Atelier";
+            this.grpBoxAtelier.Visible = false;
+            // 
+            // checkedListBox2
+            // 
+            this.checkedListBox2.FormattingEnabled = true;
+            this.checkedListBox2.Location = new System.Drawing.Point(301, 261);
+            this.checkedListBox2.Name = "checkedListBox2";
+            this.checkedListBox2.Size = new System.Drawing.Size(120, 154);
+            this.checkedListBox2.TabIndex = 9;
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(81, 261);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(120, 154);
+            this.checkedListBox1.TabIndex = 8;
+            // 
             // btnSaveAtelier
             // 
-            this.btnSaveAtelier.Location = new System.Drawing.Point(314, 405);
+            this.btnSaveAtelier.Location = new System.Drawing.Point(325, 460);
             this.btnSaveAtelier.Name = "btnSaveAtelier";
             this.btnSaveAtelier.Size = new System.Drawing.Size(75, 23);
             this.btnSaveAtelier.TabIndex = 5;
@@ -684,76 +708,6 @@
             this.label10.Size = new System.Drawing.Size(46, 13);
             this.label10.TabIndex = 3;
             this.label10.Text = "Libelle : ";
-            // 
-            // grpBoxAddTheme
-            // 
-            this.grpBoxAddTheme.Controls.Add(this.btnSuprThemeAtelier);
-            this.grpBoxAddTheme.Controls.Add(this.listBox1);
-            this.grpBoxAddTheme.Controls.Add(this.btnAjouterThemeAtelier);
-            this.grpBoxAddTheme.Controls.Add(this.btnAddThemeEnregistre);
-            this.grpBoxAddTheme.Controls.Add(this.LblThemeLibelle);
-            this.grpBoxAddTheme.Controls.Add(this.txtBoxAddThemeLibelle);
-            this.grpBoxAddTheme.Controls.Add(this.LblThemeAtelier);
-            this.grpBoxAddTheme.Controls.Add(this.cmbBoxThemeAtelier);
-            this.grpBoxAddTheme.Location = new System.Drawing.Point(6, 88);
-            this.grpBoxAddTheme.Name = "grpBoxAddTheme";
-            this.grpBoxAddTheme.Size = new System.Drawing.Size(441, 182);
-            this.grpBoxAddTheme.TabIndex = 7;
-            this.grpBoxAddTheme.TabStop = false;
-            this.grpBoxAddTheme.Text = "Théme";
-            this.grpBoxAddTheme.Visible = false;
-            // 
-            // btnAjouterThemeAtelier
-            // 
-            this.btnAjouterThemeAtelier.Location = new System.Drawing.Point(308, 26);
-            this.btnAjouterThemeAtelier.Name = "btnAjouterThemeAtelier";
-            this.btnAjouterThemeAtelier.Size = new System.Drawing.Size(75, 23);
-            this.btnAjouterThemeAtelier.TabIndex = 5;
-            this.btnAjouterThemeAtelier.Text = "Ajouter";
-            this.btnAjouterThemeAtelier.UseVisualStyleBackColor = true;
-            this.btnAjouterThemeAtelier.Visible = false;
-            // 
-            // btnAddThemeEnregistre
-            // 
-            this.btnAddThemeEnregistre.Location = new System.Drawing.Point(308, 153);
-            this.btnAddThemeEnregistre.Name = "btnAddThemeEnregistre";
-            this.btnAddThemeEnregistre.Size = new System.Drawing.Size(75, 23);
-            this.btnAddThemeEnregistre.TabIndex = 4;
-            this.btnAddThemeEnregistre.Text = "Enregistre";
-            this.btnAddThemeEnregistre.UseVisualStyleBackColor = true;
-            // 
-            // LblThemeLibelle
-            // 
-            this.LblThemeLibelle.AutoSize = true;
-            this.LblThemeLibelle.Location = new System.Drawing.Point(242, 37);
-            this.LblThemeLibelle.Name = "LblThemeLibelle";
-            this.LblThemeLibelle.Size = new System.Drawing.Size(46, 13);
-            this.LblThemeLibelle.TabIndex = 3;
-            this.LblThemeLibelle.Text = "Libellé : ";
-            // 
-            // txtBoxAddThemeLibelle
-            // 
-            this.txtBoxAddThemeLibelle.Location = new System.Drawing.Point(308, 34);
-            this.txtBoxAddThemeLibelle.Name = "txtBoxAddThemeLibelle";
-            this.txtBoxAddThemeLibelle.Size = new System.Drawing.Size(100, 20);
-            this.txtBoxAddThemeLibelle.TabIndex = 2;
-            // 
-            // LblThemeAtelier
-            // 
-            this.LblThemeAtelier.AutoSize = true;
-            this.LblThemeAtelier.Location = new System.Drawing.Point(34, 37);
-            this.LblThemeAtelier.Name = "LblThemeAtelier";
-            this.LblThemeAtelier.Size = new System.Drawing.Size(45, 13);
-            this.LblThemeAtelier.TabIndex = 1;
-            this.LblThemeAtelier.Text = "Atelier : ";
-            // 
-            // cmbBoxThemeAtelier
-            // 
-            this.cmbBoxThemeAtelier.FormattingEnabled = true;
-            this.cmbBoxThemeAtelier.Location = new System.Drawing.Point(85, 34);
-            this.cmbBoxThemeAtelier.Name = "cmbBoxThemeAtelier";
-            this.cmbBoxThemeAtelier.Size = new System.Drawing.Size(121, 21);
-            this.cmbBoxThemeAtelier.TabIndex = 0;
             // 
             // numericUpDown1
             // 
@@ -822,22 +776,100 @@
             this.rdrbtnAtelier.UseVisualStyleBackColor = true;
             this.rdrbtnAtelier.CheckedChanged += new System.EventHandler(this.rdrbtnAtelier_CheckedChanged);
             // 
-            // listBox1
+            // grpBoxAddTheme
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(81, 70);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 95);
-            this.listBox1.TabIndex = 7;
+            this.grpBoxAddTheme.Controls.Add(this.btnAjouterThemeAtelier);
+            this.grpBoxAddTheme.Controls.Add(this.btnAddThemeEnregistre);
+            this.grpBoxAddTheme.Controls.Add(this.LblThemeLibelle);
+            this.grpBoxAddTheme.Controls.Add(this.txtBoxAddThemeLibelle);
+            this.grpBoxAddTheme.Controls.Add(this.LblThemeAtelier);
+            this.grpBoxAddTheme.Controls.Add(this.cmbBoxThemeAtelier);
+            this.grpBoxAddTheme.Location = new System.Drawing.Point(482, 176);
+            this.grpBoxAddTheme.Name = "grpBoxAddTheme";
+            this.grpBoxAddTheme.Size = new System.Drawing.Size(441, 105);
+            this.grpBoxAddTheme.TabIndex = 7;
+            this.grpBoxAddTheme.TabStop = false;
+            this.grpBoxAddTheme.Text = "Théme";
+            this.grpBoxAddTheme.Visible = false;
             // 
-            // btnSuprThemeAtelier
+            // btnAjouterThemeAtelier
             // 
-            this.btnSuprThemeAtelier.Location = new System.Drawing.Point(308, 92);
-            this.btnSuprThemeAtelier.Name = "btnSuprThemeAtelier";
-            this.btnSuprThemeAtelier.Size = new System.Drawing.Size(75, 23);
-            this.btnSuprThemeAtelier.TabIndex = 8;
-            this.btnSuprThemeAtelier.Text = "Supprimer";
-            this.btnSuprThemeAtelier.UseVisualStyleBackColor = true;
+            this.btnAjouterThemeAtelier.Location = new System.Drawing.Point(308, 26);
+            this.btnAjouterThemeAtelier.Name = "btnAjouterThemeAtelier";
+            this.btnAjouterThemeAtelier.Size = new System.Drawing.Size(75, 23);
+            this.btnAjouterThemeAtelier.TabIndex = 5;
+            this.btnAjouterThemeAtelier.Text = "Ajouter";
+            this.btnAjouterThemeAtelier.UseVisualStyleBackColor = true;
+            this.btnAjouterThemeAtelier.Visible = false;
+            // 
+            // btnAddThemeEnregistre
+            // 
+            this.btnAddThemeEnregistre.Location = new System.Drawing.Point(308, 70);
+            this.btnAddThemeEnregistre.Name = "btnAddThemeEnregistre";
+            this.btnAddThemeEnregistre.Size = new System.Drawing.Size(75, 23);
+            this.btnAddThemeEnregistre.TabIndex = 4;
+            this.btnAddThemeEnregistre.Text = "Enregistre";
+            this.btnAddThemeEnregistre.UseVisualStyleBackColor = true;
+            // 
+            // LblThemeLibelle
+            // 
+            this.LblThemeLibelle.AutoSize = true;
+            this.LblThemeLibelle.Location = new System.Drawing.Point(242, 37);
+            this.LblThemeLibelle.Name = "LblThemeLibelle";
+            this.LblThemeLibelle.Size = new System.Drawing.Size(46, 13);
+            this.LblThemeLibelle.TabIndex = 3;
+            this.LblThemeLibelle.Text = "Libellé : ";
+            // 
+            // txtBoxAddThemeLibelle
+            // 
+            this.txtBoxAddThemeLibelle.Location = new System.Drawing.Point(308, 34);
+            this.txtBoxAddThemeLibelle.Name = "txtBoxAddThemeLibelle";
+            this.txtBoxAddThemeLibelle.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxAddThemeLibelle.TabIndex = 2;
+            // 
+            // LblThemeAtelier
+            // 
+            this.LblThemeAtelier.AutoSize = true;
+            this.LblThemeAtelier.Location = new System.Drawing.Point(34, 37);
+            this.LblThemeAtelier.Name = "LblThemeAtelier";
+            this.LblThemeAtelier.Size = new System.Drawing.Size(45, 13);
+            this.LblThemeAtelier.TabIndex = 1;
+            this.LblThemeAtelier.Text = "Atelier : ";
+            // 
+            // cmbBoxThemeAtelier
+            // 
+            this.cmbBoxThemeAtelier.FormattingEnabled = true;
+            this.cmbBoxThemeAtelier.Location = new System.Drawing.Point(85, 34);
+            this.cmbBoxThemeAtelier.Name = "cmbBoxThemeAtelier";
+            this.cmbBoxThemeAtelier.Size = new System.Drawing.Size(121, 21);
+            this.cmbBoxThemeAtelier.TabIndex = 0;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(21, 264);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(54, 13);
+            this.label12.TabIndex = 10;
+            this.label12.Text = "Themes : ";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(237, 264);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(58, 13);
+            this.label13.TabIndex = 11;
+            this.label13.Text = "Vacation : ";
+            // 
+            // btnSuprThemeVacation
+            // 
+            this.btnSuprThemeVacation.Location = new System.Drawing.Point(190, 460);
+            this.btnSuprThemeVacation.Name = "btnSuprThemeVacation";
+            this.btnSuprThemeVacation.Size = new System.Drawing.Size(75, 23);
+            this.btnSuprThemeVacation.TabIndex = 12;
+            this.btnSuprThemeVacation.Text = "Supprimer";
+            this.btnSuprThemeVacation.UseVisualStyleBackColor = true;
             // 
             // FrmPrincipale
             // 
@@ -862,16 +894,16 @@
             this.GrpNuiteIntervenant.PerformLayout();
             this.TabPrincipal.ResumeLayout(false);
             this.tabAjout.ResumeLayout(false);
+            this.GrpBoxVacation.ResumeLayout(false);
+            this.GrpBoxVacation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grpBoxAtelier.ResumeLayout(false);
             this.grpBoxAtelier.PerformLayout();
-            this.GrpBoxVacation.ResumeLayout(false);
-            this.GrpBoxVacation.PerformLayout();
-            this.grpBoxAddTheme.ResumeLayout(false);
-            this.grpBoxAddTheme.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.grpBoxChoixAdd.ResumeLayout(false);
             this.grpBoxChoixAdd.PerformLayout();
+            this.grpBoxAddTheme.ResumeLayout(false);
+            this.grpBoxAddTheme.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -946,8 +978,11 @@
         private System.Windows.Forms.Button BtnEnregistreVacation;
         private System.Windows.Forms.Button btnAjouterVacationAtelier;
         private System.Windows.Forms.Button btnAjouterThemeAtelier;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button btnSuprThemeAtelier;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.CheckedListBox checkedListBox2;
+        private System.Windows.Forms.Button btnSuprThemeVacation;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
 
 
     }

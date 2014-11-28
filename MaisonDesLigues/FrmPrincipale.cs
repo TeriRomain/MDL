@@ -437,9 +437,11 @@ namespace MaisonDesLigues
                 this.grpBoxAddTheme.Top = 71;
                 this.grpBoxAddTheme.Left = 23;
                 this.grpBoxAddTheme.Visible = true;
+                this.btnAjouterThemeAtelier.Visible = false;
             }
             else
             {
+                this.btnAjouterThemeAtelier.Visible = true;
                 this.grpBoxAddTheme.Visible = false;
                 this.grpBoxAddTheme.Top = 187;
                 this.grpBoxAddTheme.Left = 453;
@@ -483,6 +485,7 @@ namespace MaisonDesLigues
 
 
         }
+
 
 
         
