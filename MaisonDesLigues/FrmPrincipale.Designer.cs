@@ -81,8 +81,8 @@
             this.CmbBoxVacationAtelier = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.grpBoxAtelier = new System.Windows.Forms.GroupBox();
-            this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.CkcLstBoxVacation = new System.Windows.Forms.CheckedListBox();
+            this.ckcLstBoxTheme = new System.Windows.Forms.CheckedListBox();
             this.btnSaveAtelier = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -651,8 +651,8 @@
             this.grpBoxAtelier.Controls.Add(this.btnSuprThemeVacation);
             this.grpBoxAtelier.Controls.Add(this.label13);
             this.grpBoxAtelier.Controls.Add(this.label12);
-            this.grpBoxAtelier.Controls.Add(this.checkedListBox2);
-            this.grpBoxAtelier.Controls.Add(this.checkedListBox1);
+            this.grpBoxAtelier.Controls.Add(this.CkcLstBoxVacation);
+            this.grpBoxAtelier.Controls.Add(this.ckcLstBoxTheme);
             this.grpBoxAtelier.Controls.Add(this.btnSaveAtelier);
             this.grpBoxAtelier.Controls.Add(this.label11);
             this.grpBoxAtelier.Controls.Add(this.label10);
@@ -666,21 +666,21 @@
             this.grpBoxAtelier.Text = "Atelier";
             this.grpBoxAtelier.Visible = false;
             // 
-            // checkedListBox2
+            // CkcLstBoxVacation
             // 
-            this.checkedListBox2.FormattingEnabled = true;
-            this.checkedListBox2.Location = new System.Drawing.Point(301, 261);
-            this.checkedListBox2.Name = "checkedListBox2";
-            this.checkedListBox2.Size = new System.Drawing.Size(120, 154);
-            this.checkedListBox2.TabIndex = 9;
+            this.CkcLstBoxVacation.FormattingEnabled = true;
+            this.CkcLstBoxVacation.Location = new System.Drawing.Point(301, 261);
+            this.CkcLstBoxVacation.Name = "CkcLstBoxVacation";
+            this.CkcLstBoxVacation.Size = new System.Drawing.Size(120, 154);
+            this.CkcLstBoxVacation.TabIndex = 9;
             // 
-            // checkedListBox1
+            // ckcLstBoxTheme
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(81, 261);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(120, 154);
-            this.checkedListBox1.TabIndex = 8;
+            this.ckcLstBoxTheme.FormattingEnabled = true;
+            this.ckcLstBoxTheme.Location = new System.Drawing.Point(81, 261);
+            this.ckcLstBoxTheme.Name = "ckcLstBoxTheme";
+            this.ckcLstBoxTheme.Size = new System.Drawing.Size(120, 154);
+            this.ckcLstBoxTheme.TabIndex = 8;
             // 
             // btnSaveAtelier
             // 
@@ -978,8 +978,8 @@
         private System.Windows.Forms.Button BtnEnregistreVacation;
         private System.Windows.Forms.Button btnAjouterVacationAtelier;
         private System.Windows.Forms.Button btnAjouterThemeAtelier;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
-        private System.Windows.Forms.CheckedListBox checkedListBox2;
+        private System.Windows.Forms.CheckedListBox ckcLstBoxTheme;
+        private System.Windows.Forms.CheckedListBox CkcLstBoxVacation;
         private System.Windows.Forms.Button btnSuprThemeVacation;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
