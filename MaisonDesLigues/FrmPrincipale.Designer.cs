@@ -73,14 +73,15 @@
             this.GrpBoxVacation = new System.Windows.Forms.GroupBox();
             this.btnAjouterVacationAtelier = new System.Windows.Forms.Button();
             this.BtnEnregistreVacation = new System.Windows.Forms.Button();
-            this.lblDateFinVacation = new System.Windows.Forms.Label();
-            this.DateTimeFinVacation = new System.Windows.Forms.DateTimePicker();
             this.lblDateDbtVacation = new System.Windows.Forms.Label();
             this.lblAtelierVacation = new System.Windows.Forms.Label();
             this.DateTimeDbtVacation = new System.Windows.Forms.DateTimePicker();
             this.CmbBoxVacationAtelier = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.grpBoxAtelier = new System.Windows.Forms.GroupBox();
+            this.btnSuprThemeVacation = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.CkcLstBoxVacation = new System.Windows.Forms.CheckedListBox();
             this.ckcLstBoxTheme = new System.Windows.Forms.CheckedListBox();
             this.btnSaveAtelier = new System.Windows.Forms.Button();
@@ -99,9 +100,6 @@
             this.txtBoxAddThemeLibelle = new System.Windows.Forms.TextBox();
             this.LblThemeAtelier = new System.Windows.Forms.Label();
             this.cmbBoxThemeAtelier = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.btnSuprThemeVacation = new System.Windows.Forms.Button();
             this.TabInscription.SuspendLayout();
             this.GrpBenevole.SuspendLayout();
             this.GrpTypeParticipant.SuspendLayout();
@@ -543,15 +541,13 @@
             this.tabAjout.Padding = new System.Windows.Forms.Padding(3);
             this.tabAjout.Size = new System.Drawing.Size(956, 579);
             this.tabAjout.TabIndex = 1;
-            this.tabAjout.Text = "Ajouter";
+            this.tabAjout.Text = "Gestion Atelier";
             this.tabAjout.UseVisualStyleBackColor = true;
             // 
             // GrpBoxVacation
             // 
             this.GrpBoxVacation.Controls.Add(this.btnAjouterVacationAtelier);
             this.GrpBoxVacation.Controls.Add(this.BtnEnregistreVacation);
-            this.GrpBoxVacation.Controls.Add(this.lblDateFinVacation);
-            this.GrpBoxVacation.Controls.Add(this.DateTimeFinVacation);
             this.GrpBoxVacation.Controls.Add(this.lblDateDbtVacation);
             this.GrpBoxVacation.Controls.Add(this.lblAtelierVacation);
             this.GrpBoxVacation.Controls.Add(this.DateTimeDbtVacation);
@@ -566,7 +562,7 @@
             // 
             // btnAjouterVacationAtelier
             // 
-            this.btnAjouterVacationAtelier.Location = new System.Drawing.Point(308, 34);
+            this.btnAjouterVacationAtelier.Location = new System.Drawing.Point(308, 22);
             this.btnAjouterVacationAtelier.Name = "btnAjouterVacationAtelier";
             this.btnAjouterVacationAtelier.Size = new System.Drawing.Size(75, 23);
             this.btnAjouterVacationAtelier.TabIndex = 7;
@@ -583,28 +579,10 @@
             this.BtnEnregistreVacation.Text = "Enregistrer";
             this.BtnEnregistreVacation.UseVisualStyleBackColor = true;
             // 
-            // lblDateFinVacation
-            // 
-            this.lblDateFinVacation.AutoSize = true;
-            this.lblDateFinVacation.Location = new System.Drawing.Point(16, 48);
-            this.lblDateFinVacation.Name = "lblDateFinVacation";
-            this.lblDateFinVacation.Size = new System.Drawing.Size(53, 13);
-            this.lblDateFinVacation.TabIndex = 5;
-            this.lblDateFinVacation.Text = "Date fin : ";
-            // 
-            // DateTimeFinVacation
-            // 
-            this.DateTimeFinVacation.CustomFormat = "dd/MM/yyyy    HH : mm";
-            this.DateTimeFinVacation.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateTimeFinVacation.Location = new System.Drawing.Point(75, 45);
-            this.DateTimeFinVacation.Name = "DateTimeFinVacation";
-            this.DateTimeFinVacation.Size = new System.Drawing.Size(161, 20);
-            this.DateTimeFinVacation.TabIndex = 4;
-            // 
             // lblDateDbtVacation
             // 
             this.lblDateDbtVacation.AutoSize = true;
-            this.lblDateDbtVacation.Location = new System.Drawing.Point(0, 24);
+            this.lblDateDbtVacation.Location = new System.Drawing.Point(10, 32);
             this.lblDateDbtVacation.Name = "lblDateDbtVacation";
             this.lblDateDbtVacation.Size = new System.Drawing.Size(69, 13);
             this.lblDateDbtVacation.TabIndex = 3;
@@ -622,12 +600,11 @@
             // DateTimeDbtVacation
             // 
             this.DateTimeDbtVacation.CustomFormat = "dd/MM/yyyy    HH : mm";
-            this.DateTimeDbtVacation.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateTimeDbtVacation.Location = new System.Drawing.Point(75, 19);
+            this.DateTimeDbtVacation.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DateTimeDbtVacation.Location = new System.Drawing.Point(85, 30);
             this.DateTimeDbtVacation.Name = "DateTimeDbtVacation";
-            this.DateTimeDbtVacation.Size = new System.Drawing.Size(161, 20);
+            this.DateTimeDbtVacation.Size = new System.Drawing.Size(95, 20);
             this.DateTimeDbtVacation.TabIndex = 1;
-            this.DateTimeDbtVacation.ValueChanged += new System.EventHandler(this.DateTimeDbtVacation_ValueChanged);
             // 
             // CmbBoxVacationAtelier
             // 
@@ -665,6 +642,33 @@
             this.grpBoxAtelier.TabStop = false;
             this.grpBoxAtelier.Text = "Atelier";
             this.grpBoxAtelier.Visible = false;
+            // 
+            // btnSuprThemeVacation
+            // 
+            this.btnSuprThemeVacation.Location = new System.Drawing.Point(190, 460);
+            this.btnSuprThemeVacation.Name = "btnSuprThemeVacation";
+            this.btnSuprThemeVacation.Size = new System.Drawing.Size(75, 23);
+            this.btnSuprThemeVacation.TabIndex = 12;
+            this.btnSuprThemeVacation.Text = "Supprimer";
+            this.btnSuprThemeVacation.UseVisualStyleBackColor = true;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(237, 264);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(58, 13);
+            this.label13.TabIndex = 11;
+            this.label13.Text = "Vacation : ";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(21, 264);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(54, 13);
+            this.label12.TabIndex = 10;
+            this.label12.Text = "Themes : ";
             // 
             // CkcLstBoxVacation
             // 
@@ -844,33 +848,6 @@
             this.cmbBoxThemeAtelier.Size = new System.Drawing.Size(121, 21);
             this.cmbBoxThemeAtelier.TabIndex = 0;
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(21, 264);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(54, 13);
-            this.label12.TabIndex = 10;
-            this.label12.Text = "Themes : ";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(237, 264);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(58, 13);
-            this.label13.TabIndex = 11;
-            this.label13.Text = "Vacation : ";
-            // 
-            // btnSuprThemeVacation
-            // 
-            this.btnSuprThemeVacation.Location = new System.Drawing.Point(190, 460);
-            this.btnSuprThemeVacation.Name = "btnSuprThemeVacation";
-            this.btnSuprThemeVacation.Size = new System.Drawing.Size(75, 23);
-            this.btnSuprThemeVacation.TabIndex = 12;
-            this.btnSuprThemeVacation.Text = "Supprimer";
-            this.btnSuprThemeVacation.UseVisualStyleBackColor = true;
-            // 
             // FrmPrincipale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -972,9 +949,7 @@
         private System.Windows.Forms.ComboBox CmbBoxVacationAtelier;
         private System.Windows.Forms.DateTimePicker DateTimeDbtVacation;
         private System.Windows.Forms.Label lblAtelierVacation;
-        private System.Windows.Forms.DateTimePicker DateTimeFinVacation;
         private System.Windows.Forms.Label lblDateDbtVacation;
-        private System.Windows.Forms.Label lblDateFinVacation;
         private System.Windows.Forms.Button BtnEnregistreVacation;
         private System.Windows.Forms.Button btnAjouterVacationAtelier;
         private System.Windows.Forms.Button btnAjouterThemeAtelier;
