@@ -361,6 +361,10 @@ namespace MaisonDesLigues
                 this.GrpBoxVacation.Width = 441;
                 this.GrpBoxVacation.Height = 65;
                 this.btnAjouterVacationAtelier.Visible = true;
+                this.dtPickHeureDebutVacation.Top = 24;
+                this.dtPickHeureDebutVacation.Left = 180;
+                this.dtPickHeureFinVacation.Top = 24;
+                this.dtPickHeureFinVacation.Left = 240;
             }
             else
             {
@@ -510,6 +514,11 @@ namespace MaisonDesLigues
         }
 
         private void TabInscription_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtPickHeureDebutVacation_ValueChanged(object sender, EventArgs e)
         {
 
         }
