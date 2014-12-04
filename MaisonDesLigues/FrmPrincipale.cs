@@ -457,16 +457,6 @@ namespace MaisonDesLigues
             }
         }
 
-        private void TabInscription_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
-
         private void Rad_NuiteOui_CheckedChanged(object sender, EventArgs e)
         {
 
