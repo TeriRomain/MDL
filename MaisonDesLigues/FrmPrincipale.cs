@@ -73,7 +73,7 @@ namespace MaisonDesLigues
             GrpLicencie.Visible = true;
             GrpLicencie.Left = 23;
             GrpLicencie.Top = 264;
-            Utilitaire.CreerDesControles(this, UneConnexion, "VRESTAURATION01", "Rad_", PanRestaurationLicencie, "RadioButton", RdbRestaurationLicencie_CheckedChanged);
+            //Utilitaire.CreerDesControles(this, UneConnexion, "VRESTAURATION01", "Rad_", PanRestaurationLicencie, "RadioButton", RdbRestaurationLicencie_CheckedChanged);
             Utilitaire.RemplirComboBox(UneConnexion, CmbAtelierLicencie, "VATELIER02");
             CmbAtelierLicencie.Text = "Choisir";
         }
