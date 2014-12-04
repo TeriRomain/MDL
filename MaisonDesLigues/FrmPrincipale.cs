@@ -377,12 +377,12 @@ namespace MaisonDesLigues
                 this.CmbBoxVacationAtelier.Visible = true;
                 this.lblDateDbtVacation.Left = 4;
                 this.lblDateDbtVacation.Top = 67;
-                this.DateTimeDbtVacation.Left = 80;
+                this.DateTimeDbtVacation.Left = 75;
                 this.DateTimeDbtVacation.Top = 64;
-                this.dtPickHeureDebutVacation.Top = 34;
-                this.dtPickHeureDebutVacation.Left = 180;
-                this.dtPickHeureFinVacation.Top = 34;
-                this.dtPickHeureFinVacation.Left = 240;
+                this.dtPickHeureDebutVacation.Top = 64;
+                this.dtPickHeureDebutVacation.Left = 190;
+                this.dtPickHeureFinVacation.Top = 64;
+                this.dtPickHeureFinVacation.Left = 250;
                 this.GrpBoxVacation.Width = 453;
                 this.GrpBoxVacation.Height = 142;
             }
