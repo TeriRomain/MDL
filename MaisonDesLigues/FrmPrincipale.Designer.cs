@@ -30,6 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipale));
             this.TabInscription = new System.Windows.Forms.TabPage();
+            this.GrpLicencie = new System.Windows.Forms.GroupBox();
+            this.CmbAtelierLicencie = new System.Windows.Forms.ComboBox();
+            this.LblAtelierLicencie = new System.Windows.Forms.Label();
+            this.GrpRestaurationLicencie = new System.Windows.Forms.GroupBox();
+            this.RdbRestaurationLicencieNon = new System.Windows.Forms.RadioButton();
+            this.RdbRestaurationLicencieOui = new System.Windows.Forms.RadioButton();
+            this.PanRestaurationLicencie = new System.Windows.Forms.Panel();
             this.GrpBenevole = new System.Windows.Forms.GroupBox();
             this.BtnEnregistreBenevole = new System.Windows.Forms.Button();
             this.PanelDispoBenevole = new System.Windows.Forms.Panel();
@@ -101,6 +108,8 @@
             this.LblThemeAtelier = new System.Windows.Forms.Label();
             this.cmbBoxThemeAtelier = new System.Windows.Forms.ComboBox();
             this.TabInscription.SuspendLayout();
+            this.GrpLicencie.SuspendLayout();
+            this.GrpRestaurationLicencie.SuspendLayout();
             this.GrpBenevole.SuspendLayout();
             this.GrpTypeParticipant.SuspendLayout();
             this.GrpIdentite.SuspendLayout();
@@ -119,6 +128,7 @@
             // 
             // TabInscription
             // 
+            this.TabInscription.Controls.Add(this.GrpLicencie);
             this.TabInscription.Controls.Add(this.GrpBenevole);
             this.TabInscription.Controls.Add(this.CmdQuitter);
             this.TabInscription.Controls.Add(this.GrpTypeParticipant);
@@ -128,10 +138,82 @@
             this.TabInscription.Location = new System.Drawing.Point(4, 22);
             this.TabInscription.Name = "TabInscription";
             this.TabInscription.Padding = new System.Windows.Forms.Padding(3);
-            this.TabInscription.Size = new System.Drawing.Size(956, 579);
+            this.TabInscription.Size = new System.Drawing.Size(1191, 579);
             this.TabInscription.TabIndex = 0;
             this.TabInscription.Text = "Inscription";
             this.TabInscription.UseVisualStyleBackColor = true;
+            this.TabInscription.Click += new System.EventHandler(this.TabInscription_Click_1);
+            // 
+            // GrpLicencie
+            // 
+            this.GrpLicencie.Controls.Add(this.CmbAtelierLicencie);
+            this.GrpLicencie.Controls.Add(this.LblAtelierLicencie);
+            this.GrpLicencie.Controls.Add(this.GrpRestaurationLicencie);
+            this.GrpLicencie.Location = new System.Drawing.Point(563, 268);
+            this.GrpLicencie.Name = "GrpLicencie";
+            this.GrpLicencie.Size = new System.Drawing.Size(574, 272);
+            this.GrpLicencie.TabIndex = 26;
+            this.GrpLicencie.TabStop = false;
+            this.GrpLicencie.Text = "Complément inscription licencie";
+            // 
+            // CmbAtelierLicencie
+            // 
+            this.CmbAtelierLicencie.FormattingEnabled = true;
+            this.CmbAtelierLicencie.Location = new System.Drawing.Point(72, 36);
+            this.CmbAtelierLicencie.Name = "CmbAtelierLicencie";
+            this.CmbAtelierLicencie.Size = new System.Drawing.Size(121, 21);
+            this.CmbAtelierLicencie.TabIndex = 3;
+            // 
+            // LblAtelierLicencie
+            // 
+            this.LblAtelierLicencie.AutoSize = true;
+            this.LblAtelierLicencie.Location = new System.Drawing.Point(25, 39);
+            this.LblAtelierLicencie.Name = "LblAtelierLicencie";
+            this.LblAtelierLicencie.Size = new System.Drawing.Size(45, 13);
+            this.LblAtelierLicencie.TabIndex = 2;
+            this.LblAtelierLicencie.Text = "Atelier : ";
+            // 
+            // GrpRestaurationLicencie
+            // 
+            this.GrpRestaurationLicencie.Controls.Add(this.RdbRestaurationLicencieNon);
+            this.GrpRestaurationLicencie.Controls.Add(this.RdbRestaurationLicencieOui);
+            this.GrpRestaurationLicencie.Controls.Add(this.PanRestaurationLicencie);
+            this.GrpRestaurationLicencie.Location = new System.Drawing.Point(6, 100);
+            this.GrpRestaurationLicencie.Name = "GrpRestaurationLicencie";
+            this.GrpRestaurationLicencie.Size = new System.Drawing.Size(533, 166);
+            this.GrpRestaurationLicencie.TabIndex = 1;
+            this.GrpRestaurationLicencie.TabStop = false;
+            this.GrpRestaurationLicencie.Text = "Restauration";
+            // 
+            // RdbRestaurationLicencieNon
+            // 
+            this.RdbRestaurationLicencieNon.AutoSize = true;
+            this.RdbRestaurationLicencieNon.Location = new System.Drawing.Point(85, 16);
+            this.RdbRestaurationLicencieNon.Name = "RdbRestaurationLicencieNon";
+            this.RdbRestaurationLicencieNon.Size = new System.Drawing.Size(45, 17);
+            this.RdbRestaurationLicencieNon.TabIndex = 2;
+            this.RdbRestaurationLicencieNon.TabStop = true;
+            this.RdbRestaurationLicencieNon.Text = "Non";
+            this.RdbRestaurationLicencieNon.UseVisualStyleBackColor = true;
+            // 
+            // RdbRestaurationLicencieOui
+            // 
+            this.RdbRestaurationLicencieOui.AutoSize = true;
+            this.RdbRestaurationLicencieOui.Location = new System.Drawing.Point(38, 16);
+            this.RdbRestaurationLicencieOui.Name = "RdbRestaurationLicencieOui";
+            this.RdbRestaurationLicencieOui.Size = new System.Drawing.Size(41, 17);
+            this.RdbRestaurationLicencieOui.TabIndex = 1;
+            this.RdbRestaurationLicencieOui.TabStop = true;
+            this.RdbRestaurationLicencieOui.Text = "Oui";
+            this.RdbRestaurationLicencieOui.UseVisualStyleBackColor = true;
+            // 
+            // PanRestaurationLicencie
+            // 
+            this.PanRestaurationLicencie.Location = new System.Drawing.Point(19, 43);
+            this.PanRestaurationLicencie.Name = "PanRestaurationLicencie";
+            this.PanRestaurationLicencie.Size = new System.Drawing.Size(474, 108);
+            this.PanRestaurationLicencie.TabIndex = 0;
+            this.PanRestaurationLicencie.Visible = false;
             // 
             // GrpBenevole
             // 
@@ -526,7 +608,7 @@
             this.TabPrincipal.Location = new System.Drawing.Point(0, 0);
             this.TabPrincipal.Name = "TabPrincipal";
             this.TabPrincipal.SelectedIndex = 0;
-            this.TabPrincipal.Size = new System.Drawing.Size(964, 605);
+            this.TabPrincipal.Size = new System.Drawing.Size(1199, 605);
             this.TabPrincipal.TabIndex = 0;
             // 
             // tabAjout
@@ -539,7 +621,7 @@
             this.tabAjout.Location = new System.Drawing.Point(4, 22);
             this.tabAjout.Name = "tabAjout";
             this.tabAjout.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAjout.Size = new System.Drawing.Size(956, 579);
+            this.tabAjout.Size = new System.Drawing.Size(1191, 579);
             this.tabAjout.TabIndex = 1;
             this.tabAjout.Text = "Gestion Atelier";
             this.tabAjout.UseVisualStyleBackColor = true;
@@ -852,12 +934,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(964, 605);
+            this.ClientSize = new System.Drawing.Size(1199, 605);
             this.Controls.Add(this.TabPrincipal);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmPrincipale";
             this.Load += new System.EventHandler(this.FrmPrincipale_Load);
             this.TabInscription.ResumeLayout(false);
+            this.GrpLicencie.ResumeLayout(false);
+            this.GrpLicencie.PerformLayout();
+            this.GrpRestaurationLicencie.ResumeLayout(false);
+            this.GrpRestaurationLicencie.PerformLayout();
             this.GrpBenevole.ResumeLayout(false);
             this.GrpBenevole.PerformLayout();
             this.GrpTypeParticipant.ResumeLayout(false);
@@ -958,6 +1044,13 @@
         private System.Windows.Forms.Button btnSuprThemeVacation;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.GroupBox GrpLicencie;
+        private System.Windows.Forms.Panel PanRestaurationLicencie;
+        private System.Windows.Forms.GroupBox GrpRestaurationLicencie;
+        private System.Windows.Forms.RadioButton RdbRestaurationLicencieNon;
+        private System.Windows.Forms.RadioButton RdbRestaurationLicencieOui;
+        private System.Windows.Forms.ComboBox CmbAtelierLicencie;
+        private System.Windows.Forms.Label LblAtelierLicencie;
 
 
     }
