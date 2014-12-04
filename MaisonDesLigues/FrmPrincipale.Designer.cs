@@ -227,6 +227,7 @@
             this.CmbAtelierLicencie.Name = "CmbAtelierLicencie";
             this.CmbAtelierLicencie.Size = new System.Drawing.Size(121, 21);
             this.CmbAtelierLicencie.TabIndex = 3;
+            this.CmbAtelierLicencie.TextChanged += new System.EventHandler(this.CmbAtelierLicencie_TextChanged);
             // 
             // LblAtelierLicencie
             // 
