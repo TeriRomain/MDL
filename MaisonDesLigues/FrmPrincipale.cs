@@ -55,7 +55,7 @@ namespace MaisonDesLigues
                     this.GererInscriptionBenevole();
                     break;
                 case "RadLicencie":
-                    this.GererInscriptionLicencie();
+                    //this.GererInscriptionLicencie();
                     break;
                 case "RadIntervenant":
                     this.GererInscriptionIntervenant();
@@ -146,7 +146,6 @@ namespace MaisonDesLigues
 
             GrpBenevole.Visible = false;
             GrpIntervenant.Visible = true;
-            GrpLicencie.Visible = false;
             PanFonctionIntervenant.Visible = true;
             GrpIntervenant.Left = 23;
             GrpIntervenant.Top = 264;
@@ -167,7 +166,7 @@ namespace MaisonDesLigues
             GrpBenevole.Left = 23;
             GrpBenevole.Top = 264;
             GrpIntervenant.Visible = false;
-            GrpLicencie.Visible = false;
+
             Utilitaire.CreerDesControles(this, UneConnexion, "VDATEBENEVOLAT01", "ChkDateB_", PanelDispoBenevole, "CheckBox", this.rdbStatutIntervenant_StateChanged);
             // on va tester si le controle à placer est de type CheckBox afin de lui placer un événement checked_changed
             // Ceci afin de désactiver les boutons si aucune case à cocher du container n'est cochée
@@ -511,11 +510,6 @@ namespace MaisonDesLigues
         }
 
         private void TabInscription_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void GrpLicencie_Enter(object sender, EventArgs e)
         {
 
         }
