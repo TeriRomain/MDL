@@ -521,6 +521,7 @@ namespace MaisonDesLigues
             this.gererVacation(true);
         }
 
+
         private void rdrbtnAtelier_CheckedChanged(object sender, EventArgs e)
         {
             if (this.rdrbtnAtelier.Checked)
