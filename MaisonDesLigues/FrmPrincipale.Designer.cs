@@ -218,7 +218,6 @@
             this.BtnEnregistrerLicencie.TabIndex = 4;
             this.BtnEnregistrerLicencie.Text = "Enregistrer";
             this.BtnEnregistrerLicencie.UseVisualStyleBackColor = true;
-            this.BtnEnregistrerLicencie.Click += new System.EventHandler(this.BtnEnregistrerLicencie_Click);
             // 
             // CmbAtelierLicencie
             // 
