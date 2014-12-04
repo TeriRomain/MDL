@@ -463,12 +463,6 @@ namespace MaisonDesLigues
 
         }
 
-
-
-        
-
-        
-
         ///// <summary>
         ///// 
         ///// </summary>
