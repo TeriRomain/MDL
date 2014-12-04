@@ -55,7 +55,7 @@ namespace MaisonDesLigues
                     this.GererInscriptionBenevole();
                     break;
                 case "RadLicencie":
-                    //this.GererInscriptionLicencie();
+                    this.GererInscriptionLicencie();
                     break;
                 case "RadIntervenant":
                     this.GererInscriptionIntervenant();
@@ -65,7 +65,9 @@ namespace MaisonDesLigues
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         private void GererInscriptionLicencie()
         {
             GrpBenevole.Visible = false;
@@ -73,36 +75,55 @@ namespace MaisonDesLigues
             GrpLicencie.Visible = true;
             GrpLicencie.Left = 23;
             GrpLicencie.Top = 264;
-            //Utilitaire.CreerDesControles(this, UneConnexion, "VRESTAURATION01", "Rad_", PanRestaurationLicencie, "RadioButton", RdbRestaurationLicencie_CheckedChanged);
-            Utilitaire.RemplirComboBox(UneConnexion, CmbAtelierLicencie, "VATELIER02");
+            Utilitaire.CreerDesControles(this, UneConnexion, "VRESTAURATION01", "Chk_", PanRestaurationLicencie, "CheckBox", RdbRestaurationLicencie_CheckedChanged);
+            Utilitaire.RemplirComboBox(UneConnexion, CmbAtelierLicencie, "VATELIER01");
             CmbAtelierLicencie.Text = "Choisir";
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RdbNuiteLicencie_CheckedChanged(object sender, EventArgs e)
+        {
+            if (((RadioButton)sender).Name == "RdbNuiteLicencieOui")
+            {
+                PanNuiteLicencie.Visible = true;
+                if (PanNuiteLicencie.Controls.Count == 0) // on charge les nuites possibles possibles et on les affiche
+                {
+                    //DataTable LesDateNuites = UneConnexion.ObtenirDonnesOracle("VDATENUITE01");
+                    //foreach(Dat
+                    Dictionary<Int16, String> LesNuites = UneConnexion.ObtenirDatesNuites();
+                    int i = 0;
+                    foreach (KeyValuePair<Int16, String> UneNuite in LesNuites)
+                    {
+                        ComposantNuite.ResaNuite unResaNuit = new ResaNuite(UneConnexion.ObtenirDonnesOracle("VHOTEL01"), (UneConnexion.ObtenirDonnesOracle("VCATEGORIECHAMBRE01")), UneNuite.Value, UneNuite.Key);
+                        unResaNuit.Left = 5;
+                        unResaNuit.Top = 5 + (24 * i++);
+                        unResaNuit.Visible = true;
+                        //unResaNuit.click += new System.EventHandler(ComposantNuite_StateChanged);
+                        PanNuiteLicencie.Controls.Add(unResaNuit);
+                    }
 
-        //private void RdbRestaurationLicencie_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    if (((RadioButton)sender).Name == "RdbNuiteLicencieOui")
-        //    {
-        //        PanRestaurationLicencie.Visible = true;
-        //        if (PanRestaurationLicencie.Controls.Count == 0) // on charge les nuites possibles possibles et on les affiche
-        //        {
-        //            DataTable LesDateNuites = UneConnexion.ObtenirDonnesOracle("VDATENUITE01");
-        //            foreach(Dat
-        //            Dictionary<Int16, String> LesNuites = UneConnexion.ObtenirDatesNuites();
-        //            int i = 0;
-        //            foreach (KeyValuePair<Int16, String> UneNuite in LesNuites)
-        //            {
-        //                ComposantNuite.ResaNuite unResaNuit = new ResaNuite(UneConnexion.ObtenirDonnesOracle("VHOTEL01"), (UneConnexion.ObtenirDonnesOracle("VCATEGORIECHAMBRE01")), UneNuite.Value, UneNuite.Key);
-        //                unResaNuit.Left = 5;
-        //                unResaNuit.Top = 5 + (24 * i++);
-        //                unResaNuit.Visible = true;
-        //                unResaNuit.click += new System.EventHandler(ComposantNuite_StateChanged);
-        //                PanNuiteIntervenant.Controls.Add(unResaNuit);
-        //            }
+                }
 
-        //        }
+            }
+            else
+            {
+                PanNuiteLicencie.Visible = false;
 
-        //    }
-        //}
+            }
+            //BtnEnregistrerLicencie.Enabled = VerifBtnEnregistreLicencie();
+
+        }
+
+        private void RdbRestaurationLicencie_CheckedChanged(object sender, EventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         private void Vider_Champs()
         {
             if (TabPrincipal.SelectedIndex == 0)
@@ -146,6 +167,7 @@ namespace MaisonDesLigues
 
             GrpBenevole.Visible = false;
             GrpIntervenant.Visible = true;
+            GrpLicencie.Visible = false;
             PanFonctionIntervenant.Visible = true;
             GrpIntervenant.Left = 23;
             GrpIntervenant.Top = 264;
@@ -166,7 +188,7 @@ namespace MaisonDesLigues
             GrpBenevole.Left = 23;
             GrpBenevole.Top = 264;
             GrpIntervenant.Visible = false;
-
+            GrpLicencie.Visible = false;
             Utilitaire.CreerDesControles(this, UneConnexion, "VDATEBENEVOLAT01", "ChkDateB_", PanelDispoBenevole, "CheckBox", this.rdbStatutIntervenant_StateChanged);
             // on va tester si le controle à placer est de type CheckBox afin de lui placer un événement checked_changed
             // Ceci afin de désactiver les boutons si aucune case à cocher du container n'est cochée
@@ -361,10 +383,6 @@ namespace MaisonDesLigues
                 this.GrpBoxVacation.Width = 441;
                 this.GrpBoxVacation.Height = 65;
                 this.btnAjouterVacationAtelier.Visible = true;
-                this.dtPickHeureDebutVacation.Top = 24;
-                this.dtPickHeureDebutVacation.Left = 180;
-                this.dtPickHeureFinVacation.Top = 24;
-                this.dtPickHeureFinVacation.Left = 240;
             }
             else
             {
@@ -375,14 +393,10 @@ namespace MaisonDesLigues
                 this.CmbBoxVacationAtelier.Left = 75;
                 this.CmbBoxVacationAtelier.Top = 34;
                 this.CmbBoxVacationAtelier.Visible = true;
-                this.lblDateDbtVacation.Left = 4;
-                this.lblDateDbtVacation.Top = 67;
-                this.DateTimeDbtVacation.Left = 75;
-                this.DateTimeDbtVacation.Top = 64;
-                this.dtPickHeureDebutVacation.Top = 64;
-                this.dtPickHeureDebutVacation.Left = 190;
-                this.dtPickHeureFinVacation.Top = 64;
-                this.dtPickHeureFinVacation.Left = 250;
+                this.lblDateDbtVacation.Left = 211;
+                this.lblDateDbtVacation.Top = 37;
+                this.DateTimeDbtVacation.Left = 286;
+                this.DateTimeDbtVacation.Top = 34;
                 this.GrpBoxVacation.Width = 453;
                 this.GrpBoxVacation.Height = 142;
             }
@@ -522,7 +536,12 @@ namespace MaisonDesLigues
 
         }
 
-        private void dtPickHeureDebutVacation_ValueChanged(object sender, EventArgs e)
+        private void GrpLicencie_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnEnregistrerLicencie_Click(object sender, EventArgs e)
         {
 
         }
