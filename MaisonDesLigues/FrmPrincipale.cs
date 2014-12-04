@@ -66,27 +66,27 @@ namespace MaisonDesLigues
         }
 
 
-        //private void GererInscriptionLicencie()
-        //{
-        //    GrpBenevole.Visible = false;
-        //    GrpIntervenant.Visible = false;
-        //    GrpLicencie.Visible = true;
-        //    GrpLicencie.Left = 23;
-        //    GrpLicencie.Top = 264;
-        //    //Utilitaire.CreerDesControles(this,UneConnexion,"VRESTAURATION01","Rad_",PanNuiteLicencie,"RadioButton",
-        //    Utilitaire.RemplirComboBox(UneConnexion, CmbAtelierLicencie, "VATELIER02");
-        //    CmbAtelierLicencie.Text="Choisir";
-        //}
+        private void GererInscriptionLicencie()
+        {
+            GrpBenevole.Visible = false;
+            GrpIntervenant.Visible = false;
+            GrpLicencie.Visible = true;
+            GrpLicencie.Left = 23;
+            GrpLicencie.Top = 264;
+            Utilitaire.CreerDesControles(this, UneConnexion, "VRESTAURATION01", "Rad_", PanRestaurationLicencie, "RadioButton", RdbRestaurationLicencie_CheckedChanged);
+            Utilitaire.RemplirComboBox(UneConnexion, CmbAtelierLicencie, "VATELIER02");
+            CmbAtelierLicencie.Text = "Choisir";
+        }
 
-        //private void RdbNuiteLicencie_CheckedChanged(object sender, EventArgs e)
+        //private void RdbRestaurationLicencie_CheckedChanged(object sender, EventArgs e)
         //{
         //    if (((RadioButton)sender).Name == "RdbNuiteLicencieOui")
         //    {
-        //        PanNuiteLicencie.Visible = true;
-        //        if (PanNuiteIntervenant.Controls.Count == 0) // on charge les nuites possibles possibles et on les affiche
+        //        PanRestaurationLicencie.Visible = true;
+        //        if (PanRestaurationLicencie.Controls.Count == 0) // on charge les nuites possibles possibles et on les affiche
         //        {
-        //            //DataTable LesDateNuites = UneConnexion.ObtenirDonnesOracle("VDATENUITE01");
-        //            //foreach(Dat
+        //            DataTable LesDateNuites = UneConnexion.ObtenirDonnesOracle("VDATENUITE01");
+        //            foreach(Dat
         //            Dictionary<Int16, String> LesNuites = UneConnexion.ObtenirDatesNuites();
         //            int i = 0;
         //            foreach (KeyValuePair<Int16, String> UneNuite in LesNuites)
@@ -95,13 +95,49 @@ namespace MaisonDesLigues
         //                unResaNuit.Left = 5;
         //                unResaNuit.Top = 5 + (24 * i++);
         //                unResaNuit.Visible = true;
-        //                //unResaNuit.click += new System.EventHandler(ComposantNuite_StateChanged);
+        //                unResaNuit.click += new System.EventHandler(ComposantNuite_StateChanged);
         //                PanNuiteIntervenant.Controls.Add(unResaNuit);
         //            }
 
         //        }
 
         //    }
+        //}
+        private void Vider_Champs()
+        {
+            if (TabPrincipal.SelectedIndex == 0)
+            {
+                if (RadBenevole.Checked == true)
+                {
+                    Collection<Control> MesControls = new Collection<Control>();
+                    foreach (Control Ctrl in PanelDispoBenevole.Controls)
+                    {
+                        if (Ctrl is CheckBox)
+                        {
+                            MesControls.Add(Ctrl);
+                        }
+                    }
+                    foreach (Control Ctrl in GrpIdentite.Controls)
+                    {
+                        MesControls.Add(Ctrl);
+                    }
+                    foreach (Control Ctrl in GrpBenevole.Controls)
+                    {
+                        MesControls.Add(Ctrl);
+                    }
+
+                    foreach (Control Ctrl in MesControls)
+                    {
+                        if (Ctrl is TextBox || Ctrl is MaskedTextBox)
+                            Ctrl.Text = string.Empty;
+                        else if (Ctrl is CheckBox)
+                        {
+                            ((CheckBox)Ctrl).Checked = false;
+                        }
+                    }
+                }
+            }
+        }
         /// <summary>     
         /// procédure permettant d'afficher l'interface de saisie du complément d'inscription d'un intervenant.
         /// </summary>
@@ -457,11 +493,32 @@ namespace MaisonDesLigues
             }
         }
 
+        private void TabInscription_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
         private void Rad_NuiteOui_CheckedChanged(object sender, EventArgs e)
         {
 
 
         }
+
+        private void TabInscription_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+        
+
+        
 
         ///// <summary>
         ///// 
