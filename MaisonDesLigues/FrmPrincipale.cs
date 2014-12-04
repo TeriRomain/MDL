@@ -361,6 +361,10 @@ namespace MaisonDesLigues
                 this.GrpBoxVacation.Width = 441;
                 this.GrpBoxVacation.Height = 65;
                 this.btnAjouterVacationAtelier.Visible = true;
+                this.dtPickHeureDebutVacation.Top = 24;
+                this.dtPickHeureDebutVacation.Left = 180;
+                this.dtPickHeureFinVacation.Top = 24;
+                this.dtPickHeureFinVacation.Left = 240;
             }
             else
             {
@@ -371,10 +375,14 @@ namespace MaisonDesLigues
                 this.CmbBoxVacationAtelier.Left = 75;
                 this.CmbBoxVacationAtelier.Top = 34;
                 this.CmbBoxVacationAtelier.Visible = true;
-                this.lblDateDbtVacation.Left = 211;
-                this.lblDateDbtVacation.Top = 37;
-                this.DateTimeDbtVacation.Left = 286;
-                this.DateTimeDbtVacation.Top = 34;
+                this.lblDateDbtVacation.Left = 4;
+                this.lblDateDbtVacation.Top = 67;
+                this.DateTimeDbtVacation.Left = 80;
+                this.DateTimeDbtVacation.Top = 64;
+                this.dtPickHeureDebutVacation.Top = 34;
+                this.dtPickHeureDebutVacation.Left = 180;
+                this.dtPickHeureFinVacation.Top = 34;
+                this.dtPickHeureFinVacation.Left = 240;
                 this.GrpBoxVacation.Width = 453;
                 this.GrpBoxVacation.Height = 142;
             }
@@ -510,6 +518,11 @@ namespace MaisonDesLigues
         }
 
         private void TabInscription_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtPickHeureDebutVacation_ValueChanged(object sender, EventArgs e)
         {
 
         }
