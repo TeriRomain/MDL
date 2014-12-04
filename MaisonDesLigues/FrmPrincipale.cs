@@ -21,6 +21,7 @@ namespace MaisonDesLigues
         private Bdd UneConnexion;
         private String TitreApplication;
         private String IdStatutSelectionne = "";
+        private String IdRestaurationSelectionne = "";
         /// <summary>
         /// création et ouverture d'une connexion vers la base de données sur le chargement du formulaire
         /// </summary>
@@ -113,14 +114,65 @@ namespace MaisonDesLigues
                 PanNuiteLicencie.Visible = false;
 
             }
-            //BtnEnregistrerLicencie.Enabled = VerifBtnEnregistreLicencie();
+            BtnEnregistrerLicencie.Enabled = VerifBtnEnregistreLicencie();
 
         }
 
         private void RdbRestaurationLicencie_CheckedChanged(object sender, EventArgs e)
         {
+            this.IdRestaurationSelectionne = ((CheckBox)sender).Name.Split('_')[1];
+            BtnEnregistrerLicencie.Enabled = VerifBtnEnregistreLicencie();
         }
+        private void BtnEnregistrerLicencie_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (RdbNuiteLicencieOui.Checked)
+                {
+                    // inscription avec les nuitées
+                    Collection<Int16> NuitsSelectionnes = new Collection<Int16>();
+                    Collection<String> HotelsSelectionnes = new Collection<String>();
+                    Collection<String> CategoriesSelectionnees = new Collection<string>();
+                    foreach (Control UnControle in PanNuiteLicencie.Controls)
+                    {
+                        if (UnControle.GetType().Name == "ResaNuite" && ((ResaNuite)UnControle).GetNuitSelectionnee())
+                        {
+                            // la nuité a été cochée, il faut donc envoyer l'hotel et la type de chambre à la procédure de la base qui va enregistrer le contenu hébergement 
+                            //ContenuUnHebergement UnContenuUnHebergement= new ContenuUnHebergement();
+                            CategoriesSelectionnees.Add(((ResaNuite)UnControle).GetTypeChambreSelectionnee());
+                            HotelsSelectionnes.Add(((ResaNuite)UnControle).GetHotelSelectionne());
+                            NuitsSelectionnes.Add(((ResaNuite)UnControle).IdNuite);
+                        }
 
+                    }
+                    if (NuitsSelectionnes.Count == 0)
+                    {
+                        MessageBox.Show("Si vous avez sélectionné que le licencié avait des nuités\n in faut qu'au moins une nuit soit sélectionnée");
+                    }
+                    else
+                    {
+                        //UneConnexion.InscrireLicencie(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToInt16(CmbAtelierIntervenant.SelectedValue), this.IdStatutSelectionne, CategoriesSelectionnees, HotelsSelectionnes, NuitsSelectionnes);
+                        MessageBox.Show("Inscription licencie effectuée");
+                    }
+                }
+                else
+                { // inscription sans les nuitées
+                    //UneConnexion.InscrireLicencie(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToInt16(CmbAtelierIntervenant.SelectedValue), this.IdStatutSelectionne);
+                    MessageBox.Show("Inscription licencié effectuée");
+
+                }
+
+
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
+        }
+        private Boolean VerifBtnEnregistreLicencie()
+        {
+            return CmbAtelierLicencie.Text != "Choisir" && this.IdRestaurationSelectionne.Length > 0;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -203,6 +255,7 @@ namespace MaisonDesLigues
 
 
         }
+
         /// <summary>
         /// permet d'appeler la méthode VerifBtnEnregistreIntervenant qui déterminera le statu du bouton BtnEnregistrerIntervenant
         /// </summary>
@@ -360,6 +413,7 @@ namespace MaisonDesLigues
         {
             return CmbAtelierIntervenant.Text !="Choisir" && this.IdStatutSelectionne.Length > 0;
         }
+
         /// <summary>
         /// Méthode permettant de définir le statut activé/désactivé du bouton BtnEnregistrerIntervenant
         /// </summary>
@@ -369,6 +423,13 @@ namespace MaisonDesLigues
         {
             BtnEnregistrerIntervenant.Enabled = VerifBtnEnregistreIntervenant();
         }
+
+
+        private void CmbAtelierLicencie_TextChanged(object sender, EventArgs e)
+        {
+            BtnEnregistrerLicencie.Enabled = VerifBtnEnregistreLicencie();
+        }
+
 
         private void gererVacation(Boolean grand)
         {
