@@ -144,7 +144,7 @@
             this.TabInscription.Location = new System.Drawing.Point(4, 22);
             this.TabInscription.Name = "TabInscription";
             this.TabInscription.Padding = new System.Windows.Forms.Padding(3);
-            this.TabInscription.Size = new System.Drawing.Size(1191, 636);
+            this.TabInscription.Size = new System.Drawing.Size(1163, 636);
             this.TabInscription.TabIndex = 0;
             this.TabInscription.Text = "Inscription";
             this.TabInscription.UseVisualStyleBackColor = true;
@@ -218,7 +218,7 @@
             this.BtnEnregistrerLicencie.TabIndex = 4;
             this.BtnEnregistrerLicencie.Text = "Enregistrer";
             this.BtnEnregistrerLicencie.UseVisualStyleBackColor = true;
-            this.BtnEnregistrerLicencie.Click += new System.EventHandler(this.BtnEnregistrerLicencie_Click);
+            this.BtnEnregistrerLicencie.Click += new System.EventHandler(this.BtnEnregistrerInfoLicencie_Click);
             // 
             // CmbAtelierLicencie
             // 
@@ -675,7 +675,7 @@
             this.TabPrincipal.Location = new System.Drawing.Point(0, 0);
             this.TabPrincipal.Name = "TabPrincipal";
             this.TabPrincipal.SelectedIndex = 0;
-            this.TabPrincipal.Size = new System.Drawing.Size(1199, 662);
+            this.TabPrincipal.Size = new System.Drawing.Size(1171, 662);
             this.TabPrincipal.TabIndex = 0;
             // 
             // tabAjout
@@ -1001,7 +1001,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1199, 662);
+            this.ClientSize = new System.Drawing.Size(1171, 662);
             this.Controls.Add(this.TabPrincipal);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmPrincipale";

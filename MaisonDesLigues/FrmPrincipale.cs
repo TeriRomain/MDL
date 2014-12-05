@@ -123,78 +123,33 @@ namespace MaisonDesLigues
             this.IdRestaurationSelectionne = ((CheckBox)sender).Name.Split('_')[1];
             BtnEnregistrerLicencie.Enabled = VerifBtnEnregistreLicencie();
         }
-        private void BtnEnregistrerLicencie_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (RdbNuiteLicencieOui.Checked)
-                {
-                    // inscription avec les nuitées
-                    Collection<Int16> NuitsSelectionnes = new Collection<Int16>();
-                    Collection<String> HotelsSelectionnes = new Collection<String>();
-                    Collection<String> CategoriesSelectionnees = new Collection<string>();
-                    foreach (Control UnControle in PanNuiteLicencie.Controls)
-                    {
-                        if (UnControle.GetType().Name == "ResaNuite" && ((ResaNuite)UnControle).GetNuitSelectionnee())
-                        {
-                            // la nuité a été cochée, il faut donc envoyer l'hotel et la type de chambre à la procédure de la base qui va enregistrer le contenu hébergement 
-                            //ContenuUnHebergement UnContenuUnHebergement= new ContenuUnHebergement();
-                            CategoriesSelectionnees.Add(((ResaNuite)UnControle).GetTypeChambreSelectionnee());
-                            HotelsSelectionnes.Add(((ResaNuite)UnControle).GetHotelSelectionne());
-                            NuitsSelectionnes.Add(((ResaNuite)UnControle).IdNuite);
-                        }
-
-                    }
-                    if (NuitsSelectionnes.Count == 0)
-                    {
-                        MessageBox.Show("Si vous avez sélectionné que le licencié avait des nuités\n in faut qu'au moins une nuit soit sélectionnée");
-                    }
-                    else
-                    {
-                        //UneConnexion.InscrireLicencie(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToInt16(CmbAtelierIntervenant.SelectedValue), this.IdStatutSelectionne, CategoriesSelectionnees, HotelsSelectionnes, NuitsSelectionnes);
-                        MessageBox.Show("Inscription licencie effectuée");
-                    }
-                }
-                else
-                { // inscription sans les nuitées
-                    //UneConnexion.InscrireLicencie(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToInt16(CmbAtelierIntervenant.SelectedValue), this.IdStatutSelectionne);
-                    MessageBox.Show("Inscription licencié effectuée");
-
-                }
-
-
-            }
-            catch (Exception Ex)
-            {
-                MessageBox.Show(Ex.Message);
-            }
-        }
+        
         private Boolean VerifBtnEnregistreLicencie()
         {
             return CmbAtelierLicencie.Text != "Choisir" && this.IdRestaurationSelectionne.Length > 0;
         }
         /// <summary>
-        /// 
+        /// Procédure pour vider les champs de saisis et les checkbox.
         /// </summary>
-        private void Vider_Champs()
+        private void Vider_Champs(GroupBox UneGroupBox)
         {
-            if (TabPrincipal.SelectedIndex == 0)
-            {
-                if (RadBenevole.Checked == true)
-                {
+            //if (TabPrincipal.SelectedIndex == 0)
+            //{
+            //  if (RadIntervenant.Checked == true)
+              //  {
                     Collection<Control> MesControls = new Collection<Control>();
-                    foreach (Control Ctrl in PanelDispoBenevole.Controls)
+                    foreach (Control Ctrl in UneGroupBox.Controls)
                     {
                         if (Ctrl is CheckBox)
                         {
                             MesControls.Add(Ctrl);
                         }
                     }
-                    foreach (Control Ctrl in GrpIdentite.Controls)
-                    {
-                        MesControls.Add(Ctrl);
-                    }
-                    foreach (Control Ctrl in GrpBenevole.Controls)
+                    //foreach (Control Ctrl in GrpIntervenant.Controls)
+                    //{
+                    //    MesControls.Add(Ctrl);
+                    //}
+                    foreach (Control Ctrl in UneGroupBox.Controls)
                     {
                         MesControls.Add(Ctrl);
                     }
@@ -208,8 +163,8 @@ namespace MaisonDesLigues
                             ((CheckBox)Ctrl).Checked = false;
                         }
                     }
-                }
-            }
+                //}
+            //}
         }
         /// <summary>     
         /// procédure permettant d'afficher l'interface de saisie du complément d'inscription d'un intervenant.
@@ -396,7 +351,8 @@ namespace MaisonDesLigues
                     
                 }
 
-                
+                Vider_Champs(GrpIdentite);
+                Vider_Champs(GrpIntervenant);
             }
             catch (Exception Ex)
             {
@@ -602,9 +558,52 @@ namespace MaisonDesLigues
 
         }
 
-        private void BtnEnregistrerLicencie_Click(object sender, EventArgs e)
+        private void BtnEnregistrerInfoLicencie_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (RdbNuiteLicencieOui.Checked)
+                {
+                    // inscription avec les nuitées
+                    Collection<Int16> NuitsSelectionnes = new Collection<Int16>();
+                    Collection<String> HotelsSelectionnes = new Collection<String>();
+                    Collection<String> CategoriesSelectionnees = new Collection<string>();
+                    foreach (Control UnControle in PanNuiteLicencie.Controls)
+                    {
+                        if (UnControle.GetType().Name == "ResaNuite" && ((ResaNuite)UnControle).GetNuitSelectionnee())
+                        {
+                            // la nuité a été cochée, il faut donc envoyer l'hotel et la type de chambre à la procédure de la base qui va enregistrer le contenu hébergement 
+                            //ContenuUnHebergement UnContenuUnHebergement= new ContenuUnHebergement();
+                            CategoriesSelectionnees.Add(((ResaNuite)UnControle).GetTypeChambreSelectionnee());
+                            HotelsSelectionnes.Add(((ResaNuite)UnControle).GetHotelSelectionne());
+                            NuitsSelectionnes.Add(((ResaNuite)UnControle).IdNuite);
+                        }
 
+                    }
+                    if (NuitsSelectionnes.Count == 0)
+                    {
+                        MessageBox.Show("Si vous avez sélectionné que le licencié avait des nuités\n in faut qu'au moins une nuit soit sélectionnée");
+                    }
+                    else
+                    {
+                        //UneConnexion.InscrireLicencie(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToInt16(CmbAtelierIntervenant.SelectedValue), this.IdStatutSelectionne, CategoriesSelectionnees, HotelsSelectionnes, NuitsSelectionnes);
+                        MessageBox.Show("Inscription licencie effectuée");
+                    }
+                }
+                else
+                { // inscription sans les nuitées
+                    //UneConnexion.InscrireLicencie(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToInt16(CmbAtelierIntervenant.SelectedValue), this.IdStatutSelectionne);
+                    MessageBox.Show("Inscription licencié effectuée");
+
+                }
+
+                Vider_Champs(GrpIdentite);
+                Vider_Champs(GrpLicencie);
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
         }
 
 
