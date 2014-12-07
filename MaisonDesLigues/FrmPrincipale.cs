@@ -501,37 +501,6 @@ namespace MaisonDesLigues
                 this.GrpBoxVacation.Left = 453;
             }
         }
-
-        private void TabInscription_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
-
-        private void Rad_NuiteOui_CheckedChanged(object sender, EventArgs e)
-        {
-
-
-        }
-
-        private void TabInscription_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dtPickHeureDebutVacation_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-        
-
         
 
         ///// <summary>

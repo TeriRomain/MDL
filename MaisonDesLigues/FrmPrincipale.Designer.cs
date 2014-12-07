@@ -144,7 +144,6 @@
             this.TabInscription.TabIndex = 0;
             this.TabInscription.Text = "Inscription";
             this.TabInscription.UseVisualStyleBackColor = true;
-            this.TabInscription.Click += new System.EventHandler(this.TabInscription_Click_1);
             // 
             // GrpLicencie
             // 
@@ -665,7 +664,6 @@
             this.DtPickHeureDebutVacation.ShowUpDown = true;
             this.DtPickHeureDebutVacation.Size = new System.Drawing.Size(54, 20);
             this.DtPickHeureDebutVacation.TabIndex = 9;
-            this.DtPickHeureDebutVacation.ValueChanged += new System.EventHandler(this.dtPickHeureDebutVacation_ValueChanged);
             // 
             // btnAjouterVacationAtelier
             // 
