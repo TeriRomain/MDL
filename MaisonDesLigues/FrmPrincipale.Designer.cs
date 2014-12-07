@@ -148,7 +148,6 @@
             this.TabInscription.TabIndex = 0;
             this.TabInscription.Text = "Inscription";
             this.TabInscription.UseVisualStyleBackColor = true;
-            this.TabInscription.Click += new System.EventHandler(this.TabInscription_Click_1);
             // 
             // GrpLicencie
             // 
@@ -168,7 +167,6 @@
             this.GrpLicencie.TabStop = false;
             this.GrpLicencie.Text = "Complément inscription licencie";
             this.GrpLicencie.Visible = false;
-            this.GrpLicencie.Enter += new System.EventHandler(this.GrpLicencie_Enter);
             // 
             // PanRestaurationLicencie
             // 
@@ -226,7 +224,6 @@
             this.CmbAtelierLicencie.Name = "CmbAtelierLicencie";
             this.CmbAtelierLicencie.Size = new System.Drawing.Size(121, 21);
             this.CmbAtelierLicencie.TabIndex = 3;
-            this.CmbAtelierLicencie.TextChanged += new System.EventHandler(this.CmbAtelierLicencie_TextChanged);
             // 
             // LblAtelierLicencie
             // 
@@ -260,7 +257,6 @@
             this.RdbNuiteLicencieNon.TabStop = true;
             this.RdbNuiteLicencieNon.Text = "Non";
             this.RdbNuiteLicencieNon.UseVisualStyleBackColor = true;
-            this.RdbNuiteLicencieNon.CheckedChanged += new System.EventHandler(this.RdbNuiteLicencie_CheckedChanged);
             // 
             // RdbNuiteLicencieOui
             // 
@@ -271,7 +267,6 @@
             this.RdbNuiteLicencieOui.TabIndex = 1;
             this.RdbNuiteLicencieOui.Text = "Oui";
             this.RdbNuiteLicencieOui.UseVisualStyleBackColor = true;
-            this.RdbNuiteLicencieOui.CheckedChanged += new System.EventHandler(this.RdbNuiteLicencie_CheckedChanged);
             // 
             // PanNuiteLicencie
             // 
