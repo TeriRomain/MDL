@@ -149,7 +149,7 @@
             // 
             this.GrpLicencie.Controls.Add(this.CmbAtelierLicencie);
             this.GrpLicencie.Controls.Add(this.LblAtelierLicencie);
-            this.GrpLicencie.Controls.Add(this.GrpNuiteLicencie);
+            //this.GrpLicencie.Controls.Add(this.GrpNuiteLicencie);
             this.GrpLicencie.Location = new System.Drawing.Point(565, 268);
             this.GrpLicencie.Name = "GrpLicencie";
             this.GrpLicencie.Size = new System.Drawing.Size(574, 272);
