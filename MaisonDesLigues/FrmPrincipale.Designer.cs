@@ -78,7 +78,7 @@
             this.TabPrincipal = new System.Windows.Forms.TabControl();
             this.tabAjout = new System.Windows.Forms.TabPage();
             this.GrpBoxVacation = new System.Windows.Forms.GroupBox();
-            this.DtPickHeureFinVacation = new System.Windows.Forms.DateTimePicker();
+            this.dtPickHeureFinVacation = new System.Windows.Forms.DateTimePicker();
             this.dtPickHeureDebutVacation = new System.Windows.Forms.DateTimePicker();
             this.btnAjouterVacationAtelier = new System.Windows.Forms.Button();
             this.BtnEnregistreVacation = new System.Windows.Forms.Button();
@@ -629,7 +629,7 @@
             // 
             // GrpBoxVacation
             // 
-            this.GrpBoxVacation.Controls.Add(this.DtPickHeureFinVacation);
+            this.GrpBoxVacation.Controls.Add(this.dtPickHeureFinVacation);
             this.GrpBoxVacation.Controls.Add(this.dtPickHeureDebutVacation);
             this.GrpBoxVacation.Controls.Add(this.btnAjouterVacationAtelier);
             this.GrpBoxVacation.Controls.Add(this.BtnEnregistreVacation);
@@ -645,15 +645,15 @@
             this.GrpBoxVacation.Text = "Vacation";
             this.GrpBoxVacation.Visible = false;
             // 
-            // DtPickHeureFinVacation
+            // dtPickHeureFinVacation
             // 
-            this.DtPickHeureFinVacation.CustomFormat = "HH:mm";
-            this.DtPickHeureFinVacation.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DtPickHeureFinVacation.Location = new System.Drawing.Point(249, 31);
-            this.DtPickHeureFinVacation.Name = "DtPickHeureFinVacation";
-            this.DtPickHeureFinVacation.ShowUpDown = true;
-            this.DtPickHeureFinVacation.Size = new System.Drawing.Size(53, 20);
-            this.DtPickHeureFinVacation.TabIndex = 9;
+            this.dtPickHeureFinVacation.CustomFormat = "HH:mm";
+            this.dtPickHeureFinVacation.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtPickHeureFinVacation.Location = new System.Drawing.Point(249, 31);
+            this.dtPickHeureFinVacation.Name = "dtPickHeureFinVacation";
+            this.dtPickHeureFinVacation.ShowUpDown = true;
+            this.dtPickHeureFinVacation.Size = new System.Drawing.Size(53, 20);
+            this.dtPickHeureFinVacation.TabIndex = 9;
             // 
             // dtPickHeureDebutVacation
             // 
@@ -1075,7 +1075,7 @@
         private System.Windows.Forms.ComboBox CmbAtelierLicencie;
         private System.Windows.Forms.Label LblAtelierLicencie;
         private System.Windows.Forms.DateTimePicker dtPickHeureDebutVacation;
-        private System.Windows.Forms.DateTimePicker DtPickHeureFinVacation;
+        private System.Windows.Forms.DateTimePicker dtPickHeureFinVacation;
 
 
     }
