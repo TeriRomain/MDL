@@ -21,7 +21,6 @@ namespace MaisonDesLigues
         private Bdd UneConnexion;
         private String TitreApplication;
         private String IdStatutSelectionne = "";
-        private String IdRestaurationSelectionne = "";
         /// <summary>
         /// création et ouverture d'une connexion vers la base de données sur le chargement du formulaire
         /// </summary>
@@ -56,7 +55,7 @@ namespace MaisonDesLigues
                     this.GererInscriptionBenevole();
                     break;
                 case "RadLicencie":
-                    this.GererInscriptionLicencie();
+                    //this.GererInscriptionLicencie();
                     break;
                 case "RadIntervenant":
                     this.GererInscriptionIntervenant();
@@ -66,9 +65,7 @@ namespace MaisonDesLigues
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
+
         private void GererInscriptionLicencie()
         {
             GrpBenevole.Visible = false;
@@ -76,106 +73,36 @@ namespace MaisonDesLigues
             GrpLicencie.Visible = true;
             GrpLicencie.Left = 23;
             GrpLicencie.Top = 264;
-            Utilitaire.CreerDesControles(this, UneConnexion, "VRESTAURATION01", "Chk_", PanRestaurationLicencie, "CheckBox", RdbRestaurationLicencie_CheckedChanged);
-            Utilitaire.RemplirComboBox(UneConnexion, CmbAtelierLicencie, "VATELIER01");
+            //Utilitaire.CreerDesControles(this, UneConnexion, "VRESTAURATION01", "Rad_", PanRestaurationLicencie, "RadioButton", RdbRestaurationLicencie_CheckedChanged);
+            Utilitaire.RemplirComboBox(UneConnexion, CmbAtelierLicencie, "VATELIER02");
             CmbAtelierLicencie.Text = "Choisir";
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void RdbNuiteLicencie_CheckedChanged(object sender, EventArgs e)
-        {
-            if (((RadioButton)sender).Name == "RdbNuiteLicencieOui")
-            {
-                PanNuiteLicencie.Visible = true;
-                if (PanNuiteLicencie.Controls.Count == 0) // on charge les nuites possibles possibles et on les affiche
-                {
-                    //DataTable LesDateNuites = UneConnexion.ObtenirDonnesOracle("VDATENUITE01");
-                    //foreach(Dat
-                    Dictionary<Int16, String> LesNuites = UneConnexion.ObtenirDatesNuites();
-                    int i = 0;
-                    foreach (KeyValuePair<Int16, String> UneNuite in LesNuites)
-                    {
-                        ComposantNuite.ResaNuite unResaNuit = new ResaNuite(UneConnexion.ObtenirDonnesOracle("VHOTEL01"), (UneConnexion.ObtenirDonnesOracle("VCATEGORIECHAMBRE01")), UneNuite.Value, UneNuite.Key);
-                        unResaNuit.Left = 5;
-                        unResaNuit.Top = 5 + (24 * i++);
-                        unResaNuit.Visible = true;
-                        //unResaNuit.click += new System.EventHandler(ComposantNuite_StateChanged);
-                        PanNuiteLicencie.Controls.Add(unResaNuit);
-                    }
 
-                }
+        //private void RdbRestaurationLicencie_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    if (((RadioButton)sender).Name == "RdbNuiteLicencieOui")
+        //    {
+        //        PanRestaurationLicencie.Visible = true;
+        //        if (PanRestaurationLicencie.Controls.Count == 0) // on charge les nuites possibles possibles et on les affiche
+        //        {
+        //            DataTable LesDateNuites = UneConnexion.ObtenirDonnesOracle("VDATENUITE01");
+        //            foreach(Dat
+        //            Dictionary<Int16, String> LesNuites = UneConnexion.ObtenirDatesNuites();
+        //            int i = 0;
+        //            foreach (KeyValuePair<Int16, String> UneNuite in LesNuites)
+        //            {
+        //                ComposantNuite.ResaNuite unResaNuit = new ResaNuite(UneConnexion.ObtenirDonnesOracle("VHOTEL01"), (UneConnexion.ObtenirDonnesOracle("VCATEGORIECHAMBRE01")), UneNuite.Value, UneNuite.Key);
+        //                unResaNuit.Left = 5;
+        //                unResaNuit.Top = 5 + (24 * i++);
+        //                unResaNuit.Visible = true;
+        //                unResaNuit.click += new System.EventHandler(ComposantNuite_StateChanged);
+        //                PanNuiteIntervenant.Controls.Add(unResaNuit);
+        //            }
 
-            }
-            else
-            {
-                PanNuiteLicencie.Visible = false;
+        //        }
 
-            }
-            BtnEnregistrerLicencie.Enabled = VerifBtnEnregistreLicencie();
-
-        }
-
-        private void RdbRestaurationLicencie_CheckedChanged(object sender, EventArgs e)
-        {
-            this.IdRestaurationSelectionne = ((CheckBox)sender).Name.Split('_')[1];
-            BtnEnregistrerLicencie.Enabled = VerifBtnEnregistreLicencie();
-        }
-        private void BtnEnregistrerLicencie_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (RdbNuiteLicencieOui.Checked)
-                {
-                    // inscription avec les nuitées
-                    Collection<Int16> NuitsSelectionnes = new Collection<Int16>();
-                    Collection<String> HotelsSelectionnes = new Collection<String>();
-                    Collection<String> CategoriesSelectionnees = new Collection<string>();
-                    foreach (Control UnControle in PanNuiteLicencie.Controls)
-                    {
-                        if (UnControle.GetType().Name == "ResaNuite" && ((ResaNuite)UnControle).GetNuitSelectionnee())
-                        {
-                            // la nuité a été cochée, il faut donc envoyer l'hotel et la type de chambre à la procédure de la base qui va enregistrer le contenu hébergement 
-                            //ContenuUnHebergement UnContenuUnHebergement= new ContenuUnHebergement();
-                            CategoriesSelectionnees.Add(((ResaNuite)UnControle).GetTypeChambreSelectionnee());
-                            HotelsSelectionnes.Add(((ResaNuite)UnControle).GetHotelSelectionne());
-                            NuitsSelectionnes.Add(((ResaNuite)UnControle).IdNuite);
-                        }
-
-                    }
-                    if (NuitsSelectionnes.Count == 0)
-                    {
-                        MessageBox.Show("Si vous avez sélectionné que le licencié avait des nuités\n in faut qu'au moins une nuit soit sélectionnée");
-                    }
-                    else
-                    {
-                        //UneConnexion.InscrireLicencie(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToInt16(CmbAtelierIntervenant.SelectedValue), this.IdStatutSelectionne, CategoriesSelectionnees, HotelsSelectionnes, NuitsSelectionnes);
-                        MessageBox.Show("Inscription licencie effectuée");
-                    }
-                }
-                else
-                { // inscription sans les nuitées
-                    //UneConnexion.InscrireLicencie(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToInt16(CmbAtelierIntervenant.SelectedValue), this.IdStatutSelectionne);
-                    MessageBox.Show("Inscription licencié effectuée");
-
-                }
-
-
-            }
-            catch (Exception Ex)
-            {
-                MessageBox.Show(Ex.Message);
-            }
-        }
-        private Boolean VerifBtnEnregistreLicencie()
-        {
-            return CmbAtelierLicencie.Text != "Choisir" && this.IdRestaurationSelectionne.Length > 0;
-        }
-        /// <summary>
-        /// 
-        /// </summary>
+        //    }
+        //}
         private void Vider_Champs()
         {
             if (TabPrincipal.SelectedIndex == 0)
@@ -219,7 +146,6 @@ namespace MaisonDesLigues
 
             GrpBenevole.Visible = false;
             GrpIntervenant.Visible = true;
-            GrpLicencie.Visible = false;
             PanFonctionIntervenant.Visible = true;
             GrpIntervenant.Left = 23;
             GrpIntervenant.Top = 264;
@@ -240,7 +166,7 @@ namespace MaisonDesLigues
             GrpBenevole.Left = 23;
             GrpBenevole.Top = 264;
             GrpIntervenant.Visible = false;
-            GrpLicencie.Visible = false;
+
             Utilitaire.CreerDesControles(this, UneConnexion, "VDATEBENEVOLAT01", "ChkDateB_", PanelDispoBenevole, "CheckBox", this.rdbStatutIntervenant_StateChanged);
             // on va tester si le controle à placer est de type CheckBox afin de lui placer un événement checked_changed
             // Ceci afin de désactiver les boutons si aucune case à cocher du container n'est cochée
@@ -255,7 +181,6 @@ namespace MaisonDesLigues
 
 
         }
-
         /// <summary>
         /// permet d'appeler la méthode VerifBtnEnregistreIntervenant qui déterminera le statu du bouton BtnEnregistrerIntervenant
         /// </summary>
@@ -413,7 +338,6 @@ namespace MaisonDesLigues
         {
             return CmbAtelierIntervenant.Text !="Choisir" && this.IdStatutSelectionne.Length > 0;
         }
-
         /// <summary>
         /// Méthode permettant de définir le statut activé/désactivé du bouton BtnEnregistrerIntervenant
         /// </summary>
@@ -423,13 +347,6 @@ namespace MaisonDesLigues
         {
             BtnEnregistrerIntervenant.Enabled = VerifBtnEnregistreIntervenant();
         }
-
-
-        private void CmbAtelierLicencie_TextChanged(object sender, EventArgs e)
-        {
-            BtnEnregistrerLicencie.Enabled = VerifBtnEnregistreLicencie();
-        }
-
 
         private void gererVacation(Boolean grand)
         {
@@ -444,13 +361,17 @@ namespace MaisonDesLigues
                 this.GrpBoxVacation.Width = 441;
                 this.GrpBoxVacation.Height = 65;
                 this.btnAjouterVacationAtelier.Visible = true;
+                this.DtPickHeureDebutVacation.Top = 24;
+                this.DtPickHeureDebutVacation.Left = 180;
+                this.DtPickHeureFinVacation.Top = 24;
+                this.DtPickHeureFinVacation.Left = 240;
             }
             else
             {
-                this.dtPickHeureDebutVacation.Top = 73;
-                this.dtPickHeureDebutVacation.Left = 180;
-                this.dtPickHeureFinVacation.Top = 73;
-                this.dtPickHeureFinVacation.Left = 240;
+                this.DtPickHeureDebutVacation.Top = 73;
+                this.DtPickHeureDebutVacation.Left = 180;
+                this.DtPickHeureFinVacation.Top = 73;
+                this.DtPickHeureFinVacation.Left = 240;
                 this.btnAjouterVacationAtelier.Visible = false;
                 this.lblAtelierVacation.Left = 28;
                 this.lblAtelierVacation.Top = 37;
@@ -602,7 +523,7 @@ namespace MaisonDesLigues
 
         }
 
-        private void GrpLicencie_Enter(object sender, EventArgs e)
+        private void dtPickHeureDebutVacation_ValueChanged(object sender, EventArgs e)
         {
 
         }
