@@ -368,6 +368,10 @@ namespace MaisonDesLigues
             }
             else
             {
+                this.dtPickHeureDebutVacation.Top = 73;
+                this.dtPickHeureDebutVacation.Left = 180;
+                this.dtPickHeureFinVacation.Top = 73;
+                this.dtPickHeureFinVacation.Left = 240;
                 this.btnAjouterVacationAtelier.Visible = false;
                 this.lblAtelierVacation.Left = 28;
                 this.lblAtelierVacation.Top = 37;
@@ -375,10 +379,10 @@ namespace MaisonDesLigues
                 this.CmbBoxVacationAtelier.Left = 75;
                 this.CmbBoxVacationAtelier.Top = 34;
                 this.CmbBoxVacationAtelier.Visible = true;
-                this.lblDateDbtVacation.Left = 211;
-                this.lblDateDbtVacation.Top = 37;
-                this.DateTimeDbtVacation.Left = 286;
-                this.DateTimeDbtVacation.Top = 34;
+                this.lblDateDbtVacation.Left = 5;
+                this.lblDateDbtVacation.Top = 77;
+                this.DateTimeDbtVacation.Left = 75;
+                this.DateTimeDbtVacation.Top = 73;
                 this.GrpBoxVacation.Width = 453;
                 this.GrpBoxVacation.Height = 142;
             }
