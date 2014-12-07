@@ -361,15 +361,15 @@ namespace MaisonDesLigues
                 this.GrpBoxVacation.Width = 441;
                 this.GrpBoxVacation.Height = 65;
                 this.btnAjouterVacationAtelier.Visible = true;
-                this.DtPickHeureDebutVacation.Top = 24;
-                this.DtPickHeureDebutVacation.Left = 180;
+                this.dtPickHeureDebutVacation.Top = 24;
+                this.dtPickHeureDebutVacation.Left = 180;
                 this.DtPickHeureFinVacation.Top = 24;
                 this.DtPickHeureFinVacation.Left = 240;
             }
             else
             {
-                this.DtPickHeureDebutVacation.Top = 73;
-                this.DtPickHeureDebutVacation.Left = 180;
+                this.dtPickHeureDebutVacation.Top = 73;
+                this.dtPickHeureDebutVacation.Left = 180;
                 this.DtPickHeureFinVacation.Top = 73;
                 this.DtPickHeureFinVacation.Left = 240;
                 this.btnAjouterVacationAtelier.Visible = false;
