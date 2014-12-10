@@ -346,7 +346,17 @@ namespace MaisonDesLigues
         /// <returns></returns>
         private Boolean VerifBtnAjouterTheme()
         {
-            return this.cmbBoxThemeAtelier.Text != "Choisir" && this.cmbBoxThemeAtelier.Text != "" && this.txtBoxAddThemeLibelle.Text != "";
+            Boolean val = (this.cmbBoxThemeAtelier.Text != "Choisir" && this.cmbBoxThemeAtelier.Text != "" && this.txtBoxAddThemeLibelle.Text != "" || (this.txtBoxAddThemeLibelle.Text != "" && this.rdrbtnAtelier.Checked));
+            return val;
+        }
+
+        /// <summary>
+        /// Méthode privé qui permet de definir l'etat que doit prendre le bouton Enregistre dans le groupBox Atelier
+        /// </summary>
+        /// <returns></returns>
+        private Boolean VerifBtnAddAtelier()
+        {
+            return this.TxtBoxAddAtelierLibelle.Text != "" && this.ckcLstBoxTheme.Items.Count != 0 && this.CkcLstBoxVacation.Items.Count != 0;
         }
 
         /// <summary>
@@ -520,6 +530,38 @@ namespace MaisonDesLigues
         private void cmbBoxThemeAtelier_TextChanged(object sender, EventArgs e)
         {
             this.btnAddThemeEnregistre.Enabled = this.VerifBtnAjouterTheme();
+            this.btnAjouterThemeAtelier.Enabled = this.btnAddThemeEnregistre.Enabled;
+        }
+
+        private void DefineStateBtnAddAtelier()
+        {
+            this.btnSaveAtelier.Enabled = this.VerifBtnAddAtelier();
+        }
+
+        private void btnSaveAtelier_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnAjouterThemeAtelier_Click(object sender, EventArgs e)
+        {
+            this.ckcLstBoxTheme.Items.Add(this.txtBoxAddThemeLibelle.Text);
+            this.DefineStateBtnAddAtelier();
+        }
+
+        private void TxtBoxAddAtelierLibelle_TextChanged(object sender, EventArgs e)
+        {
+            this.DefineStateBtnAddAtelier();
+        }
+
+        private void btnAjouterVacationAtelier_Click(object sender, EventArgs e)
+        {
+            this.DefineStateBtnAddAtelier();
+        }
+
+        private void btnSuprThemeVacation_Click(object sender, EventArgs e)
+        {
+            this.DefineStateBtnAddAtelier();
         }
         
 

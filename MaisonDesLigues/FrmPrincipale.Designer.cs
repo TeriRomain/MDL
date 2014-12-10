@@ -673,6 +673,7 @@
             this.btnAjouterVacationAtelier.Text = "Ajouter";
             this.btnAjouterVacationAtelier.UseVisualStyleBackColor = true;
             this.btnAjouterVacationAtelier.Visible = false;
+            this.btnAjouterVacationAtelier.Click += new System.EventHandler(this.btnAjouterVacationAtelier_Click);
             // 
             // BtnEnregistreVacation
             // 
@@ -755,6 +756,7 @@
             this.btnSuprThemeVacation.TabIndex = 12;
             this.btnSuprThemeVacation.Text = "Supprimer";
             this.btnSuprThemeVacation.UseVisualStyleBackColor = true;
+            this.btnSuprThemeVacation.Click += new System.EventHandler(this.btnSuprThemeVacation_Click);
             // 
             // label13
             // 
@@ -792,12 +794,14 @@
             // 
             // btnSaveAtelier
             // 
+            this.btnSaveAtelier.Enabled = false;
             this.btnSaveAtelier.Location = new System.Drawing.Point(325, 460);
             this.btnSaveAtelier.Name = "btnSaveAtelier";
             this.btnSaveAtelier.Size = new System.Drawing.Size(75, 23);
             this.btnSaveAtelier.TabIndex = 5;
             this.btnSaveAtelier.Text = "Enregistrer";
             this.btnSaveAtelier.UseVisualStyleBackColor = true;
+            this.btnSaveAtelier.Click += new System.EventHandler(this.btnSaveAtelier_Click);
             // 
             // label11
             // 
@@ -820,6 +824,11 @@
             // NumUpDownAddAtelierNbParticipant
             // 
             this.NumUpDownAddAtelierNbParticipant.Location = new System.Drawing.Point(352, 35);
+            this.NumUpDownAddAtelierNbParticipant.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.NumUpDownAddAtelierNbParticipant.Name = "NumUpDownAddAtelierNbParticipant";
             this.NumUpDownAddAtelierNbParticipant.Size = new System.Drawing.Size(48, 20);
             this.NumUpDownAddAtelierNbParticipant.TabIndex = 2;
@@ -835,6 +844,7 @@
             this.TxtBoxAddAtelierLibelle.Name = "TxtBoxAddAtelierLibelle";
             this.TxtBoxAddAtelierLibelle.Size = new System.Drawing.Size(100, 20);
             this.TxtBoxAddAtelierLibelle.TabIndex = 1;
+            this.TxtBoxAddAtelierLibelle.TextChanged += new System.EventHandler(this.TxtBoxAddAtelierLibelle_TextChanged);
             // 
             // grpBoxChoixAdd
             // 
@@ -902,6 +912,7 @@
             // 
             // btnAjouterThemeAtelier
             // 
+            this.btnAjouterThemeAtelier.Enabled = false;
             this.btnAjouterThemeAtelier.Location = new System.Drawing.Point(308, 26);
             this.btnAjouterThemeAtelier.Name = "btnAjouterThemeAtelier";
             this.btnAjouterThemeAtelier.Size = new System.Drawing.Size(75, 23);
@@ -909,6 +920,7 @@
             this.btnAjouterThemeAtelier.Text = "Ajouter";
             this.btnAjouterThemeAtelier.UseVisualStyleBackColor = true;
             this.btnAjouterThemeAtelier.Visible = false;
+            this.btnAjouterThemeAtelier.Click += new System.EventHandler(this.btnAjouterThemeAtelier_Click);
             // 
             // btnAddThemeEnregistre
             // 
