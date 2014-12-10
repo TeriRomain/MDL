@@ -96,8 +96,8 @@
             this.btnSaveAtelier = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.NumUpDownAddAtelierNbParticipant = new System.Windows.Forms.NumericUpDown();
+            this.TxtBoxAddAtelierLibelle = new System.Windows.Forms.TextBox();
             this.grpBoxChoixAdd = new System.Windows.Forms.GroupBox();
             this.rdrBtnVacation = new System.Windows.Forms.RadioButton();
             this.rdrBtnTheme = new System.Windows.Forms.RadioButton();
@@ -123,7 +123,7 @@
             this.GrpBoxVacation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grpBoxAtelier.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumUpDownAddAtelierNbParticipant)).BeginInit();
             this.grpBoxChoixAdd.SuspendLayout();
             this.grpBoxAddTheme.SuspendLayout();
             this.SuspendLayout();
@@ -737,8 +737,8 @@
             this.grpBoxAtelier.Controls.Add(this.btnSaveAtelier);
             this.grpBoxAtelier.Controls.Add(this.label11);
             this.grpBoxAtelier.Controls.Add(this.label10);
-            this.grpBoxAtelier.Controls.Add(this.numericUpDown1);
-            this.grpBoxAtelier.Controls.Add(this.textBox2);
+            this.grpBoxAtelier.Controls.Add(this.NumUpDownAddAtelierNbParticipant);
+            this.grpBoxAtelier.Controls.Add(this.TxtBoxAddAtelierLibelle);
             this.grpBoxAtelier.Location = new System.Drawing.Point(23, 71);
             this.grpBoxAtelier.Name = "grpBoxAtelier";
             this.grpBoxAtelier.Size = new System.Drawing.Size(453, 500);
@@ -817,24 +817,24 @@
             this.label10.TabIndex = 3;
             this.label10.Text = "Libelle : ";
             // 
-            // numericUpDown1
+            // NumUpDownAddAtelierNbParticipant
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(352, 35);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(48, 20);
-            this.numericUpDown1.TabIndex = 2;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.NumUpDownAddAtelierNbParticipant.Location = new System.Drawing.Point(352, 35);
+            this.NumUpDownAddAtelierNbParticipant.Name = "NumUpDownAddAtelierNbParticipant";
+            this.NumUpDownAddAtelierNbParticipant.Size = new System.Drawing.Size(48, 20);
+            this.NumUpDownAddAtelierNbParticipant.TabIndex = 2;
+            this.NumUpDownAddAtelierNbParticipant.Value = new decimal(new int[] {
             40,
             0,
             0,
             0});
             // 
-            // textBox2
+            // TxtBoxAddAtelierLibelle
             // 
-            this.textBox2.Location = new System.Drawing.Point(87, 34);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 1;
+            this.TxtBoxAddAtelierLibelle.Location = new System.Drawing.Point(87, 34);
+            this.TxtBoxAddAtelierLibelle.Name = "TxtBoxAddAtelierLibelle";
+            this.TxtBoxAddAtelierLibelle.Size = new System.Drawing.Size(100, 20);
+            this.TxtBoxAddAtelierLibelle.TabIndex = 1;
             // 
             // grpBoxChoixAdd
             // 
@@ -986,7 +986,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grpBoxAtelier.ResumeLayout(false);
             this.grpBoxAtelier.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumUpDownAddAtelierNbParticipant)).EndInit();
             this.grpBoxChoixAdd.ResumeLayout(false);
             this.grpBoxChoixAdd.PerformLayout();
             this.grpBoxAddTheme.ResumeLayout(false);
@@ -1045,8 +1045,8 @@
         private System.Windows.Forms.GroupBox grpBoxAtelier;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.NumericUpDown NumUpDownAddAtelierNbParticipant;
+        private System.Windows.Forms.TextBox TxtBoxAddAtelierLibelle;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnSaveAtelier;
         private System.Windows.Forms.GroupBox grpBoxAddTheme;
