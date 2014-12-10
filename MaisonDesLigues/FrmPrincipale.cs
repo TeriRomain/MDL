@@ -338,6 +338,17 @@ namespace MaisonDesLigues
         {
             return CmbAtelierIntervenant.Text !="Choisir" && this.IdStatutSelectionne.Length > 0;
         }
+
+        /// <summary>
+        /// Methode privé qui permet de tester l'etat du combobox atelier du group box theme afin 
+        /// de donner la valeur que doit prendre le bouton Ajouter du group box theme
+        /// </summary>
+        /// <returns></returns>
+        private Boolean VerifBtnAjouterTheme()
+        {
+            return this.cmbBoxThemeAtelier.Text != "Choisir" && this.cmbBoxThemeAtelier.Text != "" && this.txtBoxAddThemeLibelle.Text != "";
+        }
+
         /// <summary>
         /// Méthode permettant de définir le statut activé/désactivé du bouton BtnEnregistrerIntervenant
         /// </summary>
@@ -475,6 +486,8 @@ namespace MaisonDesLigues
                 this.grpBoxAddTheme.Left = 23;
                 this.grpBoxAddTheme.Visible = true;
                 this.btnAjouterThemeAtelier.Visible = false;
+                Utilitaire.RemplirComboBox(this.UneConnexion, this.cmbBoxThemeAtelier, "VATELIER01");
+                this.cmbBoxThemeAtelier.Text = "Choisir";
             }
             else
             {
@@ -493,6 +506,8 @@ namespace MaisonDesLigues
                 this.GrpBoxVacation.Visible = true;
                 this.GrpBoxVacation.Top = 71;
                 this.GrpBoxVacation.Left = 23;
+                Utilitaire.RemplirComboBox(this.UneConnexion, this.CmbBoxVacationAtelier, "VATELIER01");
+                this.CmbBoxVacationAtelier.Text = "Choisir";
             }
             else
             {
@@ -500,6 +515,11 @@ namespace MaisonDesLigues
                 this.GrpBoxVacation.Top = 187;
                 this.GrpBoxVacation.Left = 453;
             }
+        }
+
+        private void cmbBoxThemeAtelier_TextChanged(object sender, EventArgs e)
+        {
+            this.btnAddThemeEnregistre.Enabled = this.VerifBtnAjouterTheme();
         }
         
 
