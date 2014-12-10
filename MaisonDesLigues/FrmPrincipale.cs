@@ -349,11 +349,6 @@ namespace MaisonDesLigues
             return this.cmbBoxThemeAtelier.Text != "Choisir" && this.cmbBoxThemeAtelier.Text != "" && this.txtBoxAddThemeLibelle.Text != "";
         }
 
-        private Boolean VerifBtnAjouterAtelier()
-        {
-            
-        }
-
         /// <summary>
         /// Méthode permettant de définir le statut activé/désactivé du bouton BtnEnregistrerIntervenant
         /// </summary>
