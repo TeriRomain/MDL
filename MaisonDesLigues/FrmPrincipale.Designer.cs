@@ -1063,9 +1063,9 @@
             // 
             // PanRestoLicencie
             // 
-            this.PanRestoLicencie.Location = new System.Drawing.Point(134, 19);
+            this.PanRestoLicencie.Location = new System.Drawing.Point(58, 19);
             this.PanRestoLicencie.Name = "PanRestoLicencie";
-            this.PanRestoLicencie.Size = new System.Drawing.Size(193, 75);
+            this.PanRestoLicencie.Size = new System.Drawing.Size(269, 75);
             this.PanRestoLicencie.TabIndex = 11;
             // 
             // GrpResataurationLicencie
