@@ -566,7 +566,14 @@ namespace MaisonDesLigues
 
         private void btnAddThemeEnregistre_Click(object sender, EventArgs e)
         {
-            this.UneConnexion.AjoutTheme(Convert.ToInt16(this.cmbBoxThemeAtelier.SelectedValue), this.txtBoxAddThemeLibelle.Text);
+            try
+            {
+                this.UneConnexion.AjoutTheme(Convert.ToInt16(this.cmbBoxThemeAtelier.SelectedValue), this.txtBoxAddThemeLibelle.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
 
