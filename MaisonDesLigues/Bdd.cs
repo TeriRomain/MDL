@@ -377,5 +377,12 @@ namespace BaseDeDonnees
 
         }
 
+        /// <summary>
+        /// Methode publique qui permet d'ajouter un Théme a un Atelier
+        /// </summary>
+        public void AjouterTheme()
+        {
+
+        }
     }
 }
