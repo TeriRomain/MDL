@@ -53,7 +53,7 @@ namespace BaseDeDonnees
                 /// on va remplacer dans la chaine de connexion les paramètres par le login et le pwd saisis
                 ///dans les zones de texte. Pour ça on va utiliser la méthode Format de la classe String.                /// 
                 /// </remarks>
-                
+
                 CnOracle.Open();
             }
             catch (OracleException)
@@ -200,7 +200,7 @@ namespace BaseDeDonnees
         /// <param name="Cmd"> nom de l'objet command concerné par les paramètres</param>
         /// <param name="pIdAtelier"> Id de l'atelier où interviendra l'intervenant</param>
         /// <param name="pIdStatut">statut de l'intervenant pour l'atelier : animateur ou intervenant</param>
-        private void ParamsSpecifiquesIntervenant(OracleCommand Cmd,Int16 pIdAtelier, String pIdStatut)
+        private void ParamsSpecifiquesIntervenant(OracleCommand Cmd, Int16 pIdAtelier, String pIdStatut)
         {
             Cmd.Parameters.Add("pIdAtelier", OracleDbType.Int16, ParameterDirection.Input).Value = pIdAtelier;
             Cmd.Parameters.Add("pIdStatut", OracleDbType.Char, ParameterDirection.Input).Value = pIdStatut;
@@ -239,7 +239,7 @@ namespace BaseDeDonnees
                 // on appelle la procédure ParamCommunsNouveauxParticipants pour charger les paramètres communs aux intervenants
                 this.ParamCommunsNouveauxParticipants(UneOracleCommand, pNom, pPrenom, pAdresse1, pAdresse2, pCp, pVille, pTel, pMail);
                 // on appelle la procédure ParamsCommunsIntervenant pour charger les paramètres communs aux intervenants
-                this.ParamsSpecifiquesIntervenant(UneOracleCommand, pIdAtelier, pIdStatut);        
+                this.ParamsSpecifiquesIntervenant(UneOracleCommand, pIdAtelier, pIdStatut);
                 //execution
                 UneOracleCommand.ExecuteNonQuery();
                 // fin de la transaction. Si on arrive à ce point, c'est qu'aucune exception n'a été levée
@@ -248,7 +248,7 @@ namespace BaseDeDonnees
             catch (OracleException Oex)
             {
                 MessageErreur = "Erreur Oracle \n" + this.GetMessageOracle(Oex.Message);
-             }
+            }
             catch (Exception ex)
             {
 
@@ -282,7 +282,7 @@ namespace BaseDeDonnees
         /// <param name="pLesCategories">tableau contenant la catégorie de chambre pour chaque nuité à réserver</param>
         /// <param name="pLesHotels">tableau contenant l'hôtel pour chaque nuité à réserver</param>
         /// <param name="pLesNuits">tableau contenant l'id de la date d'arrivée pour chaque nuité à réserver</param>
-        public void InscrireIntervenant(String pNom, String pPrenom, String pAdresse1, String pAdresse2, String pCp, String pVille, String pTel, String pMail, Int16 pIdAtelier, String pIdStatut, Collection<string> pLesCategories, Collection<string> pLesHotels, Collection<Int16>pLesNuits)
+        public void InscrireIntervenant(String pNom, String pPrenom, String pAdresse1, String pAdresse2, String pCp, String pVille, String pTel, String pMail, Int16 pIdAtelier, String pIdStatut, Collection<string> pLesCategories, Collection<string> pLesHotels, Collection<Int16> pLesNuits)
         {
             /// <remarks>
             /// procédure qui va  :
@@ -295,9 +295,9 @@ namespace BaseDeDonnees
             /// par une procédure ou un trigger Oracle
             /// </remarks>
             /// 
-            String MessageErreur="";
+            String MessageErreur = "";
             try
-            {                
+            {
                 // pckparticipant.nouvelintervenant est une procédure surchargée
                 UneOracleCommand = new OracleCommand("pckparticipant.nouvelintervenant", CnOracle);
                 UneOracleCommand.CommandType = CommandType.StoredProcedure;
@@ -315,7 +315,7 @@ namespace BaseDeDonnees
                 pOraLescategories.Value = pLesCategories.ToArray();
                 pOraLescategories.Size = pLesCategories.Count;
                 UneOracleCommand.Parameters.Add(pOraLescategories);
-               
+
                 // Paramètre qui stocke les hotels sélectionnées
                 OracleParameter pOraLesHotels = new OracleParameter();
                 pOraLesHotels.ParameterName = "pLesHotels";
@@ -324,7 +324,7 @@ namespace BaseDeDonnees
                 pOraLesHotels.Value = pLesHotels.ToArray();
                 pOraLesHotels.Size = pLesHotels.Count;
                 UneOracleCommand.Parameters.Add(pOraLesHotels);
-                
+
                 // Paramètres qui stocke les nuits sélectionnées
                 OracleParameter pOraLesNuits = new OracleParameter();
                 pOraLesNuits.ParameterName = "pLesNuits";
@@ -337,7 +337,7 @@ namespace BaseDeDonnees
                 UneOracleCommand.ExecuteNonQuery();
                 // fin de la transaction. Si on arrive à ce point, c'est qu'aucune exception n'a été levée
                 UneOracleTransaction.Commit();
-               
+
             }
             catch (OracleException Oex)
             {
@@ -346,8 +346,8 @@ namespace BaseDeDonnees
             }
             catch (Exception ex)
             {
-                
-                MessageErreur= "Autre Erreur, les informations n'ont pas été correctement saisies";
+
+                MessageErreur = "Autre Erreur, les informations n'ont pas été correctement saisies";
             }
             finally
             {
@@ -357,7 +357,7 @@ namespace BaseDeDonnees
                     UneOracleTransaction.Rollback();
                     // Déclenchement de l'exception
                     throw new Exception(MessageErreur);
-                }             
+                }
             }
         }
         /// <summary>
