@@ -921,6 +921,7 @@
             this.btnAddThemeEnregistre.TabIndex = 4;
             this.btnAddThemeEnregistre.Text = "Enregistre";
             this.btnAddThemeEnregistre.UseVisualStyleBackColor = true;
+            this.btnAddThemeEnregistre.Click += new System.EventHandler(this.btnAddThemeEnregistre_Click);
             // 
             // LblThemeLibelle
             // 
