@@ -200,7 +200,7 @@ namespace BaseDeDonnees
         /// <param name="Cmd"> nom de l'objet command concerné par les paramètres</param>
         /// <param name="pIdAtelier"> Id de l'atelier où interviendra l'intervenant</param>
         /// <param name="pIdStatut">statut de l'intervenant pour l'atelier : animateur ou intervenant</param>
-        private void ParamsSpecifiquesIntervenant(OracleCommand Cmd,Int16 pIdAtelier, String pIdStatut)
+        private void ParamsSpecifiquesIntervenant(OracleCommand Cmd, Int16 pIdAtelier, String pIdStatut)
         {
             Cmd.Parameters.Add("pIdAtelier", OracleDbType.Int16, ParameterDirection.Input).Value = pIdAtelier;
             Cmd.Parameters.Add("pIdStatut", OracleDbType.Char, ParameterDirection.Input).Value = pIdStatut;
@@ -282,7 +282,7 @@ namespace BaseDeDonnees
         /// <param name="pLesCategories">tableau contenant la catégorie de chambre pour chaque nuité à réserver</param>
         /// <param name="pLesHotels">tableau contenant l'hôtel pour chaque nuité à réserver</param>
         /// <param name="pLesNuits">tableau contenant l'id de la date d'arrivée pour chaque nuité à réserver</param>
-        public void InscrireIntervenant(String pNom, String pPrenom, String pAdresse1, String pAdresse2, String pCp, String pVille, String pTel, String pMail, Int16 pIdAtelier, String pIdStatut, Collection<string> pLesCategories, Collection<string> pLesHotels, Collection<Int16>pLesNuits)
+        public void InscrireIntervenant(String pNom, String pPrenom, String pAdresse1, String pAdresse2, String pCp, String pVille, String pTel, String pMail, Int16 pIdAtelier, String pIdStatut, Collection<string> pLesCategories, Collection<string> pLesHotels, Collection<Int16> pLesNuits)
         {
             /// <remarks>
             /// procédure qui va  :
@@ -295,7 +295,7 @@ namespace BaseDeDonnees
             /// par une procédure ou un trigger Oracle
             /// </remarks>
             /// 
-            String MessageErreur="";
+            String MessageErreur = "";
             try
             {                
                 // pckparticipant.nouvelintervenant est une procédure surchargée
@@ -347,7 +347,7 @@ namespace BaseDeDonnees
             catch (Exception ex)
             {
                 
-                MessageErreur= "Autre Erreur, les informations n'ont pas été correctement saisies";
+                MessageErreur = "Autre Erreur, les informations n'ont pas été correctement saisies";
             }
             finally
             {
@@ -375,6 +375,52 @@ namespace BaseDeDonnees
             }
             return LesDatesARetourner;
 
+        }
+
+        /// <summary>
+        /// Méthode qui permet d'ajouter un theme dans un atelier
+        /// </summary>
+        /// <param name="pIdAtelier"></param>
+        /// <param name="pLibelleTheme"></param>
+        public void AjoutTheme(Int16 pIdAtelier, String pLibelleTheme)
+        {
+            string MessageErreur = "";
+            try
+            {
+                UneOracleCommand = new OracleCommand("mdl.pckatelier.ajouttheme", CnOracle);
+                UneOracleCommand.CommandType = CommandType.StoredProcedure;
+
+
+                UneOracleCommand.Parameters.Add("pidAtelier", OracleDbType.Int16, ParameterDirection.Input).Value = pIdAtelier;
+                UneOracleCommand.Parameters.Add("plibelle", OracleDbType.Varchar2, ParameterDirection.Input).Value = pLibelleTheme;
+                // début de la transaction Oracle il vaut mieux gérer les transactions dans l'applicatif que dans la bd dans les procédures stockées.
+                UneOracleTransaction = this.CnOracle.BeginTransaction();
+
+                //execution
+                UneOracleCommand.ExecuteNonQuery();
+                // fin de la transaction. Si on arrive à ce point, c'est qu'aucune exception n'a été levée
+                UneOracleTransaction.Commit();
+
+            }
+            catch (OracleException Oex)
+            {
+                MessageErreur = "Erreur Oracle \n" + this.GetMessageOracle(Oex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                MessageErreur = "Autre Erreur, les informations n'ont pas été correctement saisies";
+            }
+            finally
+            {
+                if (MessageErreur.Length > 0)
+                {
+                    // annulation de la transaction
+                    UneOracleTransaction.Rollback();
+                    // Déclenchement de l'exception
+                    throw new Exception(MessageErreur);
+                }
+            }
         }
 
         /// <summary>

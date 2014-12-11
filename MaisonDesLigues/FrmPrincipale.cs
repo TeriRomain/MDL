@@ -145,8 +145,8 @@ namespace MaisonDesLigues
         /// <param name="UnGroupBox">Groupbox a vider</param>
         /// <param name="UnPanel">panel a vider,deschecker</param>
         private void Vider_Champs(GroupBox UnGroupBox)
-        {   
-                    Collection<Control> MesControls = new Collection<Control>();  
+        {
+                    Collection<Control> MesControls = new Collection<Control>();
                     foreach (Control Ctrl in GrpIdentite.Controls)
                     {
                         MesControls.Add(Ctrl);
@@ -156,7 +156,7 @@ namespace MaisonDesLigues
                         MesControls.Add(Ctrl);
                         
                     }
-                    
+
                     foreach (Control Ctrl in MesControls)
                     {
                         if (Ctrl is TextBox || Ctrl is MaskedTextBox)
@@ -170,14 +170,14 @@ namespace MaisonDesLigues
                             if (((RadioButton)Ctrl).Text == "Oui")
                             {
                                 ((RadioButton)Ctrl).Checked = false;
-                            }
+                    }
                             if (((RadioButton)Ctrl).Text == "Non")
                             {
                                 ((RadioButton)Ctrl).Checked = true;
-                            }
+                }
                            
 
-                        }
+            }
                                     
                     }
         }
@@ -187,7 +187,7 @@ namespace MaisonDesLigues
             foreach (Control Ctrl in UnPanel.Controls)
             {
                 MesControls.Add(Ctrl);
-            }
+        }
             foreach (Control Ctrl in MesControls)
             {
                 if (Ctrl is CheckBox)
@@ -387,7 +387,7 @@ namespace MaisonDesLigues
                 Vider_Champs(GrpNuiteIntervenant);
                 Vider_Champs(GrpIntervenant);
                 Vider_Panel(PanFonctionIntervenant);
-                
+
                 
             }
             catch (Exception Ex)
@@ -403,7 +403,7 @@ namespace MaisonDesLigues
         /// <returns></returns>
         private Boolean VerifBtnEnregistreIntervenant()
         {
-            return CmbAtelierIntervenant.Text !="Choisir" && this.IdStatutSelectionne.Length > 0;
+            return CmbAtelierIntervenant.Text != "Choisir" && this.IdStatutSelectionne.Length > 0;
         }
         /// <summary>
         /// Méthode permettant de définir le statut activé/désactivé du bouton BtnEnregistrerIntervenant
@@ -604,6 +604,18 @@ namespace MaisonDesLigues
 
         }
         
+        private void btnAddThemeEnregistre_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.UneConnexion.AjoutTheme(Convert.ToInt16(this.cmbBoxThemeAtelier.SelectedValue), this.txtBoxAddThemeLibelle.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
 
         ///// <summary>
         ///// 
@@ -614,22 +626,6 @@ namespace MaisonDesLigues
         //{
 
         //}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     }
