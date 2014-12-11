@@ -103,29 +103,60 @@ namespace MaisonDesLigues
 
         //    }
         //}
-        private void Vider_Champs()
-        {
-            if (TabPrincipal.SelectedIndex == 0)
-            {
-                if (RadBenevole.Checked == true)
-                {
-                    Collection<Control> MesControls = new Collection<Control>();
-                    foreach (Control Ctrl in PanelDispoBenevole.Controls)
-                    {
-                        if (Ctrl is CheckBox)
-                        {
-                            MesControls.Add(Ctrl);
-                        }
-                    }
+        //private void Vider_Champs()
+        //{
+        //    if (TabPrincipal.SelectedIndex == 0)
+        //    {
+        //        if (RadBenevole.Checked == true)
+        //        {
+        //            Collection<Control> MesControls = new Collection<Control>();
+        //            foreach (Control Ctrl in PanelDispoBenevole.Controls)
+        //            {
+        //                if (Ctrl is CheckBox)
+        //                {
+        //                    MesControls.Add(Ctrl);
+        //                }
+        //            }
+        //            foreach (Control Ctrl in GrpIdentite.Controls)
+        //            {
+        //                MesControls.Add(Ctrl);
+        //            }
+        //            foreach (Control Ctrl in GrpBenevole.Controls)
+        //            {
+        //                MesControls.Add(Ctrl);
+        //            }
+
+        //            foreach (Control Ctrl in MesControls)
+        //            {
+        //                if (Ctrl is TextBox || Ctrl is MaskedTextBox)
+        //                    Ctrl.Text = string.Empty;
+        //                else if (Ctrl is CheckBox)
+        //                {
+        //                    ((CheckBox)Ctrl).Checked = false;
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
+        /// <summary>
+        /// Procedure pour vider les champs de l'interface d'inscription 
+        /// </summary>
+        /// <param name="UnBoutonRadio">Selection du type: inscription, licencie ou benevole</param>
+        /// <param name="UnGroupBox">Groupbox a vider</param>
+        /// <param name="UnPanel">panel a vider,deschecker</param>
+        private void Vider_Champs(GroupBox UnGroupBox)
+        {   
+                    Collection<Control> MesControls = new Collection<Control>();  
                     foreach (Control Ctrl in GrpIdentite.Controls)
                     {
                         MesControls.Add(Ctrl);
                     }
-                    foreach (Control Ctrl in GrpBenevole.Controls)
+                    foreach (Control Ctrl in UnGroupBox.Controls)
                     {
                         MesControls.Add(Ctrl);
+                        
                     }
-
+                    
                     foreach (Control Ctrl in MesControls)
                     {
                         if (Ctrl is TextBox || Ctrl is MaskedTextBox)
@@ -134,8 +165,40 @@ namespace MaisonDesLigues
                         {
                             ((CheckBox)Ctrl).Checked = false;
                         }
+                        else if (Ctrl is RadioButton)
+                        {   
+                            if (((RadioButton)Ctrl).Text == "Oui")
+                            {
+                                ((RadioButton)Ctrl).Checked = false;
+                            }
+                            if (((RadioButton)Ctrl).Text == "Non")
+                            {
+                                ((RadioButton)Ctrl).Checked = true;
+                            }
+                           
+
+                        }
+                                    
                     }
+        }
+        private void Vider_Panel(Panel UnPanel)
+        {
+            Collection<Control> MesControls = new Collection<Control>();
+            foreach (Control Ctrl in UnPanel.Controls)
+            {
+                MesControls.Add(Ctrl);
+            }
+            foreach (Control Ctrl in MesControls)
+            {
+                if (Ctrl is CheckBox)
+                {
+                    ((CheckBox)Ctrl).Checked = false;
                 }
+                else if (Ctrl is RadioButton) {
+                    ((RadioButton)Ctrl).Checked = false;
+                }
+                
+                
             }
         }
         /// <summary>     
@@ -225,7 +288,7 @@ namespace MaisonDesLigues
                 }
             }
             UneConnexion.InscrireBenevole(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToDateTime(TxtDateNaissance.Text), NumeroLicence, IdDatesSelectionnees);
-
+            //Vider_Champs(RadBenevole,GrpBenevole,PanelDispoBenevole);
         }
         /// <summary>
         /// Cetet méthode teste les données saisies afin d'activer ou désactiver le bouton d'enregistrement d'un bénévole
@@ -320,7 +383,11 @@ namespace MaisonDesLigues
                     MessageBox.Show("Inscription intervenant effectuée");
                     
                 }
-
+                Vider_Panel(PanNuiteIntervenant);
+                Vider_Champs(GrpNuiteIntervenant);
+                Vider_Champs(GrpIntervenant);
+                Vider_Panel(PanFonctionIntervenant);
+                
                 
             }
             catch (Exception Ex)
