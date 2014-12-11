@@ -602,10 +602,7 @@ namespace MaisonDesLigues
 
         }
 
-        private void BtnEnregistrerLicencie_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
 
 
