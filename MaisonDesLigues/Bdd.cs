@@ -377,5 +377,50 @@ namespace BaseDeDonnees
 
         }
 
+        /// <summary>
+        /// Méthode qui permet d'ajouter un theme dans un atelier
+        /// </summary>
+        /// <param name="pIdAtelier"></param>
+        /// <param name="pLibelleTheme"></param>
+        public void AjoutTheme(Int16 pIdAtelier, String pLibelleTheme)
+        {
+            string MessageErreur = "";
+            try
+            {
+                UneOracleCommand = new OracleCommand("pckatelier.ajouttheme", CnOracle);
+                UneOracleCommand.CommandType = CommandType.StoredProcedure;
+                // début de la transaction Oracle il vaut mieux gérer les transactions dans l'applicatif que dans la bd dans les procédures stockées.
+                UneOracleTransaction = this.CnOracle.BeginTransaction();
+       
+
+                UneOracleCommand.Parameters.Add("pidAtelier", OracleDbType.Int16, ParameterDirection.Input).Value = pIdAtelier;
+                UneOracleCommand.Parameters.Add("plibelle", OracleDbType.Varchar2, ParameterDirection.Input).Value = pLibelleTheme;
+                //execution
+                UneOracleCommand.ExecuteNonQuery();
+                // fin de la transaction. Si on arrive à ce point, c'est qu'aucune exception n'a été levée
+                UneOracleTransaction.Commit();
+
+            }
+            catch (OracleException Oex)
+            {
+                MessageErreur = "Erreur Oracle \n" + this.GetMessageOracle(Oex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                MessageErreur = "Autre Erreur, les informations n'ont pas été correctement saisies";
+            }
+            finally
+            {
+                if (MessageErreur.Length > 0)
+                {
+                    // annulation de la transaction
+                    UneOracleTransaction.Rollback();
+                    // Déclenchement de l'exception
+                    throw new Exception(MessageErreur);
+                }
+            }
+        }
+
     }
 }
