@@ -387,14 +387,15 @@ namespace BaseDeDonnees
             string MessageErreur = "";
             try
             {
-                UneOracleCommand = new OracleCommand("pckatelier.ajouttheme", CnOracle);
+                UneOracleCommand = new OracleCommand("mdl.pckatelier.ajouttheme", CnOracle);
                 UneOracleCommand.CommandType = CommandType.StoredProcedure;
-                // début de la transaction Oracle il vaut mieux gérer les transactions dans l'applicatif que dans la bd dans les procédures stockées.
-                UneOracleTransaction = this.CnOracle.BeginTransaction();
-       
+
 
                 UneOracleCommand.Parameters.Add("pidAtelier", OracleDbType.Int16, ParameterDirection.Input).Value = pIdAtelier;
                 UneOracleCommand.Parameters.Add("plibelle", OracleDbType.Varchar2, ParameterDirection.Input).Value = pLibelleTheme;
+                // début de la transaction Oracle il vaut mieux gérer les transactions dans l'applicatif que dans la bd dans les procédures stockées.
+                UneOracleTransaction = this.CnOracle.BeginTransaction();
+
                 //execution
                 UneOracleCommand.ExecuteNonQuery();
                 // fin de la transaction. Si on arrive à ce point, c'est qu'aucune exception n'a été levée
