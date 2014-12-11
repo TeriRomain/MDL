@@ -593,16 +593,6 @@ namespace MaisonDesLigues
         {
 
         }
-
-
-
-        
-
-        
-        private void btnAddThemeEnregistre_Click(object sender, EventArgs e)
-        {
-
-        }
         
         private void btnAddThemeEnregistre_Click(object sender, EventArgs e)
         {
