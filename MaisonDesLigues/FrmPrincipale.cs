@@ -10,7 +10,7 @@ namespace MaisonDesLigues
 {
     public partial class FrmPrincipale : Form
     {
-        
+
         /// <summary>
         /// constructeur du formulaire
         /// </summary>
@@ -301,7 +301,7 @@ namespace MaisonDesLigues
                             CategoriesSelectionnees.Add(((ResaNuite)UnControle).GetTypeChambreSelectionnee());
                             HotelsSelectionnes.Add(((ResaNuite)UnControle).GetHotelSelectionne());
                             NuitsSelectionnes.Add(((ResaNuite)UnControle).IdNuite);
-                         }
+                        }
 
                     }
                     if (NuitsSelectionnes.Count == 0)
@@ -318,10 +318,10 @@ namespace MaisonDesLigues
                 { // inscription sans les nuitées
                     UneConnexion.InscrireIntervenant(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToInt16(CmbAtelierIntervenant.SelectedValue), this.IdStatutSelectionne);
                     MessageBox.Show("Inscription intervenant effectuée");
-                    
+
                 }
 
-                
+
             }
             catch (Exception Ex)
             {
@@ -336,7 +336,7 @@ namespace MaisonDesLigues
         /// <returns></returns>
         private Boolean VerifBtnEnregistreIntervenant()
         {
-            return CmbAtelierIntervenant.Text !="Choisir" && this.IdStatutSelectionne.Length > 0;
+            return CmbAtelierIntervenant.Text != "Choisir" && this.IdStatutSelectionne.Length > 0;
         }
 
         /// <summary>
@@ -459,7 +459,7 @@ namespace MaisonDesLigues
             this.grpBoxAtelier.Controls["grpBoxAddTheme"].Top = 88;
             this.grpBoxAddTheme.Visible = true;
 
-              
+
             this.grpBoxAtelier.Controls.Add(this.GrpBoxVacation);
             this.grpBoxAtelier.Controls["GrpBoxVacation"].Visible = true;
             this.grpBoxAtelier.Controls["GrpBoxVacation"].Left = 6;
@@ -540,7 +540,7 @@ namespace MaisonDesLigues
 
         private void btnSaveAtelier_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnAjouterThemeAtelier_Click(object sender, EventArgs e)
@@ -563,7 +563,7 @@ namespace MaisonDesLigues
         {
             this.DefineStateBtnAddAtelier();
         }
-        
+
 
         ///// <summary>
         ///// 
@@ -574,22 +574,6 @@ namespace MaisonDesLigues
         //{
 
         //}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     }
