@@ -541,6 +541,7 @@ namespace MaisonDesLigues
                 this.grpBoxAddTheme.Left = 23;
                 this.grpBoxAddTheme.Visible = true;
                 this.btnAjouterThemeAtelier.Visible = false;
+                
             }
             else
             {
@@ -602,12 +603,17 @@ namespace MaisonDesLigues
 
                 MessageBox.Show("theme ajouté a l'atelier " + this.cmbBoxThemeAtelier.Text);
 
-                
+                this.Vider_Champs(this.grpBoxAddTheme);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void tabAjout_Click(object sender, EventArgs e)
+        {
+
         }
 
 
