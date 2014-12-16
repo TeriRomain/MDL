@@ -608,6 +608,7 @@ namespace MaisonDesLigues
                 MessageBox.Show("theme ajouté a l'atelier " + this.cmbBoxThemeAtelier.Text);
 
                 this.Vider_Champs(this.grpBoxAddTheme);
+                this.cmbBoxThemeAtelier.Text = "Choisir";
             }
             catch (Exception ex)
             {
