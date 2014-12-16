@@ -145,8 +145,8 @@ namespace MaisonDesLigues
         /// <param name="UnGroupBox">Groupbox a vider</param>
         /// <param name="UnPanel">panel a vider,deschecker</param>
         private void Vider_Champs(GroupBox UnGroupBox)
-        {   
-                    Collection<Control> MesControls = new Collection<Control>();  
+        {
+                    Collection<Control> MesControls = new Collection<Control>();
                     foreach (Control Ctrl in GrpIdentite.Controls)
                     {
                         MesControls.Add(Ctrl);
@@ -156,7 +156,7 @@ namespace MaisonDesLigues
                         MesControls.Add(Ctrl);
                         
                     }
-                    
+
                     foreach (Control Ctrl in MesControls)
                     {
                         if (Ctrl is TextBox || Ctrl is MaskedTextBox)
@@ -170,14 +170,14 @@ namespace MaisonDesLigues
                             if (((RadioButton)Ctrl).Text == "Oui")
                             {
                                 ((RadioButton)Ctrl).Checked = false;
-                            }
+                    }
                             if (((RadioButton)Ctrl).Text == "Non")
                             {
                                 ((RadioButton)Ctrl).Checked = true;
-                            }
+                }
                            
 
-                        }
+            }
                                     
                     }
         }
@@ -187,7 +187,7 @@ namespace MaisonDesLigues
             foreach (Control Ctrl in UnPanel.Controls)
             {
                 MesControls.Add(Ctrl);
-            }
+        }
             foreach (Control Ctrl in MesControls)
             {
                 if (Ctrl is CheckBox)
@@ -387,7 +387,7 @@ namespace MaisonDesLigues
                 Vider_Champs(GrpNuiteIntervenant);
                 Vider_Champs(GrpIntervenant);
                 Vider_Panel(PanFonctionIntervenant);
-                
+
                 
             }
             catch (Exception Ex)
@@ -403,29 +403,8 @@ namespace MaisonDesLigues
         /// <returns></returns>
         private Boolean VerifBtnEnregistreIntervenant()
         {
-            return CmbAtelierIntervenant.Text !="Choisir" && this.IdStatutSelectionne.Length > 0;
+            return CmbAtelierIntervenant.Text != "Choisir" && this.IdStatutSelectionne.Length > 0;
         }
-
-        /// <summary>
-        /// Methode privé qui permet de tester l'etat du combobox atelier du group box theme afin 
-        /// de donner la valeur que doit prendre le bouton Ajouter du group box theme
-        /// </summary>
-        /// <returns></returns>
-        private Boolean VerifBtnAjouterTheme()
-        {
-            Boolean val = (this.cmbBoxThemeAtelier.Text != "Choisir" && this.cmbBoxThemeAtelier.Text != "" && this.txtBoxAddThemeLibelle.Text != "" || (this.txtBoxAddThemeLibelle.Text != "" && this.rdrbtnAtelier.Checked));
-            return val;
-        }
-
-        /// <summary>
-        /// Méthode privé qui permet de definir l'etat que doit prendre le bouton Enregistre dans le groupBox Atelier
-        /// </summary>
-        /// <returns></returns>
-        private Boolean VerifBtnAddAtelier()
-        {
-            return this.TxtBoxAddAtelierLibelle.Text != "" && this.ckcLstBoxTheme.Items.Count != 0 && this.CkcLstBoxVacation.Items.Count != 0;
-        }
-
         /// <summary>
         /// Méthode permettant de définir le statut activé/désactivé du bouton BtnEnregistrerIntervenant
         /// </summary>
@@ -456,10 +435,6 @@ namespace MaisonDesLigues
             }
             else
             {
-                this.dtPickHeureDebutVacation.Top = 73;
-                this.dtPickHeureDebutVacation.Left = 180;
-                this.dtPickHeureFinVacation.Top = 73;
-                this.dtPickHeureFinVacation.Left = 240;
                 this.btnAjouterVacationAtelier.Visible = false;
                 this.lblAtelierVacation.Left = 28;
                 this.lblAtelierVacation.Top = 37;
@@ -467,10 +442,14 @@ namespace MaisonDesLigues
                 this.CmbBoxVacationAtelier.Left = 75;
                 this.CmbBoxVacationAtelier.Top = 34;
                 this.CmbBoxVacationAtelier.Visible = true;
-                this.lblDateDbtVacation.Left = 5;
-                this.lblDateDbtVacation.Top = 77;
-                this.DateTimeDbtVacation.Left = 75;
-                this.DateTimeDbtVacation.Top = 73;
+                this.lblDateDbtVacation.Left = 4;
+                this.lblDateDbtVacation.Top = 67;
+                this.DateTimeDbtVacation.Left = 80;
+                this.DateTimeDbtVacation.Top = 64;
+                this.dtPickHeureDebutVacation.Top = 34;
+                this.dtPickHeureDebutVacation.Left = 180;
+                this.dtPickHeureFinVacation.Top = 34;
+                this.dtPickHeureFinVacation.Left = 240;
                 this.GrpBoxVacation.Width = 453;
                 this.GrpBoxVacation.Height = 142;
             }
@@ -534,7 +513,6 @@ namespace MaisonDesLigues
             this.gererVacation(true);
         }
 
-
         private void rdrbtnAtelier_CheckedChanged(object sender, EventArgs e)
         {
             if (this.rdrbtnAtelier.Checked)
@@ -565,6 +543,7 @@ namespace MaisonDesLigues
                 this.btnAjouterThemeAtelier.Visible = false;
                 Utilitaire.RemplirComboBox(this.UneConnexion, this.cmbBoxThemeAtelier, "VATELIER01");
                 this.cmbBoxThemeAtelier.Text = "Choisir";
+                
             }
             else
             {
@@ -594,48 +573,54 @@ namespace MaisonDesLigues
             }
         }
 
-        private void cmbBoxThemeAtelier_TextChanged(object sender, EventArgs e)
+        private void TabInscription_Click(object sender, EventArgs e)
         {
-            this.btnAddThemeEnregistre.Enabled = this.VerifBtnAjouterTheme();
-            this.btnAjouterThemeAtelier.Enabled = this.btnAddThemeEnregistre.Enabled;
+
         }
 
-        private void DefineStateBtnAddAtelier()
+        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
-            this.btnSaveAtelier.Enabled = this.VerifBtnAddAtelier();
+
         }
 
-        private void btnSaveAtelier_Click(object sender, EventArgs e)
+        private void Rad_NuiteOui_CheckedChanged(object sender, EventArgs e)
         {
             
+
         }
 
-        private void btnAjouterThemeAtelier_Click(object sender, EventArgs e)
+        private void TabInscription_Click_1(object sender, EventArgs e)
         {
-            this.ckcLstBoxTheme.Items.Add(this.txtBoxAddThemeLibelle.Text);
-            this.DefineStateBtnAddAtelier();
+
         }
 
-        private void TxtBoxAddAtelierLibelle_TextChanged(object sender, EventArgs e)
-        {
-            this.DefineStateBtnAddAtelier();
-        }
-
-        private void btnAjouterVacationAtelier_Click(object sender, EventArgs e)
-        {
-            this.DefineStateBtnAddAtelier();
-        }
-
-        private void btnSuprThemeVacation_Click(object sender, EventArgs e)
-        {
-            this.DefineStateBtnAddAtelier();
-        }
-
-        private void btnAddThemeEnregistre_Click(object sender, EventArgs e)
+        private void dtPickHeureDebutVacation_ValueChanged(object sender, EventArgs e)
         {
 
         }
         
+        private void btnAddThemeEnregistre_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.UneConnexion.AjoutTheme(Convert.ToInt16(this.cmbBoxThemeAtelier.SelectedValue), this.txtBoxAddThemeLibelle.Text);
+
+                MessageBox.Show("theme ajouté a l'atelier " + this.cmbBoxThemeAtelier.Text);
+
+                this.Vider_Champs(this.grpBoxAddTheme);
+                this.cmbBoxThemeAtelier.Text = "Choisir";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void tabAjout_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
         ///// <summary>
         ///// 
@@ -646,22 +631,6 @@ namespace MaisonDesLigues
         //{
 
         //}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     }
