@@ -599,6 +599,10 @@ namespace MaisonDesLigues
             try
             {
                 this.UneConnexion.AjoutTheme(Convert.ToInt16(this.cmbBoxThemeAtelier.SelectedValue), this.txtBoxAddThemeLibelle.Text);
+
+                MessageBox.Show("theme ajouté a l'atelier " + this.cmbBoxThemeAtelier.Text);
+
+                
             }
             catch (Exception ex)
             {
