@@ -541,6 +541,8 @@ namespace MaisonDesLigues
                 this.grpBoxAddTheme.Left = 23;
                 this.grpBoxAddTheme.Visible = true;
                 this.btnAjouterThemeAtelier.Visible = false;
+                Utilitaire.RemplirComboBox(this.UneConnexion, this.cmbBoxThemeAtelier, "VATELIER01");
+                this.cmbBoxThemeAtelier.Text = "Choisir";
                 
             }
             else
@@ -560,6 +562,8 @@ namespace MaisonDesLigues
                 this.GrpBoxVacation.Visible = true;
                 this.GrpBoxVacation.Top = 71;
                 this.GrpBoxVacation.Left = 23;
+                Utilitaire.RemplirComboBox(this.UneConnexion, this.CmbBoxVacationAtelier, "VATELIER01");
+                this.CmbBoxVacationAtelier.Text = "Choisir";
             }
             else
             {
