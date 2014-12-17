@@ -423,12 +423,46 @@ namespace BaseDeDonnees
             }
         }
 
-        /// <summary>
-        /// Methode publique qui permet d'ajouter un Théme a un Atelier
-        /// </summary>
-        public void AjouterTheme()
+        public void AjoutVacation(Int16 pIdAtelier, DateTime pHeureDbt, DateTime pHeureFin)
         {
+            string MessageErreur = "";
+            try
+            {
+                UneOracleCommand = new OracleCommand("mdl.pckatelier.ajoutvacation", CnOracle);
+                UneOracleCommand.CommandType = CommandType.StoredProcedure;
 
+
+                UneOracleCommand.Parameters.Add("pidAtelier", OracleDbType.Int16, ParameterDirection.Input).Value = pIdAtelier;
+                UneOracleCommand.Parameters.Add("pheuredebut", OracleDbType.Date, ParameterDirection.Input).Value = pHeureDbt;
+                UneOracleCommand.Parameters.Add("pheurefin", OracleDbType.Date, ParameterDirection.Input).Value = pHeureFin;
+                // début de la transaction Oracle il vaut mieux gérer les transactions dans l'applicatif que dans la bd dans les procédures stockées.
+                UneOracleTransaction = this.CnOracle.BeginTransaction();
+
+                //execution
+                UneOracleCommand.ExecuteNonQuery();
+                // fin de la transaction. Si on arrive à ce point, c'est qu'aucune exception n'a été levée
+                UneOracleTransaction.Commit();
+
+            }
+            catch (OracleException Oex)
+            {
+                MessageErreur = "Erreur Oracle \n" + this.GetMessageOracle(Oex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                MessageErreur = "Autre Erreur, les informations n'ont pas été correctement saisies";
+            }
+            finally
+            {
+                if (MessageErreur.Length > 0)
+                {
+                    // annulation de la transaction
+                    UneOracleTransaction.Rollback();
+                    // Déclenchement de l'exception
+                    throw new Exception(MessageErreur);
+                }
+            }
         }
     }
 }
