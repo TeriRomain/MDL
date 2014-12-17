@@ -446,9 +446,9 @@ namespace MaisonDesLigues
                 this.lblDateDbtVacation.Top = 67;
                 this.DateTimeDbtVacation.Left = 80;
                 this.DateTimeDbtVacation.Top = 64;
-                this.dtPickHeureDebutVacation.Top = 34;
+                this.dtPickHeureDebutVacation.Top = 64;
                 this.dtPickHeureDebutVacation.Left = 180;
-                this.dtPickHeureFinVacation.Top = 34;
+                this.dtPickHeureFinVacation.Top = 64;
                 this.dtPickHeureFinVacation.Left = 240;
                 this.GrpBoxVacation.Width = 453;
                 this.GrpBoxVacation.Height = 142;
@@ -619,6 +619,23 @@ namespace MaisonDesLigues
         private void tabAjout_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void BtnEnregistreVacation_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //this.UneConnexion.AjoutVacation(this.CmbBoxVacationAtelier.SelectedValue, Convert.ToDateTime(this.dtPickHeureDebutVacation.Value), Convert.ToDateTime(this.dtPickHeureFinVacation.Value));
+
+                MessageBox.Show("theme ajouté a l'atelier " + this.cmbBoxThemeAtelier.Text);
+
+                this.Vider_Champs(this.grpBoxAddTheme);
+                this.cmbBoxThemeAtelier.Text = "Choisir";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
 

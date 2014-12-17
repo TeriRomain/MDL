@@ -775,7 +775,7 @@
             this.GrpBoxVacation.Controls.Add(this.CmbBoxVacationAtelier);
             this.GrpBoxVacation.Location = new System.Drawing.Point(482, 287);
             this.GrpBoxVacation.Name = "GrpBoxVacation";
-            this.GrpBoxVacation.Size = new System.Drawing.Size(441, 75);
+            this.GrpBoxVacation.Size = new System.Drawing.Size(441, 139);
             this.GrpBoxVacation.TabIndex = 8;
             this.GrpBoxVacation.TabStop = false;
             this.GrpBoxVacation.Text = "Vacation";
@@ -820,6 +820,7 @@
             this.BtnEnregistreVacation.TabIndex = 6;
             this.BtnEnregistreVacation.Text = "Enregistrer";
             this.BtnEnregistreVacation.UseVisualStyleBackColor = true;
+            this.BtnEnregistreVacation.Click += new System.EventHandler(this.BtnEnregistreVacation_Click);
             // 
             // lblDateDbtVacation
             // 
