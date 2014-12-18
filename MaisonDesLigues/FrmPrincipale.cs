@@ -640,14 +640,19 @@ namespace MaisonDesLigues
 
         }
 
+        /// <summary>
+        /// methode qui fait appel a la fonction AjoutVacation pour ajouter une Vacation a un Atelier
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnEnregistreVacation_Click(object sender, EventArgs e)
         {
             try
             {
                 CultureInfo provider = new CultureInfo("fr-FR");
-                string dateStringDebut = this.DateTimeDbtVacation.Text + " " + this.dtPickHeureDebutVacation;
-                string dateStringFin = this.DateTimeDbtVacation.Text + " " + this.dtPickHeureFinVacation;
-                
+                string dateStringDebut = this.DateTimeDbtVacation.Text + " " + this.dtPickHeureDebutVacation.Text;
+                string dateStringFin = this.DateTimeDbtVacation.Text + " " + this.dtPickHeureFinVacation.Text;
+                MessageBox.Show(dateStringDebut + "\n" + dateStringFin);
 
                 string format = "g";
                 DateTime resultDebut = DateTime.ParseExact(dateStringDebut, format, provider);

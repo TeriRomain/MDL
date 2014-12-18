@@ -640,6 +640,13 @@ namespace BaseDeDonnees
             }
         }
 
+        /// <summary>
+        /// methode public qui permet de faire appel a la procedure stockée ajoutvacation du package pckatelier
+        /// pour ajouter une vacation a un atelier
+        /// </summary>
+        /// <param name="pIdAtelier">Id de l'atelier passa au quel on ajoute une vacation</param>
+        /// <param name="pHeureDbt">date et heure du debut de la vacation</param>
+        /// <param name="pHeureFin">date et heure de la fin de la vacation</param>
         public void AjoutVacation(Int16 pIdAtelier, DateTime pHeureDbt, DateTime pHeureFin)
         {
             string MessageErreur = "";
