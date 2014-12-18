@@ -209,7 +209,7 @@ namespace BaseDeDonnees
         /// <param name="pIdAtelier"></param>
         /// <param name="pNumeroLicence"></param>
         /// <param name="pQualite"></param>
-        public void InscrireLicencie(String pNom, String pPrenom, String pAdresse1, String pAdresse2, String pCp, String pVille, String pTel, String pMail, Int16 pIdAtelier,Int64 pNumeroLicence,Int32 pQualite)
+        public void InscrireLicencie(String pNom, String pPrenom, String pAdresse1, String pAdresse2, String pCp, String pVille, String pTel, String pMail, Int64 pNumeroLicence,Int32 pQualite,Int16 pIdAtelier)
         {
             String MessageErreur = "";
             try{
@@ -255,7 +255,7 @@ namespace BaseDeDonnees
         /// <param name="pLesCategories"></param>
         /// <param name="pLesHotels"></param>
         /// <param name="pLesNuits"></param>
-        public void InscrireLicencie(String pNom, String pPrenom, String pAdresse1, String pAdresse2, String pCp, String pVille, String pTel, String pMail, Int16 pIdAtelier,Int64 pNumeroLicence,Int32 pQualite, Collection<string> pLesCategories, Collection<string> pLesHotels, Collection<Int16> pLesNuits)
+        public void InscrireLicencie(String pNom, String pPrenom, String pAdresse1, String pAdresse2, String pCp, String pVille, String pTel, String pMail, Int64 pNumeroLicence, Int32 pQualite, Int16 pIdAtelier, Collection<string> pLesCategories, Collection<string> pLesHotels, Collection<Int16> pLesNuits)
         {
             String MessageErreur = "";
             try
@@ -342,7 +342,7 @@ namespace BaseDeDonnees
         /// <param name="pLesHotels"></param>
         /// <param name="pLesNuits"></param>
         /// <param name="pRestauration"></param>
-        public void InscrireLicencie(String pNom, String pPrenom, String pAdresse1, String pAdresse2, String pCp, String pVille, String pTel, String pMail, Int16 pIdAtelier, Int64 pNumeroLicence, Int32 pQualite, Collection<string> pLesCategories, Collection<string> pLesHotels, Collection<Int16> pLesNuits,Collection<String> pRestauration)
+        public void InscrireLicencie(String pNom, String pPrenom, String pAdresse1, String pAdresse2, String pCp, String pVille, String pTel, String pMail, Int64 pNumeroLicence, Int32 pQualite, Int16 pIdAtelier, Collection<string> pLesCategories, Collection<string> pLesHotels, Collection<Int16> pLesNuits, Collection<String> pRestauration)
         {
             String MessageErreur = "";
             try
@@ -353,8 +353,8 @@ namespace BaseDeDonnees
                 // début de la transaction Oracle : il vaut mieyx gérer les transactions dans l'applicatif que dans la bd.
                 UneOracleTransaction = this.CnOracle.BeginTransaction();
                 this.ParamCommunsNouveauxParticipants(UneOracleCommand, pNom, pPrenom, pAdresse1, pAdresse2, pCp, pVille, pTel, pMail);
-                UneOracleCommand.Parameters.Add("pIdAtelier", OracleDbType.Int16, ParameterDirection.Input).Value = pIdAtelier;
-                UneOracleCommand.Parameters.Add("pNumeroLicence", OracleDbType.Int64, ParameterDirection.Input).Value = pNumeroLicence;
+                UneOracleCommand.Parameters.Add("pidatelier", OracleDbType.Int16, ParameterDirection.Input).Value = pIdAtelier;
+                UneOracleCommand.Parameters.Add("pLicence", OracleDbType.Int64, ParameterDirection.Input).Value = pNumeroLicence;
                 UneOracleCommand.Parameters.Add("pQualite", OracleDbType.Int32, ParameterDirection.Input).Value = pQualite;
                 UneOracleCommand.Parameters.Add("pRestauration", OracleDbType.Varchar2, ParameterDirection.Input).Value = pRestauration;
                 //On va créer ici les paramètres spécifiques à l'inscription d'un intervenant qui réserve des nuits d'hôtel.

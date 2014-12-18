@@ -697,17 +697,17 @@ namespace MaisonDesLigues
                     }
                     else if (RestaurationSelectionnes.Count > 0)
                     {
-                        UneConnexion.InscrireLicencie(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToInt16(CmbAtelierLicencie.SelectedValue), System.Convert.ToInt64(TxtLicenceLicencie.Text), System.Convert.ToInt32(TxtQualitéLicencie.Text), CategoriesSelectionnees, HotelsSelectionnes, NuitsSelectionnes, RestaurationSelectionnes);
+                        UneConnexion.InscrireLicencie(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToInt64(TxtLicenceLicencie.Text), System.Convert.ToInt32(TxtQualitéLicencie.Text), System.Convert.ToInt16(CmbAtelierLicencie.SelectedValue), CategoriesSelectionnees, HotelsSelectionnes, NuitsSelectionnes, RestaurationSelectionnes);
                     }
                     else
                     {
-                        UneConnexion.InscrireLicencie(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToInt16(CmbAtelierLicencie.SelectedValue), System.Convert.ToInt64(TxtLicenceLicencie.Text), System.Convert.ToInt32(TxtQualitéLicencie.Text), CategoriesSelectionnees, HotelsSelectionnes, NuitsSelectionnes);
+                        UneConnexion.InscrireLicencie(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToInt64(TxtLicenceLicencie.Text), System.Convert.ToInt32(TxtQualitéLicencie.Text), System.Convert.ToInt16(CmbAtelierLicencie.SelectedValue), CategoriesSelectionnees, HotelsSelectionnes, NuitsSelectionnes);
                         MessageBox.Show("Inscription Licencié effectuée");
                     }
                 }
                 else
                 { // inscription sans les nuitées
-                    UneConnexion.InscrireLicencie(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToInt16(CmbAtelierLicencie.SelectedValue), System.Convert.ToInt64(TxtLicenceLicencie.Text), System.Convert.ToInt32(TxtQualitéLicencie.Text));
+                    UneConnexion.InscrireLicencie(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null,  System.Convert.ToInt64(TxtLicenceLicencie.Text), System.Convert.ToInt32(TxtQualitéLicencie.Text),System.Convert.ToInt16(CmbAtelierLicencie.SelectedValue));
                     MessageBox.Show("Inscription Licencié effectuée");
 
                 }
