@@ -194,6 +194,223 @@ namespace BaseDeDonnees
             }
 
         }
+        
+        /// <summary>
+        /// Procedure d'inscription d'un licencie sans nuite et sans restauration
+        /// </summary>
+        /// <param name="pNom"></param>
+        /// <param name="pPrenom"></param>
+        /// <param name="pAdresse1"></param>
+        /// <param name="pAdresse2"></param>
+        /// <param name="pCp"></param>
+        /// <param name="pVille"></param>
+        /// <param name="pTel"></param>
+        /// <param name="pMail"></param>
+        /// <param name="pIdAtelier"></param>
+        /// <param name="pNumeroLicence"></param>
+        /// <param name="pQualite"></param>
+        public void InscrireLicencie(String pNom, String pPrenom, String pAdresse1, String pAdresse2, String pCp, String pVille, String pTel, String pMail, Int16 pIdAtelier,Int64 pNumeroLicence,Int32 pQualite)
+        {
+            String MessageErreur = "";
+            try{
+                
+            UneOracleCommand = new OracleCommand("pckparticipant.nouveaulicencie", CnOracle);
+            UneOracleCommand.CommandType = CommandType.StoredProcedure;
+            // début de la transaction Oracle il vaut mieyx gérer les transactions dans l'applicatif que dans la bd dans les procédures stockées.
+            UneOracleTransaction = this.CnOracle.BeginTransaction();
+            // on appelle la procédure ParamCommunsNouveauxParticipants pour charger les paramètres communs aux intervenants
+            this.ParamCommunsNouveauxParticipants(UneOracleCommand, pNom, pPrenom, pAdresse1, pAdresse2, pCp, pVille, pTel, pMail);
+            // on appelle la procédure ParamsCommunsIntervenant pour charger les paramètres communs aux intervenants
+            UneOracleCommand.Parameters.Add("pIdAtelier", OracleDbType.Int16, ParameterDirection.Input).Value = pIdAtelier;
+            UneOracleCommand.Parameters.Add("pNumeroLicence", OracleDbType.Int64, ParameterDirection.Input).Value = pNumeroLicence;
+            UneOracleCommand.Parameters.Add("pQualite", OracleDbType.Int32, ParameterDirection.Input).Value = pQualite;
+            UneOracleCommand.ExecuteNonQuery();
+                // fin de la transaction. Si on arrive à ce point, c'est qu'aucune exception n'a été levée
+                UneOracleTransaction.Commit();
+            }
+            catch (OracleException Oex)
+            {
+                MessageErreur = "Erreur Oracle \n" + this.GetMessageOracle(Oex.Message);
+             }
+            catch (Exception ex)
+            {
+                MessageErreur = "Autre Erreur, les informations n'ont pas été correctement saisies";
+            }
+        }
+        /// <summary>
+        /// Procedure d'inscription d'un licencie avec les nuites mais sans la restauration
+        /// </summary>
+        /// <param name="pNom"></param>
+        /// <param name="pPrenom"></param>
+        /// <param name="pAdresse1"></param>
+        /// <param name="pAdresse2"></param>
+        /// <param name="pCp"></param>
+        /// <param name="pVille"></param>
+        /// <param name="pTel"></param>
+        /// <param name="pMail"></param>
+        /// <param name="pIdAtelier"></param>
+        /// <param name="pIdStatut"></param>
+        /// <param name="pNumeroLicence"></param>
+        /// <param name="pQualite"></param>
+        /// <param name="pLesCategories"></param>
+        /// <param name="pLesHotels"></param>
+        /// <param name="pLesNuits"></param>
+        public void InscrireLicencie(String pNom, String pPrenom, String pAdresse1, String pAdresse2, String pCp, String pVille, String pTel, String pMail, Int16 pIdAtelier,Int64 pNumeroLicence,Int32 pQualite, Collection<string> pLesCategories, Collection<string> pLesHotels, Collection<Int16> pLesNuits)
+        {
+            String MessageErreur = "";
+            try
+            {
+                // pckparticipant.nouvelintervenant est une procédure surchargée
+                UneOracleCommand = new OracleCommand("pckparticipant.nouveaulicencie", CnOracle);
+                UneOracleCommand.CommandType = CommandType.StoredProcedure;
+                // début de la transaction Oracle : il vaut mieyx gérer les transactions dans l'applicatif que dans la bd.
+                UneOracleTransaction = this.CnOracle.BeginTransaction();
+                this.ParamCommunsNouveauxParticipants(UneOracleCommand, pNom, pPrenom, pAdresse1, pAdresse2, pCp, pVille, pTel, pMail);
+                UneOracleCommand.Parameters.Add("pIdAtelier", OracleDbType.Int16, ParameterDirection.Input).Value = pIdAtelier;
+                UneOracleCommand.Parameters.Add("pNumeroLicence", OracleDbType.Int64, ParameterDirection.Input).Value = pNumeroLicence;
+                UneOracleCommand.Parameters.Add("pQualite", OracleDbType.Int32, ParameterDirection.Input).Value = pQualite;
+                //On va créer ici les paramètres spécifiques à l'inscription d'un intervenant qui réserve des nuits d'hôtel.
+                // Paramètre qui stocke les catégories sélectionnées
+                OracleParameter pOraLescategories = new OracleParameter();
+                pOraLescategories.ParameterName = "pLesCategories";
+                pOraLescategories.OracleDbType = OracleDbType.Char;
+                pOraLescategories.CollectionType = OracleCollectionType.PLSQLAssociativeArray;
+                pOraLescategories.Value = pLesCategories.ToArray();
+                pOraLescategories.Size = pLesCategories.Count;
+                UneOracleCommand.Parameters.Add(pOraLescategories);
+
+                // Paramètre qui stocke les hotels sélectionnées
+                OracleParameter pOraLesHotels = new OracleParameter();
+                pOraLesHotels.ParameterName = "pLesHotels";
+                pOraLesHotels.OracleDbType = OracleDbType.Char;
+                pOraLesHotels.CollectionType = OracleCollectionType.PLSQLAssociativeArray;
+                pOraLesHotels.Value = pLesHotels.ToArray();
+                pOraLesHotels.Size = pLesHotels.Count;
+                UneOracleCommand.Parameters.Add(pOraLesHotels);
+
+                // Paramètres qui stocke les nuits sélectionnées
+                OracleParameter pOraLesNuits = new OracleParameter();
+                pOraLesNuits.ParameterName = "pLesNuits";
+                pOraLesNuits.OracleDbType = OracleDbType.Int16;
+                pOraLesNuits.CollectionType = OracleCollectionType.PLSQLAssociativeArray;
+                pOraLesNuits.Value = pLesNuits.ToArray();
+                pOraLesNuits.Size = pLesNuits.Count;
+                UneOracleCommand.Parameters.Add(pOraLesNuits);
+                //execution
+                UneOracleCommand.ExecuteNonQuery();
+                // fin de la transaction. Si on arrive à ce point, c'est qu'aucune exception n'a été levée
+                UneOracleTransaction.Commit();
+
+            }
+            catch (OracleException Oex)
+            {
+                //MessageErreur="Erreur Oracle \n" + this.GetMessageOracle(Oex.Message);
+                MessageBox.Show(Oex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                MessageErreur = "Autre Erreur, les informations n'ont pas été correctement saisies";
+            }
+            finally
+            {
+                if (MessageErreur.Length > 0)
+                {
+                    // annulation de la transaction
+                    UneOracleTransaction.Rollback();
+                    // Déclenchement de l'exception
+                    throw new Exception(MessageErreur);
+                }
+            }
+        }
+        /// <summary>
+        /// Procedure d'inscription d'un licencie avec les nuites et les restaurations
+        /// </summary>
+        /// <param name="pNom"></param>
+        /// <param name="pPrenom"></param>
+        /// <param name="pAdresse1"></param>
+        /// <param name="pAdresse2"></param>
+        /// <param name="pCp"></param>
+        /// <param name="pVille"></param>
+        /// <param name="pTel"></param>
+        /// <param name="pMail"></param>
+        /// <param name="pIdAtelier"></param>
+        /// <param name="pIdStatut"></param>
+        /// <param name="pNumeroLicence"></param>
+        /// <param name="pQualite"></param>
+        /// <param name="pLesCategories"></param>
+        /// <param name="pLesHotels"></param>
+        /// <param name="pLesNuits"></param>
+        /// <param name="pRestauration"></param>
+        public void InscrireLicencie(String pNom, String pPrenom, String pAdresse1, String pAdresse2, String pCp, String pVille, String pTel, String pMail, Int16 pIdAtelier, Int64 pNumeroLicence, Int32 pQualite, Collection<string> pLesCategories, Collection<string> pLesHotels, Collection<Int16> pLesNuits,Collection<String> pRestauration)
+        {
+            String MessageErreur = "";
+            try
+            {
+                // pckparticipant.nouvelintervenant est une procédure surchargée
+                UneOracleCommand = new OracleCommand("pckparticipant.nouveaulicencie", CnOracle);
+                UneOracleCommand.CommandType = CommandType.StoredProcedure;
+                // début de la transaction Oracle : il vaut mieyx gérer les transactions dans l'applicatif que dans la bd.
+                UneOracleTransaction = this.CnOracle.BeginTransaction();
+                this.ParamCommunsNouveauxParticipants(UneOracleCommand, pNom, pPrenom, pAdresse1, pAdresse2, pCp, pVille, pTel, pMail);
+                UneOracleCommand.Parameters.Add("pIdAtelier", OracleDbType.Int16, ParameterDirection.Input).Value = pIdAtelier;
+                UneOracleCommand.Parameters.Add("pNumeroLicence", OracleDbType.Int64, ParameterDirection.Input).Value = pNumeroLicence;
+                UneOracleCommand.Parameters.Add("pQualite", OracleDbType.Int32, ParameterDirection.Input).Value = pQualite;
+                UneOracleCommand.Parameters.Add("pRestauration", OracleDbType.Varchar2, ParameterDirection.Input).Value = pRestauration;
+                //On va créer ici les paramètres spécifiques à l'inscription d'un intervenant qui réserve des nuits d'hôtel.
+                // Paramètre qui stocke les catégories sélectionnées
+                OracleParameter pOraLescategories = new OracleParameter();
+                pOraLescategories.ParameterName = "pLesCategories";
+                pOraLescategories.OracleDbType = OracleDbType.Char;
+                pOraLescategories.CollectionType = OracleCollectionType.PLSQLAssociativeArray;
+                pOraLescategories.Value = pLesCategories.ToArray();
+                pOraLescategories.Size = pLesCategories.Count;
+                UneOracleCommand.Parameters.Add(pOraLescategories);
+
+                // Paramètre qui stocke les hotels sélectionnées
+                OracleParameter pOraLesHotels = new OracleParameter();
+                pOraLesHotels.ParameterName = "pLesHotels";
+                pOraLesHotels.OracleDbType = OracleDbType.Char;
+                pOraLesHotels.CollectionType = OracleCollectionType.PLSQLAssociativeArray;
+                pOraLesHotels.Value = pLesHotels.ToArray();
+                pOraLesHotels.Size = pLesHotels.Count;
+                UneOracleCommand.Parameters.Add(pOraLesHotels);
+
+                // Paramètres qui stocke les nuits sélectionnées
+                OracleParameter pOraLesNuits = new OracleParameter();
+                pOraLesNuits.ParameterName = "pLesNuits";
+                pOraLesNuits.OracleDbType = OracleDbType.Int16;
+                pOraLesNuits.CollectionType = OracleCollectionType.PLSQLAssociativeArray;
+                pOraLesNuits.Value = pLesNuits.ToArray();
+                pOraLesNuits.Size = pLesNuits.Count;
+                UneOracleCommand.Parameters.Add(pOraLesNuits);
+                //execution
+                UneOracleCommand.ExecuteNonQuery();
+                // fin de la transaction. Si on arrive à ce point, c'est qu'aucune exception n'a été levée
+                UneOracleTransaction.Commit();
+
+            }
+            catch (OracleException Oex)
+            {
+                //MessageErreur="Erreur Oracle \n" + this.GetMessageOracle(Oex.Message);
+                MessageBox.Show(Oex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                MessageErreur = "Autre Erreur, les informations n'ont pas été correctement saisies";
+            }
+            finally
+            {
+                if (MessageErreur.Length > 0)
+                {
+                    // annulation de la transaction
+                    UneOracleTransaction.Rollback();
+                    // Déclenchement de l'exception
+                    throw new Exception(MessageErreur);
+                }
+            }
+        }
         /// <summary>
         /// méthode privée permettant de valoriser les paramètres d'un objet commmand spécifiques intervenants
         /// </summary>

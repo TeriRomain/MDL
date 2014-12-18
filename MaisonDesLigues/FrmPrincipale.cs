@@ -74,14 +74,14 @@ namespace MaisonDesLigues
             GrpLicencie.Visible = true;
             GrpLicencie.Left = 23;
             GrpLicencie.Top = 264;
-            Utilitaire.CreerDesControles(this, UneConnexion, "VRESTAURATION01", "ChkRestoL_", PanRestoLicencie, "CheckBox", ChkRestaurationLicencie_CheckedChanged);
+            Utilitaire.CreerDesControles(this, UneConnexion, "VRESTAURATION01", "ChkRestoL_", PanRestoLicencie, "CheckBox", EnableBtnEnregistrerLicencie);
             Utilitaire.RemplirComboBox(UneConnexion, CmbAtelierLicencie, "VATELIER01");
             CmbAtelierLicencie.Text = "Choisir";
             
         }
-        private void ChkRestaurationLicencie_CheckedChanged(object sender, EventArgs e)
+        private void EnableBtnEnregistrerLicencie(object sender, EventArgs e)
         {
-            
+            BtnEnregistrerLicencie.Enabled = VerifBtnEnregistreLicencie();
         }
         private void RdbNuiteLicencie_CheckedChanged(object sender, EventArgs e)
         {
@@ -112,7 +112,11 @@ namespace MaisonDesLigues
                 PanNuiteLicencie.Visible = false;
 
             }
-            BtnEnregistrerLicencie.Enabled = VerifBtnEnregistreIntervenant();
+            BtnEnregistrerLicencie.Enabled = VerifBtnEnregistreLicencie();
+        }
+        private Boolean VerifBtnEnregistreLicencie()
+        {
+            return CmbAtelierIntervenant.Text != "Choisir" && TxtQualitéLicencie.Text!="" && TxtLicenceLicencie.Text!="";
         }
         //private void Vider_Champs()
         //{
@@ -662,7 +666,60 @@ namespace MaisonDesLigues
 
         private void BtnEnregistrerLicencie_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (RdbNuiteIntervenantOui.Checked)
+                {
+                    // inscription avec les nuitées
+                    Collection<Int16> NuitsSelectionnes = new Collection<Int16>();
+                    Collection<String> HotelsSelectionnes = new Collection<String>();
+                    Collection<String> CategoriesSelectionnees = new Collection<string>();
+                    Collection<String> RestaurationSelectionnes = new Collection<String>();
+                    foreach (Control UnControle in PanRestoLicencie.Controls)
+                    {
+                        RestaurationSelectionnes.Add(System.Convert.ToString((CheckBox)UnControle));
+                    }
+                    foreach (Control UnControle in PanNuiteLicencie.Controls)
+                    {
+                        if (UnControle.GetType().Name == "ResaNuite" && ((ResaNuite)UnControle).GetNuitSelectionnee())
+                        {
+                            // la nuité a été cochée, il faut donc envoyer l'hotel et la type de chambre à la procédure de la base qui va enregistrer le contenu hébergement 
+                            //ContenuUnHebergement UnContenuUnHebergement= new ContenuUnHebergement();
+                            CategoriesSelectionnees.Add(((ResaNuite)UnControle).GetTypeChambreSelectionnee());
+                            HotelsSelectionnes.Add(((ResaNuite)UnControle).GetHotelSelectionne());
+                            NuitsSelectionnes.Add(((ResaNuite)UnControle).IdNuite);
+                        }
 
+                    }
+                    if (NuitsSelectionnes.Count == 0)
+                    {
+                        MessageBox.Show("Si vous avez sélectionné que l'intervenant avait des nuités\n in faut qu'au moins une nuit soit sélectionnée");
+                    }
+                    else if (RestaurationSelectionnes.Count > 0)
+                    {
+                        UneConnexion.InscrireLicencie(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToInt16(CmbAtelierLicencie.SelectedValue), System.Convert.ToInt64(TxtLicenceLicencie.Text), System.Convert.ToInt32(TxtQualitéLicencie.Text), CategoriesSelectionnees, HotelsSelectionnes, NuitsSelectionnes, RestaurationSelectionnes);
+                    }
+                    else
+                    {
+                        UneConnexion.InscrireLicencie(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToInt16(CmbAtelierLicencie.SelectedValue), System.Convert.ToInt64(TxtLicenceLicencie.Text), System.Convert.ToInt32(TxtQualitéLicencie.Text), CategoriesSelectionnees, HotelsSelectionnes, NuitsSelectionnes);
+                        MessageBox.Show("Inscription Licencié effectuée");
+                    }
+                }
+                else
+                { // inscription sans les nuitées
+                    UneConnexion.InscrireLicencie(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToInt16(CmbAtelierLicencie.SelectedValue), System.Convert.ToInt64(TxtLicenceLicencie.Text), System.Convert.ToInt32(TxtQualitéLicencie.Text));
+                    MessageBox.Show("Inscription Licencié effectuée");
+
+                }
+                Vider_Panel(PanNuiteLicencie);
+                Vider_Champs(GrpNuiteLicencie);
+                Vider_Champs(GrpLicencie);
+                Vider_Panel(PanRestoLicencie);
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
         }
 
 

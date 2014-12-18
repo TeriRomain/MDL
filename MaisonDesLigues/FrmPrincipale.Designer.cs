@@ -180,6 +180,7 @@
             // 
             // BtnEnregistrerLicencie
             // 
+            this.BtnEnregistrerLicencie.Enabled = false;
             this.BtnEnregistrerLicencie.Location = new System.Drawing.Point(378, 301);
             this.BtnEnregistrerLicencie.Name = "BtnEnregistrerLicencie";
             this.BtnEnregistrerLicencie.Size = new System.Drawing.Size(136, 24);
@@ -255,6 +256,7 @@
             this.TxtLicenceLicencie.Name = "TxtLicenceLicencie";
             this.TxtLicenceLicencie.Size = new System.Drawing.Size(131, 20);
             this.TxtLicenceLicencie.TabIndex = 8;
+            this.TxtLicenceLicencie.TextChanged += new System.EventHandler(this.EnableBtnEnregistrerLicencie);
             // 
             // TxtQualitéLicencie
             // 
@@ -262,6 +264,7 @@
             this.TxtQualitéLicencie.Name = "TxtQualitéLicencie";
             this.TxtQualitéLicencie.Size = new System.Drawing.Size(131, 20);
             this.TxtQualitéLicencie.TabIndex = 7;
+            this.TxtQualitéLicencie.TextChanged += new System.EventHandler(this.EnableBtnEnregistrerLicencie);
             // 
             // label14
             // 
