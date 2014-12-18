@@ -21,6 +21,7 @@ namespace MaisonDesLigues
         private Bdd UneConnexion;
         private String TitreApplication;
         private String IdStatutSelectionne = "";
+        
         /// <summary>
         /// création et ouverture d'une connexion vers la base de données sur le chargement du formulaire
         /// </summary>
@@ -55,7 +56,7 @@ namespace MaisonDesLigues
                     this.GererInscriptionBenevole();
                     break;
                 case "RadLicencie":
-                    //this.GererInscriptionLicencie();
+                    this.GererInscriptionLicencie();
                     break;
                 case "RadIntervenant":
                     this.GererInscriptionIntervenant();
@@ -73,36 +74,46 @@ namespace MaisonDesLigues
             GrpLicencie.Visible = true;
             GrpLicencie.Left = 23;
             GrpLicencie.Top = 264;
-            //Utilitaire.CreerDesControles(this, UneConnexion, "VRESTAURATION01", "Rad_", PanRestaurationLicencie, "RadioButton", RdbRestaurationLicencie_CheckedChanged);
-            Utilitaire.RemplirComboBox(UneConnexion, CmbAtelierLicencie, "VATELIER02");
+            Utilitaire.CreerDesControles(this, UneConnexion, "VRESTAURATION01", "ChkRestoL_", PanRestoLicencie, "CheckBox", ChkRestaurationLicencie_CheckedChanged);
+            Utilitaire.RemplirComboBox(UneConnexion, CmbAtelierLicencie, "VATELIER01");
             CmbAtelierLicencie.Text = "Choisir";
+            
         }
+        private void ChkRestaurationLicencie_CheckedChanged(object sender, EventArgs e)
+        {
+            
+        }
+        private void RdbNuiteLicencie_CheckedChanged(object sender, EventArgs e)
+        {
+            if (((RadioButton)sender).Name == "RdbNuiteLicencieOui")
+            {
+                PanNuiteLicencie.Visible = true;
+                if (PanNuiteLicencie.Controls.Count == 0) // on charge les nuites possibles possibles et on les affiche
+                {
+                    //DataTable LesDateNuites = UneConnexion.ObtenirDonnesOracle("VDATENUITE01");
+                    //foreach(Dat
+                    Dictionary<Int16, String> LesNuites = UneConnexion.ObtenirDatesNuites();
+                    int i = 0;
+                    foreach (KeyValuePair<Int16, String> UneNuite in LesNuites)
+                    {
+                        ComposantNuite.ResaNuite unResaNuit = new ResaNuite(UneConnexion.ObtenirDonnesOracle("VHOTEL01"), (UneConnexion.ObtenirDonnesOracle("VCATEGORIECHAMBRE01")), UneNuite.Value, UneNuite.Key);
+                        unResaNuit.Left = 5;
+                        unResaNuit.Top = 5 + (24 * i++);
+                        unResaNuit.Visible = true;
+                        //unResaNuit.click += new System.EventHandler(ComposantNuite_StateChanged);
+                        PanNuiteLicencie.Controls.Add(unResaNuit);
+                    }
 
-        //private void RdbRestaurationLicencie_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    if (((RadioButton)sender).Name == "RdbNuiteLicencieOui")
-        //    {
-        //        PanRestaurationLicencie.Visible = true;
-        //        if (PanRestaurationLicencie.Controls.Count == 0) // on charge les nuites possibles possibles et on les affiche
-        //        {
-        //            DataTable LesDateNuites = UneConnexion.ObtenirDonnesOracle("VDATENUITE01");
-        //            foreach(Dat
-        //            Dictionary<Int16, String> LesNuites = UneConnexion.ObtenirDatesNuites();
-        //            int i = 0;
-        //            foreach (KeyValuePair<Int16, String> UneNuite in LesNuites)
-        //            {
-        //                ComposantNuite.ResaNuite unResaNuit = new ResaNuite(UneConnexion.ObtenirDonnesOracle("VHOTEL01"), (UneConnexion.ObtenirDonnesOracle("VCATEGORIECHAMBRE01")), UneNuite.Value, UneNuite.Key);
-        //                unResaNuit.Left = 5;
-        //                unResaNuit.Top = 5 + (24 * i++);
-        //                unResaNuit.Visible = true;
-        //                unResaNuit.click += new System.EventHandler(ComposantNuite_StateChanged);
-        //                PanNuiteIntervenant.Controls.Add(unResaNuit);
-        //            }
+                }
 
-        //        }
+            }
+            else
+            {
+                PanNuiteLicencie.Visible = false;
 
-        //    }
-        //}
+            }
+            BtnEnregistrerLicencie.Enabled = VerifBtnEnregistreIntervenant();
+        }
         //private void Vider_Champs()
         //{
         //    if (TabPrincipal.SelectedIndex == 0)
@@ -210,6 +221,7 @@ namespace MaisonDesLigues
             GrpBenevole.Visible = false;
             GrpIntervenant.Visible = true;
             PanFonctionIntervenant.Visible = true;
+            GrpLicencie.Visible = false;
             GrpIntervenant.Left = 23;
             GrpIntervenant.Top = 264;
             Utilitaire.CreerDesControles(this, UneConnexion, "VSTATUT01", "Rad_", PanFonctionIntervenant, "RadioButton", this.rdbStatutIntervenant_StateChanged);
@@ -229,7 +241,7 @@ namespace MaisonDesLigues
             GrpBenevole.Left = 23;
             GrpBenevole.Top = 264;
             GrpIntervenant.Visible = false;
-
+            GrpLicencie.Visible = false;
             Utilitaire.CreerDesControles(this, UneConnexion, "VDATEBENEVOLAT01", "ChkDateB_", PanelDispoBenevole, "CheckBox", this.rdbStatutIntervenant_StateChanged);
             // on va tester si le controle à placer est de type CheckBox afin de lui placer un événement checked_changed
             // Ceci afin de désactiver les boutons si aucune case à cocher du container n'est cochée
@@ -636,6 +648,21 @@ namespace MaisonDesLigues
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void RdbNuiteLicencieNon_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RdbNuiteLicencieOui_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnEnregistrerLicencie_Click(object sender, EventArgs e)
+        {
+
         }
 
 
