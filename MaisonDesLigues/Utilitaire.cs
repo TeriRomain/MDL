@@ -132,5 +132,11 @@ namespace MaisonDesLigues
             }
             return i;
         }
+
+        internal static void envoyerMailConfirmation()
+        {
+
+        }
+
     }
 }
