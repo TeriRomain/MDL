@@ -6,6 +6,9 @@ using System.Configuration;
 using System.Collections.ObjectModel;
 using ComposantNuite;
 using BaseDeDonnees;
+using System.Globalization;
+
+
 namespace MaisonDesLigues
 {
     public partial class FrmPrincipale : Form
@@ -625,7 +628,16 @@ namespace MaisonDesLigues
         {
             try
             {
-                //this.UneConnexion.AjoutVacation(this.CmbBoxVacationAtelier.SelectedValue, Convert.ToDateTime(this.dtPickHeureDebutVacation.Value), Convert.ToDateTime(this.dtPickHeureFinVacation.Value));
+                CultureInfo provider = new CultureInfo("fr-FR");
+                string dateStringDebut = this.DateTimeDbtVacation.Text + " " + this.dtPickHeureDebutVacation;
+                string dateStringFin = this.DateTimeDbtVacation.Text + " " + this.dtPickHeureFinVacation;
+                
+
+                string format = "g";
+                DateTime resultDebut = DateTime.ParseExact(dateStringDebut, format, provider);
+                DateTime resultFin = DateTime.ParseExact(dateStringFin, format, provider);
+                //UneConnexion.AjouterVacation(Convert.ToInt16(CmbAtelier.SelectedValue.ToString()), Convert.ToInt16(TxtNumVacation.Text), resultDebut, resultFin);
+                this.UneConnexion.AjoutVacation(Convert.ToInt16(this.CmbBoxVacationAtelier.SelectedValue), resultDebut, resultFin);
 
                 MessageBox.Show("theme ajouté a l'atelier " + this.cmbBoxThemeAtelier.Text);
 
