@@ -120,6 +120,10 @@
             this.txtBoxAddThemeLibelle = new System.Windows.Forms.TextBox();
             this.LblThemeAtelier = new System.Windows.Forms.Label();
             this.cmbBoxThemeAtelier = new System.Windows.Forms.ComboBox();
+            this.LblMontant = new System.Windows.Forms.Label();
+            this.LblNumeroCheque = new System.Windows.Forms.Label();
+            this.TxtMontant = new System.Windows.Forms.TextBox();
+            this.TxtNumeroCheque = new System.Windows.Forms.TextBox();
             this.TabInscription.SuspendLayout();
             this.GrpLicencie.SuspendLayout();
             this.GrpResataurationLicencie.SuspendLayout();
@@ -161,6 +165,10 @@
             // 
             // GrpLicencie
             // 
+            this.GrpLicencie.Controls.Add(this.TxtNumeroCheque);
+            this.GrpLicencie.Controls.Add(this.TxtMontant);
+            this.GrpLicencie.Controls.Add(this.LblNumeroCheque);
+            this.GrpLicencie.Controls.Add(this.LblMontant);
             this.GrpLicencie.Controls.Add(this.BtnEnregistrerLicencie);
             this.GrpLicencie.Controls.Add(this.GrpResataurationLicencie);
             this.GrpLicencie.Controls.Add(this.GrpNuiteLicencie);
@@ -181,7 +189,7 @@
             // BtnEnregistrerLicencie
             // 
             this.BtnEnregistrerLicencie.Enabled = false;
-            this.BtnEnregistrerLicencie.Location = new System.Drawing.Point(378, 301);
+            this.BtnEnregistrerLicencie.Location = new System.Drawing.Point(492, 304);
             this.BtnEnregistrerLicencie.Name = "BtnEnregistrerLicencie";
             this.BtnEnregistrerLicencie.Size = new System.Drawing.Size(136, 24);
             this.BtnEnregistrerLicencie.TabIndex = 14;
@@ -1084,6 +1092,38 @@
             this.cmbBoxThemeAtelier.Size = new System.Drawing.Size(121, 21);
             this.cmbBoxThemeAtelier.TabIndex = 0;
             // 
+            // LblMontant
+            // 
+            this.LblMontant.AutoSize = true;
+            this.LblMontant.Location = new System.Drawing.Point(21, 311);
+            this.LblMontant.Name = "LblMontant";
+            this.LblMontant.Size = new System.Drawing.Size(103, 13);
+            this.LblMontant.TabIndex = 15;
+            this.LblMontant.Text = "Montant du chèque:";
+            // 
+            // LblNumeroCheque
+            // 
+            this.LblNumeroCheque.AutoSize = true;
+            this.LblNumeroCheque.Location = new System.Drawing.Point(258, 311);
+            this.LblNumeroCheque.Name = "LblNumeroCheque";
+            this.LblNumeroCheque.Size = new System.Drawing.Size(101, 13);
+            this.LblNumeroCheque.TabIndex = 16;
+            this.LblNumeroCheque.Text = "Numéro du chèque:";
+            // 
+            // TxtMontant
+            // 
+            this.TxtMontant.Location = new System.Drawing.Point(126, 308);
+            this.TxtMontant.Name = "TxtMontant";
+            this.TxtMontant.Size = new System.Drawing.Size(100, 20);
+            this.TxtMontant.TabIndex = 17;
+            // 
+            // TxtNumeroCheque
+            // 
+            this.TxtNumeroCheque.Location = new System.Drawing.Point(365, 308);
+            this.TxtNumeroCheque.Name = "TxtNumeroCheque";
+            this.TxtNumeroCheque.Size = new System.Drawing.Size(100, 20);
+            this.TxtNumeroCheque.TabIndex = 18;
+            // 
             // FrmPrincipale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1221,6 +1261,10 @@
         private System.Windows.Forms.Label lblNumLicenceLicencié;
         private System.Windows.Forms.GroupBox GrpResataurationLicencie;
         private System.Windows.Forms.Button BtnEnregistrerLicencie;
+        private System.Windows.Forms.TextBox TxtNumeroCheque;
+        private System.Windows.Forms.TextBox TxtMontant;
+        private System.Windows.Forms.Label LblNumeroCheque;
+        private System.Windows.Forms.Label LblMontant;
 
 
     }

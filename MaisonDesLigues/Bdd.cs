@@ -148,6 +148,15 @@ namespace BaseDeDonnees
             Cmd.Parameters.Add("pTel", OracleDbType.Varchar2, ParameterDirection.Input).Value = pTel;
             Cmd.Parameters.Add("pMail", OracleDbType.Varchar2, ParameterDirection.Input).Value = pMail;
         }
+
+        private void ParamsSpecifiquesLicencie(OracleCommand Cmd, Int16 pIdAtelier, Int32 pQualite,Int64 pNumeroLicence,Int64 pNumCheque,Int64 pMontant)
+        {
+            Cmd.Parameters.Add("pIdAtelier", OracleDbType.Int16, ParameterDirection.Input).Value = pIdAtelier;
+            Cmd.Parameters.Add("pQualite", OracleDbType.Int32, ParameterDirection.Input).Value = pQualite;
+            Cmd.Parameters.Add("pNumeroLicence", OracleDbType.Int64, ParameterDirection.Input).Value = pNumeroLicence;
+            Cmd.Parameters.Add("pNumCheque", OracleDbType.Int64, ParameterDirection.Input).Value = pNumCheque;
+            Cmd.Parameters.Add("pMontantCheque", OracleDbType.Int64, ParameterDirection.Input).Value = pMontant;
+        }
         /// <summary>
         /// procédure qui va se charger d'invoquer la procédure stockée qui ira inscrire un participant de type bénévole
         /// </summary>
