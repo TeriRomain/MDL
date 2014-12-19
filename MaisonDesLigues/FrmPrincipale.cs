@@ -657,7 +657,6 @@ namespace MaisonDesLigues
                 string format = "g";
                 DateTime resultDebut = DateTime.ParseExact(dateStringDebut, format, provider);
                 DateTime resultFin = DateTime.ParseExact(dateStringFin, format, provider);
-                //UneConnexion.AjouterVacation(Convert.ToInt16(CmbAtelier.SelectedValue.ToString()), Convert.ToInt16(TxtNumVacation.Text), resultDebut, resultFin);
                 this.UneConnexion.AjoutVacation(Convert.ToInt16(this.CmbBoxVacationAtelier.SelectedValue), resultDebut, resultFin);
 
                 MessageBox.Show("theme ajouté a l'atelier " + this.cmbBoxThemeAtelier.Text);
@@ -738,7 +737,6 @@ namespace MaisonDesLigues
                 MessageBox.Show(Ex.Message);
             }
         }
-
 
         ///// <summary>
         ///// 
