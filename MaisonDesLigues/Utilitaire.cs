@@ -7,6 +7,8 @@ using Oracle.DataAccess.Client;
 using System.Data;
 using BaseDeDonnees;
 using System.Reflection;
+using System.Net.Mail;
+using System.Net;
 
 
 namespace MaisonDesLigues
@@ -133,9 +135,23 @@ namespace MaisonDesLigues
             return i;
         }
 
-        internal static void envoyerMailConfirmation()
+        internal static void envoyerMailConfirmation(String pEmail)
         {
+            using (SmtpClient smtpClient = new SmtpClient("localhost"))
+            {
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.Credentials = new NetworkCredential("mdlgroupe3@gmail.com", "MDLgr0up33");
 
+                MailMessage message = new MailMessage();
+
+                message.From = new MailAddress("mdlgroupe3@gmail.com", "MDL Groupe 3");
+                message.To.Add(pEmail);
+                message.Subject = "Confirmation de votre inscription";
+                message.Body = "Votre inscription a bien été prise en compte ! À bientôt";
+                message.IsBodyHtml = false;
+
+                smtpClient.Send(message);
+            }
         }
 
     }
