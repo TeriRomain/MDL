@@ -9,6 +9,7 @@ using BaseDeDonnees;
 using System.Reflection;
 using System.Net.Mail;
 using System.Net;
+using System.Text.RegularExpressions;
 
 
 namespace MaisonDesLigues
@@ -135,24 +136,50 @@ namespace MaisonDesLigues
             return i;
         }
 
-        internal static void envoyerMailConfirmation(String pEmail)
+        /// <summary>
+        /// Fonction qui contrôle un email passé en paramètre et le retourne si il est correct ou si il est vide sinon retour -1
+        /// </summary>
+        /// <param name="pEmail"></param>
+        /// <returns></returns>
+        internal static String controlerEmail(String pEmail)
         {
-            using (SmtpClient smtpClient = new SmtpClient("localhost"))
-            {
-                smtpClient.UseDefaultCredentials = false;
-                smtpClient.Credentials = new NetworkCredential("mdlgroupe3@gmail.com", "MDLgr0up33");
-
-                MailMessage message = new MailMessage();
-
-                message.From = new MailAddress("mdlgroupe3@gmail.com", "MDL Groupe 3");
-                message.To.Add(pEmail);
-                message.Subject = "Confirmation de votre inscription";
-                message.Body = "Votre inscription a bien été prise en compte ! À bientôt";
-                message.IsBodyHtml = false;
-
-                smtpClient.Send(message);
-            }
+            Boolean isEmail = Regex.IsMatch(pEmail, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
+            if (isEmail || pEmail == "") return pEmail;
+            else return "-1";
         }
 
+        /// <summary>
+        /// Fonction envoyant un mail de confirmation suite à l'inscription d'une personne SI elle a spécifié son email
+        /// </summary>
+        /// <param name="pEmail"></param>
+        internal static void envoyerMailConfirmation(String pEmail)
+        {
+            try
+            {
+                if (pEmail != "")
+                {
+                    using (SmtpClient smtpClient = new SmtpClient("localhost"))
+                    {
+                        smtpClient.UseDefaultCredentials = false;
+                        smtpClient.Credentials = new NetworkCredential("mdlgroupe3@gmail.com", "MDLgr0up33");
+                        smtpClient.Port = 587;
+
+                        MailMessage message = new MailMessage();
+
+                        message.From = new MailAddress("mdlgroupe3@gmail.com", "MDL Groupe 3");
+                        message.To.Add(new MailAddress(pEmail, "DisplayName"));
+                        message.Subject = "Confirmation de votre inscription";
+                        message.Body = "Votre inscription a bien été prise en compte ! À bientôt";
+                        message.IsBodyHtml = false;
+
+                        smtpClient.Send(message);
+                    }
+                }
+            }
+            catch (SmtpException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
