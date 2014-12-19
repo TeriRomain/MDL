@@ -373,46 +373,57 @@ namespace MaisonDesLigues
         {
             try
             {
-                if (RdbNuiteIntervenantOui.Checked)
+                if (Utilitaire.controlerEmail(TxtMail.Text) == "-1") MessageBox.Show("Email incorrect, veuillez rentrer une adresse valide ou laissez le champ vide");
+                else
                 {
-                    // inscription avec les nuitées
-                    Collection<Int16> NuitsSelectionnes = new Collection<Int16>();
-                    Collection<String> HotelsSelectionnes = new Collection<String>();
-                    Collection<String> CategoriesSelectionnees = new Collection<string>();
-                    foreach (Control UnControle in PanNuiteIntervenant.Controls)
-                    {
-                        if (UnControle.GetType().Name == "ResaNuite" && ((ResaNuite)UnControle).GetNuitSelectionnee())
-                        {
-                            // la nuité a été cochée, il faut donc envoyer l'hotel et la type de chambre à la procédure de la base qui va enregistrer le contenu hébergement 
-                            //ContenuUnHebergement UnContenuUnHebergement= new ContenuUnHebergement();
-                            CategoriesSelectionnees.Add(((ResaNuite)UnControle).GetTypeChambreSelectionnee());
-                            HotelsSelectionnes.Add(((ResaNuite)UnControle).GetHotelSelectionne());
-                            NuitsSelectionnes.Add(((ResaNuite)UnControle).IdNuite);
-                         }
 
-                    }
-                    if (NuitsSelectionnes.Count == 0)
+                    if (RdbNuiteIntervenantOui.Checked)
                     {
-                        MessageBox.Show("Si vous avez sélectionné que l'intervenant avait des nuités\n in faut qu'au moins une nuit soit sélectionnée");
+                        // inscription avec les nuitées
+                        Collection<Int16> NuitsSelectionnes = new Collection<Int16>();
+                        Collection<String> HotelsSelectionnes = new Collection<String>();
+                        Collection<String> CategoriesSelectionnees = new Collection<string>();
+
+                        foreach (Control UnControle in PanNuiteIntervenant.Controls)
+                        {
+                            if (UnControle.GetType().Name == "ResaNuite" && ((ResaNuite)UnControle).GetNuitSelectionnee())
+                            {
+                                // la nuité a été cochée, il faut donc envoyer l'hotel et la type de chambre à la procédure de la base qui va enregistrer le contenu hébergement 
+                                //ContenuUnHebergement UnContenuUnHebergement= new ContenuUnHebergement();
+                                CategoriesSelectionnees.Add(((ResaNuite)UnControle).GetTypeChambreSelectionnee());
+                                HotelsSelectionnes.Add(((ResaNuite)UnControle).GetHotelSelectionne());
+                                NuitsSelectionnes.Add(((ResaNuite)UnControle).IdNuite);
+                            }
+
+                        }
+                        if (NuitsSelectionnes.Count == 0)
+                        {
+                            MessageBox.Show("Si vous avez sélectionné que l'intervenant avait des nuités\n in faut qu'au moins une nuit soit sélectionnée");
+                        }
+                        else
+                        {
+
+                            UneConnexion.InscrireIntervenant(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToInt16(CmbAtelierIntervenant.SelectedValue), this.IdStatutSelectionne, CategoriesSelectionnees, HotelsSelectionnes, NuitsSelectionnes);
+                            //UneConnexion.InscrireIntervenant(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, Utilitaire.controlerEmail(TxtMail.Text), System.Convert.ToInt16(CmbAtelierIntervenant.SelectedValue), this.IdStatutSelectionne, CategoriesSelectionnees, HotelsSelectionnes, NuitsSelectionnes);
+                            MessageBox.Show("Inscription intervenant effectuée");
+                        }
                     }
                     else
-                    {
-                        UneConnexion.InscrireIntervenant(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToInt16(CmbAtelierIntervenant.SelectedValue), this.IdStatutSelectionne, CategoriesSelectionnees, HotelsSelectionnes, NuitsSelectionnes);
+                    { // inscription sans les nuitées
+                        UneConnexion.InscrireIntervenant(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToInt16(CmbAtelierIntervenant.SelectedValue), this.IdStatutSelectionne);
                         MessageBox.Show("Inscription intervenant effectuée");
-                    }
-                }
-                else
-                { // inscription sans les nuitées
-                    UneConnexion.InscrireIntervenant(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToInt16(CmbAtelierIntervenant.SelectedValue), this.IdStatutSelectionne);
-                    MessageBox.Show("Inscription intervenant effectuée");
-                    
-                }
-                Vider_Panel(PanNuiteIntervenant);
-                Vider_Champs(GrpNuiteIntervenant);
-                Vider_Champs(GrpIntervenant);
-                Vider_Panel(PanFonctionIntervenant);
 
+                    }
+                    MessageBox.Show("Vous allez maintenant recevoir un mail à votre adresse " + TxtMail.Text + " !");
+                    Utilitaire.envoyerMailConfirmation(TxtMail.Text);
+                    Vider_Panel(PanNuiteIntervenant);
+                    Vider_Champs(GrpNuiteIntervenant);
+                    Vider_Champs(GrpIntervenant);
+                    Vider_Panel(PanFonctionIntervenant);
+                }
                 
+
+
             }
             catch (Exception Ex)
             {
