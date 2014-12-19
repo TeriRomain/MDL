@@ -9,17 +9,12 @@ namespace MaisonDesLigues
 {
     public partial class ComposantVacation : Component
     {
-        private Int32 _Top;
-
-
-        private Int32 _Left;
-
+        private Int32 _PositionGauche;
+        private Int32 _PositionHaut;
 
         public ComposantVacation()
         {
             InitializeComponent();
-            this._Top = this.groupBox1.Top;
-            this._Left = this.groupBox1.Left;
         }
 
         public ComposantVacation(IContainer container)
@@ -29,30 +24,24 @@ namespace MaisonDesLigues
             InitializeComponent();
         }
 
-        public Int32 Top
+        public Int32 PositionHaut
         {
-            get { return _Top; }
-            set 
-            { 
-                _Top = value;
-                this.groupBox1.Top = _Top;
-            }
-        }
-
-
-        public Int32 Left
-        {
-            get { return _Left; }
+            get { return _PositionHaut; }
             set 
             {
-                _Left = value;
-                this.groupBox1.Left = _Left;
+                _PositionHaut = value;
+                this.grpBoxVacationComposant.Top = this._PositionHaut;
             }
         }
-
-        private void groupBox1_Enter_1(object sender, EventArgs e)
+        
+        public Int32 PositionGauche
         {
-
+            get { return _PositionGauche; }
+            set 
+            {
+                _PositionGauche = value;
+                this.grpBoxVacationComposant.Left = this._PositionGauche;
+            }
         }
     }
 }

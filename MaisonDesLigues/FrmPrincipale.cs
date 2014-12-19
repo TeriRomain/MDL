@@ -35,6 +35,11 @@ namespace MaisonDesLigues
             UneConnexion = ((FrmLogin)Owner).UneConnexion;
             TitreApplication = ((FrmLogin)Owner).TitreApplication;
             this.Text = TitreApplication;
+
+            ComposantVacation test = new ComposantVacation(this.tabAjout.Container);
+            test.PositionGauche = 600;
+            test.PositionHaut = 50;
+
         }
         /// <summary>
         /// gestion de l'événement click du bouton quitter.

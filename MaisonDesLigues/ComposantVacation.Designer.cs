@@ -28,23 +28,50 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grpBoxVacationComposant = new System.Windows.Forms.GroupBox();
+            this.DtTimePickJour = new System.Windows.Forms.DateTimePicker();
+            this.DtTimePickHeureDbt = new System.Windows.Forms.DateTimePicker();
+            this.DtTimePickHeureFin = new System.Windows.Forms.DateTimePicker();
             // 
-            // groupBox1
+            // grpBoxVacationComposant
             // 
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 100);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter_1);
+            this.grpBoxVacationComposant.Location = new System.Drawing.Point(0, 0);
+            this.grpBoxVacationComposant.Name = "grpBoxVacationComposant";
+            this.grpBoxVacationComposant.Size = new System.Drawing.Size(200, 100);
+            this.grpBoxVacationComposant.TabIndex = 0;
+            this.grpBoxVacationComposant.TabStop = false;
+            this.grpBoxVacationComposant.Text = "groupBox1";
+            // 
+            // DtTimePickJour
+            // 
+            this.DtTimePickJour.Location = new System.Drawing.Point(0, 0);
+            this.DtTimePickJour.Name = "DtTimePickJour";
+            this.DtTimePickJour.Size = new System.Drawing.Size(200, 20);
+            this.DtTimePickJour.TabIndex = 0;
+            // 
+            // DtTimePickHeureDbt
+            // 
+            this.DtTimePickHeureDbt.Location = new System.Drawing.Point(0, 0);
+            this.DtTimePickHeureDbt.Name = "DtTimePickHeureDbt";
+            this.DtTimePickHeureDbt.Size = new System.Drawing.Size(200, 20);
+            this.DtTimePickHeureDbt.TabIndex = 0;
+            // 
+            // DtTimePickHeureFin
+            // 
+            this.DtTimePickHeureFin.Location = new System.Drawing.Point(0, 0);
+            this.DtTimePickHeureFin.Name = "DtTimePickHeureFin";
+            this.DtTimePickHeureFin.Size = new System.Drawing.Size(200, 20);
+            this.DtTimePickHeureFin.TabIndex = 0;
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grpBoxVacationComposant;
+        private System.Windows.Forms.DateTimePicker DtTimePickJour;
+        private System.Windows.Forms.DateTimePicker DtTimePickHeureDbt;
+        private System.Windows.Forms.DateTimePicker DtTimePickHeureFin;
+
 
 
     }
