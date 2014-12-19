@@ -161,7 +161,7 @@ namespace BaseDeDonnees
         /// procédure qui va se charger d'invoquer la procédure stockée qui ira inscrire un participant de type bénévole
         /// </summary>
         /// <param name="Cmd">nom de l'objet command concerné par les paramètres</param>
-        /// <param name="pNom">nom du participant</param>
+        /// <param name="pNom">nom du participant</param> 
         /// <param name="pPrenom">prénom du participant</param>
         /// <param name="pAdresse1">adresse1 du participant</param>
         /// <param name="pAdresse2">adresse2 du participant</param>
@@ -218,7 +218,7 @@ namespace BaseDeDonnees
         /// <param name="pIdAtelier"></param>
         /// <param name="pNumeroLicence"></param>
         /// <param name="pQualite"></param>
-        public void InscrireLicencie(String pNom, String pPrenom, String pAdresse1, String pAdresse2, String pCp, String pVille, String pTel, String pMail, Int64 pNumeroLicence,Int32 pQualite,Int16 pIdAtelier)
+        public void InscrireLicencie(String pNom, String pPrenom, String pAdresse1, String pAdresse2, String pCp, String pVille, String pTel, String pMail, Int64 pNumeroLicence,Int32 pQualite,Int16 pIdAtelier,Int64 pNumCheque,Int64 pMontant)
         {
             String MessageErreur = "";
             try{
@@ -229,10 +229,9 @@ namespace BaseDeDonnees
             UneOracleTransaction = this.CnOracle.BeginTransaction();
             // on appelle la procédure ParamCommunsNouveauxParticipants pour charger les paramètres communs aux intervenants
             this.ParamCommunsNouveauxParticipants(UneOracleCommand, pNom, pPrenom, pAdresse1, pAdresse2, pCp, pVille, pTel, pMail);
-            // on appelle la procédure ParamsCommunsIntervenant pour charger les paramètres communs aux intervenants
-            UneOracleCommand.Parameters.Add("pIdAtelier", OracleDbType.Int16, ParameterDirection.Input).Value = pIdAtelier;
-            UneOracleCommand.Parameters.Add("pNumeroLicence", OracleDbType.Int64, ParameterDirection.Input).Value = pNumeroLicence;
-            UneOracleCommand.Parameters.Add("pQualite", OracleDbType.Int32, ParameterDirection.Input).Value = pQualite;
+            // on appelle la procédure ParamsSpecifiquesLicencie pour charger les paramètres communs aux intervenants
+            this.ParamsSpecifiquesLicencie(UneOracleCommand,pIdAtelier,pQualite,pNumeroLicence,pNumCheque,pMontant);
+            
             UneOracleCommand.ExecuteNonQuery();
                 // fin de la transaction. Si on arrive à ce point, c'est qu'aucune exception n'a été levée
                 UneOracleTransaction.Commit();
@@ -264,7 +263,7 @@ namespace BaseDeDonnees
         /// <param name="pLesCategories"></param>
         /// <param name="pLesHotels"></param>
         /// <param name="pLesNuits"></param>
-        public void InscrireLicencie(String pNom, String pPrenom, String pAdresse1, String pAdresse2, String pCp, String pVille, String pTel, String pMail, Int64 pNumeroLicence, Int32 pQualite, Int16 pIdAtelier, Collection<string> pLesCategories, Collection<string> pLesHotels, Collection<Int16> pLesNuits)
+        public void InscrireLicencie(String pNom, String pPrenom, String pAdresse1, String pAdresse2, String pCp, String pVille, String pTel, String pMail, Int64 pNumeroLicence, Int32 pQualite, Int16 pIdAtelier, Collection<string> pLesCategories, Collection<string> pLesHotels, Collection<Int16> pLesNuits, Int64 pNumCheque, Int64 pMontant)
         {
             String MessageErreur = "";
             try
@@ -275,9 +274,7 @@ namespace BaseDeDonnees
                 // début de la transaction Oracle : il vaut mieyx gérer les transactions dans l'applicatif que dans la bd.
                 UneOracleTransaction = this.CnOracle.BeginTransaction();
                 this.ParamCommunsNouveauxParticipants(UneOracleCommand, pNom, pPrenom, pAdresse1, pAdresse2, pCp, pVille, pTel, pMail);
-                UneOracleCommand.Parameters.Add("pIdAtelier", OracleDbType.Int16, ParameterDirection.Input).Value = pIdAtelier;
-                UneOracleCommand.Parameters.Add("pNumeroLicence", OracleDbType.Int64, ParameterDirection.Input).Value = pNumeroLicence;
-                UneOracleCommand.Parameters.Add("pQualite", OracleDbType.Int32, ParameterDirection.Input).Value = pQualite;
+                this.ParamsSpecifiquesLicencie(UneOracleCommand, pIdAtelier, pQualite, pNumeroLicence, pNumCheque, pMontant);
                 //On va créer ici les paramètres spécifiques à l'inscription d'un intervenant qui réserve des nuits d'hôtel.
                 // Paramètre qui stocke les catégories sélectionnées
                 OracleParameter pOraLescategories = new OracleParameter();
@@ -351,7 +348,7 @@ namespace BaseDeDonnees
         /// <param name="pLesHotels"></param>
         /// <param name="pLesNuits"></param>
         /// <param name="pRestauration"></param>
-        public void InscrireLicencie(String pNom, String pPrenom, String pAdresse1, String pAdresse2, String pCp, String pVille, String pTel, String pMail, Int64 pNumeroLicence, Int32 pQualite, Int16 pIdAtelier, Collection<string> pLesCategories, Collection<string> pLesHotels, Collection<Int16> pLesNuits, Collection<String> pRestauration)
+        public void InscrireLicencie(String pNom, String pPrenom, String pAdresse1, String pAdresse2, String pCp, String pVille, String pTel, String pMail, Int64 pNumeroLicence, Int32 pQualite, Int16 pIdAtelier, Collection<string> pLesCategories, Collection<string> pLesHotels, Collection<Int16> pLesNuits, Collection<String> pRestauration,Int64 pNumCheque,Int64 pMontant)
         {
             String MessageErreur = "";
             try
@@ -362,9 +359,7 @@ namespace BaseDeDonnees
                 // début de la transaction Oracle : il vaut mieyx gérer les transactions dans l'applicatif que dans la bd.
                 UneOracleTransaction = this.CnOracle.BeginTransaction();
                 this.ParamCommunsNouveauxParticipants(UneOracleCommand, pNom, pPrenom, pAdresse1, pAdresse2, pCp, pVille, pTel, pMail);
-                UneOracleCommand.Parameters.Add("pidatelier", OracleDbType.Int16, ParameterDirection.Input).Value = pIdAtelier;
-                UneOracleCommand.Parameters.Add("pLicence", OracleDbType.Int64, ParameterDirection.Input).Value = pNumeroLicence;
-                UneOracleCommand.Parameters.Add("pQualite", OracleDbType.Int32, ParameterDirection.Input).Value = pQualite;
+                this.ParamsSpecifiquesLicencie(UneOracleCommand, pIdAtelier, pQualite, pNumeroLicence, pNumCheque, pMontant);
                 UneOracleCommand.Parameters.Add("pRestauration", OracleDbType.Varchar2, ParameterDirection.Input).Value = pRestauration;
                 //On va créer ici les paramètres spécifiques à l'inscription d'un intervenant qui réserve des nuits d'hôtel.
                 // Paramètre qui stocke les catégories sélectionnées
