@@ -687,7 +687,11 @@ namespace MaisonDesLigues
         {
 
         }
-
+        /// <summary>
+        /// Bouton d'enregistrement des licenciés 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnEnregistrerLicencie_Click(object sender, EventArgs e)
         {
             try
@@ -701,6 +705,7 @@ namespace MaisonDesLigues
                     Collection<String> RestaurationSelectionnes = new Collection<String>();
                     foreach (Control UnControle in PanRestoLicencie.Controls)
                     {
+                        //Recuperation des controles dans le panel restauration dans une collection
                         RestaurationSelectionnes.Add(System.Convert.ToString((CheckBox)UnControle));
                     }
                     foreach (Control UnControle in PanNuiteLicencie.Controls)
@@ -721,17 +726,19 @@ namespace MaisonDesLigues
                     }
                     else if (RestaurationSelectionnes.Count > 0)
                     {
-                        UneConnexion.InscrireLicencie(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToInt64(TxtLicenceLicencie.Text), System.Convert.ToInt32(TxtQualitéLicencie.Text), System.Convert.ToInt16(CmbAtelierLicencie.SelectedValue), CategoriesSelectionnees, HotelsSelectionnes, NuitsSelectionnes, RestaurationSelectionnes);
+                        //insertion du licencié avec restauration et nuité
+                        UneConnexion.InscrireLicencie(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToInt64(TxtLicenceLicencie.Text), System.Convert.ToInt32(TxtQualitéLicencie.Text), System.Convert.ToInt16(CmbAtelierLicencie.SelectedValue), CategoriesSelectionnees, HotelsSelectionnes, NuitsSelectionnes, RestaurationSelectionnes,System.Convert.ToInt64(TxtNumeroCheque.Text),System.Convert.ToInt64(TxtMontant.Text));
                     }
                     else
                     {
-                        UneConnexion.InscrireLicencie(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToInt64(TxtLicenceLicencie.Text), System.Convert.ToInt32(TxtQualitéLicencie.Text), System.Convert.ToInt16(CmbAtelierLicencie.SelectedValue), CategoriesSelectionnees, HotelsSelectionnes, NuitsSelectionnes);
+                        //insertion du licencié avec les nuités mais sans la restauration
+                        UneConnexion.InscrireLicencie(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToInt64(TxtLicenceLicencie.Text), System.Convert.ToInt32(TxtQualitéLicencie.Text), System.Convert.ToInt16(CmbAtelierLicencie.SelectedValue), CategoriesSelectionnees, HotelsSelectionnes, NuitsSelectionnes,System.Convert.ToInt64(TxtNumeroCheque.Text), System.Convert.ToInt64(TxtMontant.Text));
                         MessageBox.Show("Inscription Licencié effectuée");
                     }
                 }
                 else
-                { // inscription sans les nuitées
-                    UneConnexion.InscrireLicencie(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null,  System.Convert.ToInt64(TxtLicenceLicencie.Text), System.Convert.ToInt32(TxtQualitéLicencie.Text),System.Convert.ToInt16(CmbAtelierLicencie.SelectedValue));
+                { // inscription sans les nuitées et sans restauration
+                    UneConnexion.InscrireLicencie(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToInt64(TxtLicenceLicencie.Text), System.Convert.ToInt32(TxtQualitéLicencie.Text), System.Convert.ToInt16(CmbAtelierLicencie.SelectedValue), System.Convert.ToInt64(TxtNumeroCheque.Text), System.Convert.ToInt64(TxtMontant.Text));
                     MessageBox.Show("Inscription Licencié effectuée");
 
                 }
