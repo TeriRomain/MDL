@@ -91,7 +91,6 @@
             this.GrpBoxVacation = new System.Windows.Forms.GroupBox();
             this.dtPickHeureFinVacation = new System.Windows.Forms.DateTimePicker();
             this.dtPickHeureDebutVacation = new System.Windows.Forms.DateTimePicker();
-            this.btnAjouterVacationAtelier = new System.Windows.Forms.Button();
             this.BtnEnregistreVacation = new System.Windows.Forms.Button();
             this.lblDateDbtVacation = new System.Windows.Forms.Label();
             this.lblAtelierVacation = new System.Windows.Forms.Label();
@@ -759,7 +758,6 @@
             // 
             this.GrpBoxVacation.Controls.Add(this.dtPickHeureFinVacation);
             this.GrpBoxVacation.Controls.Add(this.dtPickHeureDebutVacation);
-            this.GrpBoxVacation.Controls.Add(this.btnAjouterVacationAtelier);
             this.GrpBoxVacation.Controls.Add(this.BtnEnregistreVacation);
             this.GrpBoxVacation.Controls.Add(this.lblDateDbtVacation);
             this.GrpBoxVacation.Controls.Add(this.lblAtelierVacation);
@@ -777,7 +775,7 @@
             // 
             this.dtPickHeureFinVacation.CustomFormat = "HH:mm";
             this.dtPickHeureFinVacation.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtPickHeureFinVacation.Location = new System.Drawing.Point(249, 31);
+            this.dtPickHeureFinVacation.Location = new System.Drawing.Point(235, 76);
             this.dtPickHeureFinVacation.Name = "dtPickHeureFinVacation";
             this.dtPickHeureFinVacation.ShowUpDown = true;
             this.dtPickHeureFinVacation.Size = new System.Drawing.Size(53, 20);
@@ -787,22 +785,12 @@
             // 
             this.dtPickHeureDebutVacation.CustomFormat = "HH:mm";
             this.dtPickHeureDebutVacation.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtPickHeureDebutVacation.Location = new System.Drawing.Point(186, 30);
+            this.dtPickHeureDebutVacation.Location = new System.Drawing.Point(176, 76);
             this.dtPickHeureDebutVacation.Name = "dtPickHeureDebutVacation";
             this.dtPickHeureDebutVacation.ShowUpDown = true;
             this.dtPickHeureDebutVacation.Size = new System.Drawing.Size(54, 20);
             this.dtPickHeureDebutVacation.TabIndex = 9;
             this.dtPickHeureDebutVacation.ValueChanged += new System.EventHandler(this.dtPickHeureDebutVacation_ValueChanged);
-            // 
-            // btnAjouterVacationAtelier
-            // 
-            this.btnAjouterVacationAtelier.Location = new System.Drawing.Point(308, 22);
-            this.btnAjouterVacationAtelier.Name = "btnAjouterVacationAtelier";
-            this.btnAjouterVacationAtelier.Size = new System.Drawing.Size(75, 23);
-            this.btnAjouterVacationAtelier.TabIndex = 7;
-            this.btnAjouterVacationAtelier.Text = "Ajouter";
-            this.btnAjouterVacationAtelier.UseVisualStyleBackColor = true;
-            this.btnAjouterVacationAtelier.Visible = false;
             // 
             // BtnEnregistreVacation
             // 
@@ -817,7 +805,7 @@
             // lblDateDbtVacation
             // 
             this.lblDateDbtVacation.AutoSize = true;
-            this.lblDateDbtVacation.Location = new System.Drawing.Point(10, 32);
+            this.lblDateDbtVacation.Location = new System.Drawing.Point(4, 76);
             this.lblDateDbtVacation.Name = "lblDateDbtVacation";
             this.lblDateDbtVacation.Size = new System.Drawing.Size(69, 13);
             this.lblDateDbtVacation.TabIndex = 3;
@@ -836,7 +824,7 @@
             // 
             this.DateTimeDbtVacation.CustomFormat = "dd/MM/yyyy    HH : mm";
             this.DateTimeDbtVacation.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DateTimeDbtVacation.Location = new System.Drawing.Point(85, 30);
+            this.DateTimeDbtVacation.Location = new System.Drawing.Point(75, 76);
             this.DateTimeDbtVacation.Name = "DateTimeDbtVacation";
             this.DateTimeDbtVacation.Size = new System.Drawing.Size(95, 20);
             this.DateTimeDbtVacation.TabIndex = 1;
@@ -1194,7 +1182,6 @@
         private System.Windows.Forms.Label lblAtelierVacation;
         private System.Windows.Forms.Label lblDateDbtVacation;
         private System.Windows.Forms.Button BtnEnregistreVacation;
-        private System.Windows.Forms.Button btnAjouterVacationAtelier;
         private System.Windows.Forms.Button btnAjouterThemeAtelier;
         private System.Windows.Forms.CheckedListBox ckcLstBoxTheme;
         private System.Windows.Forms.CheckedListBox CkcLstBoxVacation;

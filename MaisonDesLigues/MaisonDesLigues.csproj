@@ -60,6 +60,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>ComposantPerso\ComposantNuite.dll</HintPath>
     </Reference>
+    <Reference Include="ControlVacation">
+      <HintPath>Ressources\ControlVacation.dll</HintPath>
+    </Reference>
     <Reference Include="Oracle.DataAccess, Version=4.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -76,12 +79,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bdd.cs" />
-    <Compile Include="ComposantVacation.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ComposantVacation.Designer.cs">
-      <DependentUpon>ComposantVacation.cs</DependentUpon>
-    </Compile>
     <Compile Include="Utilitaire.cs" />
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
@@ -97,9 +94,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ComposantVacation.resx">
-      <DependentUpon>ComposantVacation.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>

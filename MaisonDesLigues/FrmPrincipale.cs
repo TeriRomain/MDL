@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Configuration;
@@ -7,7 +6,6 @@ using System.Collections.ObjectModel;
 using ComposantNuite;
 using BaseDeDonnees;
 using System.Globalization;
-
 
 namespace MaisonDesLigues
 {
@@ -35,10 +33,6 @@ namespace MaisonDesLigues
             UneConnexion = ((FrmLogin)Owner).UneConnexion;
             TitreApplication = ((FrmLogin)Owner).TitreApplication;
             this.Text = TitreApplication;
-
-            ComposantVacation test = new ComposantVacation(this.tabAjout.Container);
-            test.PositionGauche = 600;
-            test.PositionHaut = 50;
 
         }
         /// <summary>
@@ -450,45 +444,43 @@ namespace MaisonDesLigues
             BtnEnregistrerIntervenant.Enabled = VerifBtnEnregistreIntervenant();
         }
 
-        private void gererVacation(Boolean grand)
-        {
-            if (grand)
-            {
-                this.lblAtelierVacation.Visible = false;
-                this.CmbBoxVacationAtelier.Visible = false;
-                this.lblDateDbtVacation.Left = 0;
-                this.lblDateDbtVacation.Top = 27;
-                this.DateTimeDbtVacation.Left = 75;
-                this.DateTimeDbtVacation.Top = 24;
-                this.GrpBoxVacation.Width = 441;
-                this.GrpBoxVacation.Height = 65;
-                this.btnAjouterVacationAtelier.Visible = true;
-                this.dtPickHeureDebutVacation.Top = 24;
-                this.dtPickHeureDebutVacation.Left = 180;
-                this.dtPickHeureFinVacation.Top = 24;
-                this.dtPickHeureFinVacation.Left = 240;
-            }
-            else
-            {
-                this.btnAjouterVacationAtelier.Visible = false;
-                this.lblAtelierVacation.Left = 28;
-                this.lblAtelierVacation.Top = 37;
-                this.lblAtelierVacation.Visible = true;
-                this.CmbBoxVacationAtelier.Left = 75;
-                this.CmbBoxVacationAtelier.Top = 34;
-                this.CmbBoxVacationAtelier.Visible = true;
-                this.lblDateDbtVacation.Left = 4;
-                this.lblDateDbtVacation.Top = 67;
-                this.DateTimeDbtVacation.Left = 80;
-                this.DateTimeDbtVacation.Top = 64;
-                this.dtPickHeureDebutVacation.Top = 64;
-                this.dtPickHeureDebutVacation.Left = 180;
-                this.dtPickHeureFinVacation.Top = 64;
-                this.dtPickHeureFinVacation.Left = 240;
-                this.GrpBoxVacation.Width = 453;
-                this.GrpBoxVacation.Height = 142;
-            }
-        }
+        //private void gererVacation(Boolean grand)
+        //{
+        //    if (grand)
+        //    {
+        //        this.lblAtelierVacation.Visible = false;
+        //        this.CmbBoxVacationAtelier.Visible = false;
+        //        this.lblDateDbtVacation.Left = 0;
+        //        this.lblDateDbtVacation.Top = 27;
+        //        this.DateTimeDbtVacation.Left = 75;
+        //        this.DateTimeDbtVacation.Top = 24;
+        //        this.GrpBoxVacation.Width = 441;
+        //        this.GrpBoxVacation.Height = 65;
+        //        this.dtPickHeureDebutVacation.Top = 24;
+        //        this.dtPickHeureDebutVacation.Left = 180;
+        //        this.dtPickHeureFinVacation.Top = 24;
+        //        this.dtPickHeureFinVacation.Left = 240;
+        //    }
+        //    else
+        //    {
+        //        this.lblAtelierVacation.Left = 28;
+        //        this.lblAtelierVacation.Top = 37;
+        //        this.lblAtelierVacation.Visible = true;
+        //        this.CmbBoxVacationAtelier.Left = 75;
+        //        this.CmbBoxVacationAtelier.Top = 34;
+        //        this.CmbBoxVacationAtelier.Visible = true;
+        //        this.lblDateDbtVacation.Left = 4;
+        //        this.lblDateDbtVacation.Top = 67;
+        //        this.DateTimeDbtVacation.Left = 80;
+        //        this.DateTimeDbtVacation.Top = 64;
+        //        this.dtPickHeureDebutVacation.Top = 64;
+        //        this.dtPickHeureDebutVacation.Left = 180;
+        //        this.dtPickHeureFinVacation.Top = 64;
+        //        this.dtPickHeureFinVacation.Left = 240;
+        //        this.GrpBoxVacation.Width = 453;
+        //        this.GrpBoxVacation.Height = 142;
+        //    }
+        //}
 
         /// <summary>
         /// fonction qui modifie dynamiquement la taille de grpBoxAddTheme
@@ -539,13 +531,13 @@ namespace MaisonDesLigues
             this.grpBoxAtelier.Controls["grpBoxAddTheme"].Left = 6;
             this.grpBoxAtelier.Controls["grpBoxAddTheme"].Top = 88;
             this.grpBoxAddTheme.Visible = true;
-
               
-            this.grpBoxAtelier.Controls.Add(this.GrpBoxVacation);
-            this.grpBoxAtelier.Controls["GrpBoxVacation"].Visible = true;
-            this.grpBoxAtelier.Controls["GrpBoxVacation"].Left = 6;
-            this.grpBoxAtelier.Controls["GrpBoxVacation"].Top = 158;
-            this.gererVacation(true);
+            //this.grpBoxAtelier.Controls.Add(this.GrpBoxVacation);
+            //this.grpBoxAtelier.Controls["GrpBoxVacation"].Visible = true;
+            //this.grpBoxAtelier.Controls["GrpBoxVacation"].Left = 6;
+            //this.grpBoxAtelier.Controls["GrpBoxVacation"].Top = 158;
+           // this.gererVacation(true);
+            
         }
 
         private void rdrbtnAtelier_CheckedChanged(object sender, EventArgs e)
@@ -593,7 +585,7 @@ namespace MaisonDesLigues
         {
             if (this.rdrBtnVacation.Checked)
             {
-                this.gererVacation(false);
+                //this.gererVacation(false);
                 this.GrpBoxVacation.Visible = true;
                 this.GrpBoxVacation.Top = 71;
                 this.GrpBoxVacation.Left = 23;
