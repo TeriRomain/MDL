@@ -31,6 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipale));
             this.TabInscription = new System.Windows.Forms.TabPage();
             this.GrpLicencie = new System.Windows.Forms.GroupBox();
+            this.TxtNumeroCheque = new System.Windows.Forms.TextBox();
+            this.TxtMontant = new System.Windows.Forms.TextBox();
+            this.LblNumeroCheque = new System.Windows.Forms.Label();
+            this.LblMontant = new System.Windows.Forms.Label();
             this.BtnEnregistrerLicencie = new System.Windows.Forms.Button();
             this.GrpResataurationLicencie = new System.Windows.Forms.GroupBox();
             this.PanRestoLicencie = new System.Windows.Forms.Panel();
@@ -98,11 +102,9 @@
             this.CmbBoxVacationAtelier = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.grpBoxAtelier = new System.Windows.Forms.GroupBox();
+            this.btnRemoveVacationAtelier = new System.Windows.Forms.Button();
+            this.BtnAddVacationAtelier = new System.Windows.Forms.Button();
             this.btnSuprThemeVacation = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.CkcLstBoxVacation = new System.Windows.Forms.CheckedListBox();
-            this.ckcLstBoxTheme = new System.Windows.Forms.CheckedListBox();
             this.btnSaveAtelier = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -119,10 +121,6 @@
             this.txtBoxAddThemeLibelle = new System.Windows.Forms.TextBox();
             this.LblThemeAtelier = new System.Windows.Forms.Label();
             this.cmbBoxThemeAtelier = new System.Windows.Forms.ComboBox();
-            this.LblMontant = new System.Windows.Forms.Label();
-            this.LblNumeroCheque = new System.Windows.Forms.Label();
-            this.TxtMontant = new System.Windows.Forms.TextBox();
-            this.TxtNumeroCheque = new System.Windows.Forms.TextBox();
             this.TabInscription.SuspendLayout();
             this.GrpLicencie.SuspendLayout();
             this.GrpResataurationLicencie.SuspendLayout();
@@ -184,6 +182,38 @@
             this.GrpLicencie.TabStop = false;
             this.GrpLicencie.Text = "Complément inscription licencie";
             this.GrpLicencie.Visible = false;
+            // 
+            // TxtNumeroCheque
+            // 
+            this.TxtNumeroCheque.Location = new System.Drawing.Point(365, 308);
+            this.TxtNumeroCheque.Name = "TxtNumeroCheque";
+            this.TxtNumeroCheque.Size = new System.Drawing.Size(100, 20);
+            this.TxtNumeroCheque.TabIndex = 18;
+            // 
+            // TxtMontant
+            // 
+            this.TxtMontant.Location = new System.Drawing.Point(126, 308);
+            this.TxtMontant.Name = "TxtMontant";
+            this.TxtMontant.Size = new System.Drawing.Size(100, 20);
+            this.TxtMontant.TabIndex = 17;
+            // 
+            // LblNumeroCheque
+            // 
+            this.LblNumeroCheque.AutoSize = true;
+            this.LblNumeroCheque.Location = new System.Drawing.Point(258, 311);
+            this.LblNumeroCheque.Name = "LblNumeroCheque";
+            this.LblNumeroCheque.Size = new System.Drawing.Size(101, 13);
+            this.LblNumeroCheque.TabIndex = 16;
+            this.LblNumeroCheque.Text = "Numéro du chèque:";
+            // 
+            // LblMontant
+            // 
+            this.LblMontant.AutoSize = true;
+            this.LblMontant.Location = new System.Drawing.Point(21, 311);
+            this.LblMontant.Name = "LblMontant";
+            this.LblMontant.Size = new System.Drawing.Size(103, 13);
+            this.LblMontant.TabIndex = 15;
+            this.LblMontant.Text = "Montant du chèque:";
             // 
             // BtnEnregistrerLicencie
             // 
@@ -856,11 +886,9 @@
             // 
             // grpBoxAtelier
             // 
+            this.grpBoxAtelier.Controls.Add(this.btnRemoveVacationAtelier);
+            this.grpBoxAtelier.Controls.Add(this.BtnAddVacationAtelier);
             this.grpBoxAtelier.Controls.Add(this.btnSuprThemeVacation);
-            this.grpBoxAtelier.Controls.Add(this.label13);
-            this.grpBoxAtelier.Controls.Add(this.label12);
-            this.grpBoxAtelier.Controls.Add(this.CkcLstBoxVacation);
-            this.grpBoxAtelier.Controls.Add(this.ckcLstBoxTheme);
             this.grpBoxAtelier.Controls.Add(this.btnSaveAtelier);
             this.grpBoxAtelier.Controls.Add(this.label11);
             this.grpBoxAtelier.Controls.Add(this.label10);
@@ -874,6 +902,26 @@
             this.grpBoxAtelier.Text = "Atelier";
             this.grpBoxAtelier.Visible = false;
             // 
+            // btnRemoveVacationAtelier
+            // 
+            this.btnRemoveVacationAtelier.Location = new System.Drawing.Point(369, 77);
+            this.btnRemoveVacationAtelier.Name = "btnRemoveVacationAtelier";
+            this.btnRemoveVacationAtelier.Size = new System.Drawing.Size(75, 23);
+            this.btnRemoveVacationAtelier.TabIndex = 14;
+            this.btnRemoveVacationAtelier.Text = "Supprimer";
+            this.btnRemoveVacationAtelier.UseVisualStyleBackColor = true;
+            this.btnRemoveVacationAtelier.Click += new System.EventHandler(this.btnRemoveVacationAtelier_Click);
+            // 
+            // BtnAddVacationAtelier
+            // 
+            this.BtnAddVacationAtelier.Location = new System.Drawing.Point(288, 77);
+            this.BtnAddVacationAtelier.Name = "BtnAddVacationAtelier";
+            this.BtnAddVacationAtelier.Size = new System.Drawing.Size(75, 23);
+            this.BtnAddVacationAtelier.TabIndex = 13;
+            this.BtnAddVacationAtelier.Text = "Ajouter";
+            this.BtnAddVacationAtelier.UseVisualStyleBackColor = true;
+            this.BtnAddVacationAtelier.Click += new System.EventHandler(this.BtnAddVacationAtelier_Click);
+            // 
             // btnSuprThemeVacation
             // 
             this.btnSuprThemeVacation.Location = new System.Drawing.Point(190, 460);
@@ -882,40 +930,6 @@
             this.btnSuprThemeVacation.TabIndex = 12;
             this.btnSuprThemeVacation.Text = "Supprimer";
             this.btnSuprThemeVacation.UseVisualStyleBackColor = true;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(237, 264);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(58, 13);
-            this.label13.TabIndex = 11;
-            this.label13.Text = "Vacation : ";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(21, 264);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(54, 13);
-            this.label12.TabIndex = 10;
-            this.label12.Text = "Themes : ";
-            // 
-            // CkcLstBoxVacation
-            // 
-            this.CkcLstBoxVacation.FormattingEnabled = true;
-            this.CkcLstBoxVacation.Location = new System.Drawing.Point(301, 261);
-            this.CkcLstBoxVacation.Name = "CkcLstBoxVacation";
-            this.CkcLstBoxVacation.Size = new System.Drawing.Size(120, 154);
-            this.CkcLstBoxVacation.TabIndex = 9;
-            // 
-            // ckcLstBoxTheme
-            // 
-            this.ckcLstBoxTheme.FormattingEnabled = true;
-            this.ckcLstBoxTheme.Location = new System.Drawing.Point(81, 261);
-            this.ckcLstBoxTheme.Name = "ckcLstBoxTheme";
-            this.ckcLstBoxTheme.Size = new System.Drawing.Size(120, 154);
-            this.ckcLstBoxTheme.TabIndex = 8;
             // 
             // btnSaveAtelier
             // 
@@ -929,7 +943,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(202, 37);
+            this.label11.Location = new System.Drawing.Point(183, 36);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(144, 13);
             this.label11.TabIndex = 4;
@@ -938,7 +952,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(35, 37);
+            this.label10.Location = new System.Drawing.Point(17, 37);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(46, 13);
             this.label10.TabIndex = 3;
@@ -946,7 +960,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(352, 35);
+            this.numericUpDown1.Location = new System.Drawing.Point(333, 34);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(48, 20);
             this.numericUpDown1.TabIndex = 2;
@@ -958,7 +972,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(87, 34);
+            this.textBox2.Location = new System.Drawing.Point(69, 34);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 1;
@@ -1019,7 +1033,7 @@
             this.grpBoxAddTheme.Controls.Add(this.txtBoxAddThemeLibelle);
             this.grpBoxAddTheme.Controls.Add(this.LblThemeAtelier);
             this.grpBoxAddTheme.Controls.Add(this.cmbBoxThemeAtelier);
-            this.grpBoxAddTheme.Location = new System.Drawing.Point(482, 176);
+            this.grpBoxAddTheme.Location = new System.Drawing.Point(489, 176);
             this.grpBoxAddTheme.Name = "grpBoxAddTheme";
             this.grpBoxAddTheme.Size = new System.Drawing.Size(441, 105);
             this.grpBoxAddTheme.TabIndex = 7;
@@ -1079,38 +1093,6 @@
             this.cmbBoxThemeAtelier.Name = "cmbBoxThemeAtelier";
             this.cmbBoxThemeAtelier.Size = new System.Drawing.Size(121, 21);
             this.cmbBoxThemeAtelier.TabIndex = 0;
-            // 
-            // LblMontant
-            // 
-            this.LblMontant.AutoSize = true;
-            this.LblMontant.Location = new System.Drawing.Point(21, 311);
-            this.LblMontant.Name = "LblMontant";
-            this.LblMontant.Size = new System.Drawing.Size(103, 13);
-            this.LblMontant.TabIndex = 15;
-            this.LblMontant.Text = "Montant du chèque:";
-            // 
-            // LblNumeroCheque
-            // 
-            this.LblNumeroCheque.AutoSize = true;
-            this.LblNumeroCheque.Location = new System.Drawing.Point(258, 311);
-            this.LblNumeroCheque.Name = "LblNumeroCheque";
-            this.LblNumeroCheque.Size = new System.Drawing.Size(101, 13);
-            this.LblNumeroCheque.TabIndex = 16;
-            this.LblNumeroCheque.Text = "Numéro du chèque:";
-            // 
-            // TxtMontant
-            // 
-            this.TxtMontant.Location = new System.Drawing.Point(126, 308);
-            this.TxtMontant.Name = "TxtMontant";
-            this.TxtMontant.Size = new System.Drawing.Size(100, 20);
-            this.TxtMontant.TabIndex = 17;
-            // 
-            // TxtNumeroCheque
-            // 
-            this.TxtNumeroCheque.Location = new System.Drawing.Point(365, 308);
-            this.TxtNumeroCheque.Name = "TxtNumeroCheque";
-            this.TxtNumeroCheque.Size = new System.Drawing.Size(100, 20);
-            this.TxtNumeroCheque.TabIndex = 18;
             // 
             // FrmPrincipale
             // 
@@ -1223,11 +1205,7 @@
         private System.Windows.Forms.Label lblDateDbtVacation;
         private System.Windows.Forms.Button BtnEnregistreVacation;
         private System.Windows.Forms.Button btnAjouterThemeAtelier;
-        private System.Windows.Forms.CheckedListBox ckcLstBoxTheme;
-        private System.Windows.Forms.CheckedListBox CkcLstBoxVacation;
         private System.Windows.Forms.Button btnSuprThemeVacation;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox GrpLicencie;
         private System.Windows.Forms.Panel PanRestaurationLicencie;
         private System.Windows.Forms.GroupBox GrpRestaurationLicencie;
@@ -1252,6 +1230,8 @@
         private System.Windows.Forms.TextBox TxtMontant;
         private System.Windows.Forms.Label LblNumeroCheque;
         private System.Windows.Forms.Label LblMontant;
+        private System.Windows.Forms.Button btnRemoveVacationAtelier;
+        private System.Windows.Forms.Button BtnAddVacationAtelier;
 
 
     }
