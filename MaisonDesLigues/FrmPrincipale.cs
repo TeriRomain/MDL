@@ -22,7 +22,7 @@ namespace MaisonDesLigues
         {
             InitializeComponent();
             this.LesVacations = new Collection<CVacation>();
-            this.LesVacations.Add(new CVacation());
+            this.LesVacations.Add(new CVacation(Convert.ToDouble(ConfigurationManager.AppSettings["DUREEVACATIONS"])));
         }
         private Bdd UneConnexion;
         private String TitreApplication;
@@ -727,7 +727,7 @@ namespace MaisonDesLigues
 
         private void BtnAddVacationAtelier_Click(object sender, EventArgs e)
         {
-            this.LesVacations.Add(new CVacation());
+            this.LesVacations.Add(new CVacation(Convert.ToDouble(ConfigurationManager.AppSettings["DUREEVACATIONS"])));
             this.GererInterfaceAtelier();
             if (this.LesVacations.Count > 1)
             {
