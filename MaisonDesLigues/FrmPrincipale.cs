@@ -557,7 +557,11 @@ namespace MaisonDesLigues
         {
             if (this.rdrBtnVacation.Checked)
             {
-                //this.gererVacation(false);
+                CVacation LaVacation = new CVacation(Convert.ToDouble(ConfigurationManager.AppSettings["DUREEVACATIONS"]));
+                LaVacation.Name = "LaVacation";
+                this.GrpBoxVacation.Controls.Add(LaVacation);
+                LaVacation.Top = 60;
+                LaVacation.Left = 28;
                 this.GrpBoxVacation.Visible = true;
                 this.GrpBoxVacation.Top = 71;
                 this.GrpBoxVacation.Left = 23;
@@ -629,15 +633,8 @@ namespace MaisonDesLigues
         {
             try
             {
-                CultureInfo provider = new CultureInfo("fr-FR");
-                string dateStringDebut = this.DateTimeDbtVacation.Text + " " + this.dtPickHeureDebutVacation.Text;
-                string dateStringFin = this.DateTimeDbtVacation.Text + " " + this.dtPickHeureFinVacation.Text;
-                MessageBox.Show(dateStringDebut + "\n" + dateStringFin);
-
-                string format = "g";
-                DateTime resultDebut = DateTime.ParseExact(dateStringDebut, format, provider);
-                DateTime resultFin = DateTime.ParseExact(dateStringFin, format, provider);
-                this.UneConnexion.AjoutVacation(Convert.ToInt16(this.CmbBoxVacationAtelier.SelectedValue), resultDebut, resultFin);
+                CVacation UneVacation = (CVacation) this.GrpBoxVacation.Controls["LaVacation"];
+                this.UneConnexion.AjoutVacation(Convert.ToInt16(this.CmbBoxVacationAtelier.SelectedValue), UneVacation.GetDateDbtVacation(), UneVacation.GetDateFinVacation());
 
                 MessageBox.Show("theme ajouté a l'atelier " + this.cmbBoxThemeAtelier.Text);
 
