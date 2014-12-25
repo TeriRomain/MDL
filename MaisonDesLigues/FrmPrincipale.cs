@@ -499,14 +499,6 @@ namespace MaisonDesLigues
         /// </summary>
         private void GererInterfaceAtelier()
         {
-            
-            //this.grpBoxAtelier.Controls.Add(this.grpBoxAddTheme);
-            //this.gererTheme(true);
-            //this.grpBoxAtelier.Controls["grpBoxAddTheme"].Left = 48;
-            //this.grpBoxAtelier.Controls["grpBoxAddTheme"].Top = 105;
-            //this.grpBoxAddTheme.Visible = true;
-
-
             int i = 0;
 
             foreach (CVacation UneVacation in this.LesVacations)
@@ -515,6 +507,7 @@ namespace MaisonDesLigues
                 UneVacation.Top = 71 + i * (this.LesVacations[0].Height);
                 UneVacation.Left = 17;
                 i++;
+
             }
 
             foreach (CTheme UnTheme in this.LesThemes)
@@ -528,11 +521,12 @@ namespace MaisonDesLigues
                 {
                     UnTheme.Top = 71 + i * (this.LesThemes[0].Height);
                 }
-                UnTheme.Left = 14;
+                UnTheme.Left = 9;
                 i++;
             }
             this.BtnAddThemeAtelier.Top = this.LesThemes[0].Top + 5;
             this.BtnRemoveThemeAtelier.Top = this.LesThemes[0].Top + 5;
+
         }
 
         private void rdrbtnAtelier_CheckedChanged(object sender, EventArgs e)
@@ -751,6 +745,8 @@ namespace MaisonDesLigues
             {
                 this.LesVacations.Add(new CVacation(Convert.ToDouble(ConfigurationManager.AppSettings["DUREEVACATIONS"])));
                 this.GererInterfaceAtelier();
+                this.btnSaveAtelier.Top += this.LesVacations[0].Height;
+                this.grpBoxAtelier.Height += this.LesVacations[0].Height;
                 if (this.LesVacations.Count > 1)
                 {
                     this.btnRemoveVacationAtelier.Enabled = true;
@@ -772,6 +768,8 @@ namespace MaisonDesLigues
                 }
                 this.LesVacations.RemoveAt(this.LesVacations.Count - 1);
                 this.GererInterfaceAtelier();
+                this.btnSaveAtelier.Top -= this.LesVacations[0].Height;
+                this.grpBoxAtelier.Height -= this.LesVacations[0].Height;
             }
             if (this.LesVacations.Count <= 1)
             {

@@ -98,9 +98,10 @@
             this.CmbBoxVacationAtelier = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.grpBoxAtelier = new System.Windows.Forms.GroupBox();
+            this.BtnRemoveThemeAtelier = new System.Windows.Forms.Button();
+            this.BtnAddThemeAtelier = new System.Windows.Forms.Button();
             this.btnRemoveVacationAtelier = new System.Windows.Forms.Button();
             this.BtnAddVacationAtelier = new System.Windows.Forms.Button();
-            this.btnSuprThemeVacation = new System.Windows.Forms.Button();
             this.btnSaveAtelier = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -117,8 +118,6 @@
             this.txtBoxAddThemeLibelle = new System.Windows.Forms.TextBox();
             this.LblThemeAtelier = new System.Windows.Forms.Label();
             this.cmbBoxThemeAtelier = new System.Windows.Forms.ComboBox();
-            this.BtnAddThemeAtelier = new System.Windows.Forms.Button();
-            this.BtnRemoveThemeAtelier = new System.Windows.Forms.Button();
             this.TabInscription.SuspendLayout();
             this.GrpLicencie.SuspendLayout();
             this.GrpResataurationLicencie.SuspendLayout();
@@ -845,7 +844,6 @@
             this.grpBoxAtelier.Controls.Add(this.BtnAddThemeAtelier);
             this.grpBoxAtelier.Controls.Add(this.btnRemoveVacationAtelier);
             this.grpBoxAtelier.Controls.Add(this.BtnAddVacationAtelier);
-            this.grpBoxAtelier.Controls.Add(this.btnSuprThemeVacation);
             this.grpBoxAtelier.Controls.Add(this.btnSaveAtelier);
             this.grpBoxAtelier.Controls.Add(this.label11);
             this.grpBoxAtelier.Controls.Add(this.label10);
@@ -853,11 +851,29 @@
             this.grpBoxAtelier.Controls.Add(this.textBox2);
             this.grpBoxAtelier.Location = new System.Drawing.Point(23, 71);
             this.grpBoxAtelier.Name = "grpBoxAtelier";
-            this.grpBoxAtelier.Size = new System.Drawing.Size(453, 500);
+            this.grpBoxAtelier.Size = new System.Drawing.Size(453, 210);
             this.grpBoxAtelier.TabIndex = 1;
             this.grpBoxAtelier.TabStop = false;
             this.grpBoxAtelier.Text = "Atelier";
             this.grpBoxAtelier.Visible = false;
+            // 
+            // BtnRemoveThemeAtelier
+            // 
+            this.BtnRemoveThemeAtelier.Location = new System.Drawing.Point(369, 107);
+            this.BtnRemoveThemeAtelier.Name = "BtnRemoveThemeAtelier";
+            this.BtnRemoveThemeAtelier.Size = new System.Drawing.Size(75, 23);
+            this.BtnRemoveThemeAtelier.TabIndex = 16;
+            this.BtnRemoveThemeAtelier.Text = "Supprimer";
+            this.BtnRemoveThemeAtelier.UseVisualStyleBackColor = true;
+            // 
+            // BtnAddThemeAtelier
+            // 
+            this.BtnAddThemeAtelier.Location = new System.Drawing.Point(288, 107);
+            this.BtnAddThemeAtelier.Name = "BtnAddThemeAtelier";
+            this.BtnAddThemeAtelier.Size = new System.Drawing.Size(75, 23);
+            this.BtnAddThemeAtelier.TabIndex = 15;
+            this.BtnAddThemeAtelier.Text = "Ajouter";
+            this.BtnAddThemeAtelier.UseVisualStyleBackColor = true;
             // 
             // btnRemoveVacationAtelier
             // 
@@ -879,18 +895,9 @@
             this.BtnAddVacationAtelier.UseVisualStyleBackColor = true;
             this.BtnAddVacationAtelier.Click += new System.EventHandler(this.BtnAddVacationAtelier_Click);
             // 
-            // btnSuprThemeVacation
-            // 
-            this.btnSuprThemeVacation.Location = new System.Drawing.Point(190, 460);
-            this.btnSuprThemeVacation.Name = "btnSuprThemeVacation";
-            this.btnSuprThemeVacation.Size = new System.Drawing.Size(75, 23);
-            this.btnSuprThemeVacation.TabIndex = 12;
-            this.btnSuprThemeVacation.Text = "Supprimer";
-            this.btnSuprThemeVacation.UseVisualStyleBackColor = true;
-            // 
             // btnSaveAtelier
             // 
-            this.btnSaveAtelier.Location = new System.Drawing.Point(325, 460);
+            this.btnSaveAtelier.Location = new System.Drawing.Point(306, 175);
             this.btnSaveAtelier.Name = "btnSaveAtelier";
             this.btnSaveAtelier.Size = new System.Drawing.Size(75, 23);
             this.btnSaveAtelier.TabIndex = 5;
@@ -1051,24 +1058,6 @@
             this.cmbBoxThemeAtelier.Size = new System.Drawing.Size(121, 21);
             this.cmbBoxThemeAtelier.TabIndex = 0;
             // 
-            // BtnAddThemeAtelier
-            // 
-            this.BtnAddThemeAtelier.Location = new System.Drawing.Point(288, 107);
-            this.BtnAddThemeAtelier.Name = "BtnAddThemeAtelier";
-            this.BtnAddThemeAtelier.Size = new System.Drawing.Size(75, 23);
-            this.BtnAddThemeAtelier.TabIndex = 15;
-            this.BtnAddThemeAtelier.Text = "Ajouter";
-            this.BtnAddThemeAtelier.UseVisualStyleBackColor = true;
-            // 
-            // BtnRemoveThemeAtelier
-            // 
-            this.BtnRemoveThemeAtelier.Location = new System.Drawing.Point(369, 107);
-            this.BtnRemoveThemeAtelier.Name = "BtnRemoveThemeAtelier";
-            this.BtnRemoveThemeAtelier.Size = new System.Drawing.Size(75, 23);
-            this.BtnRemoveThemeAtelier.TabIndex = 16;
-            this.BtnRemoveThemeAtelier.Text = "Supprimer";
-            this.BtnRemoveThemeAtelier.UseVisualStyleBackColor = true;
-            // 
             // FrmPrincipale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1178,7 +1167,6 @@
         private System.Windows.Forms.Label lblAtelierVacation;
         private System.Windows.Forms.Button BtnEnregistreVacation;
         private System.Windows.Forms.Button btnAjouterThemeAtelier;
-        private System.Windows.Forms.Button btnSuprThemeVacation;
         private System.Windows.Forms.GroupBox GrpLicencie;
         private System.Windows.Forms.Panel PanRestaurationLicencie;
         private System.Windows.Forms.GroupBox GrpRestaurationLicencie;
