@@ -7,6 +7,7 @@ using ComposantNuite;
 using BaseDeDonnees;
 using System.Globalization;
 using ComposantVacation;
+using ComposantTheme;
 
 namespace MaisonDesLigues
 {
@@ -14,6 +15,7 @@ namespace MaisonDesLigues
     {
 
         private Collection<CVacation> LesVacations;
+        private Collection<CTheme> LesThemes;
         
         /// <summary>
         /// constructeur du formulaire
@@ -23,6 +25,9 @@ namespace MaisonDesLigues
             InitializeComponent();
             this.LesVacations = new Collection<CVacation>();
             this.LesVacations.Add(new CVacation(Convert.ToDouble(ConfigurationManager.AppSettings["DUREEVACATIONS"])));
+
+            this.LesThemes = new Collection<CTheme>();
+            this.LesThemes.Add(new CTheme());
         }
         private Bdd UneConnexion;
         private String TitreApplication;
@@ -497,19 +502,37 @@ namespace MaisonDesLigues
             
             //this.grpBoxAtelier.Controls.Add(this.grpBoxAddTheme);
             //this.gererTheme(true);
-            //this.grpBoxAtelier.Controls["grpBoxAddTheme"].Left = 6;
-            //this.grpBoxAtelier.Controls["grpBoxAddTheme"].Top = 88;
+            //this.grpBoxAtelier.Controls["grpBoxAddTheme"].Left = 48;
+            //this.grpBoxAtelier.Controls["grpBoxAddTheme"].Top = 105;
             //this.grpBoxAddTheme.Visible = true;
+
 
             int i = 0;
 
             foreach (CVacation UneVacation in this.LesVacations)
             {
                 this.grpBoxAtelier.Controls.Add(UneVacation);
-                UneVacation.Top = 71+ i*(this.LesVacations[0].Height);
+                UneVacation.Top = 71 + i * (this.LesVacations[0].Height);
                 UneVacation.Left = 17;
                 i++;
             }
+
+            foreach (CTheme UnTheme in this.LesThemes)
+            {
+                this.grpBoxAtelier.Controls.Add(UnTheme);
+                if (i == this.LesVacations.Count)
+                {
+                    UnTheme.Top = 71 + i * (this.LesVacations[0].Height);
+                }
+                else
+                {
+                    UnTheme.Top = 71 + i * (this.LesThemes[0].Height);
+                }
+                UnTheme.Left = 14;
+                i++;
+            }
+            this.BtnAddThemeAtelier.Top = this.LesThemes[0].Top + 5;
+            this.BtnRemoveThemeAtelier.Top = this.LesThemes[0].Top + 5;
         }
 
         private void rdrbtnAtelier_CheckedChanged(object sender, EventArgs e)
@@ -724,11 +747,18 @@ namespace MaisonDesLigues
 
         private void BtnAddVacationAtelier_Click(object sender, EventArgs e)
         {
-            this.LesVacations.Add(new CVacation(Convert.ToDouble(ConfigurationManager.AppSettings["DUREEVACATIONS"])));
-            this.GererInterfaceAtelier();
-            if (this.LesVacations.Count > 1)
+            if (this.LesVacations.Count < Convert.ToInt32(ConfigurationManager.AppSettings["NBMAXVACATION"]))
             {
-                this.btnRemoveVacationAtelier.Enabled = true;
+                this.LesVacations.Add(new CVacation(Convert.ToDouble(ConfigurationManager.AppSettings["DUREEVACATIONS"])));
+                this.GererInterfaceAtelier();
+                if (this.LesVacations.Count > 1)
+                {
+                    this.btnRemoveVacationAtelier.Enabled = true;
+                }
+            }
+            if (this.LesVacations.Count == Convert.ToInt32(ConfigurationManager.AppSettings["NBMAXVACATION"]))
+            {
+                this.BtnAddVacationAtelier.Enabled = false;
             }
         }
 
@@ -746,6 +776,10 @@ namespace MaisonDesLigues
             if (this.LesVacations.Count <= 1)
             {
                 this.btnRemoveVacationAtelier.Enabled = false;
+            }
+            if (this.LesVacations.Count < 6)
+            {
+                this.BtnAddVacationAtelier.Enabled = true;
             }
             
         }

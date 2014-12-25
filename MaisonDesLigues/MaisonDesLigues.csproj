@@ -60,6 +60,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>ComposantPerso\ComposantNuite.dll</HintPath>
     </Reference>
+    <Reference Include="ComposantTheme">
+      <HintPath>Ressources\ComposantTheme.dll</HintPath>
+    </Reference>
     <Reference Include="composantVacation">
       <HintPath>Ressources\composantVacation.dll</HintPath>
     </Reference>

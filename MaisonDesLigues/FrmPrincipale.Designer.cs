@@ -117,6 +117,8 @@
             this.txtBoxAddThemeLibelle = new System.Windows.Forms.TextBox();
             this.LblThemeAtelier = new System.Windows.Forms.Label();
             this.cmbBoxThemeAtelier = new System.Windows.Forms.ComboBox();
+            this.BtnAddThemeAtelier = new System.Windows.Forms.Button();
+            this.BtnRemoveThemeAtelier = new System.Windows.Forms.Button();
             this.TabInscription.SuspendLayout();
             this.GrpLicencie.SuspendLayout();
             this.GrpResataurationLicencie.SuspendLayout();
@@ -839,6 +841,8 @@
             // 
             // grpBoxAtelier
             // 
+            this.grpBoxAtelier.Controls.Add(this.BtnRemoveThemeAtelier);
+            this.grpBoxAtelier.Controls.Add(this.BtnAddThemeAtelier);
             this.grpBoxAtelier.Controls.Add(this.btnRemoveVacationAtelier);
             this.grpBoxAtelier.Controls.Add(this.BtnAddVacationAtelier);
             this.grpBoxAtelier.Controls.Add(this.btnSuprThemeVacation);
@@ -1047,6 +1051,24 @@
             this.cmbBoxThemeAtelier.Size = new System.Drawing.Size(121, 21);
             this.cmbBoxThemeAtelier.TabIndex = 0;
             // 
+            // BtnAddThemeAtelier
+            // 
+            this.BtnAddThemeAtelier.Location = new System.Drawing.Point(288, 107);
+            this.BtnAddThemeAtelier.Name = "BtnAddThemeAtelier";
+            this.BtnAddThemeAtelier.Size = new System.Drawing.Size(75, 23);
+            this.BtnAddThemeAtelier.TabIndex = 15;
+            this.BtnAddThemeAtelier.Text = "Ajouter";
+            this.BtnAddThemeAtelier.UseVisualStyleBackColor = true;
+            // 
+            // BtnRemoveThemeAtelier
+            // 
+            this.BtnRemoveThemeAtelier.Location = new System.Drawing.Point(369, 107);
+            this.BtnRemoveThemeAtelier.Name = "BtnRemoveThemeAtelier";
+            this.BtnRemoveThemeAtelier.Size = new System.Drawing.Size(75, 23);
+            this.BtnRemoveThemeAtelier.TabIndex = 16;
+            this.BtnRemoveThemeAtelier.Text = "Supprimer";
+            this.BtnRemoveThemeAtelier.UseVisualStyleBackColor = true;
+            // 
             // FrmPrincipale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1181,6 +1203,8 @@
         private System.Windows.Forms.Label LblMontant;
         private System.Windows.Forms.Button btnRemoveVacationAtelier;
         private System.Windows.Forms.Button BtnAddVacationAtelier;
+        private System.Windows.Forms.Button BtnRemoveThemeAtelier;
+        private System.Windows.Forms.Button BtnAddThemeAtelier;
 
 
     }
