@@ -510,19 +510,25 @@ namespace MaisonDesLigues
 
             }
 
+            int j = 0;
+
             foreach (CTheme UnTheme in this.LesThemes)
             {
                 this.grpBoxAtelier.Controls.Add(UnTheme);
                 if (i == this.LesVacations.Count)
                 {
                     UnTheme.Top = 71 + i * (this.LesVacations[0].Height);
+                    i++;
+                    
                 }
                 else
                 {
-                    UnTheme.Top = 71 + i * (this.LesThemes[0].Height);
+                    UnTheme.Top = 71 + (i - 1) * (this.LesVacations[0].Height) + j * (this.LesThemes[0].Height);
+                    
                 }
                 UnTheme.Left = 9;
-                i++;
+                j++;
+                
             }
             this.BtnAddThemeAtelier.Top = this.LesThemes[0].Top + 5;
             this.BtnRemoveThemeAtelier.Top = this.LesThemes[0].Top + 5;
@@ -775,11 +781,53 @@ namespace MaisonDesLigues
             {
                 this.btnRemoveVacationAtelier.Enabled = false;
             }
-            if (this.LesVacations.Count < 6)
+            if (this.LesVacations.Count < Convert.ToInt32(ConfigurationManager.AppSettings["NBMAXVACATION"]))
             {
                 this.BtnAddVacationAtelier.Enabled = true;
             }
             
+        }
+
+        private void BtnAddThemeAtelier_Click(object sender, EventArgs e)
+        {
+            if (this.LesThemes.Count < Convert.ToInt32(ConfigurationManager.AppSettings["NBMAXTHEME"]))
+            {
+                this.LesThemes.Add(new CTheme());
+                this.GererInterfaceAtelier();
+                this.btnSaveAtelier.Top += this.LesThemes[0].Height;
+                this.grpBoxAtelier.Height += this.LesThemes[0].Height;
+                if (this.LesThemes.Count > 1)
+                {
+                    this.BtnRemoveThemeAtelier.Enabled = true;
+                }
+            }
+            if (this.LesThemes.Count == Convert.ToInt32(ConfigurationManager.AppSettings["NBMAXTHEME"]))
+            {
+                this.BtnAddThemeAtelier.Enabled = false;
+            }
+        }
+
+        private void BtnRemoveThemeAtelier_Click(object sender, EventArgs e)
+        {
+            if (this.LesThemes.Count > 1)
+            {
+                foreach (CTheme ctrlVaca in this.LesThemes)
+                {
+                    this.grpBoxAtelier.Controls.Remove(ctrlVaca);
+                }
+                this.LesThemes.RemoveAt(this.LesThemes.Count - 1);
+                this.GererInterfaceAtelier();
+                this.btnSaveAtelier.Top -= this.LesThemes[0].Height;
+                this.grpBoxAtelier.Height -= this.LesThemes[0].Height;
+            }
+            if (this.LesThemes.Count <= 1)
+            {
+                this.BtnRemoveThemeAtelier.Enabled = false;
+            }
+            if (this.LesThemes.Count < Convert.ToInt32(ConfigurationManager.AppSettings["NBMAXTHEME"]))
+            {
+                this.BtnAddThemeAtelier.Enabled = true;
+            }
         }
 
         ///// <summary>

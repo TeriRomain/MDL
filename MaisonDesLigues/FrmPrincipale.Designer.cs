@@ -775,6 +775,7 @@
             // 
             // tabAjout
             // 
+            this.tabAjout.AutoScroll = true;
             this.tabAjout.Controls.Add(this.GrpBoxVacation);
             this.tabAjout.Controls.Add(this.pictureBox1);
             this.tabAjout.Controls.Add(this.grpBoxAtelier);
@@ -859,12 +860,14 @@
             // 
             // BtnRemoveThemeAtelier
             // 
+            this.BtnRemoveThemeAtelier.Enabled = false;
             this.BtnRemoveThemeAtelier.Location = new System.Drawing.Point(369, 107);
             this.BtnRemoveThemeAtelier.Name = "BtnRemoveThemeAtelier";
             this.BtnRemoveThemeAtelier.Size = new System.Drawing.Size(75, 23);
             this.BtnRemoveThemeAtelier.TabIndex = 16;
             this.BtnRemoveThemeAtelier.Text = "Supprimer";
             this.BtnRemoveThemeAtelier.UseVisualStyleBackColor = true;
+            this.BtnRemoveThemeAtelier.Click += new System.EventHandler(this.BtnRemoveThemeAtelier_Click);
             // 
             // BtnAddThemeAtelier
             // 
@@ -874,9 +877,11 @@
             this.BtnAddThemeAtelier.TabIndex = 15;
             this.BtnAddThemeAtelier.Text = "Ajouter";
             this.BtnAddThemeAtelier.UseVisualStyleBackColor = true;
+            this.BtnAddThemeAtelier.Click += new System.EventHandler(this.BtnAddThemeAtelier_Click);
             // 
             // btnRemoveVacationAtelier
             // 
+            this.btnRemoveVacationAtelier.Enabled = false;
             this.btnRemoveVacationAtelier.Location = new System.Drawing.Point(369, 77);
             this.btnRemoveVacationAtelier.Name = "btnRemoveVacationAtelier";
             this.btnRemoveVacationAtelier.Size = new System.Drawing.Size(75, 23);
@@ -1062,6 +1067,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1249, 649);
             this.Controls.Add(this.TabPrincipal);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
