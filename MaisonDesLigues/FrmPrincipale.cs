@@ -456,45 +456,6 @@ namespace MaisonDesLigues
         }
 
         /// <summary>
-        /// fonction qui modifie dynamiquement la taille de grpBoxAddTheme
-        /// </summary>
-        /// <param name="grand"></param>
-
-        private void gererTheme(Boolean grand)
-        {
-            if (grand)
-            {
-                this.LblThemeAtelier.Visible = false;
-                this.LblThemeLibelle.Left = 25;
-                this.LblThemeLibelle.Top = 25;
-                this.cmbBoxThemeAtelier.Visible = false;
-                this.txtBoxAddThemeLibelle.Top = 22;
-                this.txtBoxAddThemeLibelle.Left = 77;
-                this.grpBoxAddTheme.Width = 441;
-                this.grpBoxAddTheme.Height = 64;
-                this.btnAddThemeEnregistre.Visible = false;
-                this.btnAjouterThemeAtelier.Visible = true;
-            }
-            else
-            {
-                this.btnAjouterThemeAtelier.Visible = false;
-                this.LblThemeAtelier.Left = 34;
-                this.LblThemeAtelier.Top = 37;
-                this.LblThemeAtelier.Visible = true;
-                this.LblThemeLibelle.Left = 242;
-                this.LblThemeLibelle.Top = 37;
-                this.cmbBoxThemeAtelier.Top = 34;
-                this.cmbBoxThemeAtelier.Left = 85;
-                this.cmbBoxThemeAtelier.Visible = true;
-                this.txtBoxAddThemeLibelle.Top = 34;
-                this.txtBoxAddThemeLibelle.Left = 308;
-                this.grpBoxAddTheme.Width = 453;
-                this.grpBoxAddTheme.Height = 110;
-                this.btnAddThemeEnregistre.Visible = true;
-            }
-        }
-
-        /// <summary>
         /// Methode qui crée dynamiquement l'interface d'ajout d'un atelier
         /// </summary>
         private void GererInterfaceAtelier()
@@ -558,18 +519,19 @@ namespace MaisonDesLigues
         {
             if (this.rdrBtnTheme.Checked)
             {
-                this.gererTheme(false);
+                CTheme UnTheme = new CTheme();
+                this.grpBoxAddTheme.Controls.Add(UnTheme);
+                UnTheme.Left = 30;
+                UnTheme.Top = 60;
                 this.grpBoxAddTheme.Top = 71;
                 this.grpBoxAddTheme.Left = 23;
                 this.grpBoxAddTheme.Visible = true;
-                this.btnAjouterThemeAtelier.Visible = false;
                 Utilitaire.RemplirComboBox(this.UneConnexion, this.cmbBoxThemeAtelier, "VATELIER01");
                 this.cmbBoxThemeAtelier.Text = "Choisir";
                 
             }
             else
             {
-                this.btnAjouterThemeAtelier.Visible = true;
                 this.grpBoxAddTheme.Visible = false;
                 this.grpBoxAddTheme.Top = 187;
                 this.grpBoxAddTheme.Left = 453;
@@ -629,7 +591,7 @@ namespace MaisonDesLigues
         {
             try
             {
-                this.UneConnexion.AjoutTheme(Convert.ToInt16(this.cmbBoxThemeAtelier.SelectedValue), this.txtBoxAddThemeLibelle.Text);
+                //this.UneConnexion.AjoutTheme(Convert.ToInt16(this.cmbBoxThemeAtelier.SelectedValue), this.txtBoxAddThemeLibelle.Text);
 
                 MessageBox.Show("theme ajouté a l'atelier " + this.cmbBoxThemeAtelier.Text);
 
