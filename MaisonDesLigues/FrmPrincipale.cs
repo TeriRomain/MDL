@@ -205,6 +205,12 @@ namespace MaisonDesLigues
                            
 
                         }
+
+                        else if (Ctrl is CTheme)
+                        {
+                            CTheme unTheme = (CTheme)Ctrl;
+                            unTheme.ViderChampTextBox();
+                        }
                                     
                     }
 
@@ -466,7 +472,11 @@ namespace MaisonDesLigues
             {
                 this.grpBoxAtelier.Controls.Add(UneVacation);
                 UneVacation.Top = 71 + i * (this.LesVacations[0].Height);
-                UneVacation.Left = 17;
+                UneVacation.Left = 10;
+                if (i > 0)
+                {
+                    UneVacation.SetVisiLibelle(false);
+                }
                 i++;
 
             }
@@ -485,7 +495,7 @@ namespace MaisonDesLigues
                 else
                 {
                     UnTheme.Top = 71 + (i - 1) * (this.LesVacations[0].Height) + j * (this.LesThemes[0].Height);
-                    
+                    UnTheme.SetVisiLabel(false);
                 }
                 UnTheme.Left = 9;
                 j++;
@@ -547,7 +557,7 @@ namespace MaisonDesLigues
                 LaVacation.Name = "LaVacation";
                 this.GrpBoxVacation.Controls.Add(LaVacation);
                 LaVacation.Top = 60;
-                LaVacation.Left = 28;
+                LaVacation.Left = 23;
                 this.GrpBoxVacation.Visible = true;
                 this.GrpBoxVacation.Top = 71;
                 this.GrpBoxVacation.Left = 23;
@@ -826,6 +836,43 @@ namespace MaisonDesLigues
         {
             this.VerifBtnAddTheme();
         }
+
+        private void TxtBoxLibelleAtelier_TextChanged(object sender, EventArgs e)
+        {
+            this.btnSaveAtelier.Enabled = this.TxtBoxLibelleAtelier.Text != "";
+        }
+
+        /// <summary>
+        /// fonction qui verifie que le contenu a ajouter dans l'atelier est correcte
+        /// </summary>
+        private void VerifContenuAtelier()
+        {        
+            foreach (Control Ctrl in this.grpBoxAtelier.Controls)
+            {
+                if (Ctrl is CTheme)
+                {
+                    CTheme unTheme = (CTheme)Ctrl;
+                    if (unTheme.GetLibelleTheme() == "")
+                    {
+                        throw new Exception("Les champs libelle des Themes doivent etre tous remplies");
+                    }
+                }
+            }
+        }
+
+        private void btnSaveAtelier_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.VerifContenuAtelier();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
 
         ///// <summary>
         ///// 

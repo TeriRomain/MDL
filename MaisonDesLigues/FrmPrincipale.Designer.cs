@@ -105,8 +105,8 @@
             this.btnSaveAtelier = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.NumUpDwnNbMaxParticipant = new System.Windows.Forms.NumericUpDown();
+            this.TxtBoxLibelleAtelier = new System.Windows.Forms.TextBox();
             this.grpBoxChoixAdd = new System.Windows.Forms.GroupBox();
             this.rdrBtnVacation = new System.Windows.Forms.RadioButton();
             this.rdrBtnTheme = new System.Windows.Forms.RadioButton();
@@ -131,7 +131,7 @@
             this.GrpBoxVacation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grpBoxAtelier.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumUpDwnNbMaxParticipant)).BeginInit();
             this.grpBoxChoixAdd.SuspendLayout();
             this.grpBoxAddTheme.SuspendLayout();
             this.SuspendLayout();
@@ -792,7 +792,7 @@
             this.GrpBoxVacation.Controls.Add(this.BtnEnregistreVacation);
             this.GrpBoxVacation.Controls.Add(this.lblAtelierVacation);
             this.GrpBoxVacation.Controls.Add(this.CmbBoxVacationAtelier);
-            this.GrpBoxVacation.Location = new System.Drawing.Point(596, 6);
+            this.GrpBoxVacation.Location = new System.Drawing.Point(700, 342);
             this.GrpBoxVacation.Name = "GrpBoxVacation";
             this.GrpBoxVacation.Size = new System.Drawing.Size(441, 139);
             this.GrpBoxVacation.TabIndex = 8;
@@ -831,7 +831,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::MaisonDesLigues.Properties.Resources.affiche;
-            this.pictureBox1.Location = new System.Drawing.Point(482, 6);
+            this.pictureBox1.Location = new System.Drawing.Point(539, 7);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(108, 164);
             this.pictureBox1.TabIndex = 6;
@@ -846,11 +846,11 @@
             this.grpBoxAtelier.Controls.Add(this.btnSaveAtelier);
             this.grpBoxAtelier.Controls.Add(this.label11);
             this.grpBoxAtelier.Controls.Add(this.label10);
-            this.grpBoxAtelier.Controls.Add(this.numericUpDown1);
-            this.grpBoxAtelier.Controls.Add(this.textBox2);
+            this.grpBoxAtelier.Controls.Add(this.NumUpDwnNbMaxParticipant);
+            this.grpBoxAtelier.Controls.Add(this.TxtBoxLibelleAtelier);
             this.grpBoxAtelier.Location = new System.Drawing.Point(23, 71);
             this.grpBoxAtelier.Name = "grpBoxAtelier";
-            this.grpBoxAtelier.Size = new System.Drawing.Size(453, 210);
+            this.grpBoxAtelier.Size = new System.Drawing.Size(510, 210);
             this.grpBoxAtelier.TabIndex = 1;
             this.grpBoxAtelier.TabStop = false;
             this.grpBoxAtelier.Text = "Atelier";
@@ -859,7 +859,7 @@
             // BtnRemoveThemeAtelier
             // 
             this.BtnRemoveThemeAtelier.Enabled = false;
-            this.BtnRemoveThemeAtelier.Location = new System.Drawing.Point(369, 107);
+            this.BtnRemoveThemeAtelier.Location = new System.Drawing.Point(409, 107);
             this.BtnRemoveThemeAtelier.Name = "BtnRemoveThemeAtelier";
             this.BtnRemoveThemeAtelier.Size = new System.Drawing.Size(75, 23);
             this.BtnRemoveThemeAtelier.TabIndex = 16;
@@ -869,7 +869,7 @@
             // 
             // BtnAddThemeAtelier
             // 
-            this.BtnAddThemeAtelier.Location = new System.Drawing.Point(288, 107);
+            this.BtnAddThemeAtelier.Location = new System.Drawing.Point(328, 107);
             this.BtnAddThemeAtelier.Name = "BtnAddThemeAtelier";
             this.BtnAddThemeAtelier.Size = new System.Drawing.Size(75, 23);
             this.BtnAddThemeAtelier.TabIndex = 15;
@@ -880,7 +880,7 @@
             // btnRemoveVacationAtelier
             // 
             this.btnRemoveVacationAtelier.Enabled = false;
-            this.btnRemoveVacationAtelier.Location = new System.Drawing.Point(369, 77);
+            this.btnRemoveVacationAtelier.Location = new System.Drawing.Point(409, 78);
             this.btnRemoveVacationAtelier.Name = "btnRemoveVacationAtelier";
             this.btnRemoveVacationAtelier.Size = new System.Drawing.Size(75, 23);
             this.btnRemoveVacationAtelier.TabIndex = 14;
@@ -890,7 +890,7 @@
             // 
             // BtnAddVacationAtelier
             // 
-            this.BtnAddVacationAtelier.Location = new System.Drawing.Point(288, 77);
+            this.BtnAddVacationAtelier.Location = new System.Drawing.Point(328, 78);
             this.BtnAddVacationAtelier.Name = "BtnAddVacationAtelier";
             this.BtnAddVacationAtelier.Size = new System.Drawing.Size(75, 23);
             this.BtnAddVacationAtelier.TabIndex = 13;
@@ -900,17 +900,19 @@
             // 
             // btnSaveAtelier
             // 
-            this.btnSaveAtelier.Location = new System.Drawing.Point(306, 175);
+            this.btnSaveAtelier.Enabled = false;
+            this.btnSaveAtelier.Location = new System.Drawing.Point(353, 181);
             this.btnSaveAtelier.Name = "btnSaveAtelier";
             this.btnSaveAtelier.Size = new System.Drawing.Size(75, 23);
             this.btnSaveAtelier.TabIndex = 5;
             this.btnSaveAtelier.Text = "Enregistrer";
             this.btnSaveAtelier.UseVisualStyleBackColor = true;
+            this.btnSaveAtelier.Click += new System.EventHandler(this.btnSaveAtelier_Click);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(183, 36);
+            this.label11.Location = new System.Drawing.Point(230, 36);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(144, 13);
             this.label11.TabIndex = 4;
@@ -921,28 +923,29 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(17, 37);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(46, 13);
+            this.label10.Size = new System.Drawing.Size(77, 13);
             this.label10.TabIndex = 3;
-            this.label10.Text = "Libelle : ";
+            this.label10.Text = "Libelle atelier : ";
             // 
-            // numericUpDown1
+            // NumUpDwnNbMaxParticipant
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(333, 34);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(48, 20);
-            this.numericUpDown1.TabIndex = 2;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.NumUpDwnNbMaxParticipant.Location = new System.Drawing.Point(380, 34);
+            this.NumUpDwnNbMaxParticipant.Name = "NumUpDwnNbMaxParticipant";
+            this.NumUpDwnNbMaxParticipant.Size = new System.Drawing.Size(48, 20);
+            this.NumUpDwnNbMaxParticipant.TabIndex = 2;
+            this.NumUpDwnNbMaxParticipant.Value = new decimal(new int[] {
             40,
             0,
             0,
             0});
             // 
-            // textBox2
+            // TxtBoxLibelleAtelier
             // 
-            this.textBox2.Location = new System.Drawing.Point(69, 34);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 1;
+            this.TxtBoxLibelleAtelier.Location = new System.Drawing.Point(100, 33);
+            this.TxtBoxLibelleAtelier.Name = "TxtBoxLibelleAtelier";
+            this.TxtBoxLibelleAtelier.Size = new System.Drawing.Size(100, 20);
+            this.TxtBoxLibelleAtelier.TabIndex = 1;
+            this.TxtBoxLibelleAtelier.TextChanged += new System.EventHandler(this.TxtBoxLibelleAtelier_TextChanged);
             // 
             // grpBoxChoixAdd
             // 
@@ -951,7 +954,7 @@
             this.grpBoxChoixAdd.Controls.Add(this.rdrbtnAtelier);
             this.grpBoxChoixAdd.Location = new System.Drawing.Point(23, 6);
             this.grpBoxChoixAdd.Name = "grpBoxChoixAdd";
-            this.grpBoxChoixAdd.Size = new System.Drawing.Size(453, 58);
+            this.grpBoxChoixAdd.Size = new System.Drawing.Size(510, 58);
             this.grpBoxChoixAdd.TabIndex = 0;
             this.grpBoxChoixAdd.TabStop = false;
             this.grpBoxChoixAdd.Text = "Ajouter";
@@ -959,7 +962,7 @@
             // rdrBtnVacation
             // 
             this.rdrBtnVacation.AutoSize = true;
-            this.rdrBtnVacation.Location = new System.Drawing.Point(333, 19);
+            this.rdrBtnVacation.Location = new System.Drawing.Point(417, 19);
             this.rdrBtnVacation.Name = "rdrBtnVacation";
             this.rdrBtnVacation.Size = new System.Drawing.Size(67, 17);
             this.rdrBtnVacation.TabIndex = 2;
@@ -971,7 +974,7 @@
             // rdrBtnTheme
             // 
             this.rdrBtnTheme.AutoSize = true;
-            this.rdrBtnTheme.Location = new System.Drawing.Point(190, 19);
+            this.rdrBtnTheme.Location = new System.Drawing.Point(238, 19);
             this.rdrBtnTheme.Name = "rdrBtnTheme";
             this.rdrBtnTheme.Size = new System.Drawing.Size(58, 17);
             this.rdrBtnTheme.TabIndex = 1;
@@ -997,7 +1000,7 @@
             this.grpBoxAddTheme.Controls.Add(this.btnAddThemeEnregistre);
             this.grpBoxAddTheme.Controls.Add(this.LblThemeAtelier);
             this.grpBoxAddTheme.Controls.Add(this.cmbBoxThemeAtelier);
-            this.grpBoxAddTheme.Location = new System.Drawing.Point(489, 176);
+            this.grpBoxAddTheme.Location = new System.Drawing.Point(700, 178);
             this.grpBoxAddTheme.Name = "grpBoxAddTheme";
             this.grpBoxAddTheme.Size = new System.Drawing.Size(441, 158);
             this.grpBoxAddTheme.TabIndex = 7;
@@ -1069,7 +1072,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grpBoxAtelier.ResumeLayout(false);
             this.grpBoxAtelier.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumUpDwnNbMaxParticipant)).EndInit();
             this.grpBoxChoixAdd.ResumeLayout(false);
             this.grpBoxChoixAdd.PerformLayout();
             this.grpBoxAddTheme.ResumeLayout(false);
@@ -1128,8 +1131,8 @@
         private System.Windows.Forms.GroupBox grpBoxAtelier;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.NumericUpDown NumUpDwnNbMaxParticipant;
+        private System.Windows.Forms.TextBox TxtBoxLibelleAtelier;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnSaveAtelier;
         private System.Windows.Forms.GroupBox grpBoxAddTheme;
