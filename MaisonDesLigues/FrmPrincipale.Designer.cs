@@ -826,6 +826,7 @@
             this.CmbBoxVacationAtelier.Name = "CmbBoxVacationAtelier";
             this.CmbBoxVacationAtelier.Size = new System.Drawing.Size(121, 21);
             this.CmbBoxVacationAtelier.TabIndex = 0;
+            this.CmbBoxVacationAtelier.TextChanged += new System.EventHandler(this.CmbBoxVacationAtelier_TextChanged);
             // 
             // pictureBox1
             // 
@@ -1030,6 +1031,7 @@
             this.cmbBoxThemeAtelier.Name = "cmbBoxThemeAtelier";
             this.cmbBoxThemeAtelier.Size = new System.Drawing.Size(121, 21);
             this.cmbBoxThemeAtelier.TabIndex = 0;
+            this.cmbBoxThemeAtelier.TextChanged += new System.EventHandler(this.cmbBoxThemeAtelier_TextChanged);
             // 
             // FrmPrincipale
             // 

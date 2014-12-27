@@ -520,6 +520,7 @@ namespace MaisonDesLigues
             if (this.rdrBtnTheme.Checked)
             {
                 CTheme UnTheme = new CTheme();
+                UnTheme.Name = "PremTheme";
                 this.grpBoxAddTheme.Controls.Add(UnTheme);
                 UnTheme.Left = 30;
                 UnTheme.Top = 60;
@@ -591,9 +592,15 @@ namespace MaisonDesLigues
         {
             try
             {
-                //this.UneConnexion.AjoutTheme(Convert.ToInt16(this.cmbBoxThemeAtelier.SelectedValue), this.txtBoxAddThemeLibelle.Text);
+                CTheme LeTheme = (CTheme)this.grpBoxAddTheme.Controls["PremTheme"];
+                if (LeTheme.GetLibelleTheme() == "")
+                {
+                    throw new Exception("Le libelle ne doit pas etre null.");
+                }
 
-                MessageBox.Show("theme ajouté a l'atelier " + this.cmbBoxThemeAtelier.Text);
+                this.UneConnexion.AjoutTheme(Convert.ToInt16(this.cmbBoxThemeAtelier.SelectedValue), LeTheme.GetLibelleTheme());
+
+                MessageBox.Show("theme ajouté a l'atelier \"" + this.cmbBoxThemeAtelier.Text+"\"");
 
                 this.Vider_Champs(this.grpBoxAddTheme);
                 this.cmbBoxThemeAtelier.Text = "Choisir";
@@ -621,10 +628,10 @@ namespace MaisonDesLigues
                 CVacation UneVacation = (CVacation) this.GrpBoxVacation.Controls["LaVacation"];
                 this.UneConnexion.AjoutVacation(Convert.ToInt16(this.CmbBoxVacationAtelier.SelectedValue), UneVacation.GetDateDbtVacation(), UneVacation.GetDateFinVacation());
 
-                MessageBox.Show("theme ajouté a l'atelier " + this.cmbBoxThemeAtelier.Text);
+                MessageBox.Show("Vacation ajouté a l'atelier \"" + this.CmbBoxVacationAtelier.Text+"\"");
 
-                this.Vider_Champs(this.grpBoxAddTheme);
-                this.cmbBoxThemeAtelier.Text = "Choisir";
+                this.Vider_Champs(this.GrpBoxVacation);
+                this.CmbBoxVacationAtelier.Text = "Choisir";
             }
             catch (Exception ex)
             {
@@ -790,6 +797,34 @@ namespace MaisonDesLigues
             {
                 this.BtnAddThemeAtelier.Enabled = true;
             }
+        }
+
+        private void CmbBoxVacationAtelier_TextChanged(object sender, EventArgs e)
+        {
+            if (this.CmbBoxVacationAtelier.Text == "" || this.CmbBoxVacationAtelier.Text == "Choisir")
+            {
+                this.BtnEnregistreVacation.Enabled = false;
+            }
+            else
+            {
+                this.BtnEnregistreVacation.Enabled = true;
+            }
+        }
+
+        /// <summary>
+        /// verifie si les conditions sont bonnes pour ajouter un theme a un atelier
+        /// </summary>
+        /// <returns></returns>
+        private void VerifBtnAddTheme()
+        {
+            CTheme LeTheme = (CTheme)this.grpBoxAddTheme.Controls["PremTheme"];
+            this.btnAddThemeEnregistre.Enabled = (this.grpBoxAddTheme.Controls["cmbBoxThemeAtelier"].Text != "" && this.grpBoxAddTheme.Controls["cmbBoxThemeAtelier"].Text != "Choisir");
+            
+        }
+
+        private void cmbBoxThemeAtelier_TextChanged(object sender, EventArgs e)
+        {
+            this.VerifBtnAddTheme();
         }
 
         ///// <summary>
