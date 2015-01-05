@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;  // bibliothèque pour les expressions régulières
 using MaisonDesLigues;
+using ComposantTheme;
+using ComposantVacation;
 
 
 
@@ -680,6 +682,75 @@ namespace BaseDeDonnees
             {
 
                 MessageErreur = "Autre Erreur, les informations n'ont pas été correctement saisies";
+            }
+            finally
+            {
+                if (MessageErreur.Length > 0)
+                {
+                    // annulation de la transaction
+                    UneOracleTransaction.Rollback();
+                    // Déclenchement de l'exception
+                    throw new Exception(MessageErreur);
+                }
+            }
+        }
+
+        /// <summary>
+        /// méthode qui permet de faire appel a la procedure stockée creervacation du package pckatelier pour creer un atelier
+        /// </summary>
+        /// <param name="pLibelleAtelier"></param>
+        /// <param name="pNbPlacesMaxi"></param>
+        /// <param name="pLesThemes"></param>
+        /// <param name="pLesVacations"></param>
+        public void AjoutAtelier(String pLibelleAtelier, Int32 pNbPlacesMaxi, Collection<CTheme> pLesThemes, Collection<CVacation> pLesVacation)
+        {
+            string MessageErreur = "";
+           // Collection<String> LesThemes = new Collection<String>();
+            Collection<DateTime> LesVacationDbt = new Collection<DateTime>();
+            Collection<DateTime> LesVacationsFin = new Collection<DateTime>();
+            string[] lesThemes = new string[pLesThemes.Count];
+            int i = 0;
+            try
+            {
+                UneOracleCommand = new OracleCommand("mdl.pckatelier.creerAtelier", CnOracle);
+                UneOracleCommand.CommandType = CommandType.StoredProcedure;
+
+                foreach (CTheme UnTheme in pLesThemes)
+                {
+                    //LesThemes.Add(UnTheme.GetLibelleTheme());
+                    lesThemes[i] = UnTheme.GetLibelleTheme();
+                    i++;
+                }
+
+                foreach (CVacation UneVacation in pLesVacation)
+                {
+                    LesVacationDbt.Add(UneVacation.GetDateDbtVacation());
+                    LesVacationsFin.Add(UneVacation.GetDateFinVacation());
+                }
+                SqlDbType TableType = SqlDbType.Structured;
+                UneOracleCommand.Parameters.Add("plibelleatelier", OracleDbType.Varchar2, ParameterDirection.Input).Value = pLibelleAtelier;
+                UneOracleCommand.Parameters.Add("pnbplacesmaxi", OracleDbType.Int32, ParameterDirection.Input).Value = pNbPlacesMaxi;
+                UneOracleCommand.Parameters.Add("plesthemes", (OracleDbType)TableType, ParameterDirection.Input).Value = pLesThemes;
+                UneOracleCommand.Parameters.Add("plesvacationsdebut", OracleDbType.Array, ParameterDirection.Input).Value = LesVacationDbt;
+                UneOracleCommand.Parameters.Add("plesvacationsfin", OracleDbType.Array, ParameterDirection.Input).Value = LesVacationsFin;
+                
+                // début de la transaction Oracle il vaut mieux gérer les transactions dans l'applicatif que dans la bd dans les procédures stockées.
+                UneOracleTransaction = this.CnOracle.BeginTransaction();
+
+                //execution
+                UneOracleCommand.ExecuteNonQuery();
+                // fin de la transaction. Si on arrive à ce point, c'est qu'aucune exception n'a été levée
+                UneOracleTransaction.Commit();
+            }
+            catch (OracleException Oex)
+            {
+                MessageErreur = "Erreur Oracle \n" + this.GetMessageOracle(Oex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                MessageErreur = "Autre Erreur, les informations n'ont pas été correctement saisies";
+                MessageBox.Show(ex.Message);
             }
             finally
             {

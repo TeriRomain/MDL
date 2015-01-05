@@ -862,9 +862,23 @@ namespace MaisonDesLigues
 
         private void btnSaveAtelier_Click(object sender, EventArgs e)
         {
+            Collection<CTheme> LesThemes = new Collection<CTheme>();
+            Collection<CVacation> LesVacations = new Collection<CVacation>();
             try
             {
                 this.VerifContenuAtelier();
+                foreach (Control Ctrl in this.grpBoxAtelier.Controls)
+                {
+                    if (Ctrl is CTheme)
+                    {
+                        LesThemes.Add((CTheme)Ctrl);
+                    }
+                    if (Ctrl is CVacation)
+                    {
+                        LesVacations.Add((CVacation)Ctrl);
+                    }
+                }
+                UneConnexion.AjoutAtelier(this.TxtBoxLibelleAtelier.Text, (Int32)this.NumUpDwnNbMaxParticipant.Value, LesThemes, LesVacations);
             }
             catch (Exception ex)
             {
