@@ -158,16 +158,16 @@ namespace MaisonDesLigues
             {
                 if (pEmail != "")
                 {
-                    using (SmtpClient smtpClient = new SmtpClient("localhost"))
+                    using (SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587))
                     {
                         smtpClient.UseDefaultCredentials = false;
                         smtpClient.Credentials = new NetworkCredential("mdlgroupe3@gmail.com", "MDLgr0up33");
-                        smtpClient.Port = 587;
+                        smtpClient.EnableSsl = true;
 
                         MailMessage message = new MailMessage();
 
                         message.From = new MailAddress("mdlgroupe3@gmail.com", "MDL Groupe 3");
-                        message.To.Add(new MailAddress(pEmail, "DisplayName"));
+                        message.To.Add(new MailAddress(pEmail, "Destinataire"));
                         message.Subject = "Confirmation de votre inscription";
                         message.Body = "Votre inscription a bien été prise en compte ! À bientôt";
                         message.IsBodyHtml = false;
