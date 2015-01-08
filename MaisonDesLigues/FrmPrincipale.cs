@@ -857,6 +857,22 @@ namespace MaisonDesLigues
             }
         }
 
+        private void rdrBtnUpdateAtelier_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.rdrBtnUpdateAtelier.Checked == true)
+            {
+                this.grpBoxUpdateAtelier.Left = 23;
+                this.grpBoxUpdateAtelier.Top = 71;
+                this.grpBoxUpdateAtelier.Visible = true;
+            }
+            else
+            {
+                this.grpBoxUpdateAtelier.Left = 653;
+                this.grpBoxUpdateAtelier.Top = 323;
+                this.grpBoxUpdateAtelier.Visible = false;
+            }
+        }
+
 
 
         ///// <summary>
