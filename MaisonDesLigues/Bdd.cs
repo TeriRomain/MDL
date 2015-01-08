@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;  // bibliothèque pour les expressions régulières
 using MaisonDesLigues;
+using ComposantTheme;
+using ComposantVacation;
 
 
 
@@ -680,6 +682,97 @@ namespace BaseDeDonnees
             {
 
                 MessageErreur = "Autre Erreur, les informations n'ont pas été correctement saisies";
+            }
+            finally
+            {
+                if (MessageErreur.Length > 0)
+                {
+                    // annulation de la transaction
+                    UneOracleTransaction.Rollback();
+                    // Déclenchement de l'exception
+                    throw new Exception(MessageErreur);
+                }
+            }
+        }
+
+        /// <summary>
+        /// methode qui crée des paramétres que l'on passe sous forme de tableau 
+        /// </summary>
+        /// <param name="ParamOracle"></param>
+        /// <param name="pLaCollection"></param>
+        /// <param name="pLeNomDuParamOracle"></param>
+        private void CreerParametresString(OracleParameter ParamOracle, Collection<String> pLaCollection, String pLeNomDuParamOracle)
+        {
+            ParamOracle.ParameterName = pLeNomDuParamOracle;
+            ParamOracle.OracleDbType = OracleDbType.Varchar2;
+            ParamOracle.CollectionType = OracleCollectionType.PLSQLAssociativeArray;
+            ParamOracle.Value = pLaCollection.ToArray();
+            ParamOracle.Size = pLaCollection.Count;
+        }
+
+        /// <summary>
+        /// méthode qui permet de faire appel a la procedure stockée creervacation du package pckatelier pour creer un atelier
+        /// </summary>
+        /// <param name="pLibelleAtelier"></param>
+        /// <param name="pNbPlacesMaxi"></param>
+        /// <param name="pLesThemes"></param>
+        /// <param name="pLesVacations"></param>
+        public void AjoutAtelier(String pLibelleAtelier, Int32 pNbPlacesMaxi, Collection<CTheme> pLesThemes, Collection<CVacation> pLesVacation)
+        {
+            string MessageErreur = "";
+            Collection<String> LesThemes = new Collection<String>();
+            Collection<string> LesVacationDbt = new Collection<string>();
+            Collection<string> LesVacationsFin = new Collection<string>();
+            try
+            {
+                UneOracleCommand = new OracleCommand("mdl.pckatelier.creerAtelier", CnOracle);
+                UneOracleCommand.CommandType = CommandType.StoredProcedure;
+
+                foreach (CTheme UnTheme in pLesThemes)
+                {
+                    LesThemes.Add(UnTheme.GetLibelleTheme());
+                }
+
+                foreach (CVacation UneVacation in pLesVacation)
+                {
+                    LesVacationDbt.Add(UneVacation.GetDateDbtVacation().ToString());
+                    LesVacationsFin.Add(UneVacation.GetDateFinVacation().ToString());
+                }
+                UneOracleCommand.Parameters.Add("plibelleatelier", OracleDbType.Varchar2, ParameterDirection.Input).Value = pLibelleAtelier;
+                UneOracleCommand.Parameters.Add("pnbplacesmaxi", OracleDbType.Int32, ParameterDirection.Input).Value = pNbPlacesMaxi;
+
+                //parametre theme
+                OracleParameter PThemes = new OracleParameter();
+                this.CreerParametresString(PThemes, LesThemes, "plesthemes");
+                UneOracleCommand.Parameters.Add(PThemes);
+
+                //parametre plesvacationsdbt
+                OracleParameter paramVacationDbt = new OracleParameter();
+                this.CreerParametresString(paramVacationDbt, LesVacationDbt, "plesvacationsdbt");
+                UneOracleCommand.Parameters.Add(paramVacationDbt);
+
+                //parametre plesvacationsfin
+                OracleParameter paramVacationFin = new OracleParameter();
+                this.CreerParametresString(paramVacationFin, LesVacationsFin, "plesvacationsfin");
+                UneOracleCommand.Parameters.Add(paramVacationFin);
+                
+                // début de la transaction Oracle il vaut mieux gérer les transactions dans l'applicatif que dans la bd dans les procédures stockées.
+                UneOracleTransaction = this.CnOracle.BeginTransaction();
+
+                //execution
+                UneOracleCommand.ExecuteNonQuery();
+                // fin de la transaction. Si on arrive à ce point, c'est qu'aucune exception n'a été levée
+                UneOracleTransaction.Commit();
+            }
+            catch (OracleException Oex)
+            {
+                MessageErreur = "Erreur Oracle \n" + this.GetMessageOracle(Oex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                MessageErreur = "Autre Erreur, les informations n'ont pas été correctement saisies";
+                MessageBox.Show(ex.Message);
             }
             finally
             {
