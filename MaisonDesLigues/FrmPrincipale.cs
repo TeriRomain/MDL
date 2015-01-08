@@ -88,6 +88,9 @@ namespace MaisonDesLigues
             GrpLicencie.Top = 264;
             Utilitaire.CreerDesControles(this, UneConnexion, "VRESTAURATION01", "ChkRestoL_", PanRestoLicencie, "CheckBox", EnableBtnEnregistrerLicencie);
             Utilitaire.RemplirComboBox(UneConnexion, CmbAtelierLicencie, "VATELIER01");
+
+            
+
             CmbAtelierLicencie.Text = "Choisir";
             
         }
@@ -130,41 +133,7 @@ namespace MaisonDesLigues
         {
             return CmbAtelierIntervenant.Text != "Choisir" && TxtQualitéLicencie.Text!="" && TxtLicenceLicencie.Text!="";
         }
-        //private void Vider_Champs()
-        //{
-        //    if (TabPrincipal.SelectedIndex == 0)
-        //    {
-        //        if (RadBenevole.Checked == true)
-        //        {
-        //            Collection<Control> MesControls = new Collection<Control>();
-        //            foreach (Control Ctrl in PanelDispoBenevole.Controls)
-        //            {
-        //                if (Ctrl is CheckBox)
-        //                {
-        //                    MesControls.Add(Ctrl);
-        //                }
-        //            }
-        //            foreach (Control Ctrl in GrpIdentite.Controls)
-        //            {
-        //                MesControls.Add(Ctrl);
-        //            }
-        //            foreach (Control Ctrl in GrpBenevole.Controls)
-        //            {
-        //                MesControls.Add(Ctrl);
-        //            }
-
-        //            foreach (Control Ctrl in MesControls)
-        //            {
-        //                if (Ctrl is TextBox || Ctrl is MaskedTextBox)
-        //                    Ctrl.Text = string.Empty;
-        //                else if (Ctrl is CheckBox)
-        //                {
-        //                    ((CheckBox)Ctrl).Checked = false;
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
+       
         /// <summary>
         /// Procedure pour vider les champs de l'interface d'inscription 
         /// </summary>

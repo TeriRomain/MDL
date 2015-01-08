@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipale));
             this.TabInscription = new System.Windows.Forms.TabPage();
             this.GrpLicencie = new System.Windows.Forms.GroupBox();
-            this.TxtNumeroCheque = new System.Windows.Forms.TextBox();
             this.TxtMontant = new System.Windows.Forms.TextBox();
             this.LblNumeroCheque = new System.Windows.Forms.Label();
             this.LblMontant = new System.Windows.Forms.Label();
@@ -115,6 +114,7 @@
             this.btnAddThemeEnregistre = new System.Windows.Forms.Button();
             this.LblThemeAtelier = new System.Windows.Forms.Label();
             this.cmbBoxThemeAtelier = new System.Windows.Forms.ComboBox();
+            this.TxtNumeroCheque = new System.Windows.Forms.TextBox();
             this.TabInscription.SuspendLayout();
             this.GrpLicencie.SuspendLayout();
             this.GrpResataurationLicencie.SuspendLayout();
@@ -176,13 +176,6 @@
             this.GrpLicencie.TabStop = false;
             this.GrpLicencie.Text = "Complément inscription licencie";
             this.GrpLicencie.Visible = false;
-            // 
-            // TxtNumeroCheque
-            // 
-            this.TxtNumeroCheque.Location = new System.Drawing.Point(365, 308);
-            this.TxtNumeroCheque.Name = "TxtNumeroCheque";
-            this.TxtNumeroCheque.Size = new System.Drawing.Size(100, 20);
-            this.TxtNumeroCheque.TabIndex = 18;
             // 
             // TxtMontant
             // 
@@ -1036,6 +1029,13 @@
             this.cmbBoxThemeAtelier.TabIndex = 0;
             this.cmbBoxThemeAtelier.TextChanged += new System.EventHandler(this.cmbBoxThemeAtelier_TextChanged);
             // 
+            // TxtNumeroCheque
+            // 
+            this.TxtNumeroCheque.Location = new System.Drawing.Point(365, 308);
+            this.TxtNumeroCheque.Name = "TxtNumeroCheque";
+            this.TxtNumeroCheque.Size = new System.Drawing.Size(100, 20);
+            this.TxtNumeroCheque.TabIndex = 18;
+            // 
             // FrmPrincipale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1161,7 +1161,6 @@
         private System.Windows.Forms.Label lblNumLicenceLicencié;
         private System.Windows.Forms.GroupBox GrpResataurationLicencie;
         private System.Windows.Forms.Button BtnEnregistrerLicencie;
-        private System.Windows.Forms.TextBox TxtNumeroCheque;
         private System.Windows.Forms.TextBox TxtMontant;
         private System.Windows.Forms.Label LblNumeroCheque;
         private System.Windows.Forms.Label LblMontant;
@@ -1169,6 +1168,7 @@
         private System.Windows.Forms.Button BtnAddVacationAtelier;
         private System.Windows.Forms.Button BtnRemoveThemeAtelier;
         private System.Windows.Forms.Button BtnAddThemeAtelier;
+        private System.Windows.Forms.TextBox TxtNumeroCheque;
 
 
     }
