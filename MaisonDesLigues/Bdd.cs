@@ -696,6 +696,21 @@ namespace BaseDeDonnees
         }
 
         /// <summary>
+        /// methode qui crée des paramétres que l'on passe sous forme de tableau 
+        /// </summary>
+        /// <param name="ParamOracle"></param>
+        /// <param name="pLaCollection"></param>
+        /// <param name="pLeNomDuParamOracle"></param>
+        private void CreerParametresString(OracleParameter ParamOracle, Collection<String> pLaCollection, String pLeNomDuParamOracle)
+        {
+            ParamOracle.ParameterName = pLeNomDuParamOracle;
+            ParamOracle.OracleDbType = OracleDbType.Varchar2;
+            ParamOracle.CollectionType = OracleCollectionType.PLSQLAssociativeArray;
+            ParamOracle.Value = pLaCollection.ToArray();
+            ParamOracle.Size = pLaCollection.Count;
+        }
+
+        /// <summary>
         /// méthode qui permet de faire appel a la procedure stockée creervacation du package pckatelier pour creer un atelier
         /// </summary>
         /// <param name="pLibelleAtelier"></param>
@@ -705,11 +720,9 @@ namespace BaseDeDonnees
         public void AjoutAtelier(String pLibelleAtelier, Int32 pNbPlacesMaxi, Collection<CTheme> pLesThemes, Collection<CVacation> pLesVacation)
         {
             string MessageErreur = "";
-           // Collection<String> LesThemes = new Collection<String>();
-            Collection<DateTime> LesVacationDbt = new Collection<DateTime>();
-            Collection<DateTime> LesVacationsFin = new Collection<DateTime>();
-            string[] lesThemes = new string[pLesThemes.Count];
-            int i = 0;
+            Collection<String> LesThemes = new Collection<String>();
+            Collection<string> LesVacationDbt = new Collection<string>();
+            Collection<string> LesVacationsFin = new Collection<string>();
             try
             {
                 UneOracleCommand = new OracleCommand("mdl.pckatelier.creerAtelier", CnOracle);
@@ -717,22 +730,31 @@ namespace BaseDeDonnees
 
                 foreach (CTheme UnTheme in pLesThemes)
                 {
-                    //LesThemes.Add(UnTheme.GetLibelleTheme());
-                    lesThemes[i] = UnTheme.GetLibelleTheme();
-                    i++;
+                    LesThemes.Add(UnTheme.GetLibelleTheme());
                 }
 
                 foreach (CVacation UneVacation in pLesVacation)
                 {
-                    LesVacationDbt.Add(UneVacation.GetDateDbtVacation());
-                    LesVacationsFin.Add(UneVacation.GetDateFinVacation());
+                    LesVacationDbt.Add(UneVacation.GetDateDbtVacation().ToString());
+                    LesVacationsFin.Add(UneVacation.GetDateFinVacation().ToString());
                 }
-                SqlDbType TableType = SqlDbType.Structured;
                 UneOracleCommand.Parameters.Add("plibelleatelier", OracleDbType.Varchar2, ParameterDirection.Input).Value = pLibelleAtelier;
                 UneOracleCommand.Parameters.Add("pnbplacesmaxi", OracleDbType.Int32, ParameterDirection.Input).Value = pNbPlacesMaxi;
-                UneOracleCommand.Parameters.Add("plesthemes", (OracleDbType)TableType, ParameterDirection.Input).Value = pLesThemes;
-                UneOracleCommand.Parameters.Add("plesvacationsdebut", OracleDbType.Array, ParameterDirection.Input).Value = LesVacationDbt;
-                UneOracleCommand.Parameters.Add("plesvacationsfin", OracleDbType.Array, ParameterDirection.Input).Value = LesVacationsFin;
+
+                //parametre theme
+                OracleParameter PThemes = new OracleParameter();
+                this.CreerParametresString(PThemes, LesThemes, "plesthemes");
+                UneOracleCommand.Parameters.Add(PThemes);
+
+                //parametre plesvacationsdbt
+                OracleParameter paramVacationDbt = new OracleParameter();
+                this.CreerParametresString(paramVacationDbt, LesVacationDbt, "plesvacationsdbt");
+                UneOracleCommand.Parameters.Add(paramVacationDbt);
+
+                //parametre plesvacationsfin
+                OracleParameter paramVacationFin = new OracleParameter();
+                this.CreerParametresString(paramVacationFin, LesVacationsFin, "plesvacationsfin");
+                UneOracleCommand.Parameters.Add(paramVacationFin);
                 
                 // début de la transaction Oracle il vaut mieux gérer les transactions dans l'applicatif que dans la bd dans les procédures stockées.
                 UneOracleTransaction = this.CnOracle.BeginTransaction();

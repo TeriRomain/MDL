@@ -879,6 +879,7 @@ namespace MaisonDesLigues
                     }
                 }
                 UneConnexion.AjoutAtelier(this.TxtBoxLibelleAtelier.Text, (Int32)this.NumUpDwnNbMaxParticipant.Value, LesThemes, LesVacations);
+                MessageBox.Show("l'atelier a bien été créer.");
             }
             catch (Exception ex)
             {
