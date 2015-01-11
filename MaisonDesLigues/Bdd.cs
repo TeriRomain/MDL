@@ -785,5 +785,31 @@ namespace BaseDeDonnees
                 }
             }
         }
+
+        /// <summary>
+        /// fonction qui récupére les vacations d'un atelier et les retournes sous forme de composant vacation
+        /// </summary>
+        /// <param name="pIdAtelier"></param>
+        /// <returns></returns>
+        public Collection<CVacation> GetVacations(int pIdAtelier)
+        {
+            Collection<CVacation> LesVacations = new Collection<CVacation>();
+            string sql = "select to_char(heuredebut, \"DD/MM/YYYY HH:MI:SS\") from VVACATION01 where idatelier = :pidatelier";
+            UneOracleCommand = new OracleCommand(sql, CnOracle);
+
+
+            UneOracleCommand.Parameters.Add("pidAtelier", OracleDbType.Int16, ParameterDirection.Input).Value = pIdAtelier;
+
+            OracleDataReader UnDataReader;
+            UnDataReader = UneOracleCommand.ExecuteReader();
+
+            while (UnDataReader.Read())
+            {
+                DateTime UnDateTime = new DateTime();
+                UnDateTime.Add((TimeSpan)UnDataReader.GetValue(0));
+                LesVacations.Add(new CVacation(UnDateTime,Convert.ToDouble(ConfigurationManager.AppSettings["DUREEVACATIONS"])));
+            }
+            return LesVacations;
+        }
     }
 }

@@ -801,7 +801,7 @@
             this.grpBoxUpdateAtelier.Controls.Add(this.label12);
             this.grpBoxUpdateAtelier.Location = new System.Drawing.Point(653, 323);
             this.grpBoxUpdateAtelier.Name = "grpBoxUpdateAtelier";
-            this.grpBoxUpdateAtelier.Size = new System.Drawing.Size(510, 158);
+            this.grpBoxUpdateAtelier.Size = new System.Drawing.Size(510, 76);
             this.grpBoxUpdateAtelier.TabIndex = 9;
             this.grpBoxUpdateAtelier.TabStop = false;
             this.grpBoxUpdateAtelier.Text = "Modifier atelier";
@@ -809,7 +809,7 @@
             // 
             // btnUpdateAtelier
             // 
-            this.btnUpdateAtelier.Location = new System.Drawing.Point(353, 26);
+            this.btnUpdateAtelier.Location = new System.Drawing.Point(353, 29);
             this.btnUpdateAtelier.Name = "btnUpdateAtelier";
             this.btnUpdateAtelier.Size = new System.Drawing.Size(120, 23);
             this.btnUpdateAtelier.TabIndex = 2;
@@ -823,11 +823,12 @@
             this.cmbBoxModifAtelier.Name = "cmbBoxModifAtelier";
             this.cmbBoxModifAtelier.Size = new System.Drawing.Size(215, 21);
             this.cmbBoxModifAtelier.TabIndex = 1;
+            this.cmbBoxModifAtelier.SelectedIndexChanged += new System.EventHandler(this.cmbBoxModifAtelier_SelectedIndexChanged);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(20, 31);
+            this.label12.Location = new System.Drawing.Point(21, 34);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(93, 13);
             this.label12.TabIndex = 0;
