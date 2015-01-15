@@ -498,7 +498,7 @@
             this.TxtMail.Name = "TxtMail";
             this.TxtMail.Size = new System.Drawing.Size(189, 20);
             this.TxtMail.TabIndex = 16;
-            this.TxtMail.Text = "patrick.dumoulin@toto.fr";
+            this.TxtMail.Text = "teri.romain@gmail.com";
             // 
             // label7
             // 
@@ -533,7 +533,7 @@
             this.TxtCp.Name = "TxtCp";
             this.TxtCp.Size = new System.Drawing.Size(90, 20);
             this.TxtCp.TabIndex = 12;
-            this.TxtCp.Text = "75001";
+            this.TxtCp.Text = "83250";
             // 
             // TxtVille
             // 
@@ -541,7 +541,7 @@
             this.TxtVille.Name = "TxtVille";
             this.TxtVille.Size = new System.Drawing.Size(189, 20);
             this.TxtVille.TabIndex = 11;
-            this.TxtVille.Text = "Paris";
+            this.TxtVille.Text = "La Londe";
             // 
             // TxtAdr2
             // 
@@ -556,7 +556,7 @@
             this.TxtAdr1.Name = "TxtAdr1";
             this.TxtAdr1.Size = new System.Drawing.Size(340, 20);
             this.TxtAdr1.TabIndex = 8;
-            this.TxtAdr1.Text = "Avenue du PLSQL";
+            this.TxtAdr1.Text = "Rue de la Paix";
             // 
             // TxtPrenom
             // 
@@ -564,7 +564,7 @@
             this.TxtPrenom.Name = "TxtPrenom";
             this.TxtPrenom.Size = new System.Drawing.Size(142, 20);
             this.TxtPrenom.TabIndex = 7;
-            this.TxtPrenom.Text = "Patrick";
+            this.TxtPrenom.Text = "Maurice";
             // 
             // TxtNom
             // 
@@ -572,7 +572,7 @@
             this.TxtNom.Name = "TxtNom";
             this.TxtNom.Size = new System.Drawing.Size(142, 20);
             this.TxtNom.TabIndex = 6;
-            this.TxtNom.Text = "Dumoulin";
+            this.TxtNom.Text = "Clerolex";
             // 
             // label5
             // 
