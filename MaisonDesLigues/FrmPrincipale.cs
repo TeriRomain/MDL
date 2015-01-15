@@ -851,7 +851,7 @@ namespace MaisonDesLigues
                     }
                 }
                 UneConnexion.AjoutAtelier(this.TxtBoxLibelleAtelier.Text, (Int32)this.NumUpDwnNbMaxParticipant.Value, LesThemes, LesVacations);
-                MessageBox.Show("l'atelier a bien été créer.");
+                MessageBox.Show("l'atelier a bien été crée.");
                 this.Vider_Champs(this.grpBoxAtelier);
             }
             catch (Exception ex)
@@ -862,21 +862,28 @@ namespace MaisonDesLigues
 
         private void rdrBtnUpdateAtelier_CheckedChanged(object sender, EventArgs e)
         {
-            if (this.rdrBtnUpdateAtelier.Checked == true)
+            try
             {
-                this.grpBoxUpdateAtelier.Left = 23;
-                this.grpBoxUpdateAtelier.Top = 71;
-                this.grpBoxUpdateAtelier.Visible = true;
-                Utilitaire.RemplirComboBox(this.UneConnexion, this.cmbBoxModifAtelier, "VATELIER01");
-                this.cmbBoxModifAtelier.Text = "Choisir";
-                Charged = true;
+                if (this.rdrBtnUpdateAtelier.Checked == true)
+                {
+                    this.grpBoxUpdateAtelier.Left = 23;
+                    this.grpBoxUpdateAtelier.Top = 71;
+                    this.grpBoxUpdateAtelier.Visible = true;
+                    Utilitaire.RemplirComboBox(this.UneConnexion, this.cmbBoxModifAtelier, "VATELIER01");
+                    this.cmbBoxModifAtelier.Text = "Choisir";
+                    Charged = true;
+                }
+                else
+                {
+                    Charged = false;
+                    this.grpBoxUpdateAtelier.Left = 653;
+                    this.grpBoxUpdateAtelier.Top = 323;
+                    this.grpBoxUpdateAtelier.Visible = false;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Charged = false;
-                this.grpBoxUpdateAtelier.Left = 653;
-                this.grpBoxUpdateAtelier.Top = 323;
-                this.grpBoxUpdateAtelier.Visible = false;
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -892,7 +899,9 @@ namespace MaisonDesLigues
                         this.grpBoxUpdateAtelier.Controls.Add(UneVac);
                         UneVac.Left = 21;
                         UneVac.Top = 40 + UneVac.Height * i;
+                        i++;
                     }
+                    
                 }
             }
             catch (Exception ex)
