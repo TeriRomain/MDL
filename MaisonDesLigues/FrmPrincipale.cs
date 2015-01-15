@@ -183,6 +183,11 @@ namespace MaisonDesLigues
                             CTheme unTheme = (CTheme)Ctrl;
                             unTheme.ViderChampTextBox();
                         }
+
+                        else if (Ctrl is CVacation)
+                        {
+                            UnGroupBox.Controls.Remove(Ctrl);
+                        }
                                     
                     }
 
@@ -612,7 +617,6 @@ namespace MaisonDesLigues
 
                 MessageBox.Show("Vacation ajouté a l'atelier \"" + this.CmbBoxVacationAtelier.Text+"\"");
 
-                this.Vider_Champs(this.GrpBoxVacation);
                 this.CmbBoxVacationAtelier.Text = "Choisir";
             }
             catch (Exception ex)
@@ -879,6 +883,8 @@ namespace MaisonDesLigues
                     this.grpBoxUpdateAtelier.Left = 653;
                     this.grpBoxUpdateAtelier.Top = 323;
                     this.grpBoxUpdateAtelier.Visible = false;
+                    this.grpBoxUpdateAtelier.Height = 80;
+                    Vider_Champs(this.grpBoxUpdateAtelier);
                 }
             }
             catch (Exception ex)
@@ -899,6 +905,7 @@ namespace MaisonDesLigues
                         this.grpBoxUpdateAtelier.Controls.Add(UneVac);
                         UneVac.Left = 21;
                         UneVac.Top = 40 + UneVac.Height * i;
+                        this.grpBoxUpdateAtelier.Height += UneVac.Height * i;
                         i++;
                     }
                     

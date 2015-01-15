@@ -801,7 +801,7 @@
             this.grpBoxUpdateAtelier.Controls.Add(this.label12);
             this.grpBoxUpdateAtelier.Location = new System.Drawing.Point(653, 323);
             this.grpBoxUpdateAtelier.Name = "grpBoxUpdateAtelier";
-            this.grpBoxUpdateAtelier.Size = new System.Drawing.Size(510, 277);
+            this.grpBoxUpdateAtelier.Size = new System.Drawing.Size(510, 79);
             this.grpBoxUpdateAtelier.TabIndex = 9;
             this.grpBoxUpdateAtelier.TabStop = false;
             this.grpBoxUpdateAtelier.Text = "Modifier atelier";
