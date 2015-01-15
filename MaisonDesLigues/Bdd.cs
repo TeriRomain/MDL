@@ -806,7 +806,7 @@ namespace BaseDeDonnees
             while (UnDataReader.Read())
             {
                 DateTime UnDateTime = new DateTime();
-                UnDateTime = (DateTime)UnDataReader.GetValue(0);
+                UnDateTime = Convert.ToDateTime(UnDataReader.GetValue(0).ToString());
                 LesVacations.Add(new CVacation(UnDateTime,Convert.ToDouble(ConfigurationManager.AppSettings["DUREEVACATIONS"])));
             }
             return LesVacations;

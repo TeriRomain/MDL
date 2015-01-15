@@ -700,7 +700,7 @@
             // 
             // PanFonctionIntervenant
             // 
-            this.PanFonctionIntervenant.Location = new System.Drawing.Point(305, 4);
+            this.PanFonctionIntervenant.Location = new System.Drawing.Point(330, 19);
             this.PanFonctionIntervenant.Name = "PanFonctionIntervenant";
             this.PanFonctionIntervenant.Size = new System.Drawing.Size(168, 41);
             this.PanFonctionIntervenant.TabIndex = 28;
@@ -801,7 +801,7 @@
             this.grpBoxUpdateAtelier.Controls.Add(this.label12);
             this.grpBoxUpdateAtelier.Location = new System.Drawing.Point(653, 323);
             this.grpBoxUpdateAtelier.Name = "grpBoxUpdateAtelier";
-            this.grpBoxUpdateAtelier.Size = new System.Drawing.Size(510, 76);
+            this.grpBoxUpdateAtelier.Size = new System.Drawing.Size(510, 79);
             this.grpBoxUpdateAtelier.TabIndex = 9;
             this.grpBoxUpdateAtelier.TabStop = false;
             this.grpBoxUpdateAtelier.Text = "Modifier atelier";
@@ -1074,7 +1074,7 @@
             this.btnAddThemeEnregistre.Name = "btnAddThemeEnregistre";
             this.btnAddThemeEnregistre.Size = new System.Drawing.Size(75, 23);
             this.btnAddThemeEnregistre.TabIndex = 4;
-            this.btnAddThemeEnregistre.Text = "Enregistre";
+            this.btnAddThemeEnregistre.Text = "Enregistrer";
             this.btnAddThemeEnregistre.UseVisualStyleBackColor = true;
             this.btnAddThemeEnregistre.Click += new System.EventHandler(this.btnAddThemeEnregistre_Click);
             // 
