@@ -93,6 +93,7 @@
             this.TabPrincipal = new System.Windows.Forms.TabControl();
             this.tabAjout = new System.Windows.Forms.TabPage();
             this.grpBoxUpdateAtelier = new System.Windows.Forms.GroupBox();
+            this.BtnSuppSelectedControl = new System.Windows.Forms.Button();
             this.btnUpdateAtelier = new System.Windows.Forms.Button();
             this.cmbBoxModifAtelier = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -796,16 +797,27 @@
             // 
             // grpBoxUpdateAtelier
             // 
+            this.grpBoxUpdateAtelier.Controls.Add(this.BtnSuppSelectedControl);
             this.grpBoxUpdateAtelier.Controls.Add(this.btnUpdateAtelier);
             this.grpBoxUpdateAtelier.Controls.Add(this.cmbBoxModifAtelier);
             this.grpBoxUpdateAtelier.Controls.Add(this.label12);
             this.grpBoxUpdateAtelier.Location = new System.Drawing.Point(653, 323);
             this.grpBoxUpdateAtelier.Name = "grpBoxUpdateAtelier";
-            this.grpBoxUpdateAtelier.Size = new System.Drawing.Size(510, 79);
+            this.grpBoxUpdateAtelier.Size = new System.Drawing.Size(510, 111);
             this.grpBoxUpdateAtelier.TabIndex = 9;
             this.grpBoxUpdateAtelier.TabStop = false;
             this.grpBoxUpdateAtelier.Text = "Modifier atelier";
             this.grpBoxUpdateAtelier.Visible = false;
+            // 
+            // BtnSuppSelectedControl
+            // 
+            this.BtnSuppSelectedControl.Location = new System.Drawing.Point(389, 82);
+            this.BtnSuppSelectedControl.Name = "BtnSuppSelectedControl";
+            this.BtnSuppSelectedControl.Size = new System.Drawing.Size(75, 23);
+            this.BtnSuppSelectedControl.TabIndex = 3;
+            this.BtnSuppSelectedControl.Text = "Supprimer";
+            this.BtnSuppSelectedControl.UseVisualStyleBackColor = true;
+            this.BtnSuppSelectedControl.Click += new System.EventHandler(this.BtnSuppSelectedControl_Click);
             // 
             // btnUpdateAtelier
             // 
@@ -1236,6 +1248,7 @@
         private System.Windows.Forms.Button btnUpdateAtelier;
         private System.Windows.Forms.ComboBox cmbBoxModifAtelier;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button BtnSuppSelectedControl;
 
 
     }

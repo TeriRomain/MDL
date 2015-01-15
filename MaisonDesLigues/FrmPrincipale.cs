@@ -903,9 +903,11 @@ namespace MaisonDesLigues
                     foreach (CVacation UneVac in this.UneConnexion.GetVacations((int)this.cmbBoxModifAtelier.SelectedValue))
                     {
                         this.grpBoxUpdateAtelier.Controls.Add(UneVac);
+                        UneVac.SetVisibleCkcBox(true);
                         UneVac.Left = 21;
                         UneVac.Top = 40 + UneVac.Height * i;
-                        this.grpBoxUpdateAtelier.Height += UneVac.Height * i;
+                        this.grpBoxUpdateAtelier.Height += UneVac.Height;
+                        this.BtnSuppSelectedControl.Top += UneVac.Height;
                         i++;
                     }
                     
@@ -915,6 +917,11 @@ namespace MaisonDesLigues
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void BtnSuppSelectedControl_Click(object sender, EventArgs e)
+        {
+            
         }
 
 

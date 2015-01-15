@@ -794,7 +794,7 @@ namespace BaseDeDonnees
         public Collection<CVacation> GetVacations(int pIdAtelier)
         {
             Collection<CVacation> LesVacations = new Collection<CVacation>();
-            string sql = "select to_char(heuredebut, 'DD/MM/YYYY HH:MI:SS') from VVACATION01 where idatelier = :pidatelier";
+            string sql = "select to_char(heuredebut, 'DD/MM/YYYY HH:MI:SS'), idatelier, numero from VVACATION01 where idatelier = :pidatelier";
             UneOracleCommand = new OracleCommand(sql, CnOracle);
 
 
@@ -807,7 +807,10 @@ namespace BaseDeDonnees
             {
                 DateTime UnDateTime = new DateTime();
                 UnDateTime = Convert.ToDateTime(UnDataReader.GetValue(0).ToString());
-                LesVacations.Add(new CVacation(UnDateTime,Convert.ToDouble(ConfigurationManager.AppSettings["DUREEVACATIONS"])));
+                CVacation UneVacation = new CVacation(UnDateTime, Convert.ToDouble(ConfigurationManager.AppSettings["DUREEVACATIONS"]));
+                int[] tab = { Convert.ToInt32(UnDataReader.GetValue(1)), Convert.ToInt32(UnDataReader.GetValue(2)) };
+                UneVacation.ClePrimaireVac = tab;
+                LesVacations.Add(UneVacation);
             }
             return LesVacations;
         }
