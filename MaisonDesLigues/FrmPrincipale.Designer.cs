@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipale));
             this.TabInscription = new System.Windows.Forms.TabPage();
             this.GrpLicencie = new System.Windows.Forms.GroupBox();
+            this.TxtNumeroCheque = new System.Windows.Forms.TextBox();
             this.TxtMontant = new System.Windows.Forms.TextBox();
             this.LblNumeroCheque = new System.Windows.Forms.Label();
             this.LblMontant = new System.Windows.Forms.Label();
@@ -91,6 +92,10 @@
             this.PanRestaurationLicencie = new System.Windows.Forms.Panel();
             this.TabPrincipal = new System.Windows.Forms.TabControl();
             this.tabAjout = new System.Windows.Forms.TabPage();
+            this.grpBoxUpdateAtelier = new System.Windows.Forms.GroupBox();
+            this.btnUpdateAtelier = new System.Windows.Forms.Button();
+            this.cmbBoxModifAtelier = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.GrpBoxVacation = new System.Windows.Forms.GroupBox();
             this.BtnEnregistreVacation = new System.Windows.Forms.Button();
             this.lblAtelierVacation = new System.Windows.Forms.Label();
@@ -107,6 +112,7 @@
             this.NumUpDwnNbMaxParticipant = new System.Windows.Forms.NumericUpDown();
             this.TxtBoxLibelleAtelier = new System.Windows.Forms.TextBox();
             this.grpBoxChoixAdd = new System.Windows.Forms.GroupBox();
+            this.rdrBtnUpdateAtelier = new System.Windows.Forms.RadioButton();
             this.rdrBtnVacation = new System.Windows.Forms.RadioButton();
             this.rdrBtnTheme = new System.Windows.Forms.RadioButton();
             this.rdrbtnAtelier = new System.Windows.Forms.RadioButton();
@@ -114,7 +120,6 @@
             this.btnAddThemeEnregistre = new System.Windows.Forms.Button();
             this.LblThemeAtelier = new System.Windows.Forms.Label();
             this.cmbBoxThemeAtelier = new System.Windows.Forms.ComboBox();
-            this.TxtNumeroCheque = new System.Windows.Forms.TextBox();
             this.TabInscription.SuspendLayout();
             this.GrpLicencie.SuspendLayout();
             this.GrpResataurationLicencie.SuspendLayout();
@@ -128,6 +133,7 @@
             this.GrpRestaurationLicencie.SuspendLayout();
             this.TabPrincipal.SuspendLayout();
             this.tabAjout.SuspendLayout();
+            this.grpBoxUpdateAtelier.SuspendLayout();
             this.GrpBoxVacation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grpBoxAtelier.SuspendLayout();
@@ -176,6 +182,13 @@
             this.GrpLicencie.TabStop = false;
             this.GrpLicencie.Text = "Complément inscription licencie";
             this.GrpLicencie.Visible = false;
+            // 
+            // TxtNumeroCheque
+            // 
+            this.TxtNumeroCheque.Location = new System.Drawing.Point(365, 308);
+            this.TxtNumeroCheque.Name = "TxtNumeroCheque";
+            this.TxtNumeroCheque.Size = new System.Drawing.Size(100, 20);
+            this.TxtNumeroCheque.TabIndex = 18;
             // 
             // TxtMontant
             // 
@@ -766,6 +779,7 @@
             // tabAjout
             // 
             this.tabAjout.AutoScroll = true;
+            this.tabAjout.Controls.Add(this.grpBoxUpdateAtelier);
             this.tabAjout.Controls.Add(this.GrpBoxVacation);
             this.tabAjout.Controls.Add(this.pictureBox1);
             this.tabAjout.Controls.Add(this.grpBoxAtelier);
@@ -780,12 +794,52 @@
             this.tabAjout.UseVisualStyleBackColor = true;
             this.tabAjout.Click += new System.EventHandler(this.tabAjout_Click);
             // 
+            // grpBoxUpdateAtelier
+            // 
+            this.grpBoxUpdateAtelier.Controls.Add(this.btnUpdateAtelier);
+            this.grpBoxUpdateAtelier.Controls.Add(this.cmbBoxModifAtelier);
+            this.grpBoxUpdateAtelier.Controls.Add(this.label12);
+            this.grpBoxUpdateAtelier.Location = new System.Drawing.Point(653, 323);
+            this.grpBoxUpdateAtelier.Name = "grpBoxUpdateAtelier";
+            this.grpBoxUpdateAtelier.Size = new System.Drawing.Size(510, 76);
+            this.grpBoxUpdateAtelier.TabIndex = 9;
+            this.grpBoxUpdateAtelier.TabStop = false;
+            this.grpBoxUpdateAtelier.Text = "Modifier atelier";
+            this.grpBoxUpdateAtelier.Visible = false;
+            // 
+            // btnUpdateAtelier
+            // 
+            this.btnUpdateAtelier.Location = new System.Drawing.Point(353, 29);
+            this.btnUpdateAtelier.Name = "btnUpdateAtelier";
+            this.btnUpdateAtelier.Size = new System.Drawing.Size(120, 23);
+            this.btnUpdateAtelier.TabIndex = 2;
+            this.btnUpdateAtelier.Text = "Mettre a jour atelier";
+            this.btnUpdateAtelier.UseVisualStyleBackColor = true;
+            // 
+            // cmbBoxModifAtelier
+            // 
+            this.cmbBoxModifAtelier.FormattingEnabled = true;
+            this.cmbBoxModifAtelier.Location = new System.Drawing.Point(120, 31);
+            this.cmbBoxModifAtelier.Name = "cmbBoxModifAtelier";
+            this.cmbBoxModifAtelier.Size = new System.Drawing.Size(215, 21);
+            this.cmbBoxModifAtelier.TabIndex = 1;
+            this.cmbBoxModifAtelier.SelectedIndexChanged += new System.EventHandler(this.cmbBoxModifAtelier_SelectedIndexChanged);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(21, 34);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(93, 13);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "Atelier a modifier : ";
+            // 
             // GrpBoxVacation
             // 
             this.GrpBoxVacation.Controls.Add(this.BtnEnregistreVacation);
             this.GrpBoxVacation.Controls.Add(this.lblAtelierVacation);
             this.GrpBoxVacation.Controls.Add(this.CmbBoxVacationAtelier);
-            this.GrpBoxVacation.Location = new System.Drawing.Point(700, 342);
+            this.GrpBoxVacation.Location = new System.Drawing.Point(653, 178);
             this.GrpBoxVacation.Name = "GrpBoxVacation";
             this.GrpBoxVacation.Size = new System.Drawing.Size(441, 139);
             this.GrpBoxVacation.TabIndex = 8;
@@ -942,6 +996,7 @@
             // 
             // grpBoxChoixAdd
             // 
+            this.grpBoxChoixAdd.Controls.Add(this.rdrBtnUpdateAtelier);
             this.grpBoxChoixAdd.Controls.Add(this.rdrBtnVacation);
             this.grpBoxChoixAdd.Controls.Add(this.rdrBtnTheme);
             this.grpBoxChoixAdd.Controls.Add(this.rdrbtnAtelier);
@@ -952,10 +1007,22 @@
             this.grpBoxChoixAdd.TabStop = false;
             this.grpBoxChoixAdd.Text = "Ajouter";
             // 
+            // rdrBtnUpdateAtelier
+            // 
+            this.rdrBtnUpdateAtelier.AutoSize = true;
+            this.rdrBtnUpdateAtelier.Location = new System.Drawing.Point(380, 19);
+            this.rdrBtnUpdateAtelier.Name = "rdrBtnUpdateAtelier";
+            this.rdrBtnUpdateAtelier.Size = new System.Drawing.Size(93, 17);
+            this.rdrBtnUpdateAtelier.TabIndex = 3;
+            this.rdrBtnUpdateAtelier.TabStop = true;
+            this.rdrBtnUpdateAtelier.Text = "Modifier atelier";
+            this.rdrBtnUpdateAtelier.UseVisualStyleBackColor = true;
+            this.rdrBtnUpdateAtelier.CheckedChanged += new System.EventHandler(this.rdrBtnUpdateAtelier_CheckedChanged);
+            // 
             // rdrBtnVacation
             // 
             this.rdrBtnVacation.AutoSize = true;
-            this.rdrBtnVacation.Location = new System.Drawing.Point(417, 19);
+            this.rdrBtnVacation.Location = new System.Drawing.Point(281, 19);
             this.rdrBtnVacation.Name = "rdrBtnVacation";
             this.rdrBtnVacation.Size = new System.Drawing.Size(67, 17);
             this.rdrBtnVacation.TabIndex = 2;
@@ -967,7 +1034,7 @@
             // rdrBtnTheme
             // 
             this.rdrBtnTheme.AutoSize = true;
-            this.rdrBtnTheme.Location = new System.Drawing.Point(238, 19);
+            this.rdrBtnTheme.Location = new System.Drawing.Point(161, 19);
             this.rdrBtnTheme.Name = "rdrBtnTheme";
             this.rdrBtnTheme.Size = new System.Drawing.Size(58, 17);
             this.rdrBtnTheme.TabIndex = 1;
@@ -993,7 +1060,7 @@
             this.grpBoxAddTheme.Controls.Add(this.btnAddThemeEnregistre);
             this.grpBoxAddTheme.Controls.Add(this.LblThemeAtelier);
             this.grpBoxAddTheme.Controls.Add(this.cmbBoxThemeAtelier);
-            this.grpBoxAddTheme.Location = new System.Drawing.Point(700, 178);
+            this.grpBoxAddTheme.Location = new System.Drawing.Point(653, 7);
             this.grpBoxAddTheme.Name = "grpBoxAddTheme";
             this.grpBoxAddTheme.Size = new System.Drawing.Size(441, 158);
             this.grpBoxAddTheme.TabIndex = 7;
@@ -1029,13 +1096,6 @@
             this.cmbBoxThemeAtelier.TabIndex = 0;
             this.cmbBoxThemeAtelier.TextChanged += new System.EventHandler(this.cmbBoxThemeAtelier_TextChanged);
             // 
-            // TxtNumeroCheque
-            // 
-            this.TxtNumeroCheque.Location = new System.Drawing.Point(365, 308);
-            this.TxtNumeroCheque.Name = "TxtNumeroCheque";
-            this.TxtNumeroCheque.Size = new System.Drawing.Size(100, 20);
-            this.TxtNumeroCheque.TabIndex = 18;
-            // 
             // FrmPrincipale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1067,6 +1127,8 @@
             this.GrpRestaurationLicencie.PerformLayout();
             this.TabPrincipal.ResumeLayout(false);
             this.tabAjout.ResumeLayout(false);
+            this.grpBoxUpdateAtelier.ResumeLayout(false);
+            this.grpBoxUpdateAtelier.PerformLayout();
             this.GrpBoxVacation.ResumeLayout(false);
             this.GrpBoxVacation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -1169,6 +1231,11 @@
         private System.Windows.Forms.Button BtnRemoveThemeAtelier;
         private System.Windows.Forms.Button BtnAddThemeAtelier;
         private System.Windows.Forms.TextBox TxtNumeroCheque;
+        private System.Windows.Forms.RadioButton rdrBtnUpdateAtelier;
+        private System.Windows.Forms.GroupBox grpBoxUpdateAtelier;
+        private System.Windows.Forms.Button btnUpdateAtelier;
+        private System.Windows.Forms.ComboBox cmbBoxModifAtelier;
+        private System.Windows.Forms.Label label12;
 
 
     }

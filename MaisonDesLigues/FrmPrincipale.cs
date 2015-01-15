@@ -16,6 +16,8 @@ namespace MaisonDesLigues
 
         private Collection<CVacation> LesVacations;
         private Collection<CTheme> LesThemes;
+        private double DureeVacation;
+        private bool Charged;
         
         /// <summary>
         /// constructeur du formulaire
@@ -23,8 +25,9 @@ namespace MaisonDesLigues
         public FrmPrincipale()
         {
             InitializeComponent();
+            this.DureeVacation = Convert.ToDouble(ConfigurationManager.AppSettings["DUREEVACATIONS"]);
             this.LesVacations = new Collection<CVacation>();
-            this.LesVacations.Add(new CVacation(Convert.ToDouble(ConfigurationManager.AppSettings["DUREEVACATIONS"])));
+            this.LesVacations.Add(new CVacation(this.DureeVacation));
 
             this.LesThemes = new Collection<CTheme>();
             this.LesThemes.Add(new CTheme());
@@ -522,7 +525,7 @@ namespace MaisonDesLigues
         {
             if (this.rdrBtnVacation.Checked)
             {
-                CVacation LaVacation = new CVacation(Convert.ToDouble(ConfigurationManager.AppSettings["DUREEVACATIONS"]));
+                CVacation LaVacation = new CVacation(this.DureeVacation);
                 LaVacation.Name = "LaVacation";
                 this.GrpBoxVacation.Controls.Add(LaVacation);
                 LaVacation.Top = 60;
@@ -697,7 +700,7 @@ namespace MaisonDesLigues
         {
             if (this.LesVacations.Count < Convert.ToInt32(ConfigurationManager.AppSettings["NBMAXVACATION"]))
             {
-                this.LesVacations.Add(new CVacation(Convert.ToDouble(ConfigurationManager.AppSettings["DUREEVACATIONS"])));
+                this.LesVacations.Add(new CVacation(this.DureeVacation));
                 this.GererInterfaceAtelier();
                 this.btnSaveAtelier.Top += this.LesVacations[0].Height;
                 this.grpBoxAtelier.Height += this.LesVacations[0].Height;
@@ -849,6 +852,48 @@ namespace MaisonDesLigues
                 }
                 UneConnexion.AjoutAtelier(this.TxtBoxLibelleAtelier.Text, (Int32)this.NumUpDwnNbMaxParticipant.Value, LesThemes, LesVacations);
                 MessageBox.Show("l'atelier a bien été créer.");
+                this.Vider_Champs(this.grpBoxAtelier);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void rdrBtnUpdateAtelier_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.rdrBtnUpdateAtelier.Checked == true)
+            {
+                this.grpBoxUpdateAtelier.Left = 23;
+                this.grpBoxUpdateAtelier.Top = 71;
+                this.grpBoxUpdateAtelier.Visible = true;
+                Utilitaire.RemplirComboBox(this.UneConnexion, this.cmbBoxModifAtelier, "VATELIER01");
+                this.cmbBoxModifAtelier.Text = "Choisir";
+                Charged = true;
+            }
+            else
+            {
+                Charged = false;
+                this.grpBoxUpdateAtelier.Left = 653;
+                this.grpBoxUpdateAtelier.Top = 323;
+                this.grpBoxUpdateAtelier.Visible = false;
+            }
+        }
+
+        private void cmbBoxModifAtelier_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Charged)
+                {
+                    int i = 1;
+                    foreach (CVacation UneVac in this.UneConnexion.GetVacations((int)this.cmbBoxModifAtelier.SelectedValue))
+                    {
+                        this.grpBoxUpdateAtelier.Controls.Add(UneVac);
+                        UneVac.Left = 21;
+                        UneVac.Top = 40 + UneVac.Height * i;
+                    }
+                }
             }
             catch (Exception ex)
             {
