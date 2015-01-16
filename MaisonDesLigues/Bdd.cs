@@ -814,5 +814,69 @@ namespace BaseDeDonnees
             }
             return LesVacations;
         }
+
+        /// <summary>
+        /// methode qui permet de mettre a jour les vacations d'un atelier
+        /// </summary>
+        /// <param name="pLesVacation"></param>
+        /// <param name="pIdAtelier"></param>
+        public void UpdateVacation(Collection<CVacation>pLesVacation, Int32 pIdAtelier)
+        {
+            string MessageErreur = "";
+            Collection<String> LesThemes = new Collection<String>();
+            Collection<string> LesVacationDbt = new Collection<string>();
+            Collection<string> LesVacationsFin = new Collection<string>();
+            try
+            {
+                UneOracleCommand = new OracleCommand("mdl.pckatelier.modificationvacations", CnOracle);
+                UneOracleCommand.CommandType = CommandType.StoredProcedure;
+
+                foreach (CVacation UneVacation in pLesVacation)
+                {
+                    LesVacationDbt.Add(UneVacation.GetDateDbtVacation().ToString());
+                    LesVacationsFin.Add(UneVacation.GetDateFinVacation().ToString());
+                }
+
+                //parametre plesvacationsdbt
+                OracleParameter paramVacationDbt = new OracleParameter();
+                this.CreerParametresString(paramVacationDbt, LesVacationDbt, "plesvacationsdbt");
+                UneOracleCommand.Parameters.Add(paramVacationDbt);
+
+                //parametre plesvacationsfin
+                OracleParameter paramVacationFin = new OracleParameter();
+                this.CreerParametresString(paramVacationFin, LesVacationsFin, "plesvacationsfin");
+                UneOracleCommand.Parameters.Add(paramVacationFin);
+
+                UneOracleCommand.Parameters.Add("pidatelier", OracleDbType.Varchar2, ParameterDirection.Input).Value = pIdAtelier;
+
+                // début de la transaction Oracle il vaut mieux gérer les transactions dans l'applicatif que dans la bd dans les procédures stockées.
+                UneOracleTransaction = this.CnOracle.BeginTransaction();
+
+                //execution
+                UneOracleCommand.ExecuteNonQuery();
+                // fin de la transaction. Si on arrive à ce point, c'est qu'aucune exception n'a été levée
+                UneOracleTransaction.Commit();
+            }
+            catch (OracleException Oex)
+            {
+                MessageErreur = "Erreur Oracle \n" + this.GetMessageOracle(Oex.Message);
+            }
+            catch (Exception ex)
+            {
+
+                MessageErreur = "Autre Erreur, les informations n'ont pas été correctement saisies";
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (MessageErreur.Length > 0)
+                {
+                    // annulation de la transaction
+                    UneOracleTransaction.Rollback();
+                    // Déclenchement de l'exception
+                    throw new Exception(MessageErreur);
+                }
+            }
+        }
     }
 }

@@ -903,11 +903,10 @@ namespace MaisonDesLigues
                     foreach (CVacation UneVac in this.UneConnexion.GetVacations((int)this.cmbBoxModifAtelier.SelectedValue))
                     {
                         this.grpBoxUpdateAtelier.Controls.Add(UneVac);
-                        UneVac.SetVisibleCkcBox(true);
+                       // UneVac.SetVisibleCkcBox(true);
                         UneVac.Left = 21;
                         UneVac.Top = 40 + UneVac.Height * i;
                         this.grpBoxUpdateAtelier.Height += UneVac.Height;
-                        this.BtnSuppSelectedControl.Top += UneVac.Height;
                         i++;
                     }
                     
@@ -922,6 +921,23 @@ namespace MaisonDesLigues
         private void BtnSuppSelectedControl_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void btnUpdateAtelier_Click(object sender, EventArgs e)
+        {
+            Collection<CVacation> MesVac = new Collection<CVacation>();
+            foreach (Control Ctrl in this.grpBoxUpdateAtelier.Controls)
+            {
+                if (Ctrl is CVacation)
+                {
+                    MesVac.Add((CVacation)Ctrl);
+                }
+            }
+
+            this.UneConnexion.UpdateVacation(MesVac, (Int32)this.cmbBoxModifAtelier.SelectedValue);
+
+            MessageBox.Show("Les vacations sont mises a jour");
+
         }
 
 
