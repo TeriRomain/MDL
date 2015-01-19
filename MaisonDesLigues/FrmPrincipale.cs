@@ -940,12 +940,6 @@ namespace MaisonDesLigues
             
         }
 
-        private void btnUpdateAtelier_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
 
         ///// <summary>
         ///// 
