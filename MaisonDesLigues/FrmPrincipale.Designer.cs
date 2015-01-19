@@ -827,6 +827,7 @@
             this.btnUpdateAtelier.TabIndex = 2;
             this.btnUpdateAtelier.Text = "Mettre a jour atelier";
             this.btnUpdateAtelier.UseVisualStyleBackColor = true;
+            this.btnUpdateAtelier.Click += new System.EventHandler(this.btnUpdateAtelier_Click);
             // 
             // cmbBoxModifAtelier
             // 
