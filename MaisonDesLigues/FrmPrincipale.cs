@@ -16,6 +16,8 @@ namespace MaisonDesLigues
 
         private Collection<CVacation> LesVacations;
         private Collection<CTheme> LesThemes;
+        private double DureeVacation;
+        private bool Charged;
         
         /// <summary>
         /// constructeur du formulaire
@@ -23,8 +25,9 @@ namespace MaisonDesLigues
         public FrmPrincipale()
         {
             InitializeComponent();
+            this.DureeVacation = Convert.ToDouble(ConfigurationManager.AppSettings["DUREEVACATIONS"]);
             this.LesVacations = new Collection<CVacation>();
-            this.LesVacations.Add(new CVacation(Convert.ToDouble(ConfigurationManager.AppSettings["DUREEVACATIONS"])));
+            this.LesVacations.Add(new CVacation(this.DureeVacation));
 
             this.LesThemes = new Collection<CTheme>();
             this.LesThemes.Add(new CTheme());
@@ -88,6 +91,9 @@ namespace MaisonDesLigues
             GrpLicencie.Top = 264;
             Utilitaire.CreerDesControles(this, UneConnexion, "VRESTAURATION01", "ChkRestoL_", PanRestoLicencie, "CheckBox", EnableBtnEnregistrerLicencie);
             Utilitaire.RemplirComboBox(UneConnexion, CmbAtelierLicencie, "VATELIER01");
+
+            
+
             CmbAtelierLicencie.Text = "Choisir";
             
         }
@@ -130,41 +136,7 @@ namespace MaisonDesLigues
         {
             return CmbAtelierIntervenant.Text != "Choisir" && TxtQualitéLicencie.Text!="" && TxtLicenceLicencie.Text!="";
         }
-        //private void Vider_Champs()
-        //{
-        //    if (TabPrincipal.SelectedIndex == 0)
-        //    {
-        //        if (RadBenevole.Checked == true)
-        //        {
-        //            Collection<Control> MesControls = new Collection<Control>();
-        //            foreach (Control Ctrl in PanelDispoBenevole.Controls)
-        //            {
-        //                if (Ctrl is CheckBox)
-        //                {
-        //                    MesControls.Add(Ctrl);
-        //                }
-        //            }
-        //            foreach (Control Ctrl in GrpIdentite.Controls)
-        //            {
-        //                MesControls.Add(Ctrl);
-        //            }
-        //            foreach (Control Ctrl in GrpBenevole.Controls)
-        //            {
-        //                MesControls.Add(Ctrl);
-        //            }
-
-        //            foreach (Control Ctrl in MesControls)
-        //            {
-        //                if (Ctrl is TextBox || Ctrl is MaskedTextBox)
-        //                    Ctrl.Text = string.Empty;
-        //                else if (Ctrl is CheckBox)
-        //                {
-        //                    ((CheckBox)Ctrl).Checked = false;
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
+       
         /// <summary>
         /// Procedure pour vider les champs de l'interface d'inscription 
         /// </summary>
@@ -210,6 +182,11 @@ namespace MaisonDesLigues
                         {
                             CTheme unTheme = (CTheme)Ctrl;
                             unTheme.ViderChampTextBox();
+                        }
+
+                        else if (Ctrl is CVacation)
+                        {
+                            UnGroupBox.Controls.Remove(Ctrl);
                         }
                                     
                     }
@@ -553,7 +530,7 @@ namespace MaisonDesLigues
         {
             if (this.rdrBtnVacation.Checked)
             {
-                CVacation LaVacation = new CVacation(Convert.ToDouble(ConfigurationManager.AppSettings["DUREEVACATIONS"]));
+                CVacation LaVacation = new CVacation(this.DureeVacation);
                 LaVacation.Name = "LaVacation";
                 this.GrpBoxVacation.Controls.Add(LaVacation);
                 LaVacation.Top = 60;
@@ -640,7 +617,6 @@ namespace MaisonDesLigues
 
                 MessageBox.Show("Vacation ajouté a l'atelier \"" + this.CmbBoxVacationAtelier.Text+"\"");
 
-                this.Vider_Champs(this.GrpBoxVacation);
                 this.CmbBoxVacationAtelier.Text = "Choisir";
             }
             catch (Exception ex)
@@ -728,7 +704,7 @@ namespace MaisonDesLigues
         {
             if (this.LesVacations.Count < Convert.ToInt32(ConfigurationManager.AppSettings["NBMAXVACATION"]))
             {
-                this.LesVacations.Add(new CVacation(Convert.ToDouble(ConfigurationManager.AppSettings["DUREEVACATIONS"])));
+                this.LesVacations.Add(new CVacation(this.DureeVacation));
                 this.GererInterfaceAtelier();
                 this.btnSaveAtelier.Top += this.LesVacations[0].Height;
                 this.grpBoxAtelier.Height += this.LesVacations[0].Height;
@@ -862,9 +838,25 @@ namespace MaisonDesLigues
 
         private void btnSaveAtelier_Click(object sender, EventArgs e)
         {
+            Collection<CTheme> LesThemes = new Collection<CTheme>();
+            Collection<CVacation> LesVacations = new Collection<CVacation>();
             try
             {
                 this.VerifContenuAtelier();
+                foreach (Control Ctrl in this.grpBoxAtelier.Controls)
+                {
+                    if (Ctrl is CTheme)
+                    {
+                        LesThemes.Add((CTheme)Ctrl);
+                    }
+                    if (Ctrl is CVacation)
+                    {
+                        LesVacations.Add((CVacation)Ctrl);
+                    }
+                }
+                UneConnexion.AjoutAtelier(this.TxtBoxLibelleAtelier.Text, (Int32)this.NumUpDwnNbMaxParticipant.Value, LesThemes, LesVacations);
+                MessageBox.Show("l'atelier a bien été crée.");
+                this.Vider_Champs(this.grpBoxAtelier);
             }
             catch (Exception ex)
             {
@@ -872,6 +864,81 @@ namespace MaisonDesLigues
             }
         }
 
+        private void rdrBtnUpdateAtelier_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.rdrBtnUpdateAtelier.Checked == true)
+                {
+                    this.grpBoxUpdateAtelier.Left = 23;
+                    this.grpBoxUpdateAtelier.Top = 71;
+                    this.grpBoxUpdateAtelier.Visible = true;
+                    Utilitaire.RemplirComboBox(this.UneConnexion, this.cmbBoxModifAtelier, "VATELIER01");
+                    this.cmbBoxModifAtelier.Text = "Choisir";
+                    Charged = true;
+                }
+                else
+                {
+                    Charged = false;
+                    this.grpBoxUpdateAtelier.Left = 653;
+                    this.grpBoxUpdateAtelier.Top = 323;
+                    this.grpBoxUpdateAtelier.Visible = false;
+                    this.grpBoxUpdateAtelier.Height = 80;
+                    Vider_Champs(this.grpBoxUpdateAtelier);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void cmbBoxModifAtelier_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Charged)
+                {
+                    int i = 1;
+                    foreach (CVacation UneVac in this.UneConnexion.GetVacations((int)this.cmbBoxModifAtelier.SelectedValue))
+                    {
+                        this.grpBoxUpdateAtelier.Controls.Add(UneVac);
+                        //UneVac.SetVisibleCkcBox(true);
+                        UneVac.Left = 21;
+                        UneVac.Top = 40 + UneVac.Height * i;
+                        this.grpBoxUpdateAtelier.Height += UneVac.Height;
+                        i++;
+                    }
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void BtnSuppSelectedControl_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnUpdateAtelier_Click(object sender, EventArgs e)
+        {
+            Collection<CVacation> MesVac = new Collection<CVacation>();
+            foreach (Control Ctrl in this.grpBoxUpdateAtelier.Controls)
+            {
+                if (Ctrl is CVacation)
+                {
+                    MesVac.Add((CVacation)Ctrl);
+                }
+            }
+
+            this.UneConnexion.UpdateVacation(MesVac, (Int32)this.cmbBoxModifAtelier.SelectedValue);
+
+            MessageBox.Show("Les vacations sont mises a jour");
+            
+        }
 
 
         ///// <summary>
