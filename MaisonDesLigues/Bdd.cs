@@ -331,6 +331,8 @@ namespace BaseDeDonnees
                 }
             }
         }
+        
+        
         /// <summary>
         /// Procedure d'inscription d'un licencie avec les nuites et les restaurations
         /// </summary>
@@ -417,6 +419,8 @@ namespace BaseDeDonnees
                 }
             }
         }
+        
+        
         /// <summary>
         /// méthode privée permettant de valoriser les paramètres d'un objet commmand spécifiques intervenants
         /// </summary>
@@ -428,6 +432,8 @@ namespace BaseDeDonnees
             Cmd.Parameters.Add("pIdAtelier", OracleDbType.Int16, ParameterDirection.Input).Value = pIdAtelier;
             Cmd.Parameters.Add("pIdStatut", OracleDbType.Char, ParameterDirection.Input).Value = pIdStatut;
         }
+
+
         /// <summary>
         /// Procédure publique qui va appeler la procédure stockée permettant d'inscrire un nouvel intervenant sans nuité
         /// </summary>
@@ -488,6 +494,8 @@ namespace BaseDeDonnees
                 }
             }
         }
+        
+        
         /// <summary>
         /// Procédure publique qui va appeler la procédure stockée permettant d'inscrire un nouvel intervenant qui aura des nuités
         /// </summary>
@@ -583,6 +591,8 @@ namespace BaseDeDonnees
                 }             
             }
         }
+        
+        
         /// <summary>
         /// fonction permettant de construire un dictionnaire dont l'id est l'id d'une nuité et le contenu une date
         /// sous la la forme : lundi 7 janvier 2013        /// 
@@ -599,6 +609,7 @@ namespace BaseDeDonnees
             return LesDatesARetourner;
 
         }
+
 
         /// <summary>
         /// Méthode qui permet d'ajouter un theme dans un atelier
@@ -876,6 +887,34 @@ namespace BaseDeDonnees
                     // Déclenchement de l'exception
                     throw new Exception(MessageErreur);
                 }
+            }
+        }
+
+
+        /// <summary>
+        /// Fonction permettant de savoir si un participant existe déjà dans la base de donnée
+        /// </summary>
+        /// <param name="pNom">Nom du participant</param>
+        /// <param name="pPrenom">Prénom du participant</param>
+        /// <param name="pAdresse1">Adresse du participant (la 1)</param>
+        /// <param name="pCp">Code postal du participant</param>
+        /// <param name="pVille">Ville du participant</param>
+        /// <returns>Retourne true si il existe déjà, false dans le cas inverse</returns>
+        public Boolean findParticipant(String pNom, String pPrenom, String pAdresse1, String pCp, String pVille)
+        {
+            try
+            {
+                DataTable LesParticipants = ObtenirDonnesOracle("VPARTICIPANT02");
+                foreach (DataRow UneLigne in LesParticipants.Rows)
+                {
+                    if (UneLigne["NOM"].ToString() == pNom && UneLigne["PRENOM"].ToString() == pPrenom && UneLigne["ADRESSE"].ToString() == pAdresse1
+                        && UneLigne["CP"].ToString() == pCp && UneLigne["VILLE"].ToString() == pVille) return true;
+                }
+                return false;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Erreur lors du test "+e.Message);
             }
         }
     }

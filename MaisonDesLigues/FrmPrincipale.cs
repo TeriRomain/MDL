@@ -275,6 +275,7 @@ namespace MaisonDesLigues
         /// <param name="e"></param>
         private void BtnEnregistreBenevole_Click(object sender, EventArgs e)
         {
+            
             Collection<Int16> IdDatesSelectionnees = new Collection<Int16>();
             Int64? NumeroLicence;
             if (TxtLicenceBenevole.MaskCompleted)
@@ -300,6 +301,7 @@ namespace MaisonDesLigues
                 }
             }
             UneConnexion.InscrireBenevole(TxtNom.Text, TxtPrenom.Text, TxtAdr1.Text, TxtAdr2.Text != "" ? TxtAdr2.Text : null, TxtCp.Text, TxtVille.Text, txtTel.MaskCompleted ? txtTel.Text : null, TxtMail.Text != "" ? TxtMail.Text : null, System.Convert.ToDateTime(TxtDateNaissance.Text), NumeroLicence, IdDatesSelectionnees);
+                     
             //Vider_Champs(RadBenevole,GrpBenevole,PanelDispoBenevole);
         }
         /// <summary>
