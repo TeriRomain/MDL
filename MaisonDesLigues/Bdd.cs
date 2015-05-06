@@ -178,6 +178,16 @@ namespace BaseDeDonnees
         {
             try
             {
+                Boolean Exist = findParticipant(pNom, pPrenom, pAdresse1, pCp, pVille);
+                if (Exist)
+                {
+
+                }
+                else
+                {
+
+                }
+
                 UneOracleCommand = new OracleCommand("pckparticipant.nouveaubenevole", CnOracle);
                 UneOracleCommand.CommandType = CommandType.StoredProcedure;
                 this.ParamCommunsNouveauxParticipants(UneOracleCommand, pNom, pPrenom, pAdresse1, pAdresse2, pCp, pVille, pTel, pMail);
