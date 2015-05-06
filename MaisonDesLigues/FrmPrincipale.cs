@@ -900,6 +900,15 @@ namespace MaisonDesLigues
                 if (Charged)
                 {
                     int i = 1;
+
+                    // Réinitialisation du groupebox
+                    foreach (Control CVac in this.grpBoxUpdateAtelier.Controls)
+                    {
+                        if (CVac is CVacation) { grpBoxUpdateAtelier.Controls.Remove(CVac); }
+                    }
+                    grpBoxUpdateAtelier.Height = 76;
+
+
                     foreach (CVacation UneVac in this.UneConnexion.GetVacations((int)this.cmbBoxModifAtelier.SelectedValue))
                     {
                         this.grpBoxUpdateAtelier.Controls.Add(UneVac);
